@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% extends '../lms/index.html' %}
+        <meta charset="utf-8">
+        <title>{% block title %}Đăng nhập{% endblock %}</title>
+    </head>
+    <body>
+        {% block content %}
+            <h2>Đăng nhập</h2>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Đăng nhập</button>
+            </form>
+
+            <p><a href="{% url 'register' %}">Tạo tài khoản</a></p>
+        {% endblock %}
+    </body>
+</html>

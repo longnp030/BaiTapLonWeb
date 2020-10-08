@@ -1,0 +1,183 @@
+body {
+	padding: 0;
+	margin: 0;
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.wrap-header {
+	border-bottom: 1px solid black;
+}
+
+.navbar {
+	width: 1200px;
+	max-width: 100%;
+	margin: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	padding: 20px 0;
+}
+
+.navbar .nav-item{
+	text-decoration: none;
+	padding: 0 20px;
+	font-weight: bold;
+	color: black;
+}
+
+#logo {
+	margin-right: 10%;
+	font-size: 35px;
+}
+
+#auth-button-inside {
+	font-size: 16px;
+	padding: 0;
+	color: white;
+}
+
+#auth-button {
+	width: 100px;
+	margin-left:10%;
+	padding: 7px 25px;
+	border-radius: 10px;
+	border: 1px solid white;
+	background-color: orange;
+	float: right;
+}
+
+#rgt-button-inside {
+	font-size: 16px;
+	padding: 0;
+	color: white;
+}
+
+#rgt-button {
+	width: 100px;
+	margin-left: 10%;
+	padding: 7px 25px;
+	border-radius: 10px;
+	border: 1px solid white;
+	background-color: orange;
+	float: left;
+}
+
+.wrap-body {
+	padding: 50px;
+	background-color: bisque;
+}
+
+.dashboard {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 1200px;
+	max-width: 100%;
+	margin: auto;
+}
+
+.sidebar {
+	background-color: white;
+	border: 1px solid orange;
+	display: inline; /*wrap ôm lại sát text,...*/
+	height: 100%;
+	border-radius: 20px;
+	/*-circle*/
+}
+
+.sidebar h4{
+	border-top-right-radius: 20px;
+	border-top-left-radius: 20px ;
+	text-transform: capitalize; 
+	margin: 0;
+	background-color: orange;
+	padding: 10px 30px;
+	color: white;
+}
+
+.sidebar ul{
+	margin: 0;
+	padding: 10px 0;
+	list-style: none;
+}
+
+.sidebar ul li a{
+	text-decoration: none;
+	text-transform: capitalize;
+	color: #555555;
+	padding: 0 30px;
+}
+
+.sidebar ul li{
+	padding: 10px 0;
+	cursor: pointer; /*Hiển thị con trỏ chuột khi di chuột vào vùng*/
+}
+
+.sidebar ul li:hover{
+	background-color: #eeeef2;
+}
+
+.carousel-slide {
+	width: 700px;
+	overflow: hidden;
+	display: flex;
+	margin: 0 200px 0 0;
+}
+
+.carousel-slide .carousel-image{
+	height: 400px;
+	width: 700px;
+	object-fit: cover;
+	object-position: center; 
+	/* transform: translateX(-700px); */
+}
+
+.image-teacher{
+	display: flex;
+	max-width: 100%;
+	flex-wrap: wrap;
+	padding:  20px 120px;
+	background-color: blanchedalmond;
+}
+
+.image-teacher .teacher{
+	/* padding: 0 20px; */
+	width: 260px;
+	height: 150px;
+	object-fit: cover;
+}
+
+.image-teacher .teacher-info .course-name a{
+	text-decoration: none;
+	padding: 0 20px;
+	color: green;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 17px;
+
+}
+
+.image-teacher .teacher-info{
+	padding-bottom: 20px;
+}
+/* .image-teacher .teacher-info{
+	background-color: darkcyan;
+} */
+
+.image-teacher .teacher-info .teacher-name a{
+	text-decoration: none;
+	padding: 0 20px;
+	color:green;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 20px;
+}
+/* .image-teacher .mid{
+	background-color: chartreuse;
+} */
+
+.image-teacher .mid{
+	background-color:snow;
+	margin:7px;
+	/* display: inline; */
+}

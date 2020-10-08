@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}Trang chủ{% endblock %}</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'lms/style.css' %}">
+    </head>
+    <body>
+        {% block content %}
+            {% if user.is_authenticated %}
+                Chào mừng, {{ user.username }}!
+                <p><a href="{% url 'logout' %}">Đăng xuất</a></p>
+                {% if latest_subject_list %}
+                    <ul>
+                        {% for subject in latest_subject_list %}
+                            <li><a href="courses/{{ subject.id }}/">{{ subject.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>Không có sẵn khóa học nào.</p>
+                {% endif %}
+            {% else %}
+                <p>Bạn chưa đăng nhập.</p>
+                <a href="{% url 'login' %}">Đăng nhập</a>
+            {% endif %}
+        {% endblock %}
+    </body>
+</html>

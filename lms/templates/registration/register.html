@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% extends 'registration/login.html' %}
+        <title>{% block title %}Đăng ký{% endblock %}</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        {% load crispy_forms_tags %}
+
+        {% block content %}
+            <form method="POST" class="form-group">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-success">Đăng ký</button>
+            </form>
+        {% endblock %}
+    </body>
+</html>

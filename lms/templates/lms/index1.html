@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi"> 
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}Trang chủ{% endblock %}</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'lms/style.css' %}">
+    </head>
+
+    <body>
+        {% block content %}
+            <div class="wrap-header">
+                <div class="navbar">
+                    <a href="#" id="logo" class="nav-item">LOGO</a>
+                    <a id="gioithieu" class="nav-item" href="gioithieu.html">Giới thiệu</a>    
+                    <a id="giaovien" class="nav-item" href="giaovien.html">Giáo Viên</a>
+                    <a id="khoahoc" class="nav-item" href="khoahoc.html">Khóa Học</a>
+                    <a id="thuvien" class="nav-item" href="thuvien.html">Thư Viện</a>
+                    <a id="hotro" class="nav-item" href="hotro.html">Hỗ Trợ</a>
+
+                    {% if user.is_authenticated %}
+                        <button id="auth-button">
+                            <a id="auth-button-inside" class="nav-item" href="{% url 'logout' %}">
+                                Đăng xuất</a>
+                        </button>
+                    {% else %}
+                        <div>
+                            <span>
+                                <button id="rgt-button">
+                                    <a id="rgt-button-inside" class="nav-item" href="{% url 'register' %}">
+                                        Đăng ký</a>
+                                </button>
+                            </span>
+                            
+                            <span>
+                                <button id="auth-button">
+                                    <a id="auth-button-inside" class="nav-item" href="{% url 'login' %}">
+                                        Đăng nhập</a>
+                                </button>
+                            </span>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+
+            {% if user.is_authenticated %}
+                Chào mừng, {{ user.username }}!
+                <!--<p><a href="{% url 'logout' %}">Đăng xuất</a></p>-->
+                {% if latest_subject_list %}
+                    <ul>
+                        {% for subject in latest_subject_list %}
+                            <li><a href="courses/{{ subject.id }}/">{{ subject.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>Bạn chưa tham gia khóa học nào.</p>
+                {% endif %}
+            {% else %}
+                <p>Bạn chưa đăng nhập.</p>
+                <!--<a href="{% url 'login' %}">Đăng nhập</a>-->
+            {% endif %}
+        {% endblock %}
+
+        <div class="wrap-body">
+            <div class="dashboard">
+                <div class="sidebar">
+                    <h4>Các khóa học</h4>
+                    <ul>
+                        <li class="classroom"><a href="lop6.html">lớp 6</a></li>
+                        <li class="classroom"><a href="lop7.html">lớp 7</a></li>
+                        <li class="classroom"><a href="lop8.html">lớp 8</a></li>
+                        <li class="classroom"><a href="lop9.html">lớp 9</a></li>
+                        <li class="classroom"><a href="lop10.html">lớp 10</a></li>
+                        <li class="classroom"><a href="lop11.html">lớp 11</a></li>
+                        <li class="classroom"><a href="lop12.html">lớp 12</a></li>
+                    </ul>    
+                </div>
+
+                <!--<div class="carousel-slide">
+                    <img class="carousel-image" src="images/anh1.png" alt="loading...">
+                    <img class="carousel-image" src="images/anh2.png" alt="loading...">
+                    <img class="carousel-image" src="images/anh3.png" alt="loading...">
+                    <img class="carousel-image" src="images/anh4.png" alt="loading...">
+                </div>-->
+            </div>
+        </div>
+    </body>
+</html>
