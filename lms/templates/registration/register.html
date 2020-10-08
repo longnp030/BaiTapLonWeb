@@ -11,7 +11,8 @@
         {% block content %}
             <form method="POST" class="form-group">
                 {% csrf_token %}
-                {{ form|crispy }}
+                {{ student_form|crispy }}
+                {{ user_form|crispy }}
                 <button type="submit" class="btn btn-success">Đăng ký</button>
             </form>
         {% endblock %}

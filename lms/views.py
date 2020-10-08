@@ -6,7 +6,8 @@ from django.db.models.signals import post_save
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 
-from .forms import RegisterForm
+from datetime import datetime as dt
+from .forms import RegisterForm, StudentForm
 from .models import Course, Teacher, Student, Enroll
 
 # Create your views here.
@@ -20,7 +21,7 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 
-def register(response):
+'''def register(response):
     if response.method == "POST":
         form = RegisterForm()
         if form.is_valid():
@@ -29,7 +30,31 @@ def register(response):
         return redirect('/lms/')
     else:
         form = RegisterForm()
-    return render(response, 'registration/register.html', {"form": form})
+    return render(response, 'registration/register.html', {"form": form})'''
+
+
+def register(request):
+    if request.method == 'POST':
+        user_form = RegisterForm(request.POST)
+        student_form = StudentForm(request.POST)
+        if user_form.is_valid() and student_form.is_valid():
+            user = user_form.save()
+
+            student = student_form.save(commit=False)
+            student.id = user.id
+            student.name = student.name
+            student.email = user.email
+            student.joindate = dt.now()
+            student.useremail = user
+            student.save()
+
+            return redirect('/lms/')
+    else:
+        user_form = RegisterForm()
+        student_form = StudentForm()
+    
+    return render(request, 'registration/register.html', {"user_form": user_form, "student_form": student_form})
+
 
 '''@receiver(post_save, sender=get_user_model())
 def create_student_user(sender, instance, created, **kwargs):

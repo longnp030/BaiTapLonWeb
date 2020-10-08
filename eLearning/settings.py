@@ -87,6 +87,9 @@ DATABASES = {
         'PORT': '3306',
         'USER': 'root',
         'PASSWORD': 'root',
+        'OPTIONS': {
+            'init_command': 'SET FOREIGN_KEY_CHECKS = 0;',
+        }
     }
 }
 
@@ -115,7 +118,7 @@ AUTH_USER_MODEL = 'lms.User'
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'vi-VN'
+LANGUAGE_CODE = 'en-US'
 
 TIME_ZONE = 'Asia/Ho_Chi_Minh'
 

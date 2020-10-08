@@ -7,8 +7,9 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 from django.contrib.auth.models import (
-    BaseUserManager, AbstractBaseUser
+    BaseUserManager, AbstractBaseUser, AbstractUser
 )
+from datetime import datetime as dt
 
 
 class AuthGroup(models.Model):
@@ -157,12 +158,21 @@ class UserManager(BaseUserManager):
         user = self.model(
             email=self.normalize_email(email),
         )
-
+        
+        user.name = email.split('@')[0]
         user.set_password(password)
         user.save(using=self._db)
         user.staff = False
         user.active = True
         user.admin = False
+
+        '''student = Student()
+        student.id = user.id
+        student.name = user.email.split('@')[0]
+        student.email = user.email
+        student.joindate = dt.now()
+        student.useremail = user.email
+        student.save(using=Student._db)'''
         return user
 
     def create_staffuser(self, email, password):
@@ -227,6 +237,7 @@ class User(AbstractBaseUser):
         max_length=255,
         unique=True,
     )
+    name = models.CharField(max_length=50)
     active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False) # a admin user; non super-user
     admin = models.BooleanField(default=False) # a superuser

@@ -45,7 +45,7 @@
 
 
             {% if user.is_authenticated %}
-                Chào mừng, {{ user.username }}!
+                Chào mừng, {{ user.email }}!
                 <!--<p><a href="{% url 'logout' %}">Đăng xuất</a></p>-->
                 {% if latest_subject_list %}
                     <ul>
