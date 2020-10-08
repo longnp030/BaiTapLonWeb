@@ -1,6 +1,5 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, ReadOnlyPasswordHashField
-from django.contrib.auth.models import User as AdminUser
 from django.utils.translation import gettext_lazy as _
 from .models import Student, User
 

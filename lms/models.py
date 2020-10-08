@@ -215,6 +215,9 @@ class Student(models.Model):
         managed = False
         db_table = 'student'
 
+    def __str__(self):
+        return self.name
+
 
 class Teacher(models.Model):
     id = models.IntegerField(primary_key=True)
