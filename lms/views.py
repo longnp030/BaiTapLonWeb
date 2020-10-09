@@ -71,7 +71,9 @@ def create_course(request):
     if request.method == 'POST':
         course_form = CourseCreateForm(request.POST)
         if course_form.is_valid():
-            course = course_form.save()
+            course = course_form.save(commit=False)
+            course.publishDate = dt.now()
+            course.save()
             return redirect('/lms/')
     else:
         course_form = CourseCreateForm()
@@ -79,27 +81,11 @@ def create_course(request):
 
 
 def course_detail(request, course_id):
-    '''subjects = Subject.objects.all()
-    templates = []
-    for subject in subjects:
-        template = loader.get_template('lms/' + subject.id + '.html')
-        templates.add(template)'''
     course = Course.objects.get(id=course_id)
-    template = loader.get_template('lms/' + course.id + '.html')
-    context = {
-        'subject_name': course.name,
-        'subject_id': course.id,
-        'subject_description': 
-            "Nội dung chính\n\
-                \thttps://uet.vnu.edu.vn/~thanhld/lects/webappdev/\n\
-            Chỉ dạy basic, không dạy frameworks\n\
-                \tDẠY/Giới thiệu : HTML, CSS, JS, Bootstrap, Jquery, PHP\n\
-                \tKHÔNG DẠY: React, AngularJS, NodeJS, Laravel, Express, Django, RoR\n\
-            Nội dung bổ sung\n\
-                \tKhuyến khích tìm hiểu frameworks (hoặc công cụ)\n\
-                \tNodeJS, NPM, bower, webpack\n\
-            Giới thiệu, demo, tutorial frameworks, …\n\
-            How to start a project !!!"
+    course_info = {
+        'course_name': course.name,
+        'course_teacher': course.teacherid.name,
+        'course_description': course.description,
+        'course_price': course.price,
     }
-    return HttpResponse(template.render(context, request))
-
+    return render(request, 'courses/course_detail.html', {"course_info": course_info})

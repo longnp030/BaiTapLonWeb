@@ -1,0 +1,14 @@
+{% extends "../lms/index1.html" %}
+{% block content %}
+<body>
+    <div class="course-detail">
+        <h1>Detail</h1>
+        {% if course_info %}
+            <p><h2>{{ course_info.course_name }}</h2></p>
+            <p>{{ course_info.course_teacher }}</p>
+            <p>{{ course_info.course_description }}</p>
+            <p>{{ course_info.course_price }}</p>
+        {% endif %}
+    </div>
+</body>
+{% endblock %}

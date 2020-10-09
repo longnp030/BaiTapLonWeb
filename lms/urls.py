@@ -9,5 +9,5 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/register/', views.register, name='register'),
     path('courses/add/', views.create_course, name='create_course'),
-    path('courses/<int:course_id>', views.course_detail, name='course_detail'),
-] + static('lms/images/student_images', document_root=settings.STUDENT_IMAGE_DIR)
+    path('courses/<int:course_id>/', views.course_detail, name='course_detail'),
+] + static('images/student_images', document_root=settings.STUDENT_IMAGE_DIR)

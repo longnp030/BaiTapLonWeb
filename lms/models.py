@@ -81,14 +81,17 @@ class AuthUserUserPermissions(models.Model):
 class Course(models.Model):
     id = models.IntegerField(primary_key=True, unique=True)
     name = models.CharField(max_length=45)
-    publishdate = models.DateTimeField(db_column='publishDate')  # Field name made lowercase.
+    publishdate = models.DateTimeField(db_column='publishDate', default=dt.now)  # Field name made lowercase.
     price = models.IntegerField()
-    description = models.CharField(max_length=45, blank=True, null=True)
-    teacherid = models.OneToOneField('Teacher', models.DO_NOTHING, db_column='teacherID')  # Field name made lowercase.
+    description = models.CharField(max_length=10000, blank=True, null=True)
+    teacherid = models.ForeignKey('Teacher', models.DO_NOTHING, db_column='teacherID', unique=False)  # Field name made lowercase.
 
     class Meta:
         managed = False
         db_table = 'course'
+
+    def __str__(self):
+        return self.name
 
 
 class DjangoAdminLog(models.Model):
@@ -230,6 +233,9 @@ class Teacher(models.Model):
         managed = False
         db_table = 'teacher'
 
+    def __str__(self):
+        return self.name
+
 
 class User(AbstractBaseUser):
     password = models.CharField(max_length=128)
@@ -250,6 +256,9 @@ class User(AbstractBaseUser):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = [] # Email & Password are required by default.
+
+    def __str__(self):
+        return self.email
 
     def get_full_name(self):
         # The user is identified by their email address

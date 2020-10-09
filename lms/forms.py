@@ -103,4 +103,4 @@ class UserAdminChangeForm(forms.ModelForm):
 class CourseCreateForm(forms.ModelForm):
     class Meta:
         model = Course
-        fields = ['name', 'price', 'description', 'teacherid', ]
+        fields = ['id', 'name', 'teacherid', 'description', 'price',]
