@@ -4,10 +4,10 @@ from django.template import loader
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.contrib.auth import get_user_model
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 from datetime import datetime as dt
-from .forms import RegisterForm, StudentForm
+from .forms import RegisterForm, StudentForm, CourseCreateForm
 from .models import Course, Teacher, Student, Enroll
 
 # Create your views here.
@@ -60,6 +60,22 @@ def register(request):
 def create_student_user(sender, instance, created, **kwargs):
     if created:
         Student.objects.create(user=instance)'''
+
+
+def is_teacher(user):
+    return user.is_authenticated and user.admin == True
+
+
+@user_passes_test(is_teacher, login_url='/lms/')
+def create_course(request):
+    if request.method == 'POST':
+        course_form = CourseCreateForm(request.POST)
+        if course_form.is_valid():
+            course = course_form.save()
+            return redirect('/lms/')
+    else:
+        course_form = CourseCreateForm()
+    return render(request, 'courses/create.html', {"course_form": course_form})
 
 
 def course_detail(request, course_id):

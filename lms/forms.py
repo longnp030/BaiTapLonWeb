@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, ReadOnlyPasswordHashField
 from django.utils.translation import gettext_lazy as _
-from .models import Student, User
+from .models import Student, User, Course
 
 '''class RegisterForm(UserCreationForm):
     email = forms.EmailField()
@@ -98,3 +98,9 @@ class UserAdminChangeForm(forms.ModelForm):
         # This is done here, rather than on the field, because the
         # field does not have access to the initial value
         return self.initial["password"]
+
+
+class CourseCreateForm(forms.ModelForm):
+    class Meta:
+        model = Course
+        fields = ['name', 'price', 'description', 'teacherid', ]

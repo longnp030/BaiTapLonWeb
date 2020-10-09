@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% extends '../lms/index.html' %}
+        <meta charset="utf-8">
+        <title>{% block title %}Tạo khóa học{% endblock %}</title>
+    </head>
+    <body>
+        {% load crispy_forms_tags %}
+        {% block content %}
+            <h2>Thêm khóa học</h2>
+            <form method="POST">
+                {% csrf_token %}
+                {{ course_form|crispy }}
+                <button type="submit">Thêm</button>
+            </form>
+        {% endblock %}
+    </body>
+</html>
