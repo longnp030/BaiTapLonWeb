@@ -109,4 +109,19 @@ class CourseCreateForm(forms.ModelForm):
 class EnrollmentForm(forms.ModelForm):
     class Meta:
         model = Enroll
-        fields = ['studentid', 'courseid',]
+        fields = ['id', 'studentid', 'courseid',]
+
+    '''def __init__(self, *args, **kwargs):
+        self.id = kwargs.pop('id', None)
+        self.studentid = kwargs.pop('studentid', None)
+        self.courseid = kwargs.pop('courseid', None)
+        super(EnrollmentForm, self).__init__(**kwargs)
+    
+    def save(self, commit=True):
+        obj = super(EnrollmentForm, self).save(commit=False)
+        obj.id = self.id
+        obj.studentid = self.studentid
+        obj.courseid = self.courseid
+        if commit:
+            obj.save()
+        return obj'''

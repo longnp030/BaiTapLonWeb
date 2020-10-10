@@ -139,11 +139,11 @@ class DjangoSession(models.Model):
 
 
 class Enroll(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.IntegerField(primary_key=True, db_column='id', unique=True)
     studentid = models.ForeignKey('Student', on_delete=models.CASCADE, db_column='studentID')  # Field name made lowercase.
     courseid = models.ForeignKey(Course, on_delete=models.CASCADE, db_column='courseID')  # Field name made lowercase.
-    enrolldate = models.DateTimeField(db_column='enrollDate')  # Field name made lowercase.
-    expiredate = models.DateTimeField(db_column='expireDate')  # Field name made lowercase.
+    enrolldate = models.DateTimeField(db_column='enrollDate', default=dt.datetime.now)  # Field name made lowercase.
+    expiredate = models.DateTimeField(db_column='expireDate', default=dt.datetime.now()+dt.timedelta(days=+90))  # Field name made lowercase.
 
     class Meta:
         managed = False

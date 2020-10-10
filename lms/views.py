@@ -7,10 +7,13 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 from datetime import datetime as dt
+
 from .forms import RegisterForm, StudentForm, CourseCreateForm, EnrollmentForm
 from .models import Course, Teacher, Student, Enroll
 
 from eLearning.settings import ENROLLED_REDIRECT_URL
+
+import random
 
 # Create your views here.
 
@@ -82,32 +85,37 @@ def create_course(request):
     return render(request, 'courses/create.html', {"course_form": course_form})
 
 
-def course_detail(request, course_id):
-    course = Course.objects.get(id=course_id)
-    course_info = {
-        'course_name': course.name,
-        'course_teacher': course.teacherid.name,
-        'course_description': course.description,
-        'course_price': course.price,
-    }
-    return render(request, 'courses/course_detail.html', {"course_info": course_info})
-
-
 def course_enroll(request, course_id):
-    course = Course.objects.get(id=course_id)
+    current_course = Course.objects.get(id=course_id)
     current_user = request.user
     current_student = Student.objects.get(email=current_user.email)
+
+    course_isEnrolled_count = Enroll.objects.filter(courseid=current_course.id)
+    student_isEnrolled_count = course_isEnrolled_count.filter(studentid=current_student.id)
+    if len(course_isEnrolled_count) > 0 and len(student_isEnrolled_count) > 0:
+        return render(request, 'courses/enroll.html', {"already_enrolled": True, "course_id": current_course.id})
 
     if request.method == 'POST':
         enrollment_form = EnrollmentForm(request.POST)
         if enrollment_form.is_valid():
             enrollment = enrollment_form.save(commit=False)
             enrollment.studentid = current_student
-            enrollment.courseid = course
+            enrollment.courseid = current_course
             enrollment.save()
 
             return redirect(ENROLLED_REDIRECT_URL)
     else:
-        pass
-    return render(request, '', {"enrollment_form": enrollment_form})
-    
+        enrollment_form = EnrollmentForm(initial={'id': 1000, 'studentid': current_student, 'courseid': current_course})
+    return render(request, 'courses/enroll.html', {"enrollment_form": enrollment_form, "course_id": current_course.id})
+
+
+def course_detail(request, course_id):
+    course = Course.objects.get(id=course_id)
+    course_info = {
+        'course_id': course.id,
+        'course_name': course.name,
+        'course_teacher': course.teacherid.name,
+        'course_description': course.description,
+        'course_price': course.price,
+    }
+    return render(request, 'courses/course_detail.html', {"course_info": course_info})
