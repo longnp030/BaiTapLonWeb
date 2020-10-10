@@ -73,7 +73,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Enroll',
             fields=[
-                ('studentid', models.OneToOneField(db_column='studentID', on_delete=django.db.models.deletion.DO_NOTHING, primary_key=True, serialize=False, to='lms.student')),
+                ('studentid', models.ManyToManyField(db_column='studentID', serialize=False, unique=False, to='lms.student')),
+                ('courseid', models.ManyToManyField(db_column='courseID', serialize=False, unique=False, to='lms.course')),
                 ('enrolldate', models.DateTimeField(db_column='enrollDate')),
                 ('expiredate', models.DateTimeField(db_column='expireDate')),
             ],

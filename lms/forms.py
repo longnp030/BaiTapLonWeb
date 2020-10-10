@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, ReadOnlyPasswordHashField
 from django.utils.translation import gettext_lazy as _
-from .models import Student, User, Course
+from .models import Student, User, Course, Enroll
 
 '''class RegisterForm(UserCreationForm):
     email = forms.EmailField()
@@ -104,3 +104,9 @@ class CourseCreateForm(forms.ModelForm):
     class Meta:
         model = Course
         fields = ['id', 'name', 'teacherid', 'description', 'price',]
+
+
+class EnrollmentForm(forms.ModelForm):
+    class Meta:
+        model = Enroll
+        fields = ['studentid', 'courseid',]

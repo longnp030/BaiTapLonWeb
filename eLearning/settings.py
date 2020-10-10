@@ -142,3 +142,4 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Redirect links
 LOGIN_REDIRECT_URL = '/lms/'
 LOGOUT_REDIRECT_URL = '/lms/'
+ENROLLED_REDIRECT_URL = '/lms/'

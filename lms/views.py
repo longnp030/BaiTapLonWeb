@@ -7,8 +7,10 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 from datetime import datetime as dt
-from .forms import RegisterForm, StudentForm, CourseCreateForm
+from .forms import RegisterForm, StudentForm, CourseCreateForm, EnrollmentForm
 from .models import Course, Teacher, Student, Enroll
+
+from eLearning.settings import ENROLLED_REDIRECT_URL
 
 # Create your views here.
 
@@ -89,3 +91,23 @@ def course_detail(request, course_id):
         'course_price': course.price,
     }
     return render(request, 'courses/course_detail.html', {"course_info": course_info})
+
+
+def course_enroll(request, course_id):
+    course = Course.objects.get(id=course_id)
+    current_user = request.user
+    current_student = Student.objects.get(email=current_user.email)
+
+    if request.method == 'POST':
+        enrollment_form = EnrollmentForm(request.POST)
+        if enrollment_form.is_valid():
+            enrollment = enrollment_form.save(commit=False)
+            enrollment.studentid = current_student
+            enrollment.courseid = course
+            enrollment.save()
+
+            return redirect(ENROLLED_REDIRECT_URL)
+    else:
+        pass
+    return render(request, '', {"enrollment_form": enrollment_form})
+    

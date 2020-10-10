@@ -8,6 +8,7 @@
             <p>{{ course_info.course_teacher }}</p>
             <p>{{ course_info.course_description }}</p>
             <p>{{ course_info.course_price }}</p>
+            <button><a href="{% url 'enroll' course_info.course_id %}">Enroll</a></button>
         {% endif %}
     </div>
 </body>

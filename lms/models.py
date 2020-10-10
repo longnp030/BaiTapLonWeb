@@ -9,7 +9,7 @@ from django.db import models
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser, AbstractUser
 )
-from datetime import datetime as dt
+import datetime as dt
 
 
 class AuthGroup(models.Model):
@@ -81,7 +81,7 @@ class AuthUserUserPermissions(models.Model):
 class Course(models.Model):
     id = models.IntegerField(primary_key=True, unique=True)
     name = models.CharField(max_length=45)
-    publishdate = models.DateTimeField(db_column='publishDate', default=dt.now)  # Field name made lowercase.
+    publishdate = models.DateTimeField(db_column='publishDate', default=dt.datetime.now)  # Field name made lowercase.
     price = models.IntegerField()
     description = models.CharField(max_length=10000, blank=True, null=True)
     teacherid = models.ForeignKey('Teacher', models.DO_NOTHING, db_column='teacherID', unique=False)  # Field name made lowercase.
@@ -139,15 +139,18 @@ class DjangoSession(models.Model):
 
 
 class Enroll(models.Model):
-    studentid = models.OneToOneField('Student', models.DO_NOTHING, db_column='studentID', primary_key=True)  # Field name made lowercase.
-    courseid = models.OneToOneField(Course, models.DO_NOTHING, db_column='courseID')  # Field name made lowercase.
+    id = models.IntegerField(primary_key=True)
+    studentid = models.ForeignKey('Student', on_delete=models.CASCADE, db_column='studentID')  # Field name made lowercase.
+    courseid = models.ForeignKey(Course, on_delete=models.CASCADE, db_column='courseID')  # Field name made lowercase.
     enrolldate = models.DateTimeField(db_column='enrollDate')  # Field name made lowercase.
     expiredate = models.DateTimeField(db_column='expireDate')  # Field name made lowercase.
 
     class Meta:
         managed = False
         db_table = 'enroll'
-        unique_together = (('studentid', 'courseid'),)
+
+    def __str__(self):
+        return self.studentid.email + '-' + self.courseid.name
 
 
 class UserManager(BaseUserManager):
@@ -211,7 +214,7 @@ class Student(models.Model):
     id = models.IntegerField(unique=True, primary_key=True)
     name = models.CharField(max_length=45)
     email = models.CharField(unique=True, max_length=45)
-    joindate = models.DateTimeField(db_column='joinDate')  # Field name made lowercase.
+    joindate = models.DateTimeField(db_column='joinDate', default=dt.datetime.now)  # Field name made lowercase.
     useremail = models.OneToOneField('User', models.DO_NOTHING, db_column='userEmail')  # Field name made lowercase.
 
     class Meta:
