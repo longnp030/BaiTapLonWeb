@@ -10,7 +10,7 @@
         {% block content %}
             {% if already_enrolled %}
                 <script>
-                    alert("You already enrolled in this course!");
+                    alert("You are already enrolled in this course!");
                     window.location.href = "{% url 'course_detail' course_id %}";
                 </script>
             {% else %}
@@ -23,12 +23,12 @@
                 </form>
                 
                 <script>
-                    alert("Enrolled successfully!")
                     window.onload = function() {
                         var button = document.getElementById("enroll");
                         button.form.submit();
                     }
-                    window.location.href = "{% url 'course_detail' course_id %}";
+                    alert("Enrolled successfully!")
+                    //window.location.href = "{% url 'course_detail' course_id %}";
                 </script>
             {% endif %}
         {% endblock %}

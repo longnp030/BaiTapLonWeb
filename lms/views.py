@@ -11,7 +11,7 @@ from datetime import datetime as dt
 from .forms import RegisterForm, StudentForm, CourseCreateForm, EnrollmentForm
 from .models import Course, Teacher, Student, Enroll
 
-from eLearning.settings import ENROLLED_REDIRECT_URL
+from eLearning.settings import ENROLLED_REDIRECT_URL, ENROLLED_INDEXES
 
 import random
 
@@ -39,6 +39,8 @@ def index(request):
 
 
 def register(request):
+    if request.user.is_authenticated:
+        return redirect('/lms/')
     if request.method == 'POST':
         user_form = RegisterForm(request.POST)
         student_form = StudentForm(request.POST)
@@ -71,7 +73,7 @@ def is_teacher(user):
     return user.is_authenticated and user.admin == True
 
 
-@user_passes_test(is_teacher, login_url='/lms/')
+@user_passes_test(is_teacher, login_url='/lms/accounts/login/')
 def create_course(request):
     if request.method == 'POST':
         course_form = CourseCreateForm(request.POST)
@@ -105,7 +107,11 @@ def course_enroll(request, course_id):
 
             return redirect(ENROLLED_REDIRECT_URL)
     else:
-        enrollment_form = EnrollmentForm(initial={'id': 1000, 'studentid': current_student, 'courseid': current_course})
+        new_id = random.randint(1, 1000)
+        while new_id in ENROLLED_INDEXES:
+            new_id = random.randint(1, 1000)
+        ENROLLED_INDEXES.append(new_id)
+        enrollment_form = EnrollmentForm(initial={'id': new_id, 'studentid': current_student, 'courseid': current_course})
     return render(request, 'courses/enroll.html', {"enrollment_form": enrollment_form, "course_id": current_course.id})
 
 
@@ -118,4 +124,18 @@ def course_detail(request, course_id):
         'course_description': course.description,
         'course_price': course.price,
     }
-    return render(request, 'courses/course_detail.html', {"course_info": course_info})
+
+    this_course_enrollments = Enroll.objects.filter(courseid=course.id)
+    this_student = Student.objects.filter(email=request.user.email)
+    this_student_enrolled = 0
+    if len(this_student) == 0:
+        return redirect('/lms/')
+        #pass
+    else:
+        this_student = this_student[0]
+        this_student_enrolled = len(this_course_enrollments.filter(studentid=this_student.id))
+
+    enrolled = False
+    if this_student_enrolled > 0:
+        enrolled = True
+    return render(request, 'courses/course_detail.html', {"course_info": course_info, "enrolled": enrolled})
