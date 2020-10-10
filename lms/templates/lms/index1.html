@@ -48,14 +48,12 @@
                         {% if user.is_authenticated %}
                             Chào mừng, {{ user.email }}!
                             <!--<p><a href="{% url 'logout' %}">Đăng xuất</a></p>-->
-                            {% if latest_subject_list %}
+                            {% if latest_course_list %}
                                 <ul>
-                                    {% for subject in latest_subject_list %}
-                                        <li><a href="courses/{{ subject.id }}/">{{ subject.name }}</a></li>
+                                    {% for course in latest_course_list %}
+                                        <li><a href="courses/{{ course.id }}/">{{ course.name }}</a></li>
                                     {% endfor %}
                                 </ul>
-                            {% else %}
-                                <p>Bạn chưa tham gia khóa học nào.</p>
                             {% endif %}
                         {% else %}
                             <p>Bạn chưa đăng nhập.</p>

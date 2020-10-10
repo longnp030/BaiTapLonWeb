@@ -21,7 +21,7 @@ def index(request):
     latest_course_list = Course.objects.order_by('id')
     template = loader.get_template('lms/index1.html')
     context = {
-        'latest_subject_list': latest_course_list,
+        'latest_course_list': latest_course_list,
     }
     return HttpResponse(template.render(context, request))
 
@@ -115,6 +115,19 @@ def course_enroll(request, course_id):
     return render(request, 'courses/enroll.html', {"enrollment_form": enrollment_form, "course_id": current_course.id})
 
 
+@login_required(redirect_field_name='/lms/')
+def my_courses(request):
+    this_student_qs = Student.objects.filter(email=request.user.email)
+    if len(this_student_qs) == 0:
+        return redirect('/lms/')
+    this_student = this_student_qs[0]
+    this_student_enrollments = Enroll.objects.filter(studentid=this_student.id)
+    this_student_courses = []
+    for enrollment in this_student_enrollments:
+        this_student_courses.append(Course.objects.get(id=enrollment.courseid.id))
+    return render(request, 'courses/my_courses.html', {"my_courses": this_student_courses})
+
+
 def course_detail(request, course_id):
     course = Course.objects.get(id=course_id)
     course_info = {
@@ -126,13 +139,13 @@ def course_detail(request, course_id):
     }
 
     this_course_enrollments = Enroll.objects.filter(courseid=course.id)
-    this_student = Student.objects.filter(email=request.user.email)
+    this_student_qs = Student.objects.filter(email=request.user.email)
     this_student_enrolled = 0
-    if len(this_student) == 0:
+    if len(this_student_qs) == 0:
         return redirect('/lms/')
         #pass
     else:
-        this_student = this_student[0]
+        this_student = this_student_qs[0]
         this_student_enrolled = len(this_course_enrollments.filter(studentid=this_student.id))
 
     enrolled = False
