@@ -115,7 +115,7 @@ def course_enroll(request, course_id):
     return render(request, 'courses/enroll.html', {"enrollment_form": enrollment_form, "course_id": current_course.id})
 
 
-@login_required(redirect_field_name='/lms/')
+@login_required(login_url='/lms/accounts/login/')
 def my_courses(request):
     this_student_qs = Student.objects.filter(email=request.user.email)
     if len(this_student_qs) == 0:
