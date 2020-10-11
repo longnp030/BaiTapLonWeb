@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 
 from datetime import datetime as dt
 
-from .forms import RegisterForm, StudentForm, CourseCreateForm, EnrollmentForm
+from .forms import RegisterForm, StudentForm, CourseCreateForm, EnrollmentForm, TeacherForm, TeacherRegisterForm
 from .models import Course, Teacher, Student, Enroll
 
 from eLearning.settings import ENROLLED_REDIRECT_URL, ENROLLED_INDEXES
@@ -18,11 +18,21 @@ import random
 # Create your views here.
 
 def index(request):
-    latest_course_list = Course.objects.order_by('id')
     template = loader.get_template('lms/index1.html')
-    context = {
-        'latest_course_list': latest_course_list,
-    }
+
+    latest_course_list = Course.objects.order_by('id')
+    context = {}
+    if request.user.is_authenticated:
+        this_student = Student.objects.get(email=request.user.email)
+        context = {
+            'latest_course_list': latest_course_list,
+            'this_student_id': this_student.id,
+            'this_student_name': this_student.name,
+        }
+    else:
+        context = {
+            'latest_course_list': latest_course_list,
+        }
     return HttpResponse(template.render(context, request))
 
 
@@ -63,6 +73,30 @@ def register(request):
     return render(request, 'registration/register.html', {"user_form": user_form, "student_form": student_form})
 
 
+def teacher_register(request):
+    if request.user.is_authenticated and request.user.is_staff() is True:
+        return redirect('/lms/')
+    if request.method == 'POST':
+        user_form = TeacherRegisterForm(request.POST)
+        teacher_form = TeacherForm(request.POST)
+        if user_form.is_valid() and teacher_form.is_valid():
+            user = user_form.save()
+
+            teacher = teacher_form.save(commit=False)
+            teacher.id = user.id
+            teacher.name = teacher.name
+            teacher.email = user.email
+            teacher.joindate = dt.now()
+            teacher.useremail = user
+            teacher.save()
+
+            return redirect('/lms/')
+    else:
+        user_form = TeacherRegisterForm()
+        teacher_form = TeacherForm()
+    return render(request, 'registration/teacher_register.html', {"user_form": user_form, "teacher_form": teacher_form})    
+
+
 '''@receiver(post_save, sender=get_user_model())
 def create_student_user(sender, instance, created, **kwargs):
     if created:
@@ -71,7 +105,6 @@ def create_student_user(sender, instance, created, **kwargs):
 
 def is_teacher(user):
     return user.is_authenticated and user.admin == True
-
 
 @user_passes_test(is_teacher, login_url='/lms/accounts/login/')
 def create_course(request):
@@ -125,7 +158,7 @@ def dashboard(request):
     this_student_courses = []
     for enrollment in this_student_enrollments:
         this_student_courses.append(Course.objects.get(id=enrollment.courseid.id))
-    return render(request, 'courses/dashboard.html', {"my_courses": this_student_courses})
+    return render(request, 'courses/dashboard.html', {"my_courses": this_student_courses, "this_student_id": this_student.id})
 
 
 def course_detail(request, course_id):
@@ -151,4 +184,15 @@ def course_detail(request, course_id):
     enrolled = False
     if this_student_enrolled > 0:
         enrolled = True
-    return render(request, 'courses/course_detail.html', {"course_info": course_info, "enrolled": enrolled})
+    return render(request, 'courses/course_detail.html', {"course_info": course_info, "enrolled": enrolled, "this_student_id": this_student.id,})
+
+@login_required(login_url='/lms/accounts/login/')
+def student_profile(request, student_id):
+    current_student = Student.objects.get(id=student_id)
+    student_info = {
+        "this_student_id": current_student.id,
+        "student_name": current_student.name,
+        "student_email": current_student.email,
+        "student_joindate": current_student.joindate,
+    }
+    return render(request, "lms/student_profile.html", context=student_info)

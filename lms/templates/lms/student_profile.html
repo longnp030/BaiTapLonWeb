@@ -1,0 +1,25 @@
+{% extends "../lms/index1.html" %}
+{% block content %}
+<body>
+    <div class="course-detail">
+        <h1>Student Infomation</h1>
+        <p>
+            {% if student_name %}
+            {{ student_name }}
+            {% endif %}
+        </p>
+
+        <p>
+            {% if student_email %}
+                {{ student_email }}
+            {% endif %}
+        </p>
+
+        <p>
+            {% if student_joindate %}
+                {{ student_joindate }}
+            {% endif %}
+        </p>
+    </div>
+</body>
+{% endblock %}

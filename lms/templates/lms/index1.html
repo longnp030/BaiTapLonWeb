@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="vi"> 
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Trang chủ{% endblock %}</title>
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static 'lms/style.css' %}">
@@ -10,7 +10,7 @@
     <body>
         <div class="wrap-header">
             <div class="navbar">
-                <a href="#" id="logo" class="nav-item">LOGO</a>
+                <a href="{% url 'index' %}" id="logo" class="nav-item">LOGO</a>
                 <a id="gioithieu" class="nav-item" href="gioithieu.html">Giới thiệu</a>    
                 <a id="giaovien" class="nav-item" href="giaovien.html">Giáo Viên</a>
                 <a id="khoahoc" class="nav-item" href="khoahoc.html">Khóa Học</a>
@@ -22,6 +22,25 @@
                         <a id="auth-button-inside" class="nav-item" href="{% url 'logout' %}">
                             Đăng xuất</a>
                     </button>
+
+                    <div class="dropdown">
+                        <button class="dropbtn">
+                            {% if this_student_name %}
+                                {{ this_student_name }}
+                            {% else %}
+                                {{ user.email }}
+                            {% endif %}
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="{% url 'dashboard' %}">My courses</a>
+
+                            {% if this_student_id %}
+                                <a href="{% url 'student_profile' this_student_id %}">Profile</a>
+                            {% endif %}
+
+                            <a href="{% url 'logout' %}">Logout</a>
+                        </div>
+                    </div>
                 {% else %}
                     <div>
                         <span>

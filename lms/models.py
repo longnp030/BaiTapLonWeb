@@ -164,21 +164,8 @@ class UserManager(BaseUserManager):
         user = self.model(
             email=self.normalize_email(email),
         )
-        
-        user.name = email.split('@')[0]
         user.set_password(password)
         user.save(using=self._db)
-        user.staff = False
-        user.active = True
-        user.admin = False
-
-        '''student = Student()
-        student.id = user.id
-        student.name = user.email.split('@')[0]
-        student.email = user.email
-        student.joindate = dt.now()
-        student.useremail = user.email
-        student.save(using=Student._db)'''
         return user
 
     def create_staffuser(self, email, password):
@@ -189,8 +176,8 @@ class UserManager(BaseUserManager):
             email,
             password=password,
         )
-        user.staff = True
         user.active = True
+        user.staff = True
         user.admin = False
         user.save(using=self._db)
         return user
@@ -203,9 +190,9 @@ class UserManager(BaseUserManager):
             email,
             password=password,
         )
+        user.active = True
         user.staff = True
         user.admin = True
-        user.active = True
         user.save(using=self._db)
         return user
 
@@ -231,6 +218,7 @@ class Teacher(models.Model):
     email = models.CharField(unique=True, max_length=45)
     joindate = models.DateTimeField(db_column='joinDate')  # Field name made lowercase.
     currentdegree = models.CharField(db_column='currentDegree', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    useremail = models.OneToOneField('User', models.DO_NOTHING, db_column='userEmail')
 
     class Meta:
         managed = False
@@ -249,7 +237,6 @@ class User(AbstractBaseUser):
         max_length=255,
         unique=True,
     )
-    name = models.CharField(max_length=50)
     active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False) # a admin user; non super-user
     admin = models.BooleanField(default=False) # a superuser
