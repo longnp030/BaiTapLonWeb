@@ -22,7 +22,7 @@ def index(request):
 
     latest_course_list = Course.objects.order_by('id')
     context = {}
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and not request.user.staff:
         this_student = Student.objects.get(email=request.user.email)
         context = {
             'latest_course_list': latest_course_list,
