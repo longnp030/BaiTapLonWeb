@@ -116,7 +116,7 @@ def course_enroll(request, course_id):
 
 
 @login_required(login_url='/lms/accounts/login/')
-def my_courses(request):
+def dashboard(request):
     this_student_qs = Student.objects.filter(email=request.user.email)
     if len(this_student_qs) == 0:
         return redirect('/lms/')
@@ -125,7 +125,7 @@ def my_courses(request):
     this_student_courses = []
     for enrollment in this_student_enrollments:
         this_student_courses.append(Course.objects.get(id=enrollment.courseid.id))
-    return render(request, 'courses/my_courses.html', {"my_courses": this_student_courses})
+    return render(request, 'courses/dashboard.html', {"my_courses": this_student_courses})
 
 
 def course_detail(request, course_id):
