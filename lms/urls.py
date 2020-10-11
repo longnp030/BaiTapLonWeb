@@ -10,7 +10,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/login/', LoginView.as_view(redirect_authenticated_user=True), name='login'),
     path('accounts/register/', views.register, name='register'),
-    path('accounts/teach-as-teacher/', views.teacher_register, name='teacher_register'),
+    path('accounts/register-as-teacher/', views.teacher_register, name='teacher_register'),
     path('courses/add/', views.create_course, name='create_course'),
     path('courses/<int:course_id>/enroll/', views.course_enroll, name='enroll'),
     path('dashboard/', views.dashboard, name='dashboard'),

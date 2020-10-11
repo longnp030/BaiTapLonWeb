@@ -3,17 +3,6 @@ from django.contrib.auth.forms import UserCreationForm, ReadOnlyPasswordHashFiel
 from django.utils.translation import gettext_lazy as _
 from .models import Student, User, Course, Enroll, Teacher
 
-'''class RegisterForm(UserCreationForm):
-    email = forms.EmailField()
-
-    class Meta:
-        model = User
-        fields = ["username", "email", "password1", "password2"]
-
-    username = forms.CharField(label=_('Tên đăng nhập'))
-    password1 = forms.CharField(label=_('Mật khẩu'))
-    password2 = forms.CharField(label=_('Nhập lại mật khẩu'))'''
-
 
 class StudentForm(forms.ModelForm):
     class Meta:
@@ -149,18 +138,3 @@ class EnrollmentForm(forms.ModelForm):
     class Meta:
         model = Enroll
         fields = ['id', 'studentid', 'courseid',]
-
-    '''def __init__(self, *args, **kwargs):
-        self.id = kwargs.pop('id', None)
-        self.studentid = kwargs.pop('studentid', None)
-        self.courseid = kwargs.pop('courseid', None)
-        super(EnrollmentForm, self).__init__(**kwargs)
-    
-    def save(self, commit=True):
-        obj = super(EnrollmentForm, self).save(commit=False)
-        obj.id = self.id
-        obj.studentid = self.studentid
-        obj.courseid = self.courseid
-        if commit:
-            obj.save()
-        return obj'''

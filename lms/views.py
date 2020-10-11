@@ -22,7 +22,7 @@ def index(request):
 
     latest_course_list = Course.objects.order_by('id')
     context = {}
-    if request.user.is_authenticated and not request.user.staff:
+    if request.user.is_authenticated and not request.user.is_staff:
         this_student = Student.objects.get(email=request.user.email)
         context = {
             'latest_course_list': latest_course_list,
@@ -34,18 +34,6 @@ def index(request):
             'latest_course_list': latest_course_list,
         }
     return HttpResponse(template.render(context, request))
-
-
-'''def register(response):
-    if response.method == "POST":
-        form = RegisterForm()
-        if form.is_valid():
-            form.save()
-            
-        return redirect('/lms/')
-    else:
-        form = RegisterForm()
-    return render(response, 'registration/register.html', {"form": form})'''
 
 
 def register(request):
@@ -74,7 +62,7 @@ def register(request):
 
 
 def teacher_register(request):
-    if request.user.is_authenticated and request.user.is_staff() is True:
+    if request.user.is_authenticated and request.user.is_staff:
         return redirect('/lms/')
     if request.method == 'POST':
         user_form = TeacherRegisterForm(request.POST)
@@ -95,12 +83,6 @@ def teacher_register(request):
         user_form = TeacherRegisterForm()
         teacher_form = TeacherForm()
     return render(request, 'registration/teacher_register.html', {"user_form": user_form, "teacher_form": teacher_form})    
-
-
-'''@receiver(post_save, sender=get_user_model())
-def create_student_user(sender, instance, created, **kwargs):
-    if created:
-        Student.objects.create(user=instance)'''
 
 
 def is_teacher(user):
