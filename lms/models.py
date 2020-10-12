@@ -12,6 +12,14 @@ from django.contrib.auth.models import (
 import datetime as dt
 
 
+def upload_location_for_user(instance, filename):
+    return 'lms/images/users/%s.%s' % (instance.id, filename.split('.')[1])
+def upload_location_for_course(instance, filename):
+    return 'lms/images/courses/%s.%s' % (instance.id, filename.split('.')[1])
+def upload_location_for_file(instance, filename):
+    return 'lms/files/%s/%s.%s' % (instance.course.id, instance.name, filename.split('.')[1])
+
+
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
 
@@ -81,6 +89,7 @@ class AuthUserUserPermissions(models.Model):
 class Course(models.Model):
     id = models.IntegerField(primary_key=True, unique=True)
     name = models.CharField(max_length=45)
+    image = models.ImageField(max_length=255, upload_to=upload_location_for_course, db_column='image')
     publishdate = models.DateTimeField(db_column='publishDate', default=dt.datetime.now)  # Field name made lowercase.
     price = models.IntegerField()
     description = models.CharField(max_length=10000, blank=True, null=True)
@@ -94,6 +103,21 @@ class Course(models.Model):
         managed = False
         db_table = 'course'
 
+    def __str__(self):
+        return self.name
+
+
+class Lecture(models.Model):
+    id = models.IntegerField(primary_key=True, unique=True, db_column='id')
+    name = models.CharField(max_length=255, db_column='name')
+    course = models.ForeignKey(Course, on_delete=models.DO_NOTHING, db_column='course')
+    notes = models.TextField(blank=True, null=True, db_column='notes')
+    slide = models.FileField(upload_to=upload_location_for_file, db_column='slide', blank=True)
+
+    class Meta:
+        managed = False
+        db_table = 'lecture'
+    
     def __str__(self):
         return self.name
 
@@ -205,6 +229,7 @@ class Student(models.Model):
     id = models.IntegerField(unique=True, primary_key=True)
     name = models.CharField(max_length=45)
     email = models.CharField(unique=True, max_length=45)
+    image = models.ImageField(max_length=255, upload_to=upload_location_for_user, db_column='image')
     joindate = models.DateTimeField(db_column='joinDate', default=dt.datetime.now)  # Field name made lowercase.
     useremail = models.OneToOneField('User', models.DO_NOTHING, db_column='userEmail')  # Field name made lowercase.
 
@@ -220,6 +245,7 @@ class Teacher(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=45)
     email = models.CharField(unique=True, max_length=45)
+    image = models.ImageField(max_length=255, upload_to=upload_location_for_user, db_column='image')
     joindate = models.DateTimeField(db_column='joinDate')  # Field name made lowercase.
     currentdegree = models.CharField(db_column='currentDegree', max_length=45, blank=True, null=True)  # Field name made lowercase.
     useremail = models.OneToOneField('User', models.DO_NOTHING, db_column='userEmail')

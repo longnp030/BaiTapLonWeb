@@ -139,7 +139,7 @@ def course_enroll(request, course_id):
     else:
         new_id = random.randint(1, 1000)
         while new_id in ENROLLED_INDEXES:
-            new_id = random.randint(1, 1000)
+            new_id = random.randint(1, 100000)
         ENROLLED_INDEXES.append(new_id)
         enrollment_form = EnrollmentForm(initial={'id': new_id, 'studentid': current_student, 'courseid': current_course})
     return render(request, 'courses/enroll.html', {"enrollment_form": enrollment_form, "course_id": current_course.id})
