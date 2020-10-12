@@ -23,6 +23,12 @@ def get_student(request):
         return this_student
     return None
 
+def get_teacher(request):
+    if request.user.is_authenticated and (request.user.is_staff or request.user.is_admin):
+        this_teacher = Teacher.objects.get(email=request.user.email)
+        return this_teacher
+    return None
+
 
 def index(request):
     template = loader.get_template('lms/index1.html')
@@ -30,16 +36,17 @@ def index(request):
     latest_course_list = Course.objects.order_by('id')
     context = {}
     this_student = get_student(request)
-    if this_student is not None:
-        context = {
-            'latest_course_list': latest_course_list,
-            'this_student_id': this_student.id,
-            'this_student_name': this_student.name,
-        }
-    else:
-        context = {
-            'latest_course_list': latest_course_list,
-        }
+    this_teacher = get_teacher(request)
+    this_user = None
+    if this_student is not None and this_teacher is None:
+        this_user = this_student
+    elif this_student is None and this_teacher is not None:
+        this_user = this_teacher
+    context = {
+        'latest_course_list': latest_course_list,
+    }
+    if this_user is not None:
+        context['this_user'] = this_user
     return HttpResponse(template.render(context, request))
 
 
@@ -109,6 +116,7 @@ def create_course(request):
     return render(request, 'courses/create.html', {"course_form": course_form})
 
 
+@login_required(login_url='/lms/accounts/login/')
 def course_enroll(request, course_id):
     current_course = Course.objects.get(id=course_id)
     current_user = request.user
@@ -140,47 +148,71 @@ def course_enroll(request, course_id):
 @login_required(login_url='/lms/accounts/login/')
 def dashboard(request):
     this_student = get_student(request)
-    if this_student is None:
+    this_teacher = get_teacher(request)
+    this_user = None
+    if this_teacher is None and this_student is None:
         return redirect('/lms/')
-    this_student_enrollments = Enroll.objects.filter(studentid=this_student.id)
-    this_student_courses = []
-    for enrollment in this_student_enrollments:
-        this_student_courses.append(Course.objects.get(id=enrollment.courseid.id))
-    return render(request, 'courses/dashboard.html', {"my_courses": this_student_courses, "this_student_id": this_student.id, "this_student_name": this_student.name})
+    elif this_student is not None and this_teacher is None:
+        this_user = this_student
+    elif this_student is None and this_teacher is not None:
+        this_user = this_teacher
+    
+    course_list = []
+    if isinstance(this_user, Student):
+        this_student_enrollments = Enroll.objects.filter(studentid=this_user.id)
+        for enrollment in this_student_enrollments:
+            course_list.append(Course.objects.get(id=enrollment.courseid.id))
+    elif isinstance(this_user, Teacher):
+        course_list = Course.objects.filter(teacherid=this_user.id)
+    context = {
+        "my_courses": course_list,
+        "this_user": this_user,
+    }
+    return render(request, 'courses/dashboard.html', context=context)
 
 
 def course_detail(request, course_id):
     course = Course.objects.get(id=course_id)
-    course_info = {
-        'course_id': course.id,
-        'course_name': course.name,
-        'course_teacher': course.teacherid.name,
-        'course_description': course.description,
-        'course_price': course.price,
-    }
-
-    this_course_enrollments = Enroll.objects.filter(courseid=course.id)
-    this_student_enrolled = 0
     this_student = get_student(request)
-    if this_student is None:
-        return redirect('/lms/')
-    else:
-        this_student_enrolled = len(this_course_enrollments.filter(studentid=this_student.id))
+    this_teacher = get_teacher(request)
 
+    this_user = None
+    context = {}
     enrolled = False
-    if this_student_enrolled > 0:
-        enrolled = True
-    return render(request, 'courses/course_detail.html', {"course_info": course_info, "enrolled": enrolled, "this_student_id": this_student.id, "this_student_name": this_student.name,})
-
-@login_required(login_url='/lms/accounts/login/')
-def student_profile(request, student_id):
-    this_student = get_student(request)
-    if this_student is None:
-        return redirect('/lms/')
-    student_info = {
-        "this_student_id": this_student.id,
-        "this_student_name": this_student.name,
-        "this_student_email": this_student.email,
-        "this_student_joindate": this_student.joindate,
+    if this_student is not None and this_teacher is None:
+        this_user = this_student
+    elif this_student is None and this_teacher is not None:
+        this_user = this_teacher
+    if isinstance(this_user, Student):
+        this_course_enrollments = Enroll.objects.filter(courseid=course.id)
+        enrolled = len(this_course_enrollments.filter(studentid=this_user.id)) > 0
+    elif isinstance(this_user, Teacher):
+        enrolled = len(Course.objects.filter(teacherid=this_user.id).filter(teacherid=this_user.id)) > 0
+    context = {
+        "course": course,
+        "enrolled": enrolled,
+        "this_user": this_user,
     }
-    return render(request, "lms/student_profile.html", context=student_info)
+    return render(request, 'courses/course_detail.html', context=context)
+
+#@login_required(login_url='/lms/accounts/login/')
+def user_profile(request, user_id):
+    this_user = Student.objects.get(email=request.user.email) if len(Student.objects.filter(email=request.user.email)) > 0 else Teacher.objects.get(email=request.user.email)
+    this_student = Student.objects.filter(id=user_id)
+    this_teacher = Teacher.objects.filter(id=user_id)
+    context = {
+        "this_user": this_user,
+    }
+
+    if len(this_student) > 0 and len(this_teacher) == 0:
+        this_student = this_student[0]
+        this_teacher = None
+        context["this_student"] = this_student
+    elif len(this_student) == 0 and len(this_teacher) > 0:
+        this_student = None
+        this_teacher = this_teacher[0]
+        context["this_teacher"] = this_teacher
+    else:
+        this_student = None
+        this_teacher = None
+    return render(request, "lms/user_profile.html", context=context)

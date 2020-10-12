@@ -10,27 +10,18 @@
     <body>
         <div class="wrap-header">
             <div class="navbar">
-                <a href="{% url 'index' %}" id="logo" class="nav-item">LOGO</a>
-                <a id="gioithieu" class="nav-item" href="gioithieu.html">Giới thiệu</a>    
-                <a id="giaovien" class="nav-item" href="giaovien.html">Giáo Viên</a>
-                <a id="khoahoc" class="nav-item" href="khoahoc.html">Khóa Học</a>
-                <a id="thuvien" class="nav-item" href="thuvien.html">Thư Viện</a>
-                <a id="hotro" class="nav-item" href="hotro.html">Hỗ Trợ</a>
+                <a href="{% url 'index' %}" id="logo" class="nav-item">Learning Management System</a>
 
                 {% if user.is_authenticated %}
                     <div class="dropdown">
                         <button class="dropbtn">
-                            {% if this_student_name %}
-                                {{ this_student_name }}
-                            {% else %}
-                                {{ user.email }}
-                            {% endif %}
+                            {% firstof this_user.name user_email %}
                         </button>
                         <div class="dropdown-content">
                             <a href="{% url 'dashboard' %}">My courses</a>
 
-                            {% if this_student_id %}
-                                <a href="{% url 'student_profile' this_student_id %}">Profile</a>
+                            {% if this_user %}
+                                <a href="{% url 'user_profile' this_user.id %}">Profile</a>
                             {% endif %}
 
                             <a href="{% url 'logout' %}">Logout</a>
@@ -74,18 +65,6 @@
                             <!--<a href="{% url 'login' %}">Đăng nhập</a>-->
                         {% endif %}
                     {% endblock %}
-                <div class="sidebar">
-                    <h4>Các khóa học</h4>
-                    <ul>
-                        <li class="classroom"><a href="lop6.html">lớp 6</a></li>
-                        <li class="classroom"><a href="lop7.html">lớp 7</a></li>
-                        <li class="classroom"><a href="lop8.html">lớp 8</a></li>
-                        <li class="classroom"><a href="lop9.html">lớp 9</a></li>
-                        <li class="classroom"><a href="lop10.html">lớp 10</a></li>
-                        <li class="classroom"><a href="lop11.html">lớp 11</a></li>
-                        <li class="classroom"><a href="lop12.html">lớp 12</a></li>
-                    </ul>    
-                </div>
             </div>
         </div>
     </body>

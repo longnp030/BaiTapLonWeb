@@ -2,7 +2,7 @@
 <html>
     <head>
         {% extends 'registration/login.html' %}
-        <title>{% block title %}Đăng ký{% endblock %}</title>
+        <title>{% block title %}Register{% endblock %}</title>
         <meta charset="utf-8">
     </head>
     <body>
@@ -13,7 +13,7 @@
                 {% csrf_token %}
                 {{ student_form|crispy }}
                 {{ user_form|crispy }}
-                <button type="submit" class="btn btn-success">Đăng ký</button>
+                <button type="submit" class="btn btn-success">Register</button>
             </form>
         {% endblock %}
     </body>

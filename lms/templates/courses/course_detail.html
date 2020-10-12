@@ -3,15 +3,25 @@
 <body>
     <div class="course-detail">
         <h1>Detail</h1>
-        {% if course_info %}
-            <p><h2>{{ course_info.course_name }}</h2></p>
-            <p>{{ course_info.course_teacher }}</p>
-            <p>{{ course_info.course_description }}</p>
-            <p>{{ course_info.course_price }}</p>
+        {% if course %}
+            <p><h2>{{ course.name }}</h2></p>
+            <p>{{ course.teacherid.name }}</p>
+            <p>{{ course.description }}</p>
+            <p>{{ course.price }}</p>
             {% if not enrolled %}
-                <button>
-                    <a href="{% url 'enroll' course_info.course_id %}">Enroll</a>
-                </button>
+                {% if user.is_authenticated %}
+                    <button>
+                        <a href="{% url 'enroll' course.id %}">Enroll</a>
+                    </button>
+                {% else %}
+                    <div>
+                        Please
+                        <a href="{% url 'login' %}">Login</a>
+                        or
+                        <a href="{% url 'register' %}">Register</a>
+                        to access this course.
+                    </div>
+                {% endif %}
             {% else %}
                 <h5>You are enrolled in this course!</h5>
             {% endif %}
