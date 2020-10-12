@@ -14,6 +14,6 @@ urlpatterns = [
     path('courses/add/', views.create_course, name='create_course'),
     path('courses/<int:course_id>/enroll/', views.course_enroll, name='enroll'),
     path('dashboard/', views.dashboard, name='dashboard'),
-    path('courses/<int:course_id>/', views.course_detail, name='course_detail'),
+    path('courses/<int:course_id>/', views.course_overview, name='course_detail'),
     path('users/<int:user_id>', views.user_profile, name='user_profile')
 ] + static('images/student_images', document_root=settings.STUDENT_IMAGE_DIR)

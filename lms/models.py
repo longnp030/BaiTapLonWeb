@@ -86,6 +86,10 @@ class Course(models.Model):
     description = models.CharField(max_length=10000, blank=True, null=True)
     teacherid = models.ForeignKey('Teacher', models.DO_NOTHING, db_column='teacherID', unique=False)  # Field name made lowercase.
 
+
+    '''Add more attributes to configure with enrolled students'''
+
+
     class Meta:
         managed = False
         db_table = 'course'

@@ -171,7 +171,7 @@ def dashboard(request):
     return render(request, 'courses/dashboard.html', context=context)
 
 
-def course_detail(request, course_id):
+def course_overview(request, course_id):
     course = Course.objects.get(id=course_id)
     this_student = get_student(request)
     this_teacher = get_teacher(request)
@@ -193,7 +193,7 @@ def course_detail(request, course_id):
         "enrolled": enrolled,
         "this_user": this_user,
     }
-    return render(request, 'courses/course_detail.html', context=context)
+    return render(request, 'courses/course_overview.html', context=context)
 
 #@login_required(login_url='/lms/accounts/login/')
 def user_profile(request, user_id):
