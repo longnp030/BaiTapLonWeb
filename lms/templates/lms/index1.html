@@ -18,11 +18,6 @@
                 <a id="hotro" class="nav-item" href="hotro.html">Hỗ Trợ</a>
 
                 {% if user.is_authenticated %}
-                    <button id="auth-button">
-                        <a id="auth-button-inside" class="nav-item" href="{% url 'logout' %}">
-                            Đăng xuất</a>
-                    </button>
-
                     <div class="dropdown">
                         <button class="dropbtn">
                             {% if this_student_name %}
