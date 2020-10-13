@@ -229,7 +229,7 @@ class DjangoSession(models.Model):
 
 
 class Enroll(models.Model):
-    id = models.IntegerField(primary_key=True, db_column='id', unique=True)
+    id = models.AutoField(primary_key=True, db_column='id', unique=True)
     student = models.ForeignKey('Student', on_delete=models.CASCADE, db_column='student')  # Field name made lowercase.
     course = models.ForeignKey(Course, on_delete=models.CASCADE, db_column='course')  # Field name made lowercase.
     enrolldate = models.DateTimeField(db_column='enrollDate', default=dt.datetime.now)  # Field name made lowercase.

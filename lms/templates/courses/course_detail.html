@@ -1,5 +1,6 @@
 {% block content %}
 <body>
+    {% load crispy_forms_tags %}
     <div class="course-detail">
         <h1>Detail</h1>
         {% if lectures %}
@@ -41,12 +42,34 @@
                             <br>
                         </li>
                         {% endfor %}
+
+                        {% if unit_form %}
+                        <li>
+                            <a>Add unit</a>
+                            <form method="POST">
+                                {% csrf_token %}
+                                {{ unit_form|crispy }}
+                                <button type="submit">Add</button>
+                            </form>
+                        </li>
+                        {% endif %}
                     </ul>
                     <br>
                     {% endif %}
                 {% endif %}
             </li>
             {% endfor %}
+
+            {% if lecture_form %}
+            <li>
+                <a>Add lecture</a>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ lecture_form|crispy }}
+                    <button type="submit">Add</button>
+                </form>
+            </li>
+            {% endif %}
         </ul>
         {% endif %}
     </div>

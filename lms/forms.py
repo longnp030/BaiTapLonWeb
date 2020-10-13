@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, ReadOnlyPasswordHashField
 from django.utils.translation import gettext_lazy as _
-from .models import Student, User, Course, Enroll, Teacher
+from .models import *
 
 
 class StudentForm(forms.ModelForm):
@@ -134,7 +134,19 @@ class CourseCreateForm(forms.ModelForm):
         fields = ['id', 'name', 'teacher', 'description', 'price',]
 
 
+class UnitCreateForm(forms.ModelForm):
+    class Meta:
+        model = Unit
+        fields = ['lecture', 'name', 'notes', 'slide', 'video', 'reading', 'quiz', ]
+
+
+class LectureCreateForm(forms.ModelForm):
+    class Meta:
+        model = Lecture
+        fields = ['course', 'name',]
+
+
 class EnrollmentForm(forms.ModelForm):
     class Meta:
         model = Enroll
-        fields = ['id', 'student', 'course',]
+        fields = ['student', 'course',]

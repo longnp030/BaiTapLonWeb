@@ -137,11 +137,7 @@ def course_enroll(request, course_id):
 
             return redirect(ENROLLED_REDIRECT_URL)
     else:
-        new_id = random.randint(1, 1000)
-        while new_id in ENROLLED_INDEXES:
-            new_id = random.randint(1, 100000)
-        ENROLLED_INDEXES.append(new_id)
-        enrollment_form = EnrollmentForm(initial={'id': new_id, 'student': current_student, 'course': current_course})
+        enrollment_form = EnrollmentForm(initial={'student': current_student, 'course': current_course})
     return render(request, 'courses/enroll.html', {"enrollment_form": enrollment_form, "course_id": current_course.id})
 
 
@@ -163,13 +159,34 @@ def dashboard(request):
         for enrollment in this_student_enrollments:
             course_list.append(Course.objects.get(id=enrollment.course.id))
     elif isinstance(this_user, Teacher):
-        course_list = Course.objects.filter(teacherid=this_user.id)
+        course_list = Course.objects.filter(teacher=this_user.id)
     context = {
         "my_courses": course_list,
         "this_user": this_user,
     }
     return render(request, 'courses/dashboard.html', context=context)
 
+
+def create_lecture_form(request):
+    if request == 'POST':
+        lecture_form = LectureCreateForm(request.POST)
+        if lecture_form.is_valid():
+            lecture = lecture_form.save(commit=False)
+            lecture.save()
+            return redirect('/lms')
+    else:
+        lecture_form = LectureCreateForm()
+    return lecture_form
+def create_unit_form(request):
+    if request == 'POST':
+        unit_form = UnitCreateForm(request.POST)
+        if unit_form.is_valid():
+            unit = unit_form.save(commit=False)
+            unit.save()
+            return redirect('/lms')
+    else:
+        unit_form = UnitCreateForm()
+    return unit_form
 
 def course_overview(request, course_id):
     course = Course.objects.get(id=course_id)
@@ -187,12 +204,37 @@ def course_overview(request, course_id):
         this_course_enrollments = Enroll.objects.filter(course=course.id)
         enrolled = len(this_course_enrollments.filter(student=this_user.id)) > 0
     elif isinstance(this_user, Teacher):
-        enrolled = len(Course.objects.filter(teacherid=this_user.id).filter(teacherid=this_user.id)) > 0
+        enrolled = len(Course.objects.filter(teacher=this_user.id).filter(teacher=this_user.id)) > 0
+    
+    unit_form = None
+    lecture_form = None
+
+    if this_teacher:
+        if request == 'POST':
+            unit_form = UnitCreateForm(request.POST)
+            if unit_form.is_valid():
+                unit = unit_form.save(commit=False)
+                unit.save()
+                return redirect('/lms')
+        else:
+            unit_form = UnitCreateForm()
+
+        if request == 'POST':
+            lecture_form = LectureCreateForm(request.POST)
+            if lecture_form.is_valid():
+                lecture = lecture_form.save(commit=False)
+                lecture.save()
+                return redirect('/lms')
+        else:
+            lecture_form = LectureCreateForm()
+
     context = {
         "course": course,
         "enrolled": enrolled,
         "this_user": this_user,
         "lectures": course_detail(course_id) if enrolled else None,
+        "lecture_form": lecture_form,
+        "unit_form": unit_form,
     }
     return render(request, 'courses/course_overview.html', context=context)
 
@@ -221,10 +263,8 @@ def course_detail(request, course_id):
 
     context = {}
     this_course_lectures = Lecture.objects.filter(course=this_course.id)
-    #this_course_lectures_units = []
     lectures = []
     for lecture in this_course_lectures:
-        #this_course_lectures_units.append(Unit.objects.filter(lecture=lecture.id))
         lectures.append({
             "lecture": lecture,
             "units": Unit.objects.filter(lecture=lecture.id),
