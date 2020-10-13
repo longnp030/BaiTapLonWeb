@@ -93,7 +93,7 @@ class Course(models.Model):
     publishdate = models.DateTimeField(db_column='publishDate', default=dt.datetime.now)  # Field name made lowercase.
     price = models.IntegerField()
     description = models.CharField(max_length=10000, blank=True, null=True)
-    teacherid = models.ForeignKey('Teacher', models.DO_NOTHING, db_column='teacherID', unique=False)  # Field name made lowercase.
+    teacher = models.ForeignKey('Teacher', models.DO_NOTHING, db_column='teacher', unique=False)  # Field name made lowercase.
 
 
     '''Add more attributes to configure with enrolled students'''
@@ -111,8 +111,11 @@ class Lecture(models.Model):
     id = models.IntegerField(primary_key=True, unique=True, db_column='id')
     name = models.CharField(max_length=255, db_column='name')
     course = models.ForeignKey(Course, on_delete=models.DO_NOTHING, db_column='course')
-    notes = models.TextField(blank=True, null=True, db_column='notes')
-    slide = models.FileField(upload_to=upload_location_for_file, db_column='slide', blank=True)
+    
+    ### Delete after Unit being created
+    #notes = models.TextField(blank=True, null=True, db_column='notes')
+    #slide = models.FileField(upload_to=upload_location_for_file, db_column='slide', blank=True)
+    ### Done
 
     class Meta:
         managed = False
@@ -120,6 +123,55 @@ class Lecture(models.Model):
     
     def __str__(self):
         return self.name
+
+
+### Add later
+class Unit(models.Model):
+    id = models.IntegerField(primary_key=True, unique=True, db_column='id')
+    name = models.CharField(max_length=255, db_column='name', null=False)
+    notes = models.TextField(blank=True, null=True, db_column='notes')
+    slide = models.FileField(upload_to=upload_location_for_file, db_column='slide', blank=True)
+    lecture = models.ForeignKey(Lecture, on_delete=models.DO_NOTHING, db_column='lecture')
+
+    class Meta:
+        managed = False
+        db_table ='unit'
+
+    def __str__(self):
+        return self.name
+### Done
+
+
+### Add later
+class Learn(models.Model):
+    id = models.IntegerField(primary_key=True, db_column='id', unique=True)
+    student = models.ForeignKey('Student', on_delete=models.DO_NOTHING, db_column='student')
+    unit = models.ForeignKey(Unit, on_delete=models.DO_NOTHING, db_column='unit')
+    finished = models.BooleanField(blank=True, null=True, default=False, db_column='finished')
+
+    class Meta:
+        managed = False
+        db_table = 'learn'
+
+    def __str__(self):
+        return self.student.email + '-' + self.unit.lecture.course.name + '-' + self.unit.lecture.name + '-' + self.unit.name
+
+
+### Add later
+class Assignment(models.Model):
+    id = models.IntegerField(primary_key=True, unique=True, db_column='id')
+    finished = models.BooleanField(blank=True, null=True, default=False, db_column='finished')
+    starttime = models.DateTimeField(db_column='startTime', default=dt.datetime.now, null=False)
+    endtime = models.DateTimeField(db_column='endTime', null=False)
+    grade = models.IntegerField(default=0, db_column='grade')
+    learn = models.ForeignKey(Learn, on_delete=models.DO_NOTHING, db_column='learn')
+
+    class Meta:
+        managed = False
+        db_table = 'assignment'
+
+    def __str__(self):
+        return self.learn.student.email + '-' + self.learn.unit.lecture.course.name + '-' + self.learn.unit.lecture.name + '-' + self.learn.unit.name
 
 
 class DjangoAdminLog(models.Model):
@@ -168,8 +220,8 @@ class DjangoSession(models.Model):
 
 class Enroll(models.Model):
     id = models.IntegerField(primary_key=True, db_column='id', unique=True)
-    studentid = models.ForeignKey('Student', on_delete=models.CASCADE, db_column='studentID')  # Field name made lowercase.
-    courseid = models.ForeignKey(Course, on_delete=models.CASCADE, db_column='courseID')  # Field name made lowercase.
+    student = models.ForeignKey('Student', on_delete=models.CASCADE, db_column='student')  # Field name made lowercase.
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, db_column='course')  # Field name made lowercase.
     enrolldate = models.DateTimeField(db_column='enrollDate', default=dt.datetime.now)  # Field name made lowercase.
     expiredate = models.DateTimeField(db_column='expireDate', default=dt.datetime.now()+dt.timedelta(days=+90))  # Field name made lowercase.
 
@@ -178,7 +230,7 @@ class Enroll(models.Model):
         db_table = 'enroll'
 
     def __str__(self):
-        return self.studentid.email + '-' + self.courseid.name
+        return self.student.email + '-' + self.course.name
 
 
 class UserManager(BaseUserManager):

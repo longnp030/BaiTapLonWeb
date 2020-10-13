@@ -73,8 +73,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Enroll',
             fields=[
-                ('studentid', models.ManyToManyField(db_column='studentID', serialize=False, unique=False, to='lms.student')),
-                ('courseid', models.ManyToManyField(db_column='courseID', serialize=False, unique=False, to='lms.course')),
+                ('student', models.ManyToManyField(db_column='student', serialize=False, unique=False, to='lms.student')),
+                ('course', models.ManyToManyField(db_column='course', serialize=False, unique=False, to='lms.course')),
                 ('enrolldate', models.DateTimeField(db_column='enrollDate')),
                 ('expiredate', models.DateTimeField(db_column='expireDate')),
             ],

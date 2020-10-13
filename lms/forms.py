@@ -131,10 +131,10 @@ class UserAdminChangeForm(forms.ModelForm):
 class CourseCreateForm(forms.ModelForm):
     class Meta:
         model = Course
-        fields = ['id', 'name', 'teacherid', 'description', 'price',]
+        fields = ['id', 'name', 'teacher', 'description', 'price',]
 
 
 class EnrollmentForm(forms.ModelForm):
     class Meta:
         model = Enroll
-        fields = ['id', 'studentid', 'courseid',]
+        fields = ['id', 'student', 'course',]
