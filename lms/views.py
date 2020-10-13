@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, FileResponse
 from django.shortcuts import render, redirect
 from django.template import loader
 from django.dispatch import receiver
@@ -8,8 +8,8 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 
 from datetime import datetime as dt
 
-from .forms import RegisterForm, StudentForm, CourseCreateForm, EnrollmentForm, TeacherForm, TeacherRegisterForm
-from .models import Course, Teacher, Student, Enroll
+from .forms import *
+from .models import *
 
 from eLearning.settings import ENROLLED_REDIRECT_URL, ENROLLED_INDEXES
 
@@ -100,7 +100,7 @@ def teacher_register(request):
 
 
 def is_teacher(user):
-    return user.is_authenticated and user.admin == True
+    return user.is_authenticated and (user.is_staff or user.is_admin)
 
 @user_passes_test(is_teacher, login_url='/lms/accounts/login/')
 def create_course(request):
@@ -122,8 +122,8 @@ def course_enroll(request, course_id):
     current_user = request.user
     current_student = Student.objects.get(email=current_user.email)
 
-    course_isEnrolled_count = Enroll.objects.filter(courseid=current_course.id)
-    student_isEnrolled_count = course_isEnrolled_count.filter(studentid=current_student.id)
+    course_isEnrolled_count = Enroll.objects.filter(course=current_course.id)
+    student_isEnrolled_count = course_isEnrolled_count.filter(student=current_student.id)
     if len(course_isEnrolled_count) > 0 and len(student_isEnrolled_count) > 0:
         return render(request, 'courses/enroll.html', {"already_enrolled": True, "course_id": current_course.id})
 
@@ -131,8 +131,8 @@ def course_enroll(request, course_id):
         enrollment_form = EnrollmentForm(request.POST)
         if enrollment_form.is_valid():
             enrollment = enrollment_form.save(commit=False)
-            enrollment.studentid = current_student
-            enrollment.courseid = current_course
+            enrollment.student = current_student
+            enrollment.course = current_course
             enrollment.save()
 
             return redirect(ENROLLED_REDIRECT_URL)
@@ -141,7 +141,7 @@ def course_enroll(request, course_id):
         while new_id in ENROLLED_INDEXES:
             new_id = random.randint(1, 100000)
         ENROLLED_INDEXES.append(new_id)
-        enrollment_form = EnrollmentForm(initial={'id': new_id, 'studentid': current_student, 'courseid': current_course})
+        enrollment_form = EnrollmentForm(initial={'id': new_id, 'student': current_student, 'course': current_course})
     return render(request, 'courses/enroll.html', {"enrollment_form": enrollment_form, "course_id": current_course.id})
 
 
@@ -159,9 +159,9 @@ def dashboard(request):
     
     course_list = []
     if isinstance(this_user, Student):
-        this_student_enrollments = Enroll.objects.filter(studentid=this_user.id)
+        this_student_enrollments = Enroll.objects.filter(student=this_user.id)
         for enrollment in this_student_enrollments:
-            course_list.append(Course.objects.get(id=enrollment.courseid.id))
+            course_list.append(Course.objects.get(id=enrollment.course.id))
     elif isinstance(this_user, Teacher):
         course_list = Course.objects.filter(teacherid=this_user.id)
     context = {
@@ -184,16 +184,61 @@ def course_overview(request, course_id):
     elif this_student is None and this_teacher is not None:
         this_user = this_teacher
     if isinstance(this_user, Student):
-        this_course_enrollments = Enroll.objects.filter(courseid=course.id)
-        enrolled = len(this_course_enrollments.filter(studentid=this_user.id)) > 0
+        this_course_enrollments = Enroll.objects.filter(course=course.id)
+        enrolled = len(this_course_enrollments.filter(student=this_user.id)) > 0
     elif isinstance(this_user, Teacher):
         enrolled = len(Course.objects.filter(teacherid=this_user.id).filter(teacherid=this_user.id)) > 0
     context = {
         "course": course,
         "enrolled": enrolled,
         "this_user": this_user,
+        "lectures": course_detail(course_id) if enrolled else None,
     }
     return render(request, 'courses/course_overview.html', context=context)
+
+
+def course_detail(course_id):
+    this_course = Course.objects.get(id=course_id)
+    this_course_lectures = Lecture.objects.filter(course=this_course.id)
+    lectures = []
+    for lecture in this_course_lectures:
+        lectures.append({
+            "lecture": lecture,
+            "units": Unit.objects.filter(lecture=lecture.id),
+        })
+    return lectures
+
+'''@login_required
+def course_detail(request, course_id):
+    this_course = Course.objects.get(id=course_id)
+    this_student = get_student(request)
+    this_teacher = get_teacher(request)
+    this_user = None
+    if this_student is not None and this_teacher is None:
+        this_user = this_student
+    elif this_student is None and this_teacher is not None:
+        this_user = this_teacher
+
+    context = {}
+    this_course_lectures = Lecture.objects.filter(course=this_course.id)
+    #this_course_lectures_units = []
+    lectures = []
+    for lecture in this_course_lectures:
+        #this_course_lectures_units.append(Unit.objects.filter(lecture=lecture.id))
+        lectures.append({
+            "lecture": lecture,
+            "units": Unit.objects.filter(lecture=lecture.id),
+        })
+    context = {
+        "lectures": lectures,
+        "this_user": this_user,
+    }
+    return render(request, 'courses/course_detail.html', context=context)'''
+
+
+def view_file(request, file_path):
+    return FileResponse(open(file_path, 'rb'), content_type='application/pdf')
+
 
 #@login_required(login_url='/lms/accounts/login/')
 def user_profile(request, user_id):

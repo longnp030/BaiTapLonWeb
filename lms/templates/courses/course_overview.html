@@ -1,7 +1,7 @@
 {% extends "../lms/index1.html" %}
 {% block content %}
 <body>
-    <div class="course-detail">
+    <div class="course-overview">
         <h1>Overview</h1>
         {% if course %}
             <p><h2>{{ course.name }}</h2></p>
@@ -23,7 +23,7 @@
                     </div>
                 {% endif %}
             {% else %}
-                <h5>You are enrolled in this course!</h5>
+                {% include 'courses/course_detail.html' %}
             {% endif %}
         {% endif %}
     </div>

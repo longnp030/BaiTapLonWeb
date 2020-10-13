@@ -10,6 +10,7 @@ from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser, AbstractUser
 )
 import datetime as dt
+from eLearning.settings import FILES_URL
 
 
 def upload_location_for_user(instance, filename):
@@ -17,7 +18,7 @@ def upload_location_for_user(instance, filename):
 def upload_location_for_course(instance, filename):
     return 'lms/images/courses/%s.%s' % (instance.id, filename.split('.')[1])
 def upload_location_for_file(instance, filename):
-    return 'lms/files/%s/%s.%s' % (instance.course.id, instance.name, filename.split('.')[1])
+    return 'lms/files/%s/%s/%s.%s' % (instance.lecture.course, instance.lecture, instance.name, filename.split('.')[1])
 
 
 class AuthGroup(models.Model):
@@ -108,7 +109,7 @@ class Course(models.Model):
 
 
 class Lecture(models.Model):
-    id = models.IntegerField(primary_key=True, unique=True, db_column='id')
+    id = models.AutoField(primary_key=True, unique=True, db_column='id')
     name = models.CharField(max_length=255, db_column='name')
     course = models.ForeignKey(Course, on_delete=models.DO_NOTHING, db_column='course')
     
@@ -127,11 +128,14 @@ class Lecture(models.Model):
 
 ### Add later
 class Unit(models.Model):
-    id = models.IntegerField(primary_key=True, unique=True, db_column='id')
+    id = models.AutoField(primary_key=True, unique=True, db_column='id')
     name = models.CharField(max_length=255, db_column='name', null=False)
     notes = models.TextField(blank=True, null=True, db_column='notes')
-    slide = models.FileField(upload_to=upload_location_for_file, db_column='slide', blank=True)
+    slide = models.FileField(upload_to=FILES_URL, db_column='slide', blank=True)
     lecture = models.ForeignKey(Lecture, on_delete=models.DO_NOTHING, db_column='lecture')
+    video = models.CharField(max_length=255, db_column='video', null=True, blank=True)
+    reading = models.CharField(max_length=255, db_column='reading', null=True, blank=True)
+    quiz = models.CharField(max_length=255, db_column='quiz', null=True, blank=True)
 
     class Meta:
         managed = False
@@ -139,12 +143,16 @@ class Unit(models.Model):
 
     def __str__(self):
         return self.name
+    
+    @property
+    def get_slide_name(self):
+        return self.slide.name[10:]
 ### Done
 
 
 ### Add later
 class Learn(models.Model):
-    id = models.IntegerField(primary_key=True, db_column='id', unique=True)
+    id = models.AutoField(primary_key=True, db_column='id', unique=True)
     student = models.ForeignKey('Student', on_delete=models.DO_NOTHING, db_column='student')
     unit = models.ForeignKey(Unit, on_delete=models.DO_NOTHING, db_column='unit')
     finished = models.BooleanField(blank=True, null=True, default=False, db_column='finished')
@@ -155,11 +163,12 @@ class Learn(models.Model):
 
     def __str__(self):
         return self.student.email + '-' + self.unit.lecture.course.name + '-' + self.unit.lecture.name + '-' + self.unit.name
+### Done
 
 
 ### Add later
 class Assignment(models.Model):
-    id = models.IntegerField(primary_key=True, unique=True, db_column='id')
+    id = models.AutoField(primary_key=True, unique=True, db_column='id')
     finished = models.BooleanField(blank=True, null=True, default=False, db_column='finished')
     starttime = models.DateTimeField(db_column='startTime', default=dt.datetime.now, null=False)
     endtime = models.DateTimeField(db_column='endTime', null=False)
@@ -172,6 +181,7 @@ class Assignment(models.Model):
 
     def __str__(self):
         return self.learn.student.email + '-' + self.learn.unit.lecture.course.name + '-' + self.learn.unit.lecture.name + '-' + self.learn.unit.name
+### Done
 
 
 class DjangoAdminLog(models.Model):

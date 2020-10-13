@@ -152,3 +152,7 @@ body {
 	object-position: center; 
 	/* transform: translateX(-700px); */
 }
+
+table tr td th {
+	border: 1px solid;
+}
