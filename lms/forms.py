@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, ReadOnlyPasswordHashField
+from django.contrib.admin.widgets import RelatedFieldWidgetWrapper
 from django.utils.translation import gettext_lazy as _
 from .models import *
 
@@ -134,7 +135,14 @@ class CourseCreateForm(forms.ModelForm):
         fields = ['id', 'name', 'teacher', 'description', 'price',]
 
 
+class QuizCreateForm(forms.ModelForm):
+    class Meta:
+        model = Quiz
+        fields = ['question',]
+
+
 class UnitCreateForm(forms.ModelForm):
+    quiz = QuizCreateForm()
     class Meta:
         model = Unit
         fields = ['lecture', 'name', 'notes', 'slide', 'video', 'reading', 'quiz', ]
@@ -149,7 +157,7 @@ class LectureCreateForm(forms.ModelForm):
 class AssignmentCreateForm(forms.ModelForm):
     class Meta:
         model = Assignment
-        fields = ['starttime', 'endtime', ]
+        fields = ['student', 'unit', 'finished', ]
 
 
 class EnrollmentForm(forms.ModelForm):

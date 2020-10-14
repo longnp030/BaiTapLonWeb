@@ -133,9 +133,9 @@ class Unit(models.Model):
     notes = models.TextField(blank=True, null=True, db_column='notes')
     slide = models.FileField(upload_to=FILES_URL, db_column='slide', blank=True)
     lecture = models.ForeignKey(Lecture, on_delete=models.DO_NOTHING, db_column='lecture')
-    video = models.CharField(max_length=255, db_column='video', null=True, blank=True)
+    video = models.URLField(max_length=255, db_column='video', null=True, blank=True)
     reading = models.CharField(max_length=255, db_column='reading', null=True, blank=True)
-    quiz = models.CharField(max_length=255, db_column='quiz', null=True, blank=True)
+    quiz = models.OneToOneField('Quiz', on_delete=models.DO_NOTHING, db_column='quiz')
 
     class Meta:
         managed = False
@@ -151,7 +151,8 @@ class Unit(models.Model):
 
 
 ### Add later
-class Learn(models.Model):
+### 14/10 Delete after modify Assignment
+'''class Learn(models.Model):
     id = models.AutoField(primary_key=True, db_column='id', unique=True)
     student = models.ForeignKey('Student', on_delete=models.DO_NOTHING, db_column='student')
     unit = models.ForeignKey(Unit, on_delete=models.DO_NOTHING, db_column='unit')
@@ -162,25 +163,45 @@ class Learn(models.Model):
         db_table = 'learn'
 
     def __str__(self):
-        return self.student.email + '-' + self.unit.lecture.course.name + '-' + self.unit.lecture.name + '-' + self.unit.name
+        return self.student.email + '-' + self.unit.lecture.course.name + '-' + self.unit.lecture.name + '-' + self.unit.name'''
 ### Done
+
+
+### 14/10 10pm
+class Quiz(models.Model):
+    id = models.AutoField(primary_key=True, unique=True, db_column='id')
+    question = models.TextField(null=False, db_column='question')
+    answer = models.TextField(blank=True, db_column='answer')
+    ### Delete these 2 temporarily
+    #starttime = models.DateTimeField(null=False, default=dt.datetime.now, db_column='starttime')
+    #endtime = models.DateTimeField(null=False, db_column='endtime')
+    finished = models.BooleanField(default=False, db_column='finished')
+    
+    class Meta:
+        managed = False
+        db_table = 'quiz'
+
+    def __str__(self):
+        return self.question
 
 
 ### Add later
 class Assignment(models.Model):
     id = models.AutoField(primary_key=True, unique=True, db_column='id')
-    finished = models.BooleanField(blank=True, null=True, default=False, db_column='finished')
-    starttime = models.DateTimeField(db_column='startTime', default=dt.datetime.now, null=False)
-    endtime = models.DateTimeField(db_column='endTime', null=False)
-    grade = models.IntegerField(default=0, db_column='grade')
-    learn = models.ForeignKey(Learn, on_delete=models.DO_NOTHING, db_column='learn')
+    finished = models.BooleanField(default=False, db_column='finished')
+    ### Delete these 2 temporarily
+    #starttime = models.DateTimeField(db_column='startTime', default=dt.datetime.now, null=False)
+    #endtime = models.DateTimeField(db_column='endTime', null=False)
+    grade = models.IntegerField(db_column='grade', null=True, blank=True)
+    student = models.ForeignKey('Student', on_delete=models.DO_NOTHING, db_column='student')
+    unit = models.OneToOneField(Unit, on_delete=models.DO_NOTHING, db_column='unit')
 
     class Meta:
         managed = False
         db_table = 'assignment'
 
     def __str__(self):
-        return self.learn.student.email + '-' + self.learn.unit.lecture.course.name + '-' + self.learn.unit.lecture.name + '-' + self.learn.unit.name
+        return self.student.email + '-' + self.unit
 ### Done
 
 
