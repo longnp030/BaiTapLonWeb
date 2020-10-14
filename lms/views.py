@@ -190,22 +190,28 @@ def course_overview(request, course_id):
     unit_form = None
     lecture_form = None
     lecture_form_initial = {'course': course,}
+    unit_form_initial = {'lecture': Lecture.objects.filter(course=course)[0],}
+    
     if this_teacher:
         if request.method == 'POST':
             if 'add_unit' in request.POST:
                 unit_form = UnitCreateForm(request.POST)
+                unit_form.fields['lecture'].queryset = Lecture.objects.filter(course=course)
                 if unit_form.is_valid():
                     unit_form.save()
-                    unit_form = UnitCreateForm()
+                    unit_form = UnitCreateForm(initial=unit_form_initial)
             
             if 'add_lect' in request.POST:
                 lecture_form = LectureCreateForm(request.POST)
+                lecture_form.fields['course'].queryset = Course.objects.filter(id=course.id)
                 if lecture_form.is_valid():
                     lecture_form.save()
                     lecture_form = LectureCreateForm(initial=lecture_form_initial)
         else:
-            unit_form = UnitCreateForm()
+            unit_form = UnitCreateForm(initial=unit_form_initial, )
+            unit_form.fields['lecture'].queryset = Lecture.objects.filter(course=course)
             lecture_form = LectureCreateForm(initial=lecture_form_initial)
+            lecture_form.fields['course'].queryset = Course.objects.filter(id=course.id)
         
         can_modify_obj = True
 
@@ -222,7 +228,7 @@ def course_overview(request, course_id):
 
 
 '''def add_lect(request):
-    if request == 'POST':
+    if request.method == 'POST':
         lecture_form = LectureCreateForm(request.POST)
         if lecture_form.is_valid():
             lecture_form.save()
@@ -230,9 +236,8 @@ def course_overview(request, course_id):
     else:
         lecture_form = LectureCreateForm()
     return render(request, 'courses/create_lect.html', context=lecture_form)
-
 def add_unit(request):
-    if request == 'POST':
+    if request.method == 'POST':
         unit_form = UnitCreateForm(request.POST)
         if unit_form.is_valid():
             unit_form.save()
