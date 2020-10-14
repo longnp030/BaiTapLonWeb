@@ -26,9 +26,11 @@
                     window.onload = function() {
                         var button = document.getElementById("enroll");
                         button.form.submit();
-                    }
-                    alert("Enrolled successfully!")
-                    //window.location.href = "{% url 'course_detail' course_id %}";
+                    };
+                    alert("Enrolled successfully!");
+                    window.setTimeout(function() {
+                        location.href = "{% url 'course_overview' course_id %}";
+                    }, 3000);
                 </script>
             {% endif %}
         {% endblock %}

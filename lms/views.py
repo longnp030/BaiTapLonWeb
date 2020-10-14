@@ -1,7 +1,8 @@
-from django.http import HttpResponse, FileResponse
+from django.http import HttpResponse, FileResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.template import loader
 from django.dispatch import receiver
+from django.apps import AppConfig as conf
 from django.db.models.signals import post_save
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -167,32 +168,12 @@ def dashboard(request):
     return render(request, 'courses/dashboard.html', context=context)
 
 
-def create_lecture_form(request):
-    if request == 'POST':
-        lecture_form = LectureCreateForm(request.POST)
-        if lecture_form.is_valid():
-            lecture = lecture_form.save(commit=False)
-            lecture.save()
-            return redirect('/lms')
-    else:
-        lecture_form = LectureCreateForm()
-    return lecture_form
-def create_unit_form(request):
-    if request == 'POST':
-        unit_form = UnitCreateForm(request.POST)
-        if unit_form.is_valid():
-            unit = unit_form.save(commit=False)
-            unit.save()
-            return redirect('/lms')
-    else:
-        unit_form = UnitCreateForm()
-    return unit_form
-
 def course_overview(request, course_id):
     course = Course.objects.get(id=course_id)
     this_student = get_student(request)
     this_teacher = get_teacher(request)
 
+    can_modify_obj = False
     this_user = None
     context = {}
     enrolled = False
@@ -208,25 +189,25 @@ def course_overview(request, course_id):
     
     unit_form = None
     lecture_form = None
-
+    lecture_form_initial = {'course': course,}
     if this_teacher:
-        if request == 'POST':
-            unit_form = UnitCreateForm(request.POST)
-            if unit_form.is_valid():
-                unit = unit_form.save(commit=False)
-                unit.save()
-                return redirect('/lms')
+        if request.method == 'POST':
+            if 'add_unit' in request.POST:
+                unit_form = UnitCreateForm(request.POST)
+                if unit_form.is_valid():
+                    unit_form.save()
+                    unit_form = UnitCreateForm()
+            
+            if 'add_lect' in request.POST:
+                lecture_form = LectureCreateForm(request.POST)
+                if lecture_form.is_valid():
+                    lecture_form.save()
+                    lecture_form = LectureCreateForm(initial=lecture_form_initial)
         else:
             unit_form = UnitCreateForm()
-
-        if request == 'POST':
-            lecture_form = LectureCreateForm(request.POST)
-            if lecture_form.is_valid():
-                lecture = lecture_form.save(commit=False)
-                lecture.save()
-                return redirect('/lms')
-        else:
-            lecture_form = LectureCreateForm()
+            lecture_form = LectureCreateForm(initial=lecture_form_initial)
+        
+        can_modify_obj = True
 
     context = {
         "course": course,
@@ -235,6 +216,7 @@ def course_overview(request, course_id):
         "lectures": course_detail(course_id) if enrolled else None,
         "lecture_form": lecture_form,
         "unit_form": unit_form,
+        "can_modify_obj": can_modify_obj,
     }
     return render(request, 'courses/course_overview.html', context=context)
 
@@ -249,6 +231,17 @@ def course_detail(course_id):
             "units": Unit.objects.filter(lecture=lecture.id),
         })
     return lectures
+
+
+def delete_obj(request, obj_id):
+    obj = Unit.objects.get(id=obj_id)
+    if obj is None:
+        obj = Lecture.objects.get(id=obj_id)
+        if obj is None:
+            obj = Assignment.objects.get(id=obj_id)
+    obj.delete()
+    return HttpResponseRedirect('')
+
 
 '''@login_required
 def course_detail(request, course_id):

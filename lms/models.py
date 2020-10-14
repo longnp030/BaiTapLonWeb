@@ -109,7 +109,7 @@ class Course(models.Model):
 
 
 class Lecture(models.Model):
-    id = models.AutoField(primary_key=True, unique=True, db_column='id')
+    #id = models.AutoField(primary_key=True, unique=True, db_column='id')
     name = models.CharField(max_length=255, db_column='name')
     course = models.ForeignKey(Course, on_delete=models.DO_NOTHING, db_column='course')
     
@@ -142,7 +142,7 @@ class Unit(models.Model):
         db_table ='unit'
 
     def __str__(self):
-        return self.name
+        return self.name + '-' + self.notes
     
     @property
     def get_slide_name(self):

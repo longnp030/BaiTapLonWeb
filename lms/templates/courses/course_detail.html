@@ -8,7 +8,7 @@
             {% for lecture in lectures %}
             <li>
                 {% if lecture %}
-                    <a>Lecture </a><a>{{ lecture.lecture.id }}:</a>
+                    <a>Lecture :</a>
                     {{ lecture.lecture }}
                     {% if lecture.units %}
                     <ul>
@@ -39,39 +39,50 @@
                                     </tr>
                                 </table>
                             </div>
+                            
+                            {% if can_modify_obj %}
+                            <form action="{% url 'delete_obj' unit.id %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit">Delete</button>
+                            </form>
+                            {% endif %}
                             <br>
                         </li>
                         {% endfor %}
+                    </ul>
+                    <br>
+                    {% endif %}
 
+                    <ul>
                         {% if unit_form %}
                         <li>
-                            <a>Add unit</a>
+                            <i>Add unit</i>
                             <form method="POST">
                                 {% csrf_token %}
                                 {{ unit_form|crispy }}
-                                <button type="submit">Add</button>
+                                <button type="submit" name="add_unit">Add</button>
                             </form>
                         </li>
                         {% endif %}
                     </ul>
-                    <br>
-                    {% endif %}
                 {% endif %}
             </li>
             {% endfor %}
-
+        </ul>
+        {% endif %}
+        
+        <ul>
             {% if lecture_form %}
             <li>
-                <a>Add lecture</a>
+                <i>Add lecture</i>
                 <form method="POST">
                     {% csrf_token %}
                     {{ lecture_form|crispy }}
-                    <button type="submit">Add</button>
+                    <button type="submit" name="add_lect">Add</button>
                 </form>
             </li>
             {% endif %}
         </ul>
-        {% endif %}
     </div>
 </body>
 {% endblock %}
