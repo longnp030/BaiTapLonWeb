@@ -221,6 +221,27 @@ def course_overview(request, course_id):
     return render(request, 'courses/course_overview.html', context=context)
 
 
+'''def add_lect(request):
+    if request == 'POST':
+        lecture_form = LectureCreateForm(request.POST)
+        if lecture_form.is_valid():
+            lecture_form.save()
+            return redirect('/lms/')
+    else:
+        lecture_form = LectureCreateForm()
+    return render(request, 'courses/create_lect.html', context=lecture_form)
+
+def add_unit(request):
+    if request == 'POST':
+        unit_form = UnitCreateForm(request.POST)
+        if unit_form.is_valid():
+            unit_form.save()
+            return redirect('/lms/')
+    else:
+        unit_form = UnitCreateForm()
+    return render(request, 'courses/create_unit.html', context=unit_form)'''
+
+
 def course_detail(course_id):
     this_course = Course.objects.get(id=course_id)
     this_course_lectures = Lecture.objects.filter(course=this_course.id)
@@ -232,6 +253,30 @@ def course_detail(course_id):
         })
     return lectures
 
+def modify_obj(request, obj_id):
+    obj = Unit.objects.get(id=obj_id)
+    if obj is None:
+        obj = Lecture.objects.get(id=obj_id)
+        if obj is None:
+            obj = Assignment.objects.get(id=obj_id)
+    if request.method == 'POST':
+        if isinstance(obj, Unit):
+            obj_change_form = UnitCreateForm(request.POST, instance=obj)
+        elif isinstance(obj, Lecture):
+            obj_change_form = LectureCreateForm(request.POST, instance=obj)
+        elif isinstance(obj, Assignment):
+            obj_change_form = AssignmentCreateForm(request.POST, instance=obj)
+        if obj_change_form.is_valid():
+            obj_change_form.save()
+            return redirect('/lms/')
+    else:
+        if isinstance(obj, Unit):
+            obj_change_form = UnitCreateForm(instance=obj)
+        elif isinstance(obj, Lecture):
+            obj_change_form = LectureCreateForm(instance=obj)
+        elif isinstance(obj, Assignment):
+            obj_change_form = AssignmentCreateForm(instance=obj)
+    return render(request, 'courses/modify_comps.html', context={"obj_change_form":obj_change_form,})
 
 def delete_obj(request, obj_id):
     obj = Unit.objects.get(id=obj_id)

@@ -41,10 +41,18 @@
                             </div>
                             
                             {% if can_modify_obj %}
-                            <form action="{% url 'delete_obj' unit.id %}" method="POST">
-                                {% csrf_token %}
-                                <button type="submit">Delete</button>
-                            </form>
+                            <div>
+                                <form action="{% url 'delete_obj' unit.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit">Delete</button>
+                                </form>
+                            </div>
+                            <div>
+                                <form action="{% url 'modify_obj' unit.id %}" method="GET">
+                                    {% csrf_token %}
+                                    <button type="submit" name="save-changes">Modify</button>
+                                </form>
+                            </div>
                             {% endif %}
                             <br>
                         </li>
@@ -53,8 +61,7 @@
                     <br>
                     {% endif %}
 
-                    <ul>
-                        {% if unit_form %}
+                    <ul>{% if unit_form %}
                         <li>
                             <i>Add unit</i>
                             <form method="POST">
@@ -63,6 +70,17 @@
                                 <button type="submit" name="add_unit">Add</button>
                             </form>
                         </li>
+                            <!--{% if can_modify_obj %}
+                            <button onclick="toggle()">Add unit</button>
+                            <div id='add-unit-area' style="display: none;">
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    {{ unit_form|crispy }}
+                                    <button type="submit" name="add_unit">Add</button>
+                                </form>
+                            </div>
+                            {% endif %}-->
+                            {#{% include 'courses/create_lect.html' %}#}
                         {% endif %}
                     </ul>
                 {% endif %}
@@ -84,5 +102,16 @@
             {% endif %}
         </ul>
     </div>
+
+    <!--<script>
+        function toggle() {
+            var add_unit_area = document.getElementById("add-unit-area");
+            if (add_unit_area.style.display === "none") {
+                add_unit_area.style.display = "block"
+            } else {
+                add_unit_area.style.display = "none"
+            }
+        }
+    </script>-->
 </body>
 {% endblock %}

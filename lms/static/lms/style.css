@@ -79,7 +79,7 @@ body {
 	padding: 7px 25px;
 	border-radius: 10px;
 	border: 1px solid white;
-	background-color: orange;
+	background-color: #4CAF50;
 	float: right;
 }
 
@@ -99,7 +99,7 @@ body {
 
 .sidebar {
 	background-color: white;
-	border: 1px solid orange;
+	border: 1px solid #4CAF50;
 	display: inline; /*wrap ôm lại sát text,...*/
 	height: 100%;
 	border-radius: 20px;
@@ -111,7 +111,7 @@ body {
 	border-top-left-radius: 20px ;
 	text-transform: capitalize; 
 	margin: 0;
-	background-color: orange;
+	background-color: #4CAF50;
 	padding: 10px 30px;
 	color: white;
 }

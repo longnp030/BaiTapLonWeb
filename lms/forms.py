@@ -146,6 +146,12 @@ class LectureCreateForm(forms.ModelForm):
         fields = ['course', 'name',]
 
 
+class AssignmentCreateForm(forms.ModelForm):
+    class Meta:
+        model = Assignment
+        fields = ['starttime', 'endtime', ]
+
+
 class EnrollmentForm(forms.ModelForm):
     class Meta:
         model = Enroll
