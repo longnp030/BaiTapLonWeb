@@ -17,19 +17,19 @@
 
 ## Thư mục chứa các file HTMLs : *lms/templates/*
 ***/courses/*** : thư mục chứa HTML liên quan đến khóa học ( ví dụ: chi tiết khóa học, chi tiết môn học, tạo môn học, đăng ký học, ...)\
-&nbsp;&nbsp;&nbsp;&nbsp;*course_detail.html* : chi tiết khóa học ( khi người dùng enroll vào khóa học rồi)\
-&nbsp;&nbsp;&nbsp;&nbsp;*course_overview.html* : tổng quan khóa học ( khi người dùng chưa enrol vào khóa học)\
-&nbsp;&nbsp;&nbsp;&nbsp;*create.html* : tạo khóa học mới\
-&nbsp;&nbsp;&nbsp;&nbsp;*create_lect.html* : tạo bài học trong 1 khóa học\
-&nbsp;&nbsp;&nbsp;&nbsp;*dashboard.html* : danh sách khóa học mà giáo viên dạy, hoặc người học đã enroll vào\
-&nbsp;&nbsp;&nbsp;&nbsp;*enroll.html* : người dùng đăng ký học khóa học\
-&nbsp;&nbsp;&nbsp;&nbsp;*modify_comps.html* : chỉnh sửa thành phần của khóa học, bài giảng\
+&nbsp;&nbsp;&nbsp;&nbsp;***course_detail.html*** : chi tiết khóa học ( khi người dùng enroll vào khóa học rồi)\
+&nbsp;&nbsp;&nbsp;&nbsp;***course_overview.html*** : tổng quan khóa học ( khi người dùng chưa enrol vào khóa học)\
+&nbsp;&nbsp;&nbsp;&nbsp;***create.html*** : tạo khóa học mới\
+&nbsp;&nbsp;&nbsp;&nbsp;***create_lect.html*** : tạo bài học trong 1 khóa học\
+&nbsp;&nbsp;&nbsp;&nbsp;***dashboard.html*** : danh sách khóa học mà giáo viên dạy, hoặc người học đã enroll vào\
+&nbsp;&nbsp;&nbsp;&nbsp;***enroll.html*** : người dùng đăng ký học khóa học\
+&nbsp;&nbsp;&nbsp;&nbsp;***modify_comps.html*** : chỉnh sửa thành phần của khóa học, bài giảng\
 ***/lms/*** : thư mục chứa HTML liên quan đến trang chủ, người dùng, ...\
-&nbsp;&nbsp;&nbsp;&nbsp;*index.html* : trang chủ\
-&nbsp;&nbsp;&nbsp;&nbsp;*user_profile.html* : trang cá nhân người dùng\
+&nbsp;&nbsp;&nbsp;&nbsp;***index.html*** : trang chủ\
+&nbsp;&nbsp;&nbsp;&nbsp;***user_profile.html*** : trang cá nhân người dùng\
 ***/registration/*** : thư mục chứa HTML liên quan đến đăng ký\
-&nbsp;&nbsp;&nbsp;&nbsp;*login.html* : trang đăng nhập\
-&nbsp;&nbsp;&nbsp;&nbsp;*register.html* : trang đăng ký\
-&nbsp;&nbsp;&nbsp;&nbsp;*teacher_register.html* : trang đăng ký với tư cách giáo viên\
+&nbsp;&nbsp;&nbsp;&nbsp;***login.html*** : trang đăng nhập\
+&nbsp;&nbsp;&nbsp;&nbsp;***register.html*** : trang đăng ký\
+&nbsp;&nbsp;&nbsp;&nbsp;***teacher_register.html*** : trang đăng ký với tư cách giáo viên\
 
 ## Thư mục chứa file CSS : *lms/static/lms/style.css*
