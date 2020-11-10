@@ -9,7 +9,7 @@
             <p>{{ course.description }}</p>
             <p>{{ course.price }}</p>
             {% if not enrolled %}
-                {% if user.is_authenticated %}
+                {% if user.is_authenticated %}  
                     <button>
                         <a href="{% url 'enroll' course.id %}">Enroll</a>
                     </button>
