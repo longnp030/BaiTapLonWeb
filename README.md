@@ -2,11 +2,11 @@
 ***settings.py*** : settings của toàn server
 
 ## Thư mục code chính : ***lms/***
-***/files/*** : thư mục chứa file bài giảng
-***/images/users/*** : thư mục chứa ảnh đại diện của người dùng
-***/migrations/*** : thư mục chứa các log file thay đổi CSDL
-***/static/lms/*** : thư mục chứa CSS file
-***/templates/*** : thư mục chứa HTML files
+>***/files/*** : thư mục chứa file bài giảng
+>***/images/users/*** : thư mục chứa ảnh đại diện của người dùng
+>***/migrations/*** : thư mục chứa các log file thay đổi CSDL
+>***/static/lms/*** : thư mục chứa CSS file
+>***/templates/*** : thư mục chứa HTML files
 
 ***admin.py*** : cài đặt setting của quản trị viên
 ***forms.py*** : các class tạo forms ( ví dụ: form đăng ký, form đăng nhập, form bài giảng, ...)
