@@ -94,7 +94,7 @@ class Course(models.Model):
     publishdate = models.DateTimeField(db_column='publishDate', default=dt.datetime.now)  # Field name made lowercase.
     price = models.IntegerField()
     description = models.CharField(max_length=10000, blank=True, null=True)
-    teacher = models.ForeignKey('Teacher', models.DO_NOTHING, db_column='teacher', unique=False)  # Field name made lowercase.
+    #teacher = models.ForeignKey('Teacher', models.DO_NOTHING, db_column='teacher', unique=False)  # Field name made lowercase.
 
 
     '''Add more attributes to configure with enrolled students'''
@@ -264,6 +264,21 @@ class Enroll(models.Model):
         return self.student.email + '-' + self.course.name
 
 
+### Added 12/11/2020 6p.m
+class Teach(models.Model):
+    id = models.AutoField(primary_key=True, db_column='id', unique=True)
+    teacher = models.ForeignKey('Teacher', on_delete=models.CASCADE, db_column='teacher')
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, db_column='course')
+
+    class Meta:
+        managed = False
+        db_table = 'teach'
+
+    def __str__(self):
+        return self.teacher.email + '-' + self.course.name
+###
+
+
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None):
         """
@@ -316,6 +331,11 @@ class Student(models.Model):
     joindate = models.DateTimeField(db_column='joinDate', default=dt.datetime.now)  # Field name made lowercase.
     useremail = models.OneToOneField('User', models.DO_NOTHING, db_column='userEmail')  # Field name made lowercase.
 
+    ## New
+    facebook = models.CharField(max_length=255, db_column='facebook', null=True)
+    twitter = models.CharField(max_length=255, db_column='twitter', null=True)
+    website = models.CharField(max_length=255, db_column='website', null=True)
+
     class Meta:
         managed = False
         db_table = 'student'
@@ -332,6 +352,11 @@ class Teacher(models.Model):
     joindate = models.DateTimeField(db_column='joinDate')  # Field name made lowercase.
     currentdegree = models.CharField(db_column='currentDegree', max_length=45, blank=True, null=True)  # Field name made lowercase.
     useremail = models.OneToOneField('User', models.DO_NOTHING, db_column='userEmail')
+
+    ## New
+    facebook = models.CharField(max_length=255, db_column='facebook', null=True)
+    twitter = models.CharField(max_length=255, db_column='twitter', null=True)
+    website = models.CharField(max_length=255, db_column='website', null=True)
 
     class Meta:
         managed = False

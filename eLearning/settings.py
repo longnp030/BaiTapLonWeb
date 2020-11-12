@@ -14,8 +14,9 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATE_DIR = str(BASE_DIR.joinpath('lms/templates'))
-STUDENT_IMAGE_DIR = str(BASE_DIR.joinpath('lms/images/student_images'))
+TEMPLATE_DIR = Path(str(BASE_DIR.joinpath('lms/templates')))
+USERS_IMAGE_DIR = Path(str(BASE_DIR.joinpath('lms/images/users')))
+COURSES_IMAGE_DIR = Path(str(BASE_DIR.joinpath('lms/images/courses')))
 
 
 # Quick-start development settings - unsuitable for production
@@ -59,7 +60,7 @@ ROOT_URLCONF = 'eLearning.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR,STUDENT_IMAGE_DIR,],
+        'DIRS': [TEMPLATE_DIR, USERS_IMAGE_DIR, COURSES_IMAGE_DIR, ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

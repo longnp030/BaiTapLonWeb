@@ -19,4 +19,5 @@ urlpatterns = [
     path('<obj_id>/delete/', views.delete_obj, name='delete_obj'),
     path('<obj_id>/modify/', views.modify_obj, name='modify_obj'),
     path('users/<int:user_id>', views.user_profile, name='user_profile')
-] + static('images/student_images', document_root=settings.STUDENT_IMAGE_DIR)
+] + static('images/users', document_root=settings.USERS_IMAGE_DIR) \
+  + static('images/courses', document_root=settings.COURSES_IMAGE_DIR)

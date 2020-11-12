@@ -38,6 +38,7 @@ class UserAdmin(BaseUserAdmin):
 admin.site.register(Student)
 admin.site.register(Course)
 admin.site.register(Teacher)
+admin.site.register(Teach)
 admin.site.register(Enroll)
 admin.site.register(Lecture)
 admin.site.register(Unit)

@@ -160,7 +160,8 @@ def dashboard(request):
         for enrollment in this_student_enrollments:
             course_list.append(Course.objects.get(id=enrollment.course.id))
     elif isinstance(this_user, Teacher):
-        course_list = Course.objects.filter(teacher=this_user.id)
+        # course_list = Course.objects.filter(teacher=this_user.id)
+        course_list = [ti.course for ti in Teach.objects.filter(teacher=0)] # changed 12/11 bcof adding new table
     context = {
         "my_courses": course_list,
         "this_user": this_user,
@@ -185,12 +186,16 @@ def course_overview(request, course_id):
         this_course_enrollments = Enroll.objects.filter(course=course.id)
         enrolled = len(this_course_enrollments.filter(student=this_user.id)) > 0
     elif isinstance(this_user, Teacher):
-        enrolled = len(Course.objects.filter(teacher=this_user.id).filter(teacher=this_user.id)) > 0
+        teach = Teach.objects.filter(course=course_id)
+        if len(teach) == 0:
+            enrolled = False
+        else:
+            enrolled = teach[0].teacher.id == this_user.id
     
     unit_form = None
     lecture_form = None
     lecture_form_initial = {'course': course,}
-    unit_form_initial = {'lecture': Lecture.objects.filter(course=course)[0],}
+    unit_form_initial = {'lecture': Lecture.objects.filter(course=course)[0] if len(Lecture.objects.filter(course=course)) > 0 else None,}
     
     if this_teacher:
         if request.method == 'POST':

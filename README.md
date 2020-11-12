@@ -13,7 +13,7 @@
 [***models.py***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/models.py) : các bảng của CSDL\
 [***tests.py***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/models.py) : tạo test case để kiểm thử hệ thống\
 [***urls.py***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/urls.py) : các đường dẫn đến các trang của website\
-[***views.py***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/views.py) : trực quan hóa các trang của website\
+[***views.py***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/views.py) : trực quan hóa các trang của website
 
 ## Thư mục chứa các file HTMLs : [*lms/templates/*](https://github.com/longnp030/BaiTapLonWeb/tree/master/lms/templates)
 [***/courses/***](https://github.com/longnp030/BaiTapLonWeb/tree/master/lms/templates/courses) : thư mục chứa HTML liên quan đến khóa học ( ví dụ: chi tiết khóa học, chi tiết môn học, tạo môn học, đăng ký học, ...)\
@@ -32,6 +32,6 @@
 [***/registration/***](https://github.com/longnp030/BaiTapLonWeb/tree/master/lms/templates/registration) : thư mục chứa HTML liên quan đến đăng ký\
 &nbsp;&nbsp;&nbsp;&nbsp;[***login.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/registration/login.html) : trang đăng nhập\
 &nbsp;&nbsp;&nbsp;&nbsp;[***register.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/registration/register.html) : trang đăng ký\
-&nbsp;&nbsp;&nbsp;&nbsp;[***teacher_register.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/registration/teacher_register.html) : trang đăng ký với tư cách giáo viên\
+&nbsp;&nbsp;&nbsp;&nbsp;[***teacher_register.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/registration/teacher_register.html) : trang đăng ký với tư cách giáo viên
 
 ## Thư mục chứa file CSS : [*lms/static/lms/style.css*](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/static/lms/style.css)

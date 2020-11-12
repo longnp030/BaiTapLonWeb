@@ -132,7 +132,7 @@ class UserAdminChangeForm(forms.ModelForm):
 class CourseCreateForm(forms.ModelForm):
     class Meta:
         model = Course
-        fields = ['id', 'name', 'teacher', 'description', 'price',]
+        fields = ['id', 'name', 'description', 'price',]
 
 
 class QuizCreateForm(forms.ModelForm):
