@@ -47,6 +47,8 @@ https://www.codingforentrepreneurs.com/blog/how-to-create-a-custom-django-user-m
 https://docs.djangoproject.com/en/3.1/ref/models/instances/#django.db.models.Model.clean
 https://stackoverflow.com/questions/52286676/django-model-field-depend-on-the-value-of-another-field/52290778
 https://stackoverflow.com/questions/47182279/how-to-limit-choices-for-foreignkey-field-in-django-createview
+https://simpleisbetterthancomplex.com/tutorial/2016/09/19/how-to-create-password-reset-view.html
+https://stackoverflow.com/questions/17041891/not-able-to-send-email-django
 
 
 GIT REFERENCES:

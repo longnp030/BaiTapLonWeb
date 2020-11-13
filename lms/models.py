@@ -89,11 +89,11 @@ class AuthUserUserPermissions(models.Model):
 
 class Course(models.Model):
     id = models.IntegerField(primary_key=True, unique=True)
-    name = models.CharField(max_length=45)
+    name = models.CharField(max_length=255)
     image = models.ImageField(max_length=255, upload_to=upload_location_for_course, db_column='image')
-    publishdate = models.DateTimeField(db_column='publishDate', default=dt.datetime.now)  # Field name made lowercase.
+    publishdate = models.DateField(db_column='publishDate', default=dt.date.today)  # Field name made lowercase.
     price = models.IntegerField()
-    description = models.CharField(max_length=10000, blank=True, null=True)
+    description = models.TextField(max_length=10000, blank=True, null=True)
     #teacher = models.ForeignKey('Teacher', models.DO_NOTHING, db_column='teacher', unique=False)  # Field name made lowercase.
 
 
@@ -375,8 +375,8 @@ class User(AbstractBaseUser):
         max_length=255,
         unique=True,
     )
-    active = models.BooleanField(default=True)
-    staff = models.BooleanField(default=False) # a admin user; non super-user
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False) # a admin user; non super-user
     admin = models.BooleanField(default=False) # a superuser
     # notice the absence of a "Password field", that is built in.
 
@@ -409,7 +409,7 @@ class User(AbstractBaseUser):
         # Simplest possible answer: Yes, always
         return True
 
-    @property
+    '''@property
     def is_staff(self):
         "Is the user a member of staff?"
         return self.staff
@@ -422,7 +422,7 @@ class User(AbstractBaseUser):
     @property
     def is_active(self):
         "Is the user active?"
-        return self.active
+        return self.active'''
 
     class Meta:
         managed = False

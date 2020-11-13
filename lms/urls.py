@@ -1,3 +1,4 @@
+from lms.views import change_password
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
@@ -18,6 +19,7 @@ urlpatterns = [
     path('files/<str:file_path>', views.view_file, name='view_file'),
     path('<obj_id>/delete/', views.delete_obj, name='delete_obj'),
     path('<obj_id>/modify/', views.modify_obj, name='modify_obj'),
-    path('users/<int:user_id>', views.user_profile, name='user_profile')
+    path('users/<int:user_id>', views.user_profile, name='user_profile'),
+    path('db/', views.db_import, name='db_import'),
 ] + static('images/users', document_root=settings.USERS_IMAGE_DIR) \
   + static('images/courses', document_root=settings.COURSES_IMAGE_DIR)

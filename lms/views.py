@@ -1,10 +1,12 @@
+from django.contrib.auth.forms import PasswordChangeForm
+from django.core.checks import messages
 from django.http import HttpResponse, FileResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.template import loader
 from django.dispatch import receiver
 from django.apps import AppConfig as conf
 from django.db.models.signals import post_save
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, update_session_auth_hash
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 from datetime import datetime as dt
@@ -12,7 +14,7 @@ from datetime import datetime as dt
 from .forms import *
 from .models import *
 
-from eLearning.settings import ENROLLED_REDIRECT_URL, ENROLLED_INDEXES
+from eLearning.settings import ENROLLED_REDIRECT_URL
 
 import random
 
@@ -269,6 +271,7 @@ def modify_obj(request, obj_id):
         obj = Lecture.objects.get(id=obj_id)
         if obj is None:
             obj = Assignment.objects.get(id=obj_id)
+    obj_change_form = None
     if request.method == 'POST':
         if isinstance(obj, Unit):
             obj_change_form = UnitCreateForm(request.POST, instance=obj)
@@ -286,7 +289,7 @@ def modify_obj(request, obj_id):
             obj_change_form = LectureCreateForm(instance=obj)
         elif isinstance(obj, Assignment):
             obj_change_form = AssignmentCreateForm(instance=obj)
-    return render(request, 'courses/modify_comps.html', context={"obj_change_form":obj_change_form,})
+    return render(request, 'courses/modify_comps.html', context={"obj_change_form": obj_change_form, })
 
 def delete_obj(request, obj_id):
     obj = Unit.objects.get(id=obj_id)
@@ -349,3 +352,84 @@ def user_profile(request, user_id):
         this_student = None
         this_teacher = None
     return render(request, "lms/user_profile.html", context=context)
+
+
+@login_required(login_url='/lms/accounts/login/')
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request=request, user=user)
+            messages.Info(request, 'Your password was successfully updated!')
+            return redirect('/lms/')
+        else:
+            messages.Error(request, 'Please correct the error below!')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'registration/change_password.html', {'form': form, })
+
+
+def forgot_password(request):
+    pass
+
+
+def db_import(request):
+    with open('lms/data/courses.txt', 'r') as f:
+        courses = [course_txt[1:] for course_txt in f.read().split('}\n')]
+
+        for course in courses:
+            try:
+                description = course.split(",\n ")[0].split("': '")[1][:-1].replace("'", '').replace('\n', ' ').strip()
+                while '  ' in description:
+                    description = description.replace('  ', ' ')
+                name = course.split(",\n ")[1].split("': '")[1][:-1].replace("'", '').replace('\n', ' ').strip()
+                while '  ' in name:
+                    name = name.replace('  ', ' ')
+                publishdate = course.split(",\n ")[3].split("': '")[1][:-1].replace("'", '').replace('\n', ' ').strip().split()
+                # 16th Nov, 2020
+                publishdate_day = publishdate[0][:-2]
+                publishdate_month = publishdate[1][:-1]
+                if publishdate_month == 'Jan':
+                    publishdate_month = 1
+                elif publishdate_month == 'Feb':
+                    publishdate_month = 2
+                elif publishdate_month == 'Mar':
+                    publishdate_month = 3
+                elif publishdate_month == 'Apr':
+                    publishdate_month = 4
+                elif publishdate_month == 'May':
+                    publishdate_month = 5
+                elif publishdate_month == 'Jun':
+                    publishdate_month = 6
+                elif publishdate_month == 'Jul':
+                    publishdate_month = 7
+                elif publishdate_month == 'Aug':
+                    publishdate_month = 8
+                elif publishdate_month == 'Sep':
+                    publishdate_month = 9
+                elif publishdate_month == 'Oct':
+                    publishdate_month = 10
+                elif publishdate_month == 'Nov':
+                    publishdate_month = 11
+                elif publishdate_month == 'Dec':
+                    publishdate_month = 12
+                publishdate_year = publishdate[2]
+                publishdate = publishdate_year + '-' + str(publishdate_month) + '-' + publishdate_day
+                c = Course()
+                c.id = random.randint(5, 100000)
+                while len(Course.objects.filter(id=c.id)) > 0:
+                    c.id = random.randint(5, 100000)
+                c.name = name
+                c.description = description
+                c.publishdate = publishdate
+                c.price = 0
+                try:
+                    c.save()
+                    print('Saved')
+                except Exception as e:
+                    print(e)
+                    print('Save failed')
+            except Exception as e:
+                print(e)
+    return HttpResponse(request)
