@@ -24,6 +24,7 @@ class EDX(scrapy.Spider):
     
     def parse_base_url_with_page_count(self, response):
         courses_count_on_this_page = len(response.css('tr'))
+        print(courses_count_on_this_page)
         course_links = []
         for i in range(courses_count_on_this_page + 1):
             try:
@@ -32,6 +33,7 @@ class EDX(scrapy.Spider):
                     course_links.append(course_link)
             except Exception as e:
                 pass
+        print(course_links)
         for course_link in course_links:
             yield scrapy.Request(url=self.root_url + course_link, callback=self.parse_course)
 
@@ -51,5 +53,7 @@ class EDX(scrapy.Spider):
         except:
             course['description'] = ''
 
-        f = open('../../../courses.txt', 'w+')
-        f.write(str(course))
+        print(course)
+
+        f = open('../courses.txt', 'a')
+        f.write(str(course)+'\n')

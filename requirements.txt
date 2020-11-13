@@ -41,8 +41,17 @@ w3lib               1.22.0
 wcwidth             0.2.5
 zope.interface      5.2.0
 
+
 REFERENCE LINKS:
 https://www.codingforentrepreneurs.com/blog/how-to-create-a-custom-django-user-model/
 https://docs.djangoproject.com/en/3.1/ref/models/instances/#django.db.models.Model.clean
 https://stackoverflow.com/questions/52286676/django-model-field-depend-on-the-value-of-another-field/52290778
 https://stackoverflow.com/questions/47182279/how-to-limit-choices-for-foreignkey-field-in-django-createview
+
+
+GIT REFERENCES:
+--- Get git committed online to sync with local changes
+git stash save
+git pull origin master
+git stash pop
+---

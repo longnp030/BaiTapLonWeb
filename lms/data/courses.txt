@@ -1,0 +1,547 @@
+{'description': 'This course aims to teach everyone the basics of programming '
+                'computers using Python. We cover the basics of how one '
+                'constructs a program from a series of simple instructions in '
+                'Python.  The course has no pre-requisites and avoids all but '
+                'the simplest mathematics. Anyone with moderate computer '
+                'experience should be able to master the materials in this '
+                'course. This course will cover Chapters 1-5 of the textbook '
+                '“Python for Everybody”.  Once a student completes this '
+                'course, they will be ready to take more advanced programming '
+                'courses. This course covers Python 3.',
+ 'name': 'Programming for Everybody (Getting Started with Python)',
+ 'price': 0,
+ 'publishdate': '16th Nov, 2020'}
+{'description': 'This course introduces a number of basic scientific '
+                'principles underpinning the methodology of cooking, food '
+                'preparation and the enjoyment of food. All topics covered '
+                'have a strong basis in biology, chemistry, and physics '
+                'application. Among others, they include the consumption of '
+                'cooked food, the physiological and evolutionary implication '
+                'of the senses, geographic and cultural influences on food, '
+                'and the rationale behind food preparation. We will also '
+                'discuss issues such as coupling of senses to improve sense '
+                'stimulation; altering flavor by chemical means; and '
+                'modification of the coloration to improve the appearance of '
+                'dishes. Following the video demonstrations of the scientific '
+                'principles of cooking, you will learn to recognize the key '
+                'ingredients and their combinations for preparing good healthy '
+                'food. At the end of this course, you will be able to:',
+ 'name': 'The Science of Gastronomy',
+ 'price': 0,
+ 'publishdate': '29th Dec, 2020'}
+{'description': 'Everywhere, every day, everybody uses language. There is no '
+                'human society, no matter how small or how isolated, which '
+                'does not employ a language that is rich and diverse. This '
+                'course introduces you to linguistics, featuring interviews '
+                'with well-known linguists and with speakers of many different '
+                'languages. Join us to explore the miracles of human language!',
+ 'name': 'Miracles of Human Language: An Introduction to Linguistics',
+ 'price': 0,
+ 'publishdate': '16th Nov, 2020'}
+{'description': 'Functional programming is becoming increasingly widespread in '
+                'industry. This trend is driven by the adoption of Scala as '
+                'the main programming language for many applications. Scala '
+                'fuses functional and object-oriented programming in a '
+                'practical package. It interoperates seamlessly with both Java '
+                'and Javascript. Scala is the implementation language of many '
+                'important frameworks, including Apache Spark, Kafka, and '
+                'Akka. It provides the core infrastructure for sites such as '
+                'Twitter, Tumblr and also Coursera.',
+ 'name': 'Functional Programming Principles in Scala',
+ 'price': 0,
+ 'publishdate': '16th Nov, 2020'}
+{'description': 'One way or another, all employees are managed. But approaches '
+                'to managing employees varying from employee-to-employee, '
+                'job-to-job, manager-to-manager, organization-to-organization, '
+                'and country-to-country. This course provides a foundation for '
+                'developing your own approach to skillfully managing employees '
+                'by illustrating alternative human resource management (HRM) '
+                'strategies, introducing the importance of the legal context, '
+                'and thinking about what motivates employees. This will then '
+                'give you the factual and conceptual basis for developing '
+                'specific, critical HRM skills in subsequent courses on hiring '
+                'employees, managing performance, and rewarding employees. '
+                "Don't know anything about HRM? That's OK! Leave this course "
+                'with a new-found understanding of the range of options '
+                'available for managing employees, a grasp of what makes '
+                'workers tick, and the readiness to develop your own HRM '
+                'skills.',
+ 'name': 'Preparing to Manage Human Resources',
+ 'price': 0,
+ 'publishdate': '9th Nov, 2020'}
+{'description': '',
+ 'name': 'Wharton School of the University of Pennsylvania Courses',
+ 'price': 0,
+ 'publishdate': ''}
+{'description': 'The primary topics in this part of the specialization are: '
+                'asymptotic ("Big-oh") notation, sorting and searching, divide '
+                'and conquer (master method, integer and matrix '
+                'multiplication, closest pair), and randomized algorithms '
+                '(QuickSort, contraction algorithm for min cuts).',
+ 'name': 'Divide and Conquer, Sorting and Searching, and Randomized Algorithms',
+ 'price': 0,
+ 'publishdate': '16th Nov, 2020'}
+{'description': 'Course Overview:  https://youtu.be/g-pt2Q4UhT4',
+ 'name': 'Green Business Strategy',
+ 'price': 0,
+ 'publishdate': '16th Nov, 2020'}
+{'description': 'Protecting Business Innovations via Patent',
+ 'name': 'Protecting Business Innovations via Patent',
+ 'price': 0,
+ 'publishdate': '9th Nov, 2020'}
+{'description': 'Information systems (IS) are important assets to business '
+                'organizations and are ubiquitous in our daily lives.',
+ 'name': 'Information Systems Auditing, Controls and Assurance',
+ 'price': 0,
+ 'publishdate': '9th Nov, 2020'}
+{'description': 'We cover both basic theory and applications. In the first '
+                'week we learn about scalar and vector fields, in the second '
+                'week about differentiating fields, in the third week about '
+                'integrating fields.  The fourth week covers the fundamental '
+                'theorems of vector calculus, including the gradient theorem, '
+                'the divergence theorem and Stokes’ theorem.  These theorems '
+                'are needed in core engineering subjects such as '
+                'Electromagnetism and Fluid Mechanics.',
+ 'name': 'Vector Calculus for Engineers',
+ 'price': 0,
+ 'publishdate': '9th Nov, 2020'}
+{'description': 'Dino 101: Dinosaur Paleobiology is a 12-lesson course '
+                'teaching a comprehensive overview of non-avian dinosaurs. '
+                'Topics covered: anatomy, eating, locomotion, growth, '
+                'environmental and behavioral adaptations, origins and '
+                'extinction. Lessons are delivered from museums, '
+                'fossil-preparation labs and dig sites. Estimated workload: '
+                '3-5 hrs/week.',
+ 'name': 'Dino 101: Dinosaur Paleobiology',
+ 'price': 0,
+ 'publishdate': '21st Nov, 2020'}
+{'description': '¿Quieres conocer tus recursos y niveles de desempeño '
+                'relacionadas con tu proceso de aprender? ¿Te interesa '
+                'desarrollar habilidades para aprender más y mejor?',
+ 'name': 'Aprender',
+ 'price': 0,
+ 'publishdate': '30th Nov, 2020'}
+{'description': 'Mumbling, stumbling, worrying, trembling, sweating and '
+                'fearing are the outcomes of the low delivery skills.',
+ 'name': 'Presentation skills:  Effective Presentation Delivery',
+ 'price': 0,
+ 'publishdate': '23rd Nov, 2020'}
+{'description': 'Behind every mouse click and touch-screen tap, there is a '
+                'computer program that makes things happen. This course '
+                'introduces the fundamental building blocks of programming and '
+                'teaches you how to write fun and useful programs using the '
+                'Python language.',
+ 'name': 'Learn to Program: The Fundamentals',
+ 'price': 0,
+ 'publishdate': '16th Nov, 2020'}
+{'description': 'Gamification is the application of game elements and digital '
+                'game design techniques to non-game problems, such as business '
+                'and social impact challenges. This course will teach you the '
+                'mechanisms of gamification, why it has such tremendous '
+                'potential, and how to use it effectively. For additional '
+                'information on the concepts described in the course, you can '
+                "purchase Professor Werbach's book For the Win: How Game "
+                'Thinking Can Revolutionize Your Business in print or ebook '
+                'format in several languages.',
+ 'name': 'Gamification',
+ 'price': 0,
+ 'publishdate': '30th Nov, 2020'}
+{'description': '',
+ 'name': 'University of California, San Diego  Courses',
+ 'price': 0,
+ 'publishdate': ''}
+{'description': 'Ever wonder why people do what they do? This course—which '
+                'includes more than $1,000 of video and reading '
+                'materials—offers some answers based on the latest research '
+                'from social psychology. Students taking the course for a '
+                'Certificate will also receive free membership in Social '
+                'Psychology Network (SocialPsychology.org).',
+ 'name': 'Social Psychology',
+ 'price': 0,
+ 'publishdate': '22nd Oct, 2020'}
+{'description': 'Did you ever want to build a web application?  Perhaps you '
+                'even started down that path in a language like Java or C#, '
+                'when you realized that there was so much “climbing the '
+                'mountain” that you had to do? Maybe you have heard about web '
+                'services being all the rage, but thought they were too '
+                'complicated to integrate into your web application. Or maybe '
+                'you wondered how deploying web applications to the cloud '
+                'works, but there was too much to set up just to get going.',
+ 'name': 'Ruby on Rails: An Introduction',
+ 'price': 0,
+ 'publishdate': '16th Nov, 2020'}
+{'description': 'Cryptography is an indispensable tool for protecting '
+                'information in computer systems. In this course you will '
+                'learn the inner workings of cryptographic systems and how to '
+                'correctly use them in real-world applications. The course '
+                'begins with a detailed discussion of how two parties who have '
+                'a shared secret key can communicate securely when a powerful '
+                'adversary eavesdrops and tampers with traffic. We will '
+                'examine many deployed protocols and analyze mistakes in '
+                'existing systems. The second half of the course discusses '
+                'public-key techniques that let two parties generate a shared '
+                'secret key. Throughout the course participants will be '
+                'exposed to many exciting open problems in the field and work '
+                'on fun (optional) programming projects. In a second course '
+                '(Crypto II) we will cover more advanced cryptographic tasks '
+                'such as zero-knowledge, privacy mechanisms, and other forms '
+                'of encryption.',
+ 'name': 'Cryptography I',
+ 'price': 0,
+ 'publishdate': '23rd Nov, 2020'}
+{'description': 'For more information please view the Computational Social '
+                'Science Trailer\n'
+                '\n'
+                'Digital technology has not only revolutionized society, but '
+                'also the way we can study it. Currently, this is taken '
+                'advantage of by the most valuable companies in Silicon '
+                'Valley, the most powerful governmental agencies, and the most '
+                'influential social movements. What they have in common is '
+                'that they use computational tools to understand, and '
+                'ultimately influence human behavior and social dynamics.\n'
+                '\n'
+                'An increasing part of human interaction leaves a massive '
+                'digital footprint behind. Studying it allows us to gain '
+                'unprecedented insights into what society is and how it works, '
+                'including its intricate social networks that had long been '
+                'obscure. Computational power allows us to detect hidden '
+                'patterns through analytical tools like machine learning and '
+                'to natural language processing. Finally, computer simulations '
+                'enable us to explore hypothetical situations that may not '
+                'even exist in reality, but that we would like to exist: a '
+                'better world.\n'
+                '\n'
+                'This specialization serves as a multidisciplinary, '
+                'multi-perspective, and multi-method guide on how to better '
+                'understand society and human behavior with modern research '
+                'tools. This specialization gives you easy access to some of '
+                'the exciting new possibilities of how to study society and '
+                'human behavior. It is the first online specialization '
+                'collectively taught by Professors from all 10 University of '
+                'California campuses.',
+ 'name': 'Computational Social Science',
+ 'price': 0,
+ 'publishdate': 'Class Central Sort'}
+{'description': 'Course Overview: https://youtu.be/LLVb4FOn4uU',
+ 'name': 'Introduction to Indoor Air Quality',
+ 'price': 0,
+ 'publishdate': '23rd Nov, 2020'}
+{'description': 'This course explores the topic of solid objects subjected to '
+                'stress and strain. The methods taught in the course are used '
+                'to predict the response of engineering structures to various '
+                'types of loading, and to analyze the vulnerability of these '
+                'structures to various failure modes. Axial loading with be '
+                'the focus in this course.',
+ 'name': 'Mechanics of Materials I: Fundamentals of Stress & Strain and Axial '
+         'Loading',
+ 'price': 0,
+ 'publishdate': '16th Nov, 2020'}
+{'description': 'This course covers the essential information that every '
+                'serious programmer needs to know about algorithms and data '
+                'structures, with emphasis on applications and scientific '
+                'performance analysis of Java implementations. Part I covers '
+                'elementary data structures, sorting, and searching '
+                'algorithms. Part II focuses on graph- and string-processing '
+                'algorithms.',
+ 'name': 'Algorithms, Part I',
+ 'price': 0,
+ 'publishdate': '23rd Nov, 2020'}
+{'description': 'Interest in meditation, mindfulness, and contemplation has '
+                'grown exponentially in recent years.  Rather than being seen '
+                'as mystical practices from ancient Buddhism or esoteric '
+                'philosophy, they are increasingly seen as technologies rooted '
+                'in evidence from psychology and neuroscience.  Mindfulness '
+                'has become the basis for numerous therapeutic interventions, '
+                'both as a treatment in healthcare and as a means of enhancing '
+                'well-being and happiness.  For millions around the world, '
+                'mindfulness has become a life-style choice, enhancing and '
+                'enriching everyday experience. Mindfulness is big business.',
+ 'name': 'De-Mystifying Mindfulness',
+ 'price': 0,
+ 'publishdate': '9th Nov, 2020'}
+{'description': 'In this course you will get an introduction to the main tools '
+                "and ideas in the data scientist's toolbox. The course gives "
+                'an overview of the data, questions, and tools that data '
+                'analysts and data scientists work with. There are two '
+                'components to this course. The first is a conceptual '
+                'introduction to the ideas behind turning data into actionable '
+                'knowledge. The second is a practical introduction to the '
+                'tools that will be used in the program like version control, '
+                'markdown, git, GitHub, R, and RStudio.',
+ 'name': 'The Data Scientist’s Toolbox',
+ 'price': 0,
+ 'publishdate': '9th Nov, 2020'}
+{'description': 'Course Overview: https://youtu.be/JgFV5qzAYno',
+ 'name': 'Python and Statistics for Financial Analysis',
+ 'price': 0,
+ 'publishdate': '9th Nov, 2020'}
+{'description': 'Learn the mathematics behind the Fibonacci numbers, the '
+                'golden ratio, and how they are related. These topics are not '
+                'usually taught in a typical math curriculum, yet contain many '
+                'fascinating results that are still accessible to an advanced '
+                'high school student.',
+ 'name': 'Fibonacci Numbers and the Golden Ratio',
+ 'price': 0,
+ 'publishdate': '30th Nov, 2020'}
+{'description': 'ModPo is a fast-paced introduction to modern and contemporary '
+                'U.S. poetry, with an emphasis on experimental verse, from '
+                'Emily Dickinson and Walt Whitman to the present. Participants '
+                '(who need no prior experience with poetry) will learn how to '
+                'read poems that are supposedly "difficult." We encounter and '
+                "discuss the poems one at a time. It's much easier than it "
+                'seems! Join us and try it!',
+ 'name': 'Modern & Contemporary American Poetry (“ModPo”)',
+ 'price': 0,
+ 'publishdate': '10th Sep, 2016'}
+{'description': 'This course is an introduction to learning and applying the '
+                'principles required to solve engineering mechanics '
+                'problems.   Concepts will be applied in this course from '
+                'previous courses you have taken in basic math and physics.  '
+                'The course addresses the modeling and analysis of static '
+                'equilibrium problems with an emphasis on real world '
+                'engineering applications and problem solving.',
+ 'name': 'Introduction to Engineering Mechanics',
+ 'price': 0,
+ 'publishdate': '23rd Nov, 2020'}
+{'description': 'This course is about differential equations and covers '
+                'material that all engineers should know.   Both basic theory '
+                'and applications are taught.  In the first five weeks we will '
+                'learn about ordinary differential equations, and in the final '
+                'week, partial differential equations.',
+ 'name': 'Differential Equations for Engineers',
+ 'price': 0,
+ 'publishdate': '16th Nov, 2020'}
+{'description': 'This course teaches computer programming to those with little '
+                'to no previous experience. It uses the programming system and '
+                'language called MATLAB to do so because it is easy to learn, '
+                'versatile and very useful for engineers and other '
+                'professionals. MATLAB is a special-purpose language that is '
+                'an excellent choice for writing moderate-size programs that '
+                'solve problems involving the manipulation of numbers. The '
+                'design of the language makes it possible to write a powerful '
+                'program in a few lines. The problems may be relatively '
+                'complex, while the MATLAB programs that solve them are '
+                'relatively simple: relative, that is, to the equivalent '
+                'program written in a general-purpose language, such as C++ or '
+                'Java. As a result, MATLAB is being used in a wide variety of '
+                'domains from the natural sciences, through all disciplines of '
+                'engineering, to finance, and beyond, and it is heavily used '
+                'in industry. Hence, a solid background in MATLAB is an '
+                'indispensable skill in today’s job market.',
+ 'name': 'Introduction to Programming with MATLAB',
+ 'price': 0,
+ 'publishdate': '16th Nov, 2020'}
+{'description': 'This course examines how digital tools, such as the Internet, '
+                'smartphones, and 3D printing, are revolutionizing the world '
+                'of marketing by changing the roles and practices of both '
+                'firms and consumers. Marketing in a Digital World is one of '
+                'the most popular courses on Coursera with over 250,000 '
+                'Learners and is rated by Class Central as one of the Top 50 '
+                'MOOCs of All Time '
+                '(https://www.class-central.com/report/top-moocs/).',
+ 'name': 'Marketing in a Digital World',
+ 'price': 0,
+ 'publishdate': '11th Nov, 2020'}
+{'description': 'This course is all about matrices, and concisely covers the '
+                'linear algebra that an engineer should know.   The '
+                'mathematics in this course is presented at the level of an '
+                'advanced high school student, but typically students should '
+                'take this course after completing a university-level single '
+                'variable calculus course.  There are no derivatives or '
+                'integrals in this course, but students are expected to have '
+                'attained a sufficient level of mathematical maturity.  '
+                'Nevertheless, anyone who wants to learn the basics of matrix '
+                'algebra is welcome to join.',
+ 'name': 'Matrix Algebra for Engineers',
+ 'price': 0,
+ 'publishdate': '16th Nov, 2020'}
+{'description': 'In this course you will learn how to program in R and how to '
+                'use R for effective data analysis. You will learn how to '
+                'install and configure software necessary for a statistical '
+                'programming environment and describe generic programming '
+                'language concepts as they are implemented in a high-level '
+                'statistical language. The course covers practical issues in '
+                'statistical computing which includes programming in R, '
+                'reading data into R, accessing R packages, writing R '
+                'functions, debugging, profiling R code, and organizing and '
+                'commenting R code. Topics in statistical data analysis will '
+                'provide working examples.',
+ 'name': 'R Programming',
+ 'price': 0,
+ 'publishdate': '9th Nov, 2020'}
+{'description': '“99% presentations suck!”, — said Apple former evangelist Guy '
+                'Kawasaki in 2005. Up to now the situation hasn’t improved '
+                'yet. Why?',
+ 'name': 'Presentation skills: Speechwriting and Storytelling',
+ 'price': 0,
+ 'publishdate': '23rd Nov, 2020'}
+{'description': 'Mountains 101\xad\xad is a broad and integrated overview of '
+                'the mountain world. This 12-lesson course covers an '
+                'interdisciplinary field of study focusing on the physical, '
+                'biological, and human dimensions of mountain places in '
+                "Alberta, Canada, and around the world. Specifically, we'll "
+                'study the geological origins of mountains, how they’re '
+                'built-up and worn-down over time; we’ll learn about their '
+                'importance for biodiversity and water cycles, globally and '
+                'locally; we’ll explore their cultural significance to '
+                'societies around the globe, and how that relationship has '
+                'evolved over time; and we’ll learn how mountains are used, '
+                'how they’re protected, and how today they’re experiencing '
+                'rapid change in a warming climate.',
+ 'name': 'Mountains 101',
+ 'price': 0,
+ 'publishdate': '9th Nov, 2020'}
+{'description': 'What are the determinants of a happy and fulfilling life?',
+ 'name': 'A Life of Happiness and Fulfillment',
+ 'price': 0,
+ 'publishdate': '16th Nov, 2020'}
+{'description': 'Machine learning is the science of getting computers to act '
+                'without being explicitly programmed. In the past decade, '
+                'machine learning has given us self-driving cars, practical '
+                'speech recognition, effective web search, and a vastly '
+                'improved understanding of the human genome. Machine learning '
+                'is so pervasive today that you probably use it dozens of '
+                'times a day without knowing it. Many researchers also think '
+                'it is the best way to make progress towards human-level AI. '
+                'In this class, you will learn about the most effective '
+                'machine learning techniques, and gain practice implementing '
+                'them and getting them to work for yourself. More importantly, '
+                "you'll learn about not only the theoretical underpinnings of "
+                'learning, but also gain the practical know-how needed to '
+                'quickly and powerfully apply these techniques to new '
+                "problems. Finally, you'll learn about some of Silicon "
+                "Valley's best practices in innovation as it pertains to "
+                'machine learning and AI.',
+ 'name': 'Machine Learning',
+ 'price': 0,
+ 'publishdate': '9th Nov, 2020'}
+{'description': '“Powerpoint slides are like children: no matter how ugly they '
+                'are, you’ll think they’re beautiful if they’re yours” — Scott '
+                'Adams, author of the comic strip “Dilbert”.  Due to this '
+                'cause or another, it’s a huge stress to look at most '
+                'Powerpoint slides. Depending on the “design” skills of the '
+                'speaker and audience’s taste slides create different emotions '
+                'from a slight annoyance to physical sickness.',
+ 'name': 'Presentation skills: Designing Presentation Slides',
+ 'price': 0,
+ 'publishdate': '9th Nov, 2020'}
+{'description': 'If you’ve ever skipped over`the results section of a medical '
+                'paper because terms like “confidence interval” or “p-value” '
+                'go over your head, then you’re in the right place. You may be '
+                'a clinical practitioner reading research articles to keep '
+                'up-to-date with developments in your field or a medical '
+                'student wondering how to approach your own research. Greater '
+                'confidence in understanding statistical analysis and the '
+                'results can benefit both working professionals and those '
+                'undertaking research themselves.',
+ 'name': 'Understanding Clinical Research: Behind the Statistics',
+ 'price': 0,
+ 'publishdate': '30th Nov, 2020'}
+{'description': 'Based on the most popular open online course in the world, '
+                'this course gives you easy access to the learning techniques '
+                'used by experts in art, music, literature, math, science, '
+                'sports, and many other disciplines. No matter what your '
+                'current skill level, using these approaches can help you '
+                'master new topics, change your thinking and improve your '
+                'life.',
+ 'name': 'Learning How To Learn for Youth',
+ 'price': 0,
+ 'publishdate': '27th Nov, 2020'}
+{'description': 'This Specialization builds on the success of the Python for '
+                'Everybody course and will introduce fundamental programming '
+                'concepts including data structures, networked application '
+                'program interfaces, and databases, using the Python '
+                'programming language. In the Capstone Project, you’ll use the '
+                'technologies learned throughout the Specialization to design '
+                'and create your own applications for data retrieval, '
+                'processing, and visualization.',
+ 'name': 'Python for Everybody',
+ 'price': 0,
+ 'publishdate': 'Class Central Sort'}
+{'description': 'This course will show how one can treat the Internet as a '
+                'source of data.  We will scrape, parse, and read web data as '
+                'well as access data using web APIs.  We will work with HTML, '
+                'XML, and JSON data formats in Python.  This course will cover '
+                'Chapters 11-13 of the textbook “Python for Everybody”. To '
+                'succeed in this course, you should be familiar with the '
+                'material covered in Chapters 1-10 of the textbook and the '
+                'first two courses in this specialization.  These topics '
+                'include variables and expressions, conditional execution '
+                '(loops, branching, and try/except), functions, Python data '
+                'structures (strings, lists, dictionaries, and tuples), and '
+                'manipulating files.  This course covers Python 3.',
+ 'name': 'Using Python to Access Web Data',
+ 'price': 0,
+ 'publishdate': '16th Nov, 2020'}
+{'description': 'This two-part course is designed to help students with very '
+                'little or no computing background learn the basics of '
+                'building simple interactive applications. Our language of '
+                'choice, Python, is an easy-to learn, high-level computer '
+                'language that is used in many of the computational courses '
+                'offered on Coursera. To make learning Python easy, we have '
+                'developed a new browser-based programming environment that '
+                'makes developing interactive applications in Python simple. '
+                'These applications will involve windows whose contents are '
+                'graphical and respond to buttons, the keyboard and the mouse.',
+ 'name': 'An Introduction to Interactive Programming in Python (Part 1)',
+ 'price': 0,
+ 'publishdate': '9th Nov, 2020'}
+{'description': 'This course gives you easy access to the invaluable learning '
+                'techniques used by experts in art, music, literature, math, '
+                'science, sports, and many other disciplines. We’ll learn '
+                'about the how the brain uses two very different learning '
+                'modes and how it encapsulates (“chunks”) information. We’ll '
+                'also cover illusions of learning, memory techniques, dealing '
+                'with procrastination, and best practices shown by research to '
+                'be most effective in helping you master tough subjects.',
+ 'name': 'Learning How to Learn: Powerful mental tools to help you master '
+         'tough subjects',
+ 'price': 0,
+ 'publishdate': '9th Nov, 2020'}
+{'description': 'This course will introduce students to the basics of the '
+                'Structured Query Language (SQL) as well as basic database '
+                'design for storing data as part of a multi-step data '
+                'gathering, analysis, and processing effort.  The course will '
+                'use SQLite3 as its database.  We will also build web crawlers '
+                'and multi-step data gathering and visualization processes.  '
+                'We will use the D3.js library to do basic data '
+                'visualization.  This course will cover Chapters 14-15 of the '
+                'book “Python for Everybody”. To succeed in this course, you '
+                'should be familiar with the material covered in Chapters 1-13 '
+                'of the textbook and the first three courses in this '
+                'specialization. This course covers Python 3.',
+ 'name': 'Using Databases with Python',
+ 'price': 0,
+ 'publishdate': '16th Nov, 2020'}
+{'description': 'Data structures play a crucial role in application '
+                'development. The proper selection of data structures is '
+                'important for efficient algorithm development. The '
+                'availability of a list, for example, greatly simplifies '
+                'sorting a collection of data items.  It would be difficult to '
+                'do this without that data structure, as you will see. This is '
+                'why Programming languages like Python have certain '
+                'fundamental data structures built into the language.',
+ 'name': 'Python Data Structures',
+ 'price': 0,
+ 'publishdate': '16th Nov, 2020'}
+{'description': 'Mindshift is designed to help boost your career and life in '
+                'today’s fast-paced learning environment. Whatever your age or '
+                'stage, Mindshift teaches you essentials such as how to get '
+                'the most out of online learning and MOOCs, how to seek out '
+                'and work with mentors, the secrets to avoiding career ruts '
+                '(and catastrophes) and general ruts in life, and insights '
+                'such as the value of selective ignorance over general '
+                'competence.  We’ll provide practical insights from science '
+                'about how to learn and change effectively even in maturity, '
+                'and we’ll build on what you already know to take your life’s '
+                'learning in fantastic new directions.  This course is '
+                'designed to show you how to look at what you’re learning, and '
+                'your place in what’s unfolding in the society around you, so '
+                'you can be what you want to be, given the real world '
+                'constraints that life puts on us all. You’ll see that by '
+                'using certain mental tools and insights, you can learn and do '
+                'more—far more—than you might have ever dreamed!',
+ 'name': 'Mindshift: Break Through Obstacles to Learning and Discover Your '
+         'Hidden Potential',
+ 'price': 0,
+ 'publishdate': '16th Nov, 2020'}
