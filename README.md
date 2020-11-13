@@ -32,6 +32,12 @@
 [***/registration/***](https://github.com/longnp030/BaiTapLonWeb/tree/master/lms/templates/registration) : thư mục chứa HTML liên quan đến đăng ký\
 &nbsp;&nbsp;&nbsp;&nbsp;[***login.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/registration/login.html) : trang đăng nhập\
 &nbsp;&nbsp;&nbsp;&nbsp;[***register.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/registration/register.html) : trang đăng ký\
-&nbsp;&nbsp;&nbsp;&nbsp;[***teacher_register.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/registration/teacher_register.html) : trang đăng ký với tư cách giáo viên
+&nbsp;&nbsp;&nbsp;&nbsp;[***teacher_register.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/registration/teacher_register.html) : trang đăng ký với tư cách giáo viên\
+&nbsp;&nbsp;&nbsp;&nbsp;[***password_change_form.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/registration/password_change_form.html): trang đổi mật khẩu\
+&nbsp;&nbsp;&nbsp;&nbsp;[***password_change_done.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/registration/password_change_done.html): trang thông báo đổi mật khẩu thành công\
+&nbsp;&nbsp;&nbsp;&nbsp;[***password_reset_form.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/registration/password_reset_form.html): trang đặt lại mật khẩu\
+&nbsp;&nbsp;&nbsp;&nbsp;[***password_reset_done.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/registration/password_reset_done.html): trang thông báo đã gửi email xác nhận đặt lại mật khẩu\
+&nbsp;&nbsp;&nbsp;&nbsp;[***password_reset_confirm.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/registration/password_reset_confirm.html): trang điền mật khẩu mới\
+&nbsp;&nbsp;&nbsp;&nbsp;[***password_reset_complete.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/registration/password_reset_complete.html): trang thông báo đặt lại mật khẩu thành công
 
 ## Thư mục chứa file CSS : [*lms/static/lms/style.css*](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/static/lms/style.css)
