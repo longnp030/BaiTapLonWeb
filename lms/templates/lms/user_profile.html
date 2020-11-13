@@ -4,18 +4,23 @@
     <div class="course-detail">
 
         {% if this_student %}
-            <h1>Student Infomation</h1>
+            <h1>Student Information</h1>
             <p>{{ this_student.name }}</p>
             <p>{{ this_student.email }}</p>
             <p>{{ this_student.joindate }}</p>
         {% elif this_teacher %}
-            <h1>Teacher Infomation</h1>
+            <h1>Teacher Information</h1>
             <p>{{ this_teacher.name }}</p>
             <p>{{ this_teacher.email }}</p>
             <p>{{ this_teacher.joindate }}</p>
         {% else %}
             <p>Please update your information!</p>
-        {% endif %} 
+        {% endif %}
+
+        {% if this_user %}
+            <h2>Edit Profile</h2>
+            <div><a href="{% url 'change_password' %}">Change password</a></div>
+        {% endif %}
     </div>
 </body>
 {% endblock %}

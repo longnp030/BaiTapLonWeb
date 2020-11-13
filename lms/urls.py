@@ -3,12 +3,15 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView
+from django.views.generic import TemplateView
 
 from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/change_password/', views.change_password, name='change_password'),
+    path('accounts/change_password_done/', views.change_password_done, name='change_password_done'),
     path('accounts/login/', LoginView.as_view(redirect_authenticated_user=True), name='login'),
     path('accounts/register/', views.register, name='register'),
     path('accounts/register-as-teacher/', views.teacher_register, name='teacher_register'),

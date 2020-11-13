@@ -356,18 +356,40 @@ def user_profile(request, user_id):
 
 @login_required(login_url='/lms/accounts/login/')
 def change_password(request):
+    this_student = get_student(request)
+    this_teacher = get_teacher(request)
+    this_user = None
+    if this_student is not None and this_teacher is None:
+        this_user = this_student
+    elif this_student is None and this_teacher is not None:
+        this_user = this_teacher
+    
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request=request, user=user)
             messages.Info(request, 'Your password was successfully updated!')
-            return redirect('/lms/')
+            return redirect('change_password_done')
         else:
             messages.Error(request, 'Please correct the error below!')
     else:
         form = PasswordChangeForm(request.user)
-    return render(request, 'registration/change_password.html', {'form': form, })
+
+    context = {"form": form, "this_user": this_user, }
+    return render(request, 'registration/password_change_form.html', context)
+
+
+def change_password_done(request):
+    this_student = get_student(request)
+    this_teacher = get_teacher(request)
+    this_user = None
+    if this_student is not None and this_teacher is None:
+        this_user = this_student
+    elif this_student is None and this_teacher is not None:
+        this_user = this_teacher
+    context = {'this_user': this_user, }
+    return render(request, 'registration/change_password_done.html', context)
 
 
 def forgot_password(request):

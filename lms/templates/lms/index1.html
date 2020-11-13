@@ -32,14 +32,14 @@
                         <span>
                             <button id="rgt-button">
                                 <a id="rgt-button-inside" class="nav-item" href="{% url 'register' %}">
-                                    Đăng ký</a>
+                                    Register</a>
                             </button>
                         </span>
                         
                         <span>
                             <button id="auth-button">
                                 <a id="auth-button-inside" class="nav-item" href="{% url 'login' %}">
-                                    Đăng nhập</a>
+                                    Login</a>
                             </button>
                         </span>
                     </div>
@@ -50,21 +50,21 @@
         <div class="wrap-body">
             <div class="dashboard">
                 {% block content %}
-                        {% if user.is_authenticated %}
-                            Chào mừng, {{ user.email }}!
-                            <!--<p><a href="{% url 'logout' %}">Đăng xuất</a></p>-->
-                            {% if latest_course_list %}
-                                <ul>
-                                    {% for course in latest_course_list %}
-                                        <li><a href="courses/{{ course.id }}/">{{ course.name }}</a></li>
-                                    {% endfor %}
-                                </ul>
-                            {% endif %}
-                        {% else %}
-                            <p>Bạn chưa đăng nhập.</p>
-                            <!--<a href="{% url 'login' %}">Đăng nhập</a>-->
+                    {% if user.is_authenticated %}
+                        Welcome, {{ user.email }}!
+                        <!--<p><a href="{% url 'logout' %}">Đăng xuất</a></p>-->
+                        {% if latest_course_list %}
+                            <ul>
+                                {% for course in latest_course_list %}
+                                    <li><a href="courses/{{ course.id }}/">{{ course.name }}</a></li>
+                                {% endfor %}
+                            </ul>
                         {% endif %}
-                    {% endblock %}
+                    {% else %}
+                        <p>You are not logged in.</p>
+                        <!--<a href="{% url 'login' %}">Đăng nhập</a>-->
+                    {% endif %}
+                {% endblock %}
             </div>
         </div>
     </body>
