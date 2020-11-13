@@ -377,7 +377,7 @@ def change_password(request):
         form = PasswordChangeForm(request.user)
 
     context = {"form": form, "this_user": this_user, }
-    return render(request, 'registration/password_change_form.html', context)
+    return render(request, 'registration/change_password.html', context)
 
 
 def change_password_done(request):
