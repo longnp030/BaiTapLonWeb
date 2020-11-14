@@ -114,7 +114,7 @@
                     <h2>Classmates:</h2>
                     {% for classmate in detail.classmates %}
                         {% if classmate != this_user %}
-                        <a href="{% url 'user_profile' classmate.id %}">{{ classmate.name }}</a>
+                            <a href="{% url 'user_profile' classmate.id %}">{{ classmate.name }}</a>
                         {% endif %}
                     {% endfor %}
                 </div>
