@@ -4,7 +4,7 @@
     <div class="course-detail">
 
         {% if this_student %}
-            <h1>Student Information</h1>
+            <h1 id="student-info-header-txt">Student Information</h1>
             <p>{{ this_student.name }}</p>
             <p>{{ this_student.email }}</p>
             <p>{{ this_student.joindate }}</p>
@@ -17,9 +17,13 @@
             <p>Please update your information!</p>
         {% endif %}
 
-        {% if this_user %}
+        {% if this_user == this_student or this_user == this_teacher %}
             <h2>Edit Profile</h2>
             <div><a href="{% url 'change_password' %}">Change password</a></div>
+            <script>
+                var info_text = document.getElementById("student-info-header-txt");
+                info_text.textContent = "My profile";
+            </script>
         {% endif %}
     </div>
 </body>

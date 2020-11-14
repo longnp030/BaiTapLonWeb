@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% extends '../lms/index1.html' %}
+        <meta charset="utf-8">
+        <title>{% block title %}Registered{% endblock %}</title>
+    </head>
+    <body>
+        {% block content %}
+            <p>
+                Your account has been created. You may go ahead and <a href="{% url 'login' %}">Log in</a> now.
+            </p>
+        {% endblock %}
+    </body>
+</html>

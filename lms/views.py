@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import PasswordChangeForm
 from django.core.checks import messages
+from django.core.mail import send_mail
 from django.http import HttpResponse, FileResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.template import loader
@@ -9,12 +10,12 @@ from django.db.models.signals import post_save
 from django.contrib.auth import get_user_model, update_session_auth_hash
 from django.contrib.auth.decorators import login_required, user_passes_test
 
-from datetime import datetime as dt
+import datetime as dt
 
 from .forms import *
 from .models import *
 
-from eLearning.settings import ENROLLED_REDIRECT_URL
+from eLearning.settings import ENROLLED_REDIRECT_URL, EMAIL_HOST_USER
 
 import random
 
@@ -66,11 +67,23 @@ def register(request):
             student.id = user.id
             student.name = student.name
             student.email = user.email
-            student.joindate = dt.now()
+            student.joindate = dt.datetime.now()
             student.useremail = user
             student.save()
 
-            return redirect('/lms/')
+            send_mail(
+                subject="Learning Management System Account Register",
+                message="Hi,\n"
+                        "Your account has been created.\n" +
+                        "Please read our policies and rules to participate joyfully in our learning community!\n\n" +
+                        "Sincerely,\n" +
+                        "Learning Management System",
+                from_email=EMAIL_HOST_USER,
+                recipient_list=[student.email, ],
+                fail_silently=False,
+            )
+
+            return redirect('register_done')
     else:
         user_form = RegisterForm()
         student_form = StudentForm()
@@ -95,11 +108,15 @@ def teacher_register(request):
             teacher.useremail = user
             teacher.save()
 
-            return redirect('/lms/')
+            return redirect('register_done')
     else:
         user_form = TeacherRegisterForm()
         teacher_form = TeacherForm()
     return render(request, 'registration/teacher_register.html', {"user_form": user_form, "teacher_form": teacher_form})    
+
+
+def register_done(request):
+    return render(request, 'registration/register_done.html', {})
 
 
 def is_teacher(user):
@@ -226,10 +243,11 @@ def course_overview(request, course_id):
         "course": course,
         "enrolled": enrolled,
         "this_user": this_user,
-        "lectures": course_detail(course_id) if enrolled else None,
+        "detail": course_detail(course_id) if enrolled else None,
         "lecture_form": lecture_form,
         "unit_form": unit_form,
         "can_modify_obj": can_modify_obj,
+        "teach": Teach.objects.filter(course=course.id)[0] if len(Teach.objects.filter(course=course.id)) > 0 else None,
     }
     return render(request, 'courses/course_overview.html', context=context)
 
@@ -263,7 +281,17 @@ def course_detail(course_id):
             "lecture": lecture,
             "units": Unit.objects.filter(lecture=lecture.id),
         })
-    return lectures
+    teach = Teach.objects.filter(course=this_course.id)
+    teacher = None
+    if len(teach) <= 0 :
+        teach = None
+    else:
+        teach = teach[0]
+        teacher = teach.teacher
+    this_course_enrollments = Enroll.objects.filter(course=this_course.id)
+    classmates = [this_course_enrollment.student for this_course_enrollment in this_course_enrollments]
+    detail = {"lectures": lectures, "teacher": teacher, "classmates": classmates, }
+    return detail
 
 def modify_obj(request, obj_id):
     obj = Unit.objects.get(id=obj_id)

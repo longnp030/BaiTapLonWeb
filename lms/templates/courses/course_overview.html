@@ -2,12 +2,16 @@
 {% block content %}
 <body>
     <div class="course-overview">
-        <h1>Overview</h1>
         {% if course %}
-            <p><h2>{{ course.name }}</h2></p>
-            <p>{{ course.teacherid.name }}</p>
-            <p>{{ course.description }}</p>
-            <p>{{ course.price }}</p>
+            <div id="if-enrolled">
+                <h1>Overview</h1>
+                <p><h2>{{ course.name }}</h2></p>
+                <p>{{ course.description }}</p>
+                <p>{{ course.price }}</p>
+                {% if teach %}
+                    <a href="{% url 'user_profile' teach.teacher.id %}">{{ teach.teacher.name }}</a>
+                {% endif %}
+            </div>
             {% if not enrolled %}
                 {% if user.is_authenticated %}  
                     <button>
@@ -15,15 +19,16 @@
                     </button>
                 {% else %}
                     <div>
-                        Please
-                        <a href="{% url 'login' %}">Login</a>
-                        or
-                        <a href="{% url 'register' %}">Register</a>
-                        to access this course.
+                        Please <a href="{% url 'login' %}">Login</a>
+                        or <a href="{% url 'register' %}">Register</a> to access this course.
                     </div>
-                {% endif %}
+                    {% endif %}
             {% else %}
                 {% include 'courses/course_detail.html' %}
+                <script>
+                    var div_overview = document.getElementById("if-enrolled");
+                    div_overview.style.display = "none";
+                </script>
             {% endif %}
         {% endif %}
     </div>
