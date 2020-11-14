@@ -106,7 +106,8 @@
             {% if detail.teacher %}
                 <div>
                     <h2>Teacher:</h2>
-                    <a href="{% url 'user_profile' detail.teacher.id %}">{{ detail.teacher.name }}</a></div>
+                    <a href="{% url 'user_profile' detail.teacher.id %}">{{ detail.teacher.name }}</a>
+                </div>
             {% endif %}
 
             {% if detail.classmates %}
