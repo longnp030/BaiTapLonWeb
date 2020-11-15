@@ -7,7 +7,7 @@ from django.template import loader
 from django.dispatch import receiver
 from django.apps import AppConfig as conf
 from django.db.models.signals import post_save
-from django.contrib.auth import get_user_model, update_session_auth_hash
+from django.contrib.auth import authenticate, get_user_model, update_session_auth_hash, login
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 import datetime as dt

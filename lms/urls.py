@@ -1,3 +1,4 @@
+import django
 from lms.views import change_password
 from django.urls import path, include
 from django.conf import settings
@@ -13,6 +14,7 @@ urlpatterns = [
     path('accounts/change_password/', views.change_password, name='change_password'),
     path('accounts/change_password_done/', views.change_password_done, name='change_password_done'),
     path('accounts/login/', LoginView.as_view(redirect_authenticated_user=True), name='login'),
+    #path('accounts/logon/', views.logon, name='logon'),
     path('accounts/register/', views.register, name='register'),
     path('accounts/register-as-teacher/', views.teacher_register, name='teacher_register'),
     path('accounts/register_done', views.register_done, name='register_done'),

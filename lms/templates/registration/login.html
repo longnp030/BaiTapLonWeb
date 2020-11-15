@@ -8,14 +8,31 @@
     <body>
         {% block content %}
             <h2>Login</h2>
-            <form method="POST">
+
+            <form id="login-form" method="POST" action="{% url 'login' %}">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Login</button>
+                <div>
+                    <label for="id_username">Username</label>
+                    <input id="id_username" name="username" type="text" class="form-control">
+                    <label for="id_password">Password</label>
+                    <input id="id_password" name="password" type="password" class="form-control">
+                </div>
+                {% if form.errors %}
+                    <p>
+                        Your username and password didn't match. 
+                        Please try again.
+                    </p>
+                {% endif %}
+
+                <input type="submit" value="Login" />
+                <input type="hidden" name="next" value="{{ next }}" />
             </form>
 
-            <p>Forgot Password? <a href="{% url 'password_reset' %}">Click here to reset</a></p>
-            <p><a href="{% url 'register' %}">Register</a></p>
+            <div>
+                <p>Forgot Password? <a href="{% url 'password_reset' %}">Click here to reset</a></p>
+                <p><a href="{% url 'register' %}">Register</a></p>
+            </div>
+            
         {% endblock %}
     </body>
 </html>

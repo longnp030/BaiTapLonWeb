@@ -49,6 +49,7 @@ https://stackoverflow.com/questions/52286676/django-model-field-depend-on-the-va
 https://stackoverflow.com/questions/47182279/how-to-limit-choices-for-foreignkey-field-in-django-createview
 https://simpleisbetterthancomplex.com/tutorial/2016/09/19/how-to-create-password-reset-view.html
 https://stackoverflow.com/questions/17041891/not-able-to-send-email-django
+https://ultimatedjango.com/learn-django/lessons/create-the-login-template/
 
 
 GIT REFERENCES:
