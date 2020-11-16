@@ -324,17 +324,17 @@ class UserManager(BaseUserManager):
 
 
 class Student(models.Model):
-    id = models.IntegerField(unique=True, primary_key=True)
+    id = models.AutoField(unique=True, primary_key=True)
     name = models.CharField(max_length=45)
     email = models.CharField(unique=True, max_length=45)
-    image = models.ImageField(max_length=255, upload_to=upload_location_for_user, db_column='image')
+    image = models.ImageField(max_length=255, upload_to=upload_location_for_user, db_column='image', null=True)
     joindate = models.DateTimeField(db_column='joinDate', default=dt.datetime.now)  # Field name made lowercase.
     useremail = models.OneToOneField('User', models.DO_NOTHING, db_column='userEmail')  # Field name made lowercase.
 
     ## New
-    facebook = models.CharField(max_length=255, db_column='facebook', null=True)
-    twitter = models.CharField(max_length=255, db_column='twitter', null=True)
-    website = models.CharField(max_length=255, db_column='website', null=True)
+    facebook = models.CharField(max_length=255, db_column='facebook', null=True, blank=True)
+    twitter = models.CharField(max_length=255, db_column='twitter', null=True, blank=True)
+    website = models.CharField(max_length=255, db_column='website', null=True, blank=True)
 
     class Meta:
         managed = False
@@ -345,18 +345,18 @@ class Student(models.Model):
 
 
 class Teacher(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=45)
     email = models.CharField(unique=True, max_length=45)
-    image = models.ImageField(max_length=255, upload_to=upload_location_for_user, db_column='image')
+    image = models.ImageField(max_length=255, upload_to=upload_location_for_user, db_column='image', null=True)
     joindate = models.DateTimeField(db_column='joinDate')  # Field name made lowercase.
     currentdegree = models.CharField(db_column='currentDegree', max_length=45, blank=True, null=True)  # Field name made lowercase.
     useremail = models.OneToOneField('User', models.DO_NOTHING, db_column='userEmail')
 
     ## New
-    facebook = models.CharField(max_length=255, db_column='facebook', null=True)
-    twitter = models.CharField(max_length=255, db_column='twitter', null=True)
-    website = models.CharField(max_length=255, db_column='website', null=True)
+    facebook = models.CharField(max_length=255, db_column='facebook', null=True, blank=True)
+    twitter = models.CharField(max_length=255, db_column='twitter', null=True, blank=True)
+    website = models.CharField(max_length=255, db_column='website', null=True, blank=True)
 
     class Meta:
         managed = False

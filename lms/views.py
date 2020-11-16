@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect
 from django.template import loader
 from django.dispatch import receiver
 from django.apps import AppConfig as conf
+from django.urls import reverse
 from django.db.models.signals import post_save
 from django.contrib.auth import authenticate, get_user_model, update_session_auth_hash, login
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -367,7 +368,7 @@ def user_profile(request, user_id):
     context = {
         "this_user": this_user,
     }
-
+    form = None
     if len(this_student) > 0 and len(this_teacher) == 0:
         this_student = this_student[0]
         this_teacher = None
@@ -379,6 +380,32 @@ def user_profile(request, user_id):
     else:
         this_student = None
         this_teacher = None
+
+    if request.method == 'POST':
+        if this_student is not None:
+            form = StudentInfoForm(request.POST, request.FILES)
+            if form.is_valid():
+                this_student.image = request.FILES.get('image') if request.FILES.get('image') is not None else this_student.image
+                this_student.facebook = form.cleaned_data['facebook'] if len(form.cleaned_data['facebook']) > 0 else this_student.facebook
+                this_student.twitter = form.cleaned_data['twitter'] if len(form.cleaned_data['twitter']) > 0 else this_student.twitter
+                this_student.website = form.cleaned_data['website'] if len(form.cleaned_data['website']) > 0 else this_student.website
+                this_student.save()
+                return redirect(reverse('user_profile', kwargs={'user_id': this_student.id}))
+        elif this_teacher is not None:
+            form = TeacherInfoForm(request.POST, request.FILES)
+            if form.is_valid():
+                this_teacher.image = request.FILES.get('image') if request.FILES.get('image') is not None else this_teacher.image
+                this_teacher.facebook = form.cleaned_data['facebook'] if len(form.cleaned_data['facebook']) > 0 else this_teacher.facebook
+                this_teacher.twitter = form.cleaned_data['twitter'] if len(form.cleaned_data['twitter']) > 0 else this_teacher.twitter
+                this_teacher.website = form.cleaned_data['website'] if len(form.cleaned_data['website']) > 0 else this_teacher.website
+                this_teacher.save()
+                return redirect(reverse('user_profile', kwargs={'user_id': this_teacher.id}))
+    else:
+        if this_student is not None:
+            form = StudentInfoForm()
+        elif this_teacher is not None:
+            form = TeacherInfoForm()
+    context['form'] = form
     return render(request, "lms/user_profile.html", context=context)
 
 

@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, ReadOnlyPasswordHashField
 from django.contrib.admin.widgets import RelatedFieldWidgetWrapper
+from django.forms.widgets import URLInput
 from django.utils.translation import gettext_lazy as _
 from .models import *
 
@@ -9,6 +10,28 @@ class StudentForm(forms.ModelForm):
     class Meta:
         model = Student
         fields = ['name', ]
+
+
+class StudentInfoForm(forms.ModelForm):
+    image = forms.ImageField(widget=forms.FileInput, required=False)
+    facebook = forms.URLField(widget=forms.URLInput, required=False)
+    twitter = forms.URLField(widget=forms.URLInput, required=False)
+    website = forms.URLField(widget=forms.URLInput, required=False)
+
+    class Meta:
+        model = Student
+        fields = ['image', 'facebook', 'twitter', 'website', ]
+
+
+class TeacherInfoForm(forms.ModelForm):
+    image = forms.ImageField(widget=forms.FileInput, required=False, localize=True)
+    facebook = forms.URLField(widget=forms.URLInput, required=False)
+    twitter = forms.URLField(widget=forms.URLInput, required=False)
+    website = forms.URLField(widget=forms.URLInput, required=False)
+
+    class Meta:
+        model = Teacher
+        fields = ['image', 'facebook', 'twitter', 'website', ]
 
 
 class RegisterForm(forms.ModelForm):
