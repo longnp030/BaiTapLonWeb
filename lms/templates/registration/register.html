@@ -1,50 +1,31 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        {% extends 'registration/login.html' %}
-        <title>{% block title %}Register{% endblock %}</title>
-        <meta charset="utf-8">
-    </head>
-    <body>
-        {% block content %}
-            <h2>Register</h2>
+{% extends "base.html" %}
+{% load static%}
 
-            <form method="POST" class="form-group">
-                {% csrf_token %}
-                <div id="div_id_name" class="form-group">
-                    <label for="id_name" class="requiredField">
-                        Name
-                        <span class="asteriskField">*</span>
-                    </label>
-                    <input type="text" name="name" maxlength="45" class="textinput textInput form-control" required id="id_name">
-                </div>
-                
-                <div id="div_id_email" class="form-group">
-                    <label for="id_email" class=" requiredField">
-                        Email address
-                        <span class="asteriskField">*</span>
-                    </label>
-                    <input type="email" name="email" maxlength="255" class="emailinput form-control" required id="id_email">
-                </div>
-                
-                <div id="div_id_password" class="form-group">
-                    <label for="id_password" class=" requiredField">
-                        Password
-                        <span class="asteriskField">*</span>
-                    </label>
-                    <input type="password" name="password" class="textinput textInput form-control" required id="id_password">
-                </div>
-                
-                <div id="div_id_password2" class="form-group">
-                    <label for="id_password2" class=" requiredField">
-                        Confirm Password
-                        <span class="asteriskField">*</span>
-                    </label>
-                    <input type="password" name="password2" class="textinput textInput form-control" required id="id_password2">
-                </div>
+{% block title%} Signup {% endblock%}
 
-                <button type="submit">Register</button>
-            </form>
-        {% endblock %}
-    </body>
-</html>
+{% block js %}  
+{% endblock%}
+
+{% block css %} 
+    <link rel="stylesheet" href="{% static 'css/signupstyle.css'%}"> 
+{% endblock%}
+
+{% block content%} 
+    <form class="box" action="." method="POST">
+        {% csrf_token %}
+        <h1> Signup </h1>
+            
+        <div class="register-forms">
+            <div class="input-fields">
+                <input type="text" name="name" placeholder="Username" maxlength="45" id="id_name">  
+                <input type="email" name="email" placeholder="E-mail" maxlength="255" id="id_email">
+                <input type="password" name="password" placeholder="Password" id="id_password">       
+                <input type="password" name="password2" placeholder="Password comfirm" id="id_password2">
+                
+                <!-- {{form.error}} -->
+                    <!-- cần xử lý một cái gì đó hay ho -->
+            </div>
+            <input type="submit" name="create user" value="Signup">
+        </div>
+    </form>
+{% endblock%}

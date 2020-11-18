@@ -58,12 +58,13 @@ def index(request):
 def register(request):
     if request.user.is_authenticated:
         return redirect('/lms/')
+
     if request.method == 'POST':
         user_form = RegisterForm(request.POST)
         student_form = StudentForm(request.POST)
+
         if user_form.is_valid() and student_form.is_valid():
             user = user_form.save()
-
             student = student_form.save(commit=False)
             student.id = user.id
             student.name = student.name

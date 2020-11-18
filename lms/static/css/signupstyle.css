@@ -1,0 +1,82 @@
+.box{
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    padding: 60px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #191919;
+    text-align: center;
+    opacity: 0.75;
+  }
+  
+  .box h1{
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+  }
+  
+  .input-fields{
+    display: flex;
+    flex-direction: column;
+    margin-right: 4%;
+  }
+  
+  .input-fields input{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 300px;
+    border-bottom: 2px solid #3498db;
+    outline: none;
+    color: white;
+    transition: 0.25s;
+  }
+  
+  .box input[type = "submit"]{
+    border:0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 14px 40px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+  }
+  
+  .box input[type = "submit"]:hover{
+    background: #2ecc71;
+    border-color: #2ecc71;
+  }
+  
+  .input-fields input:focus{
+      width : 310px ;
+      border-bottom: 2px solid #2ecc71; 
+  }
+  
+  ::-webkit-input-placeholder {
+    color: white;
+  }
+  ::-moz-placeholder {
+    color: white;
+  }
+  :-ms-input-placeholder {
+    color: white;
+  }
+  
+  @media screen and (max-width: 600px){
+    .register-forms{
+      flex-direction: column;
+    }
+  
+    .input-fields{
+      width: 100%;
+    }
+  }

@@ -1,0 +1,151 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* GENERAL */
+.width-1200 {
+    max-width: 1600px;
+    width: 1600px;
+    margin: auto;
+}
+
+/* HEADER */
+.header {
+    background-color:rgba(0, 0, 0, 0.95);
+    border-top: 2px solid greenyellow;
+}
+.header-inner {
+    padding: 20px 0px;
+    text-align: right;
+}
+.navbar {
+    display: inline;
+}
+
+.navbar a{
+    margin: 0px 15px;
+    color: #d1d1d1;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.navbar a:hover{
+    color: white;
+}
+
+.join-bt {
+    display: inline;
+}
+
+.join-bt a{
+    margin: 0px 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: rgb(84, 193, 97);
+}
+
+.join-bt a:hover{
+    background-color: rgb(54, 159, 75);
+}
+
+/* HOME */
+.home-b1 {
+    background-image: url("bg2.jpg");
+    height: 93vh;
+    background-position: center;
+    background-size: cover;
+}
+.home-b1-inner {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 50px 0px;
+    height: 100%;
+    position: relative;
+}
+.home-b1 .content {
+    max-width: 1000px;
+    width: 1000px;
+    margin: auto;
+    text-align: center;
+    color: white;
+}
+
+.home-b1 .content h1{
+    font-size: 60px;
+    margin-top: auto;
+    letter-spacing: 1.5;
+}
+
+.home-b1 .content p{
+    margin-top: -25px;
+    font-size: 20px;
+    letter-spacing: 1.0;
+}
+
+.home-b1 .funfact {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.home-b1 .funfact div {
+    color: white;
+    letter-spacing: 1.5px;
+}
+
+/* Foot-tag */
+
+.foot-tag {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.foot-content {
+    display: flex;
+    max-width: 1300px;
+    width: 1300px;
+    text-align: center;
+    margin: 0px auto;
+    gap: 40px;
+    border-bottom: 2px solid gray;
+    padding-bottom: 50px;
+}
+
+.foot-content h1 {
+    text-align: center;
+}
+
+
+.foot-content div{
+    letter-spacing: 1.5px;
+}
+
+.content-end-page{
+    padding-top: 50px;
+    padding-bottom: 70px;
+}
+
+.content-end-page p{
+    display: inline;
+    margin-left: 20px;
+}
+
+.content-end-page .icon-end-page{
+    display: inline;
+    margin-left: 1300px;
+}
+
+.content-end-page .icon-end-page i {
+    font-size: 30px;
+    letter-spacing: 15px;
+}

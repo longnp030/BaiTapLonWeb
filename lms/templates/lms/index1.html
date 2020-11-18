@@ -1,73 +1,97 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="vi"> 
     <head>
         <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Home page{% endblock %}</title>
-        {% load static %}
-        <link rel="stylesheet" type="text/css" href="{% static 'lms/style.css' %}">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/homestyle.css' %}">
+        <script src="https://kit.fontawesome.com/fe59a62916.js"></script>
     </head>
 
-    <body>
-        <div class="wrap-header">
-            <div class="navbar">
-                <a href="{% url 'index' %}" id="logo" class="nav-item">Learning Management System</a>
-
-                {% if user.is_authenticated %}
-                    <div class="dropdown">
-                        <button class="dropbtn">
-                            {% firstof this_user.name user_email %}
-                        </button>
-                        <div class="dropdown-content">
-                            <a href="{% url 'dashboard' %}">My courses</a>
-
-                            {% if this_user %}
-                                <a href="{% url 'user_profile' this_user.id %}">Profile</a>
-                            {% endif %}
-
-                            <a href="{% url 'logout' %}">Logout</a>
-                        </div>
+    <body>  <!-- phần đầu trang nơi tất cả các trang khác kế thừa nó -->
+        {% if user.is_authenticated %}
+            <div class="header">
+                <div class="header-inner width-1200">
+                    <div class="navbar">
+                        <a href="">Home</a>
+                        <a href="https://www.facebook.com/thepql" target="_blank">Contact</a>
+                        <a href="{% url 'dashboard' %}">My Courses</a>
+                        <a href="{% url 'user_profile' this_user.id %}">Profile</a>
+                        <!-- Thêm một cái gì đó hay ho vào -->
                     </div>
-                {% else %}
-                    <div>
-                        <span>
-                            <button id="rgt-button">
-                                <a id="rgt-button-inside" class="nav-item" href="{% url 'register' %}">
-                                    Register</a>
-                            </button>
-                        </span>
-                        
-                        <span>
-                            <button id="auth-button">
-                                <a id="auth-button-inside" class="nav-item" href="{% url 'login' %}">
-                                    Login</a>
-                            </button>
-                        </span>
+                
+                    <div class="join-bt">
+                        <a href="{% url 'logout' %}"> Logout </a>
                     </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="header">
+                <div class="header-inner width-1200">
+                    <div class="navbar">
+                        <a href="">Home</a>
+                        <a href="">Community</a>
+                        <a href="">Contact</a>
+                        <a href="">Event</a>
+                        <a href="">Blog</a>
+                        <a href="{% url 'login' %}">Login</a>
+                    </div>
+                
+                    <div class="join-bt">
+                        <a href="{% url 'register' %}"> Join for free </a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% block content %}
+            {% if user.is_authenticated %}
+                    <h1>Welcome, {{ user.email }}!</h1>
+                {% if latest_course_list %}
+                    <ul>
+                        {% for course in latest_course_list %}
+                            <li><a href="courses/{{ course.id }}/">{{ course.name }}</a></li>
+                        {% endfor %}
+                    </ul>
                 {% endif %}
-            </div>
-        </div>
-
-        <div class="wrap-body">
-            <div>
-                {% block content %}
-                    {% if user.is_authenticated %}
-                        Welcome, {{ user.email }}!
-                        <!--<p><a href="{% url 'logout' %}">Đăng xuất</a></p>-->
-                        {% if latest_course_list %}
-                            <ul>
-                                {% for course in latest_course_list %}
-                                    <li><a href="courses/{{ course.id }}/">{{ course.name }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
-                    {% else %}
-                        <p>You are not logged in.</p>
-                        <!--<a href="{% url 'login' %}">Đăng nhập</a>-->
-                    {% endif %}
-                {% endblock %}
-            </div>
-        </div>
+            {% else %}
+                <div class="home-b1">
+                    <div class="home-b1-inner">
+                        <div class="content">
+                            <h1>The World's Best Online Course</h1>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, et!</p>
+                        </div>
+                        <div class="funfact">
+                            <div>1,000+ Courses</div>
+                            <div>10,000+ Learners</div>
+                            <div>Across 20 countries</div>
+                            <div>Diversity</div>
+                            <div>Profession</div>
+                            </div>
+                     </div>
+                </div>
+                
+                <div class="foot-tag">
+                    <div class="foot-content">
+                            <div> <h1>Thep</h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur quod asperiores ea et quibusdam vel excepturi dicta cupiditate aperiam error, rerum modi. Minima iste odio illum et assumenda, dolore neque architecto tempore dicta quod deserunt suscipit incidunt molestias doloribus cum rem quisquam nesciunt molestiae quaerat! Maiores labore distinctio odit reiciendis voluptas dicta doloribus, reprehenderit, accusantium aut, officiis blanditiis nihil. Quo dolore sequi ullam repellendus sunt praesentium temporibus harum architecto dolor quos suscipit aliquam ratione sint reiciendis officia at nostrum optio ad quas, asperiores tempore rem doloribus odit fugit? Magnam vitae adipisci dolorum eligendi iusto id earum inventore odio maxime quaerat.</div>
+                            <div> <h1>Tan</h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam incidunt ullam minus animi magnam numquam iusto illo reprehenderit, et expedita a. Doloremque, commodi totam fugit modi qui corrupti. Est a accusamus adipisci quaerat voluptate animi cum magnam dignissimos praesentium! Eveniet harum voluptate rerum quos a laborum totam beatae accusamus hic reiciendis. Officiis, veniam ipsa? Iusto suscipit culpa rem voluptatum recusandae architecto aperiam fuga obcaecati voluptatibus. Atque fuga tenetur earum nam ab id temporibus libero voluptatem accusantium ipsam exercitationem debitis, molestias officiis omnis voluptatibus sapiente error cum ipsa dolorem! Eos ipsa corporis velit praesentium aperiam omnis aliquam illum laborum laudantium alias!</div>
+                            <div>  <h1>Long</h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae placeat optio voluptatibus ipsam fugit sequi veniam libero recusandae. Minima, minus dolore veritatis harum cumque aut quae dignissimos ut omnis illo repudiandae commodi deserunt, quibusdam debitis distinctio sed architecto ipsam voluptates ad totam adipisci unde vero beatae! Deserunt velit odit voluptatum minima, rerum, vitae fugit animi accusantium illo aliquam ipsum ratione? Amet ut fugit voluptates tenetur architecto assumenda eligendi enim ex voluptate. Impedit fugiat assumenda facere deserunt dicta eum, voluptas mollitia consequuntur vel, ducimus quisquam sequi nam asperiores laboriosam error nesciunt tempora voluptatum saepe delectus? Excepturi beatae aperiam architecto magni? Optio.</div>
+                            <div><h1>Duong</h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis vero itaque blanditiis, provident aliquam et, rem earum corrupti sunt, quo error. Cumque neque, eveniet facere suscipit placeat eligendi animi ad natus in aliquid dicta vel maiores, nisi officiis quisquam consectetur repudiandae dolores odio atque accusantium deleniti. Corrupti at, id, optio ex dolor accusantium eius veritatis provident pariatur odio error doloribus incidunt deserunt ad similique alias deleniti natus sit? Sequi aperiam nisi facilis sed veniam similique vitae eum obcaecati optio! Obcaecati totam atque nam eum, est quis suscipit hic sint molestias praesentium tenetur quisquam rerum voluptatem sunt facilis. Nihil, voluptas temporibus?</div>
+                            <div><h1>Phuong</h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero dignissimos numquam iure eum enim nihil, at iste rerum provident quibusdam, adipisci quis reprehenderit? Reprehenderit fugit adipisci sequi iste modi eveniet quidem cum recusandae asperiores, saepe doloremque blanditiis ad placeat nostrum, non a debitis fugiat quod suscipit? Earum, ullam accusamus qui totam nesciunt, illum nam delectus ratione consectetur iure incidunt doloribus aperiam. Laboriosam sunt corrupti reprehenderit quam architecto veritatis, provident cum, laborum cumque velit dicta neque iste harum repellendus officia placeat numquam alias nihil. Eum eveniet labore, odio magni harum omnis veniam at earum reprehenderit doloremque quasi, dolor laudantium velit nesciunt!</div>
+                    </div>
+                
+                    <div class="content-end-page">
+                            <p>@ 10/11/2020 Ha Noi</p>
+                            <div class="icon-end-page">
+                                <i class="fab fa-facebook-square"></i>
+                                <i class="fab fa-youtube"></i>
+                                <i class="fab fa-twitter-square"></i>
+                                <i class="fab fa-github-square"></i>
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endblock %}
     </body>
 </html>

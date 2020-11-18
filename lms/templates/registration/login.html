@@ -1,38 +1,32 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        {% extends '../lms/index1.html' %}
-        <meta charset="utf-8">
-        <title>{% block title %}Login{% endblock %}</title>
-    </head>
-    <body>
-        {% block content %}
-            <h2>Login</h2>
+{% extends "base.html" %}
+{% load static%}
 
-            <form id="login-form" method="POST" action="{% url 'login' %}">
-                {% csrf_token %}
-                <div>
-                    <label for="id_username">Username</label>
-                    <input id="id_username" name="username" type="text" class="form-control">
-                    <label for="id_password">Password</label>
-                    <input id="id_password" name="password" type="password" class="form-control">
-                </div>
-                {% if form.errors %}
-                    <p>
-                        Your username and password didn't match. 
-                        Please try again.
-                    </p>
-                {% endif %}
+{% block title%} Login {% endblock%}
 
-                <input type="submit" value="Login" />
-                <input type="hidden" name="next" value="{{ next }}" />
-            </form>
+{% block js %}  
+{% endblock%}
 
-            <div>
-                <p>Forgot Password? <a href="{% url 'password_reset' %}">Click here to reset</a></p>
-                <p><a href="{% url 'register' %}">Register</a></p>
-            </div>
-            
-        {% endblock %}
-    </body>
-</html>
+{% block css %} 
+    <link rel="stylesheet" href="{% static 'Css/loginstyle.css'%}"> 
+{% endblock%}
+
+{% block content%} 
+
+    <form class="box" action="." method="POST">
+        {% csrf_token %}
+        
+        <h1>Login</h1>
+        
+        <input  name="username" type="text" placeholder="E-Mail" class="">
+        <input  name="password" type="password" placeholder="Password" class="">
+
+        <!-- {{ form.errors }}   / -->
+        <!-- chưa thiết lập được alert cho chỗ này cần dùng một ít  js cơ bản -->
+        
+        <input type="Submit" value="Login">
+
+        <i><a style="color: azure; text-decoration: none;" href="{% url 'register' %}"> Create a new? </a></i> <br>
+        <i><a style="color: azure; text-decoration: none;" href="{% url 'password_reset' %}"> Forgot password? </a></i>
+
+    </form>
+{% endblock%}
