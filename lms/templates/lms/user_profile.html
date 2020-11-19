@@ -5,7 +5,9 @@
 
         {% if this_student %}
             <h1>Student Information</h1>
+            {% if this_student.image %}
             <img src="{{ this_student.image.url }}" width='100', height='100'>
+            {% endif %}
             <p>{{ this_student.name }}</p>
             <p>{{ this_student.email }}</p>
             <p>{{ this_student.joindate }}</p>
@@ -14,7 +16,9 @@
             <p>{{ this_student.website }}</p>
         {% elif this_teacher %}
             <h1>Teacher Information</h1>
+            {% if this_teacher.image %}
             <img src="{{ this_teacher.image.url }}" width='100', height='100'>
+            {% endif %}
             <p>{{ this_teacher.name }}</p>
             <p>{{ this_teacher.email }}</p>
             <p>{{ this_teacher.joindate }}</p>

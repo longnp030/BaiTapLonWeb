@@ -302,9 +302,9 @@ class UserManager(BaseUserManager):
             email,
             password=password,
         )
-        user.active = True
-        user.staff = True
-        user.admin = False
+        user.is_active = True
+        user.is_staff = True
+        user.is_admin = False
         user.save(using=self._db)
         return user
 
@@ -316,9 +316,9 @@ class UserManager(BaseUserManager):
             email,
             password=password,
         )
-        user.active = True
-        user.staff = True
-        user.admin = True
+        user.is_active = True
+        user.is_staff = True
+        user.is_admin = True
         user.save(using=self._db)
         return user
 
