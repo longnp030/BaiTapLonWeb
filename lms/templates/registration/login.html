@@ -7,26 +7,28 @@
 {% endblock%}
 
 {% block css %} 
-    <link rel="stylesheet" href="{% static 'Css/loginstyle.css'%}"> 
+    <link rel="stylesheet" href="{% static 'Css/registration-formss.css'%}"> 
 {% endblock%}
 
 {% block content%} 
 
-    <form class="box" action="." method="POST">
+    <form class="box" id="box-login" action="." method="POST">
         {% csrf_token %}
         
         <h1>Login</h1>
         
-        <input  name="username" type="text" placeholder="E-Mail" class="">
-        <input  name="password" type="password" placeholder="Password" class="">
+        <div class="resgiter-forms">
+            <input name="username" type="text" placeholder="E-mail">
+            <input name="password" type="password" placeholder="Password">
+            <input type="Submit" value="Login">
+        </div>
+
+        <div class="text-option">
+            <i><a href="{% url 'register' %}"> Create a new? </a></i> <br>
+            <i><a href="{% url 'password_reset' %}"> Forgot password? </a></i>
+        </div>
 
         <!-- {{ form.errors }}   / -->
         <!-- chưa thiết lập được alert cho chỗ này cần dùng một ít  js cơ bản -->
-        
-        <input type="Submit" value="Login">
-
-        <i><a style="color: azure; text-decoration: none;" href="{% url 'register' %}"> Create a new? </a></i> <br>
-        <i><a style="color: azure; text-decoration: none;" href="{% url 'password_reset' %}"> Forgot password? </a></i>
-
     </form>
 {% endblock%}

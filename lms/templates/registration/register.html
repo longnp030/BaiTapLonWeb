@@ -7,24 +7,23 @@
 {% endblock%}
 
 {% block css %} 
-    <link rel="stylesheet" href="{% static 'css/signupstyle.css'%}"> 
+    <link rel="stylesheet" href="{% static 'css/registration-formss.css'%}"> 
 {% endblock%}
 
 {% block content%} 
-    <form class="box" action="." method="POST">
+    <form class="box" id="box-signup" action="." method="POST">
         {% csrf_token %}
         <h1> Signup </h1>
             
         <div class="register-forms">
-            <div class="input-fields">
-                <input type="text" name="name" placeholder="Username" maxlength="45" id="id_name">  
-                <input type="email" name="email" placeholder="E-mail" maxlength="255" id="id_email">
-                <input type="password" name="password" placeholder="Password" id="id_password">       
-                <input type="password" name="password2" placeholder="Password comfirm" id="id_password2">
+            <input type="text" name="name" placeholder="Username" maxlength="45" id="id_name">  
+            <input type="text" name="email" placeholder="E-mail" maxlength="255" id="id_email">
+            <input type="password" name="password" placeholder="Password" id="id_password">       
+            <input type="password" name="password2" placeholder="Password comfirm" id="id_password2">
                 
                 <!-- {{form.error}} -->
                     <!-- cần xử lý một cái gì đó hay ho -->
-            </div>
+
             <input type="submit" name="create user" value="Signup">
         </div>
     </form>
