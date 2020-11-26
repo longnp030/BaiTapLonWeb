@@ -264,6 +264,28 @@ class Enroll(models.Model):
         return self.student.email + '-' + self.course.name
 
 
+class Teacher(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=45)
+    email = models.CharField(unique=True, max_length=45)
+    image = models.ImageField(max_length=255, upload_to=upload_location_for_user, db_column='image', null=True)
+    joindate = models.DateTimeField(db_column='joinDate')  # Field name made lowercase.
+    currentdegree = models.CharField(db_column='currentDegree', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    useremail = models.OneToOneField('User', models.DO_NOTHING, db_column='userEmail')
+
+    ## New
+    facebook = models.CharField(max_length=255, db_column='facebook', null=True, blank=True)
+    twitter = models.CharField(max_length=255, db_column='twitter', null=True, blank=True)
+    website = models.CharField(max_length=255, db_column='website', null=True, blank=True)
+
+    class Meta:
+        managed = False
+        db_table = 'teacher'
+
+    def __str__(self):
+        return self.name
+
+
 ### Added 12/11/2020 6p.m
 class Teach(models.Model):
     id = models.AutoField(primary_key=True, db_column='id', unique=True)
@@ -305,6 +327,17 @@ class UserManager(BaseUserManager):
         user.is_active = True
         user.is_staff = True
         user.is_admin = False
+
+        '''teacher = TeacherForm(name='', email=email, image=None, joindate=dt.date.today(), useremail=user, facebook=None, twitter=None, website=None, currentdegree=None)
+        teacher = teacher_form.save(commit=False)
+        teacher.id = user.id
+        teacher.name = teacher.name
+        teacher.email = user.email
+        teacher.joindate = dt.now()
+        teacher.useremail = user
+        teacher.save()'''
+        
+
         user.save(using=self._db)
         return user
 
@@ -319,6 +352,16 @@ class UserManager(BaseUserManager):
         user.is_active = True
         user.is_staff = True
         user.is_admin = True
+
+        '''teacher = TeacherForm(name='', email=email, image=None, joindate=dt.date.today(), useremail=user, facebook=None, twitter=None, website=None, currentdegree=None)
+        teacher = teacher_form.save(commit=False)
+        teacher.id = user.id
+        teacher.name = teacher.name
+        teacher.email = user.email
+        teacher.joindate = dt.now()
+        teacher.useremail = user
+        teacher.save()'''
+
         user.save(using=self._db)
         return user
 
@@ -339,28 +382,6 @@ class Student(models.Model):
     class Meta:
         managed = False
         db_table = 'student'
-
-    def __str__(self):
-        return self.name
-
-
-class Teacher(models.Model):
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=45)
-    email = models.CharField(unique=True, max_length=45)
-    image = models.ImageField(max_length=255, upload_to=upload_location_for_user, db_column='image', null=True)
-    joindate = models.DateTimeField(db_column='joinDate')  # Field name made lowercase.
-    currentdegree = models.CharField(db_column='currentDegree', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    useremail = models.OneToOneField('User', models.DO_NOTHING, db_column='userEmail')
-
-    ## New
-    facebook = models.CharField(max_length=255, db_column='facebook', null=True, blank=True)
-    twitter = models.CharField(max_length=255, db_column='twitter', null=True, blank=True)
-    website = models.CharField(max_length=255, db_column='website', null=True, blank=True)
-
-    class Meta:
-        managed = False
-        db_table = 'teacher'
 
     def __str__(self):
         return self.name

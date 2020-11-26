@@ -2,16 +2,14 @@
 
 <!DOCTYPE html>
 <head>
-
     <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/stylebase.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
     <script type="text/javascript" src="{% static 'js/mousemove.js'%}"></script>
     {% block js %}{% endblock %}
-    {% block css %}{% endblock %}
         
 </head>
 <body>
-    <section>
+    <section class="section_img">
         <img src="{% static 'images/1.png' %}" data-speed="-5" class="layer">
         <img src="{% static 'images/2.png' %}" data-speed="5" class="layer">
         <img src="{% static 'images/3.png' %}" data-speed="2" class="layer">

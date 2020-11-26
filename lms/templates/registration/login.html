@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends '../lms/base.html' %}
 {% load static%}
 
 {% block title%} Login {% endblock%}
@@ -6,13 +6,9 @@
 {% block js %}  
 {% endblock%}
 
-{% block css %} 
-    <link rel="stylesheet" href="{% static 'Css/registration-formss.css'%}"> 
-{% endblock%}
-
 {% block content%} 
 
-    <form class="box" id="box-login" action="." method="POST">
+    <form class="box box-login" id="login" action="." method="POST">
         {% csrf_token %}
         
         <h1>Login</h1>

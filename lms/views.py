@@ -126,6 +126,7 @@ def is_teacher(user):
 
 @user_passes_test(is_teacher, login_url='/lms/accounts/login/')
 def create_course(request):
+    this_user = get_teacher(request)
     if request.method == 'POST':
         course_form = CourseCreateForm(request.POST)
         if course_form.is_valid():
@@ -135,7 +136,7 @@ def create_course(request):
             return redirect('/lms/')
     else:
         course_form = CourseCreateForm()
-    return render(request, 'courses/create.html', {"course_form": course_form})
+    return render(request, 'courses/create.html', {"course_form": course_form, "this_user": this_user})
 
 
 @login_required(login_url='/lms/accounts/login/')
@@ -160,7 +161,7 @@ def course_enroll(request, course_id):
             return redirect(ENROLLED_REDIRECT_URL)
     else:
         enrollment_form = EnrollmentForm(initial={'student': current_student, 'course': current_course})
-    return render(request, 'courses/enroll.html', {"enrollment_form": enrollment_form, "course_id": current_course.id})
+    return render(request, 'courses/enroll.html', {"enrollment_form": enrollment_form, "course_id": current_course.id, "this_user": current_user})
 
 
 @login_required(login_url='/lms/accounts/login/')
@@ -182,7 +183,7 @@ def dashboard(request):
             course_list.append(Course.objects.get(id=enrollment.course.id))
     elif isinstance(this_user, Teacher):
         # course_list = Course.objects.filter(teacher=this_user.id)
-        course_list = [ti.course for ti in Teach.objects.filter(teacher=0)] # changed 12/11 bcof adding new table
+        course_list = [ti.course for ti in Teach.objects.filter(teacher=this_teacher)] # changed 12/11 bcof adding new table
     context = {
         "my_courses": course_list,
         "this_user": this_user,
