@@ -1,0 +1,5 @@
+- conda install django
+- run code
+1. D:\Phuonglt\Projects\VisualCode\eLearning\env\Scripts>activate
+2. (env) D:\Phuonglt\Projects\VisualCode\eLearning>conda activate py37
+3. (env) D:\Phuonglt\Projects\VisualCode\eLearning>python manage.py runserver
