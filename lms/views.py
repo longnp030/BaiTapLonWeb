@@ -131,8 +131,12 @@ def create_course(request):
         course_form = CourseCreateForm(request.POST)
         if course_form.is_valid():
             course = course_form.save(commit=False)
-            course.publishDate = dt.now()
+            course.publishDate = dt.datetime.now()
             course.save()
+
+            teach = Teach(teacher=this_user, course=course)
+            teach.save()
+
             return redirect('/lms/')
     else:
         course_form = CourseCreateForm()

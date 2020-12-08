@@ -88,11 +88,10 @@ class AuthUserUserPermissions(models.Model):
 
 
 class Course(models.Model):
-    id = models.IntegerField(primary_key=True, unique=True)
+    id = models.AutoField(primary_key=True, unique=True)
     name = models.CharField(max_length=255)
-    image = models.ImageField(max_length=255, upload_to=upload_location_for_course, db_column='image')
+    image = models.ImageField(max_length=255, upload_to=upload_location_for_course, db_column='image', null=True, blank=True)
     publishdate = models.DateField(db_column='publishDate', default=dt.date.today)  # Field name made lowercase.
-    price = models.IntegerField()
     description = models.TextField(max_length=10000, blank=True, null=True)
     #teacher = models.ForeignKey('Teacher', models.DO_NOTHING, db_column='teacher', unique=False)  # Field name made lowercase.
 
@@ -388,6 +387,7 @@ class Student(models.Model):
 
 
 class User(AbstractBaseUser):
+    id = models.AutoField(primary_key=True)
     password = models.CharField(max_length=128)
     last_login = models.DateTimeField(blank=True, null=True)
 

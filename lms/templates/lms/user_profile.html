@@ -25,11 +25,11 @@
                 {% if this_student %}
                     <input type="text" value={{ this_student.name }} readonly> 
                     <input type="text" value={{ this_student.email }} readonly>
-                    <input type="text" value={{ this_student.joindate }} readonly>
+                    <input type="text" value="{{ this_student.joindate }}" readonly>
                 {% elif this_teacher %}
                     <input type="text" value={{ this_teacher.name }} readonly> 
                     <input type="text" value={{ this_teacher.email }} readonly>
-                    <input type="text" value={{ this_teacher.joindate }} readonly>   
+                    <input type="text" value="{{ this_teacher.joindate }}" readonly>   
                 {% endif %}
             </div>
         </div>
@@ -70,9 +70,9 @@
                         </div>
                         <div class="ipt-fields">
                             <input type="file" name="image" accept="image/*" id="filechoiseimage">
-                            <input type="url" placeholder="facebook" >
-                            <input type="url" placeholder="website" >
-                            <input type="url" placeholder="twitter" >
+                            <input type="url" name="facebook" placeholder="facebook" id="id_facebook">
+                            <input type="url" name="website" placeholder="website" id="id_website">
+                            <input type="url" name="twitter" placeholder="twitter" id="id_twitter">
                         </div>
                         <div class="edit-comfirm" id="editcomfirm">
                             <button type="submit"> <i>Save profile</i> </button>

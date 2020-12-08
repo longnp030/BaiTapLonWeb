@@ -1,0 +1,71 @@
+{% extends "../lms/index1.html" %}
+{% block content %}
+<body>
+    <div class="course-detail">
+
+        {% if this_student %}
+            <h1>Student Information</h1>
+            {% if this_student.image %}
+            <img src="{{ this_student.image.url }}" width='100', height='100'>
+            {% endif %}
+            <p>{{ this_student.name }}</p>
+            <p>{{ this_student.email }}</p>
+            <p>{{ this_student.joindate }}</p>
+            <p>{{ this_student.facebook }}</p>
+            <p>{{ this_student.twitter }}</p>
+            <p>{{ this_student.website }}</p>
+        {% elif this_teacher %}
+            <h1>Teacher Information</h1>
+            {% if this_teacher.image %}
+            <img src="{{ this_teacher.image.url }}" width='100', height='100'>
+            {% endif %}
+            <p>{{ this_teacher.name }}</p>
+            <p>{{ this_teacher.email }}</p>
+            <p>{{ this_teacher.joindate }}</p>
+            <p>{{ this_teacher.facebook }}</p>
+            <p>{{ this_teacher.twitter }}</p>
+            <p>{{ this_teacher.website }}</p>
+        {% else %}
+            <p>Please update your information!</p>
+        {% endif %}
+
+        {% if this_user == this_student or this_user == this_teacher %}
+            <h2>Edit Profile</h2>
+            <div><a href="{% url 'change_password' %}">Change password</a></div>
+
+            {% if form %}
+            <div>
+                <form method="POST" class="form-group" enctype='Multipart/form-data'>
+                    {% csrf_token %}
+                    <div>
+                        <label for="id_image">Image:</label>
+                        <input type="file" name="image" accept="image/*" id="id_image">
+                    </div>
+
+                    <div>
+                        <label for="id_facebook">Facebook:</label>
+                        <input type="url" name="facebook" id="id_facebook">
+                    </div>
+
+                    <div>
+                        <label for="id_twitter">Twitter:</label>
+                        <input type="url" name="twitter" id="id_twitter">
+                    </div>
+
+                    <div>
+                        <label for="id_website">Website:</label>
+                        <input type="url" name="website" id="id_website">
+                    </div>
+                    <button type="submit">Confirm</button>
+                </form>
+            </div>
+            {% endif %}
+
+            <script>
+                var info_text = document.getElementById("student-info-header-txt");
+                info_text.textContent = "My profile";
+            </script>
+        {% endif %}
+    </div>
+</body>
+{% endblock %}
