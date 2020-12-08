@@ -2,7 +2,8 @@
 <body>
     {% load crispy_forms_tags %}
     <div class="course-detail">
-        <h1>Detail</h1>
+        <!-- <h1>Detail</h1> -->
+
         {% if detail %}
             {% if detail.lectures %}
             <ul>
@@ -16,7 +17,7 @@
                             {% for unit in lecture.units %}
                             <li>
                                 {{ unit }}:
-                                <div>
+                                <!-- <div>
                                     <table style="border: 1px solid;">
                                         <tr style="border: 1px solid;">
                                             <th style="border: 1px solid;">Notes</th>
@@ -39,7 +40,7 @@
                                             </td>
                                         </tr>
                                     </table>
-                                </div>
+                                </div> -->
                                 
                                 {% if can_modify_obj %}
                                 <div>
@@ -55,11 +56,11 @@
                                     </form>
                                 </div>
                                 {% endif %}
-                                <br>
+                                
                             </li>
                             {% endfor %}
                         </ul>
-                        <br>
+                    
                         {% endif %}
 
                         <ul>{% if unit_form %}
@@ -71,19 +72,10 @@
                                     <button type="submit" name="add_unit">Add</button>
                                 </form>
                             </li>
-                                <!--{% if can_modify_obj %}
-                                <button onclick="toggle()">Add unit</button>
-                                <div id='add-unit-area' style="display: none;">
-                                    <form method="POST">
-                                        {% csrf_token %}
-                                        {{ unit_form|crispy }}
-                                        <button type="submit" name="add_unit">Add</button>
-                                    </form>
-                                </div>
-                                {% endif %}-->
                                 {#{% include 'courses/create_lect.html' %}#}
                             {% endif %}
                         </ul>
+
                     {% endif %}
                 </li>
                 {% endfor %}
@@ -122,16 +114,5 @@
             {% endif %}
         {% endif %}
     </div>
-
-    <!--<script>
-        function toggle() {
-            var add_unit_area = document.getElementById("add-unit-area");
-            if (add_unit_area.style.display === "none") {
-                add_unit_area.style.display = "block"
-            } else {
-                add_unit_area.style.display = "none"
-            }
-        }
-    </script>-->
 </body>
 {% endblock %}

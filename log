@@ -1,0 +1,316 @@
+[33mcommit a76daa7dba27c8f10ade33cb0c495d6ef8526a4d[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: thep200 <thepqlna@gmail.com>
+Date:   Thu Nov 26 23:27:02 2020 +0700
+
+    26/11/2020
+    
+    con phan courses chua css nua.
+
+[33mcommit e22e8d55e7a73cfbf1dda820d94d6ce4a27384c3[m
+Author: thep200 <thepqlna@gmail.com>
+Date:   Mon Nov 23 21:01:03 2020 +0700
+
+    23/11/2020
+
+[33mcommit 58dd72654c04c569333fcd00781576bf043c6752[m
+Author: thep200 <thepqlna@gmail.com>
+Date:   Thu Nov 19 15:28:42 2020 +0700
+
+    Update settings.py
+
+[33mcommit 81adb8ec48a8b3b522b79862c76710202566b28d[m
+Author: thep200 <thepqlna@gmail.com>
+Date:   Thu Nov 19 15:18:56 2020 +0700
+
+    19/11/2020
+
+[33mcommit fc8095f98545b86be96ed5ff654f1836f76c053b[m
+Author: thep200 <thepqlna@gmail.com>
+Date:   Wed Nov 18 22:21:48 2020 +0700
+
+    basic page done
+    
+    basic page done
+    18/11/2020
+
+[33mcommit 19a4de01a6e1c3236522896c7f8f977cf73e67a4[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Mon Nov 16 15:52:28 2020 +0700
+
+    update user profile, now can edit profile, upload avatar, ...
+
+[33mcommit e9227815aab3463646685e126391974ecd2a2203[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Sun Nov 15 20:26:09 2020 +0700
+
+    changes in html views
+
+[33mcommit 607307547f95323e6c209bc5cbd57caf0c099c27[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Sat Nov 14 22:43:55 2020 +0700
+
+    update requirements and references
+
+[33mcommit 854d7a8d4c6683cccea8ec29907dc6289c257cc6[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Sat Nov 14 17:18:33 2020 +0700
+
+    re init local folder
+
+[33mcommit c83bb8ce975d5d8b07ea339e2bdf05c562be1f02[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Sat Nov 14 12:00:17 2020 +0700
+
+    14/11 update user_profile, register, course detail view
+
+[33mcommit bb673c5d9555d8cbe6991717bde5c99fd7a9923c[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Sat Nov 14 11:24:48 2020 +0700
+
+    14/11 update readme
+
+[33mcommit 197cb6d6893cfd37a54a62efb48626561380a869[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Sat Nov 14 11:00:48 2020 +0700
+
+    14/11 update user_profile, register, course detail view
+
+[33mcommit 592cb64fc43044bdc6382a03f331ae80bf4343f8[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Fri Nov 13 22:48:13 2020 +0700
+
+    13/11 today's final changes
+
+[33mcommit 3a0a6bba384be0307f631c7267b36a8ef297c744[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Fri Nov 13 22:43:33 2020 +0700
+
+    13/11 no final change
+
+[33mcommit d8d9e9d840c026a0ff81ca9ea2ececea01cff13d[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Fri Nov 13 22:37:38 2020 +0700
+
+    made some changes on password change.
+
+[33mcommit d4f0aca7ae76f1149f01c2ef33c97f6d52bd7ce7[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Fri Nov 13 21:06:56 2020 +0700
+
+    13/11 update readme
+
+[33mcommit c59d1848fa376b4b0e8f8a0c796638c3854ff3fe[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Fri Nov 13 20:34:53 2020 +0700
+
+    13/11 change/reset password. filling database.
+
+[33mcommit 96fd58c50b1e40576be9ecf074685de8c68735ad[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Fri Nov 13 09:36:40 2020 +0700
+
+    course data crawlable. now working on enriching database
+
+[33mcommit 25a73dc20af95b997fe7f80a885cc19e3d6f9ccb[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Fri Nov 13 01:06:08 2020 +0700
+
+    12,13/11 working on enriching database, added some minor changes
+
+[33mcommit d065f1f2d6a6ebee5616bdb385865d3bdaa3fea7[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Tue Nov 10 16:21:28 2020 +0700
+
+    edit readme
+
+[33mcommit 4a34cc57d8e492ca979ac126f0d710b14dcff006[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Tue Nov 10 16:11:50 2020 +0700
+
+    edit readme
+
+[33mcommit 421e6429849a2ea025f89584b5264a2e6c4e1771[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Tue Nov 10 16:09:58 2020 +0700
+
+    edit readme
+
+[33mcommit 1b3f368e9c63103755601d277765ee05e5949ba2[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Tue Nov 10 16:08:01 2020 +0700
+
+    edit readme
+
+[33mcommit 4889c888eabe073b207130a6809151245ac0708a[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Tue Nov 10 16:05:50 2020 +0700
+
+    edit readme
+
+[33mcommit 97a170e3ed8274bdd38c2378095158164654d93b[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Tue Nov 10 16:03:36 2020 +0700
+
+    edit readme
+
+[33mcommit 5dba076f542f082e4733297e0bc1f7d3e5a5dc66[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Tue Nov 10 15:56:20 2020 +0700
+
+    edit readme
+
+[33mcommit b9cb485362b42d7428d13b5e6057ce27b9cfbb06[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Tue Nov 10 15:42:11 2020 +0700
+
+    add readme
+
+[33mcommit 05ac863bfa955fa07f0b2e102c130d4bce193e19[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Tue Nov 10 15:41:47 2020 +0700
+
+    re-commit on 10/11
+
+[33mcommit 5879526e5941c3aa771bed97f1aa955033fa9952[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Wed Oct 14 23:15:27 2020 +0700
+
+    re-configure models
+
+[33mcommit ae2179473cb5f8f83296e3b2068b470434e9c54b[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Wed Oct 14 18:31:31 2020 +0700
+
+    some small changes
+
+[33mcommit 37a131a3e970119a253d10b051b19f9a22f35674[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Wed Oct 14 16:43:41 2020 +0700
+
+    (teacher view) modify, delete, add units, lectureslectures. now working on clean-code of those part, begin on grading assignments etc
+
+[33mcommit 852af5dd25728a484cbd84c68152bbee0bbfa717[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Wed Oct 14 13:13:42 2020 +0700
+
+    teachers now can add or delete courses, units, now working on modifing components
+
+[33mcommit 731e67c7aebc354434179db58878ed9d582d4f3d[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Wed Oct 14 00:02:28 2020 +0700
+
+    teacher adding lectures and units function but still sucks
+
+[33mcommit 6eade2e91d96b330ac3332b43bf219c741165b16[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Tue Oct 13 22:45:37 2020 +0700
+
+    add lectures, units components. file uploading, embeded videos
+
+[33mcommit 8c7b77ddb4a1f162169cc0e1bcd683582ad25cff[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Tue Oct 13 15:03:26 2020 +0700
+
+    add some course elements: Unit, Assignment, learn(Student-Unit)
+
+[33mcommit 10a0146ad234a01d76110dd40da79b5bbadb7f70[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Mon Oct 12 23:36:52 2020 +0700
+
+    add image to objects, add lectures. now working on lectures of courses.
+
+[33mcommit 9927481a91195526491f22932c2f7e96b342d824[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Mon Oct 12 21:50:06 2020 +0700
+
+    12/10 10p.m small changes
+
+[33mcommit a49036713b49a4ee45eceb0f53d9d45a393dad63[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Mon Oct 12 18:02:11 2020 +0700
+
+    changes in views, update teacher, student infomation, ...
+
+[33mcommit 5073112e602119eec7ebb307a03ccb7cea22e4f0[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Mon Oct 12 18:01:05 2020 +0700
+
+    changes in views, update teacher, student infomation, ...
+
+[33mcommit 5acf8e836d68ec333d5fbf1052f6d1b52c6e3adc[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Mon Oct 12 09:05:56 2020 +0700
+
+    again some small changes on view
+
+[33mcommit 36e5953b67bc1af31923b13c5e017dca1e5ae084[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Mon Oct 12 00:34:26 2020 +0700
+
+    fixed somw extremely minor err
+
+[33mcommit b3747e4ebd4d5c70705bdb0f3fbe774a343c9f1c[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Mon Oct 12 00:23:25 2020 +0700
+
+    12/10 some small changes
+
+[33mcommit cf9d634144ab2a95652a28e65ca27eec2fa196df[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Mon Oct 12 00:20:37 2020 +0700
+
+    add teacher register, some new views on home page (profile, dashboard)
+
+[33mcommit 4166e129d79ddb6484430b1cea6946cf32310b13[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Sun Oct 11 12:21:09 2020 +0700
+
+    small changes in urls
+
+[33mcommit 8ec9912e8cdbd59952e0dab2ff52d3eb951db3c8[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Sun Oct 11 01:18:05 2020 +0700
+
+    1:17 11/10 small change on redirect when view home page and enrolled courses view page
+
+[33mcommit e7ac641b8a531c296215455a8c646cb6cbf6c5fb[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Sun Oct 11 01:13:44 2020 +0700
+
+    add home page of student (show list of enrolled courses)
+
+[33mcommit b3e865404eba8e8fd16569e3848cff3dd8627d26[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Sun Oct 11 00:27:33 2020 +0700
+
+    prevent access to login, register from authenticated users
+
+[33mcommit de937724748d02bb2be7e17ee994b2a888381248[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Sat Oct 10 23:13:20 2020 +0700
+
+    add enroll function
+
+[33mcommit a17b773fd5299c56569a62ceef24a345d4bafa41[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Sat Oct 10 16:18:34 2020 +0700
+
+    add students to courses, enrollment
+
+[33mcommit 682646c9ad6299e9e443d4eb1eb2c00500d8d886[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Fri Oct 9 23:38:55 2020 +0700
+
+    コースが作れるようになった。コースのサイトがダイナミックに作成されるようになった。
+
+[33mcommit cbf0802a17eee0b184cbd3e64782cb9bec66c574[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Fri Oct 9 18:32:07 2020 +0700
+
+    can add courses and limit access to user role
+
+[33mcommit 356bae0fbfcf842177497bc6d8f9750ae41e79ae[m
+Author: longnp030 <philongg2000@gmail.com>
+Date:   Thu Oct 8 22:52:05 2020 +0700
+
+    ユーザーとともに学生が作成されるようになった。

@@ -3,6 +3,7 @@
 <body>
     <div class="my-courses">
         <h1>My courses</h1>
+        {# <link rel="stylesheet" href="{% url 'create' %}"> #}
         {% if my_courses %}
             <ul>
                 {% for course in my_courses %}

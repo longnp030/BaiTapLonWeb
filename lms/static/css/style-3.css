@@ -342,3 +342,133 @@ body {
     text-decoration: none;
     color: rgb(0, 255, 136);
 }
+
+/* PROFILE */
+
+.profile{
+    text-align: center;
+    height: 100%;
+    border-top: 1px solid white;
+    background-color: rgb(245, 245, 245);
+}
+
+
+.info-details-block{
+    display: inline-block;
+    width: 60%;
+    height: 350px;
+    margin: 50px 0 0 0;
+    background-color: white;
+}
+
+.info-details-block h2 {
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.info-details-block label{
+    text-transform: capitalize;
+    color: #333333;
+}
+
+
+.info-details-block input[type = 'text'], .info-details-block input[type = 'url']{
+    display: inline-block;
+    border-radius: 5px;
+    color: #333333;
+    border: 1px solid #333333;;
+    width: 90%;
+    padding: 10px;
+    margin: 20px 20px;
+    outline: none;
+}
+
+.label-fields{
+    display: inline;
+    float: left;
+    width: 20%;
+    height: 250px;
+}
+
+.label-fields label{
+    text-align: center;
+    display: block;
+    padding-bottom: 35px;
+    margin-top: 25px;
+}
+
+.ipt-fields{
+    text-align: left;
+    display: inline;
+    float: right;
+    width: 80%;
+    height: 250px;
+}
+
+/* PROFILE AVATAR */
+.info-details-block img{
+    margin-top: 20px;
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+}
+
+/* PROFILE INFORMATION */
+#infor{
+    padding: 40px 0 10px 0;
+    text-align: right;
+}
+
+/* PROFILE CONTACT */
+#contact{
+    padding: 40px 0 10px 0;
+    text-align: right;
+}
+
+/* PROFILE EDITS */
+#edit{
+    height: 450px;
+    padding: 20px 0 5px 0;
+    text-align: right;
+    border-bottom: 1px solid black;
+}
+
+#filechoiseimage{
+    padding-left: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#editcomfirm{
+    text-align: center;
+}
+
+#editcomfirm button[type="submit"]{
+    padding: 11px;
+    font-size: 15px;
+    font-weight: 600;
+    width: 110px;
+    color: white;
+    background-color: rgb(53, 186, 69);
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin-top: 70px;
+}
+
+#editcomfirm a{
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    outline: none;
+    background-color: rgb(53, 186, 69);
+    text-decoration: none;
+}
+
+#edit input[type = 'url']:focus{
+    box-shadow: 0px 0px 7px 2px #3498db;
+}
+
+#editcomfirm a:hover,#editcomfirm button[type="submit"]:hover{
+    background-color: rgb(51, 133, 61);
+}
