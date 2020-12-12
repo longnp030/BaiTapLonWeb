@@ -1,38 +1,25 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        {% extends '../lms/index1.html' %}
-        <meta charset="utf-8""/>
-        <title>{% block title %}Tạo khóa học{% endblock %}</title>
-    </head>
-    <body>
-        {% load crispy_forms_tags %}
-        {% block content %}
-            {% if already_enrolled %}
-                <script>
-                    alert("You are already enrolled in this course!");
-                    window.location.href = "{% url 'course_detail' course_id %}";
-                </script>
-            {% else %}
-                <form method="POST">
-                    {% csrf_token %}
-                    {{ enrollment_form|crispy }}
-                    <button type="submit" id="enroll">
-                        Thêm
-                    </button>
-                </form>
+
+{% extends '../lms/index1.html' %}
+{% block title %}Tạo khóa học{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    {% if already_enrolled %}
+        <script>
+            alert("You are already enrolled in this course!");
+            window.location.href = "{% url 'course_detail' course_id %}";
+        </script>
+    {% else %}
+        <form method="POST">
+            {% csrf_token %}
+            {{ enrollment_form|crispy }}
+            <button type="submit" id="enroll">Thêm</button>
+        </form>
                 
-                <script>
-                    window.onload = function() {
-                        var button = document.getElementById("enroll");
-                        button.form.submit();
-                    };
-                    alert("Enrolled successfully!");
-                    window.setTimeout(function() {
-                        location.href = "{% url 'course_overview' course_id %}";
-                    }, 3000);
-                </script>
-            {% endif %}
-        {% endblock %}
-    </body>
-</html>
+        <script>
+            window.onload = function() { var button = document.getElementById("enroll"); button.form.submit(); };
+            alert("Enrolled successfully!");
+            window.setTimeout(function() { location.href = "{% url 'course_overview' course_id %}"; }, 3000);
+        </script>
+    {% endif %}
+{% endblock %}

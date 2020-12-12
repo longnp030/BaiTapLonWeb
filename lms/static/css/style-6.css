@@ -11,6 +11,7 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
+    background-color: rgb(240, 240, 240);
 }
 
 .width-1200 {
@@ -81,6 +82,18 @@ body {
 
 .join-bt a:hover{
     background-color: rgb(54, 159, 75);
+}
+
+/* TEST */
+.join-btt{
+    display: inline;
+    margin-top: 100px;
+}
+
+.join-btt img{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
 }
 
 /* HOME */
@@ -352,7 +365,6 @@ body {
     background-color: rgb(245, 245, 245);
 }
 
-
 .info-details-block{
     display: inline-block;
     width: 60%;
@@ -370,7 +382,6 @@ body {
     text-transform: capitalize;
     color: #333333;
 }
-
 
 .info-details-block input[type = 'text'], .info-details-block input[type = 'url']{
     display: inline-block;
@@ -434,6 +445,7 @@ body {
 }
 
 #filechoiseimage{
+    outline: none;
     padding-left: 20px;
     margin-top: 30px;
     margin-bottom: 30px;
@@ -472,3 +484,407 @@ body {
 #editcomfirm a:hover,#editcomfirm button[type="submit"]:hover{
     background-color: rgb(51, 133, 61);
 }
+/* COURSE SHOW */
+.c-box-course{
+    position: relative;
+    text-align: center;
+    display: inline-block;
+    height: 350px;
+    width: 250px;
+    left: 40px;
+    margin: 20px 10px 0 10px;
+    padding-top: 10px;
+    background-color: white;
+}
+
+.c-box-course > img{
+    text-align: center;
+    height: 250px;
+    width: 75%;
+}
+
+.name-course{
+    position: absolute;
+    text-align: left;
+    bottom: 50px;
+    padding: 5px 10px;
+    height: 30px;
+    width: 100%;
+    border-bottom: 1px solid rgb(210, 210, 210);
+}
+
+.name-course > i{
+    font-size: 13px;
+    font-weight: 500;
+} 
+
+.bt-view{
+    position: absolute;
+    height: 50px;
+    width: 100%;
+    bottom: 0;
+    padding-top: 15px;
+    background-color: white;
+}
+
+.bt-view > a{
+    text-decoration: none;
+    padding: 10px 40px;
+    color: black;
+}
+
+.c-box-course:hover .bt-view{
+    background-color: rgb(44, 209, 126);
+}
+
+.c-box-course:hover{
+    box-shadow: 0px 0px 15px 5px rgb(159, 159, 159);
+}
+
+
+/* COURSE */
+.course-over-view{
+    text-align: center;
+    height: 2900px;
+    background-color: rgb(240, 240, 240);
+    border-top: 1px solid white;
+}
+
+.course-view{
+    display: inline-block;
+    margin-top: 50px;
+    height: 250px;
+    width: 80%;
+    background-color: white;
+}
+
+.course-view-left{
+    padding: 20px;
+    float: left;
+    width: 50%;
+    height: 100px;
+}
+
+.course-view-right{
+    padding: 20px;
+    float: right;
+    width: 50%;
+    height: 100px;
+}
+
+.course-view-descript{
+    padding: 20px;
+    margin-top: 60px;
+    width: 100%;
+    height: 120px;
+}
+
+/* COURSE DETAILS */
+#coursename{
+    padding: 10px ;
+    height: 60px;
+    width: 100%;
+}
+
+#coursename h1{
+    letter-spacing: 1.5px;
+    text-transform: capitalize;
+}
+
+#coursedescript{
+    border-bottom: 2px solid rgb(210, 210, 210);
+    border-top: 2px solid rgb(210, 210, 210);
+    text-align: left;
+    text-indent: 30px;
+}
+
+.course-btn-enroll{
+    margin: 25px 0;
+    text-align: center;
+}
+
+.course-btn-enroll > a{
+    text-decoration: none;
+    color: whitesmoke;
+    padding: 15px 30px;
+    border-radius: 10px;
+    background-color: rgb(50, 180, 60);
+}
+
+.course-btn-enroll > a:hover{
+    background-color: rgb(40, 150, 30);
+}
+
+#courseteacher{
+    height: 50px;    
+}
+
+#courseteachertitle{
+    padding: 10px;
+    width: 20%;
+    height: 50px;
+}
+
+#courseteachername{
+    border-left:  2px solid rgb(210, 210, 210);
+    padding: 10px;
+    width: 80%;
+    height: 50px;
+}
+
+#courseteachername > a{
+    text-decoration: none;
+    color: black;
+    text-transform: capitalize;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+#classmatecourse{
+    height: 100px;
+}
+
+#classmatecoursetitle{
+    height: 100px;
+    padding: 10px;
+    width: 20%;
+}
+
+#classmatecoursename{
+    border-left:  2px solid rgb(210, 210, 210);
+    padding: 10px;
+    width: 80%;
+    height: 100px;
+}
+
+#classmatecoursename > a{
+    text-decoration: none;
+    color: black;
+    text-transform: capitalize;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* CREATE COURSE */
+#boxcoursecreate{
+    margin-top: 100px;
+    width: 70%;
+    height: 400px;
+}
+
+#boxcoursecreate h2{
+    padding-top: 10px;
+    text-transform: capitalize;
+}
+
+#createcourseleft{
+    text-align: right;
+    width: 20%;
+    height: 300px;
+}
+
+#createcourseleft label{
+    display: block;
+    text-transform: capitalize;
+    margin-bottom: 40px;
+}
+
+#createcourseright{
+    width: 80%;
+    height: 300px;
+    margin-top: 0px;
+}
+
+#createcourseright input[type = 'file']{
+    display: inline-block;
+    outline: none;
+    width: 90%;
+}
+
+#createcourseright textarea{
+    width: 90%;
+    outline: none;
+}
+
+#boxcoursecreate button[type = 'submit']{
+    color: whitesmoke;
+    border: none;
+    font-size: 15px;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-weight: 400;
+    letter-spacing: 1.0px;
+    background-color: rgb(50, 180, 60);
+}
+
+#boxcoursecreate button[type = 'submit']:hover{
+    background-color: rgb(60, 231, 75);
+}
+
+#createcourseright input[type = 'text']:focus{
+    box-shadow: 0px 0px 7px 2px #3498db;
+}
+
+#createcourseright textarea:focus{
+    box-shadow: 0px 0px 7px 2px #3498db;
+}
+
+/* ADD DETAILS COURSE */
+#boxdetailslecture{
+    margin-top: 50px;
+    padding-top: 20px;
+    width: 100%;
+    height: 200px;
+}
+
+#lessionname{
+    width: 20%;
+    height: 150px;
+}
+
+#lessionname > i{
+    letter-spacing: 1.5px;
+    font-size: 25px;
+}
+
+#lessioncontent{
+    width: 80%;
+    height: 150px;
+    text-align: left;
+    border-left:  2px solid rgb(210, 210, 210);
+}
+
+
+/* ADD LECTURE */
+#boxaddlecture{
+    width: 100%;
+    height: 170px;
+    margin-bottom: 50px;
+}
+
+#boxaddlecture > h3{
+    text-transform: capitalize;
+    padding: 5px 0;
+}
+
+#boxtitleadd{
+    padding: 10px 20px 20px 20px;
+    width: 20%;
+}
+
+#boxtitleadd > label{
+    display: block;
+    text-transform: capitalize;
+    margin-bottom: 25px;
+}
+
+#boxvalueadd {
+    width: 80%;
+    padding: 5px;
+    margin-top: 0px;
+}
+
+#boxvalueadd input{
+    margin: 0px 10px 5px 0px;
+    outline: none;
+}
+
+#boxaddlecture button[type = 'submit']{
+    color: whitesmoke;
+    border: none;
+    font-size: 15px;
+    padding: 5px 20px;
+    border-radius: 10px;
+    font-weight: 400;
+    letter-spacing: 1.0px;
+    background-color: rgb(50, 180, 60);
+    outline: none;
+}
+
+#boxaddlecture button[type = 'submit']:hover{
+    background-color: rgb(60, 231, 75);
+}
+
+#boxaddlecture input[name = 'name']:focus{
+    box-shadow: 0px 0px 7px 2px #3498db;
+}
+
+/* ADD UNIT */
+#boxunitadd{
+    width: 100%;
+    height: 430px;
+    margin-top: 0;
+}
+
+#boxunitadd h3{
+    text-transform: capitalize;
+    margin-top: 10px;
+
+}
+
+#unitaddtitle{
+    padding-right: 30px;
+    text-align: center;
+    width: 20%;
+    height: 350px;
+}
+
+#unitaddtitle label{
+    display: block;
+    text-transform: capitalize;
+    margin-bottom: 40px;
+}
+
+#unitaddvalue{
+    text-align: center;
+    width: 80%;
+    height: 350px;
+    margin: 0;
+}
+
+#unitaddvalue select{
+    padding: 10px;
+    width: 90%;
+    outline: none;
+    border-radius: 5px;
+}
+
+#unitaddvalue input[type = 'file']{
+    display: inline-block;
+    outline: none;
+    width: 90%;
+}
+
+#unitaddvalue input[type = 'text'], #unitaddvalue input[type = 'file'], #unitaddvalue input[type = 'url']{
+    margin: 5px 0;
+    outline: none;
+}
+
+#unitaddvalue textarea{
+    width: 90%;
+    height: 100px;
+    outline: none;
+}
+
+#boxunitadd button[type = 'submit']{
+    color: whitesmoke;
+    border: none;
+    font-size: 15px;
+    padding: 5px 20px;
+    border-radius: 10px;
+    font-weight: 400;
+    letter-spacing: 1.0px;
+    background-color: rgb(50, 180, 60);
+    outline: none;
+}
+
+#boxunitadd button[type = 'submit']:hover{
+    background-color: rgb(60, 231, 75);
+}
+
+#boxunitadd input[type = 'text']:focus, #boxunitadd input[type = 'url']:focus, #boxunitadd textarea:focus{
+    box-shadow: 0px 0px 7px 2px #3498db;
+}
+
+
+

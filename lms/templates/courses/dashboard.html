@@ -1,18 +1,27 @@
+
+
 {% extends "../lms/index1.html" %}
 {% block content %}
-<body>
-    <div class="my-courses">
-        <h1>My courses</h1>
-        {# <link rel="stylesheet" href="{% url 'create' %}"> #}
-        {% if my_courses %}
-            <ul>
-                {% for course in my_courses %}
-                    <li><a href="../courses/{{ course.id }}/">{{ course.name }}</a></li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>You are not enrolled in any courses!</p>
-        {% endif %}
-    </div>
-</body>
+<h1>My courses</h1>
+<a href="{% url 'create_course' %}">Create a new course</a>
+
+{% if my_courses %}
+    {% for course in my_courses %}
+        <div class="c-box-course">
+        
+            <img src="{{ course.image.url }}"> 
+            
+            <div class="name-course">
+                <i>{{ course.name }}</i>
+            </div>
+            
+            <div class="bt-view">
+                <a href="../courses/{{ course.id }}/"><i>Details</i></a>
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>You are not enrolled in any courses!</p>
+{% endif %}
+
 {% endblock %}

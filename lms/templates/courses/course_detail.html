@@ -1,118 +1,59 @@
 {% block content %}
-<body>
-    {% load crispy_forms_tags %}
-    <div class="course-detail">
-        <!-- <h1>Detail</h1> -->
+{% load crispy_forms_tags %}
 
-        {% if detail %}
-            {% if detail.lectures %}
-            <ul>
-                {% for lecture in detail.lectures %}
-                <li>
-                    {% if lecture %}
-                        <a>Lecture :</a>
-                        {{ lecture.lecture }}
+{% if detail %}
+
+    {% if detail.lectures %}
+        {% for lecture in detail.lectures %}
+            {% if lecture %}
+                <div class="course-view" id="boxdetailslecture">
+                    <div class="course-view-left" id="lessionname">
+                        <i class="fas fa-list-ul"> &emsp; Lession </i> 
+                    </div>
+
+                    <div class="course-view-right" id="lessioncontent">
+                        <h3>{{ lecture.lecture }}</h3>
+
                         {% if lecture.units %}
-                        <ul>
                             {% for unit in lecture.units %}
-                            <li>
-                                {{ unit }}:
-                                <!-- <div>
-                                    <table style="border: 1px solid;">
-                                        <tr style="border: 1px solid;">
-                                            <th style="border: 1px solid;">Notes</th>
-                                            <td style="border: 1px solid;"><a>{{ unit.notes }}</a></td>
-                                        </tr>
-                                        <tr style="border: 1px solid;">
-                                            <th style="border: 1px solid;">Slide</th>
-                                            <td style="border: 1px solid;">
-                                                {% if unit.slide %}
-                                                    <a href="{% url 'view_file' unit.slide.path %}">{{ unit.get_slide_name }}</a>
-                                                {% endif %}
-                                            </td>
-                                        </tr>
-                                        <tr style="border: 1px solid;">
-                                            <th style="border: 1px solid;">Video</th>
-                                            <td style="border: 1px solid;">
-                                                {% if unit.video %}
-                                                    <iframe src="{{ unit.video }}" type="video|mp4" width="640" height="480"></iframe>
-                                                {% endif %}
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div> -->
-                                
-                                {% if can_modify_obj %}
-                                <div>
-                                    <form action="{% url 'delete_obj' unit.id %}" method="POST">
-                                        {% csrf_token %}
-                                        <button type="submit">Delete</button>
-                                    </form>
-                                </div>
-                                <div>
-                                    <form action="{% url 'modify_obj' unit.id %}" method="GET">
-                                        {% csrf_token %}
-                                        <button type="submit" name="save-changes">Modify</button>
-                                    </form>
-                                </div>
-                                {% endif %}
-                                
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    
+                                <ul>{{ unit }}</ul>  
+                            {% endfor%}
                         {% endif %}
-
-                        <ul>{% if unit_form %}
-                            <li>
-                                <i>Add unit</i>
-                                <form method="POST">
-                                    {% csrf_token %}
-                                    {{ unit_form|crispy }}
-                                    <button type="submit" name="add_unit">Add</button>
-                                </form>
-                            </li>
-                                {#{% include 'courses/create_lect.html' %}#}
-                            {% endif %}
-                        </ul>
-
-                    {% endif %}
-                </li>
-                {% endfor %}
-            </ul>
+                    </div>
+                </div>
             {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {% if lecture_form %}
+        <form method="POST" class="course-view" id="boxaddlecture">
+            {% csrf_token %}
+            <h3> Add lecture </h3> 
+            {#{{lecture_form|crispy}}#}
             
-            <ul>
-                {% if lecture_form %}
-                <li>
-                    <i>Add lecture</i>
-                    <form method="POST">
-                        {% csrf_token %}
-                        {{ lecture_form|crispy }}
-                        <button type="submit" name="add_lect">Add</button>
-                    </form>
-                </li>
-                {% endif %}
-            </ul>
+            <div class="course-view-left" id="boxtitleadd">
+                <label for="">Choise course</label>
+                <label for="">lecture name</label>
+             </div>
+ 
+             <div class="course-view-right info-details-block" id="boxvalueadd">
+                 <input type="text" name="course" value="{{ course.name }}" readonly>
+                     
+                 <input type="text" name="name" maxlength="255" required="" id="id_name">
+             </div>
+            <button type="submit" name="add_lect">Add</button>
+        </form>
+    {% endif %}
 
-            {% if detail.teacher %}
-                <div>
-                    <h2>Teacher:</h2>
-                    <a href="{% url 'user_profile' detail.teacher.id %}">{{ detail.teacher.name }}</a>
-                </div>
-            {% endif %}
+    {% if unit_form %}
+        <h2>add unit</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ unit_form|crispy }}
+            <button type="submit" name="add_unit">Add</button>
+        </form>
+    {% endif %}
 
-            {% if detail.classmates %}
-                <div class="members">
-                    <h2>Classmates:</h2>
-                    {% for classmate in detail.classmates %}
-                        {% if classmate != this_user %}
-                            <a href="{% url 'user_profile' classmate.id %}">{{ classmate.name }}</a>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            {% endif %}
-        {% endif %}
-    </div>
-</body>
+
+{% endif %}
 {% endblock %}

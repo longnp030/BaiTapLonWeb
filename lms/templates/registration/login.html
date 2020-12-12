@@ -1,13 +1,7 @@
 {% extends '../lms/base.html' %}
-{% load static%}
-
 {% block title%} Login {% endblock%}
 
-{% block js %}  
-{% endblock%}
-
 {% block content%} 
-
     <form class="box box-login" id="login" action="." method="POST">
         {% csrf_token %}
         

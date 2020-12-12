@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Home page{% endblock %}</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/style-3.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style-6.css' %}">
         <script src="https://kit.fontawesome.com/fe59a62916.js"></script>
         <script type="text/javascript" src="{% static 'js/profile.js'%}"></script>
     </head>
@@ -15,13 +15,24 @@
                 <div class="header-inner width-1200">
                     <div class="navbar">
                         <a href="{% url 'index' %}">Home</a>
+                        {% if this_teacher %}      {#can sua cho nay de co the nhan biet dc dau la giao vien#}
+                            <a href="{% url 'create_course' %}">Create</a>
+                        {% endif %}
                         <a href="https://www.facebook.com/thepql" target="_blank">Contact</a>
                         <a href="{% url 'dashboard' %}">My Courses</a>
                         <a href="{% url 'user_profile' this_user.id %}">Profile</a>
                     </div>
-                
+
+                    {% if this_user %}
+                        {% if this_user.image %}
+                            <div class="join-btt">
+                                <img src="{{ this_user.image.url }}"> 
+                            </div> 
+                        {% endif %}
+                    {% endif %}
+
                     <div class="join-bt">
-                        <a href="{% url 'logout' %}"> Logout </a>
+                        <a href="{% url 'logout' %}">logout</a>
                     </div>
                 </div>
             </div>
@@ -45,16 +56,30 @@
         {% endif %}
 
         {% block content %}
+
             {% if user.is_authenticated %}
-                    <h1>Welcome, {{ user.email }}!</h1>
+                <h2>Hey, {{ this_user.name }} remenber "To be successful must to accept a little bit of risk but still in control"</h2>
+                
                 {% if latest_course_list %}
-                    <ul>
-                        {% for course in latest_course_list %}
-                            <li><a href="courses/{{ course.id }}/">{{ course.name }}</a></li>
-                        {% endfor %}
-                    </ul>
+                    {% for course in latest_course_list %}
+                        <div class="c-box-course">
+                            {% if course.image %}
+                                <img src="{{ course.image.url }}"> 
+                            {% endif %}
+                            
+                            <div class="name-course">
+                                <i>{{ course.name }}</i>
+                            </div>
+                            
+                            <div class="bt-view">
+                                <a href="courses/{{ course.id }}/">View course</a>
+                            </div>
+                        </div>
+                    {% endfor %}
                 {% endif %}
+
             {% else %}
+            
                 <div class="home-b1">
                     <div class="home-b1-inner">
                         <div class="content">
