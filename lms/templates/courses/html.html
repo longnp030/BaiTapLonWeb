@@ -1,34 +1,28 @@
 {% block content %}
-{% load crispy_forms_tags %}
-<div class="course-over-view">
-    <h1>Detailllllllll</h1>
-    <div class="course-view">
-        
+<div>
+    <h1>Detail</h1>
+    <div>
         {% if detail %}
             {% if detail.lectures %}
                 {% for lecture in detail.lectures %}
                     {% if lecture %}
                         <h2>{{ lecture.lecture }}</h2>
-                    
                         {% if lecture.units %}
                             {% for unit in lecture.units %}
                                 <h2>{{ unit }}</h2>
-
                                 <div>
                                     <h3>note</h3>
                                     {{ unit.notes }}
-
                                     <h3>silde</h3>
-                                        {% if unit.slide %}
-                                            <a href="{% url 'view_file' unit.slide.path %}">{{ unit.get_slide_name }}</a>
-                                        {% endif %}
-                                            
+                                    {% if unit.slide %}
+                                    <a href="{% url 'view_file' unit.slide.path %}">{{ unit.get_slide_name }}</a>
+                                    {% endif %}
                                     <h3>video</h3>
-                                        {% if unit.video %}
-                                            <iframe src="{{ unit.video }}" type="video|mp4" width="640" height="480"></iframe>
-                                        {% endif %}
+                                    {% if unit.video %}
+                                    <iframe src="{{ unit.video }}" type="video|mp4" width="640" height="480"></iframe>
+                                    {% endif %}
                                 </div>
-                                
+
                                 {% if can_modify_obj %}
                                 <div>
                                     <form action="{% url 'delete_obj' unit.id %}" method="POST">
@@ -44,61 +38,39 @@
                                     </form>
                                 </div>
                                 {% endif %}
-
                             {% endfor %}
                         {% endif %}
 
-                        {% if unit_form %}
-                            <h2>add unit</h2>
-                            <form method="POST">
-                                {% csrf_token %}
-                                {{ unit_form|crispy }}
-                                <button type="submit" name="add_unit">Add</button>
-                            </form>
+                        {% if can_modify_obj %}
+                        <a href="{% url 'add_unit' course_id=course.id lecture_id=lecture.lecture.id %}" name='unitoflecture'>Add unit</a>
                         {% endif %}
-                    {% endif %}   
+                    {% endif %}
                 {% endfor %}
-
-
-
-            </ul>
             {% endif %}
-            
-            <ul>
-                {% if lecture_form %}
-                <li>
-                    <i>Add lecture</i>
-                    <form method="POST">
-                        {% csrf_token %}
-                        {{ lecture_form|crispy }}
-                        <button type="submit" name="add_lect">Add</button>
-                    </form>
-                </li>
-                {% endif %}
-            </ul>
+            <br>
+            {% if can_modify_obj %}
+                <a href="{% url 'add_lecture' course_id=course.id %}" name='unitoflecture'>Add lecture</a>
+            {% endif %}
 
             {% if detail.teacher %}
-                <div>
-                    <h2>Teacher:</h2>
-                    <a href="{% url 'user_profile' detail.teacher.id %}">{{ detail.teacher.name }}</a>
-                </div>
+            <div>
+                <h2>Teacher:</h2>
+                <a href="{% url 'user_profile' detail.teacher.id %}">{{ detail.teacher.name }}</a>
+            </div>
             {% endif %}
 
             {% if detail.classmates %}
-                <div class="members">
-                    <h2>Classmates:</h2>
-
-                    {% for classmate in detail.classmates %}
-                        {% if classmate != this_user %}
-                            <a href="{% url 'user_profile' classmate.id %}">{{ classmate.name }}</a>
-                        {% endif %}
-                    {% endfor %}
-
-                </div>
+            <div class="members">
+                <h2>Classmates:</h2>
+                {% for classmate in detail.classmates %}
+                {% if classmate != this_user %}
+                <a href="{% url 'user_profile' classmate.id %}">{{ classmate.name }}</a>
+                {% endif %}
+                {% endfor %}
+            </div>
             {% endif %}
-            
+
         {% endif %}
     </div>
 </div>
-    
 {% endblock %}

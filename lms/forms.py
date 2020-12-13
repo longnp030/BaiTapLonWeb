@@ -168,10 +168,10 @@ class QuizCreateForm(forms.ModelForm):
 
 
 class UnitCreateForm(forms.ModelForm):
-    quiz = QuizCreateForm()
+    #quiz = QuizCreateForm()
     class Meta:
         model = Unit
-        fields = ['lecture', 'name', 'notes', 'slide', 'video', 'reading', 'quiz', ]
+        fields = ['lecture', 'name', 'notes', 'slide', 'video', 'reading', ]
 
 
 class LectureCreateForm(forms.ModelForm):

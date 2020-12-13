@@ -219,19 +219,20 @@ def course_overview(request, course_id):
         else:
             enrolled = teach[0].teacher.id == this_user.id
     
-    unit_form = None
+    '''unit_form = None
     lecture_form = None
     lecture_form_initial = {'course': course,}
-    unit_form_initial = {'lecture': Lecture.objects.filter(course=course)[0] if len(Lecture.objects.filter(course=course)) > 0 else None,}
+    unit_form_initial = {'lecture': Lecture.objects.filter(course=course)[0] if len(Lecture.objects.filter(course=course)) > 0 else None,}'''
     
     if this_teacher:
-        if request.method == 'POST':
+        '''if request.method == 'POST':
             if 'add_unit' in request.POST:
                 unit_form = UnitCreateForm(request.POST)
                 unit_form.fields['lecture'].queryset = Lecture.objects.filter(course=course)
                 if unit_form.is_valid():
                     unit_form.save()
                     unit_form = UnitCreateForm(initial=unit_form_initial)
+                    return redirect(reverse('course_overview', kwargs={'course_id': course.id}))
             
             if 'add_lect' in request.POST:
                 lecture_form = LectureCreateForm(request.POST)
@@ -239,11 +240,12 @@ def course_overview(request, course_id):
                 if lecture_form.is_valid():
                     lecture_form.save()
                     lecture_form = LectureCreateForm(initial=lecture_form_initial)
+                    return redirect(reverse('course_overview', kwargs={'course_id': course.id}))
         else:
             unit_form = UnitCreateForm(initial=unit_form_initial, )
             unit_form.fields['lecture'].queryset = Lecture.objects.filter(course=course)
             lecture_form = LectureCreateForm(initial=lecture_form_initial)
-            lecture_form.fields['course'].queryset = Course.objects.filter(id=course.id)
+            lecture_form.fields['course'].queryset = Course.objects.filter(id=course.id)'''
         
         can_modify_obj = True
 
@@ -252,8 +254,8 @@ def course_overview(request, course_id):
         "enrolled": enrolled,
         "this_user": this_user,
         "detail": course_detail(course_id) if enrolled else None,
-        "lecture_form": lecture_form,
-        "unit_form": unit_form,
+        #"lecture_form": lecture_form,
+        #"unit_form": unit_form,
         "can_modify_obj": can_modify_obj,
         "teach": Teach.objects.filter(course=course.id)[0] if len(Teach.objects.filter(course=course.id)) > 0 else None,
     }
@@ -298,7 +300,7 @@ def course_detail(course_id):
         teacher = teach.teacher
     this_course_enrollments = Enroll.objects.filter(course=this_course.id)
     classmates = [this_course_enrollment.student for this_course_enrollment in this_course_enrollments]
-    detail = {"lectures": lectures, "teacher": teacher, "classmates": classmates, }
+    detail = {"course": this_course, "lectures": lectures, "teacher": teacher, "classmates": classmates, }
     return detail
 
 
@@ -323,6 +325,37 @@ def search_result(request):
 
     return render(request, 'courses/search_result.html', context=context)
 
+def add_lecture(request, course_id):
+    course = Course.objects.get(id=course_id)
+    lecture_create_form = None
+    if request.method == 'POST':
+        lecture_create_form = LectureCreateForm(request.POST)
+        if lecture_create_form.is_valid():
+            lecture_create_form.save()
+            return redirect(reverse('course_overview', kwargs={'course_id': course.id}))
+    else:
+        lecture_create_form = LectureCreateForm()
+    context = {
+        'course': course,
+        'lecture_create_form': lecture_create_form,
+    }
+    return render(request, 'courses/add_lecture.html', context=context)
+
+def add_unit(request, course_id, lecture_id):
+    lecture = Lecture.objects.get(id=lecture_id)
+    unit_create_form = None
+    if request.method == 'POST':
+        unit_create_form = UnitCreateForm(request.POST, request.FILES)
+        if unit_create_form.is_valid():
+            unit_create_form.save()
+            return redirect(reverse('course_overview', kwargs={'course_id': Course.objects.distinct().filter(lecture__id=lecture_id)[0].id}))
+    else:
+        unit_create_form = UnitCreateForm()
+    context = {
+        'unit_create_form': unit_create_form,
+        'lecture': lecture
+    }
+    return render(request, 'courses/add_unit.html', context=context)
 
 def modify_obj(request, obj_id):
     obj = Unit.objects.get(id=obj_id)

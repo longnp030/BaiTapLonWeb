@@ -1,0 +1,43 @@
+{% block title %}Create Unit{% endblock %}
+
+{% block content %}
+{% if unit_create_form %}
+<form method="POST">
+    {% csrf_token %}
+    <div id="div_id_lecture" class="form-group">
+        <label for="id_lecture" class=" requiredField">
+            Lecture<span class="asteriskField">*</span></label>
+        <div class=""><select name="lecture" class="select form-control" required id="id_lecture">
+            <option value="{{ lecture.id }}" selected>{{ lecture }}</option></select></div>
+    </div>
+    <div id="div_id_name" class="form-group">
+        <label for="id_name" class=" requiredField">
+            Name<span class="asteriskField">*</span></label>
+        <div class="">
+            <input type="text" name="name" maxlength="255" class="textinput textInput form-control"
+                required id="id_name"></div>
+    </div>
+    <div id="div_id_notes" class="form-group">
+        <label for="id_notes" class="">Notes</label>
+        <div class="">
+            <textarea name="notes" cols="40" rows="10" class="textarea form-control" id="id_notes">
+            </textarea></div>
+    </div>
+    <div id="div_id_slide" class="form-group"> <label for="id_slide" class="">Slide</label>
+        <div class="">
+            <input type="file" name="slide" class="clearablefileinput form-control-file"
+                id="id_slide"></div>
+    </div>
+    <div id="div_id_video" class="form-group"> <label for="id_video" class="">Video</label>
+        <div class=""><input type="url" name="video" maxlength="255" class="urlinput form-control"
+                id="id_video"></div>
+    </div>
+    <div id="div_id_reading" class="form-group"> <label for="id_reading" class="">Reading</label>
+        <div class=""> <input type="text" name="reading" maxlength="255"
+                class="textinput textInput form-control" id="id_reading"></div>
+    </div>
+
+    <button type="submit" name="add_unit">Add</button>
+</form>
+{% endif %}
+{% endblock %}

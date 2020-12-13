@@ -1,0 +1,18 @@
+{% block title %}Create Lecture{% endblock %}
+
+{% block content %}
+{% if lecture_create_form %}
+<form method="POST">
+    {% csrf_token %}
+    <label for="id_course">Course:</label>
+    <select name="course" required id="id_course">
+        <option value="{{ course.id }}" selected>{{ course }}</option>
+    </select>
+
+    <label for="id_name">Name:</label>
+    <input type="text" name="name" maxlength="255" required id="id_name">
+
+    <button type="submit" name="add_lecture">Add</button>
+</form>
+{% endif %}
+{% endblock %}

@@ -25,11 +25,11 @@
                     <a href="{% url 'enroll' course.id %}">Enroll</a>
                 {% endif %}
             {% else %}
-                {% include 'courses/course_detail.html' %}
-                    <script>
-                        var div_overview = document.getElementById("if-enrolled");
-                            div_overview.style.display = "none";
-                    </script>
+                {% include 'courses/html.html' %}
+                <script>
+                    var div_overview = document.getElementById("if-enrolled");
+                    div_overview.style.display = "none";
+                </script>
             {% endif %}
         </div>
     </div>

@@ -8,8 +8,9 @@
 {% if my_courses %}
     {% for course in my_courses %}
         <div class="c-box-course">
-        
-            <img src="{{ course.image.url }}"> 
+            {% if course.image %}
+                <img src="{{ course.image.url }}">
+            {% endif %}
             
             <div class="name-course">
                 <i>{{ course.name }}</i>

@@ -134,7 +134,7 @@ class Unit(models.Model):
     lecture = models.ForeignKey(Lecture, on_delete=models.DO_NOTHING, db_column='lecture')
     video = models.URLField(max_length=255, db_column='video', null=True, blank=True)
     reading = models.CharField(max_length=255, db_column='reading', null=True, blank=True)
-    quiz = models.OneToOneField('Quiz', on_delete=models.DO_NOTHING, db_column='quiz')
+    #quiz = models.OneToOneField('Quiz', on_delete=models.DO_NOTHING, db_column='quiz')
 
     class Meta:
         managed = False
