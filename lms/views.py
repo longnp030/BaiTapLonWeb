@@ -7,6 +7,7 @@ from django.template import loader
 from django.dispatch import receiver
 from django.apps import AppConfig as conf
 from django.urls import reverse
+from django.db.models import Q
 from django.db.models.signals import post_save
 from django.contrib.auth import authenticate, get_user_model, update_session_auth_hash, login
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -38,7 +39,7 @@ def get_teacher(request):
 def index(request):
     template = loader.get_template('lms/index1.html')
 
-    latest_course_list = Course.objects.order_by('id')
+    latest_course_list = Course.objects.order_by('publishdate')
     context = {}
     this_student = get_student(request)
     this_teacher = get_teacher(request)
@@ -48,7 +49,7 @@ def index(request):
     elif this_student is None and this_teacher is not None:
         this_user = this_teacher
     context = {
-        'latest_course_list': latest_course_list,
+        'latest_course_list': reversed(latest_course_list),
     }
     if this_user is not None:
         context['this_user'] = this_user
@@ -299,6 +300,29 @@ def course_detail(course_id):
     classmates = [this_course_enrollment.student for this_course_enrollment in this_course_enrollments]
     detail = {"lectures": lectures, "teacher": teacher, "classmates": classmates, }
     return detail
+
+
+def search_result(request):
+    this_student = get_student(request)
+    this_teacher = get_teacher(request)
+    this_user = None
+    if this_teacher is None and this_student is None:
+        return redirect('/lms/')
+    elif this_student is not None and this_teacher is None:
+        this_user = this_student
+    elif this_student is None and this_teacher is not None:
+        this_user = this_teacher
+
+    query = request.GET.get('q')
+    filtered_courses = Course.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
+    
+    context = {
+        'this_user': this_user,
+        'filtered_courses': filtered_courses,
+    }
+
+    return render(request, 'courses/search_result.html', context=context)
+
 
 def modify_obj(request, obj_id):
     obj = Unit.objects.get(id=obj_id)

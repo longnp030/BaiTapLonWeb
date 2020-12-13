@@ -90,7 +90,7 @@ class AuthUserUserPermissions(models.Model):
 class Course(models.Model):
     id = models.AutoField(primary_key=True, unique=True)
     name = models.CharField(max_length=255)
-    image = models.ImageField(max_length=255, upload_to=upload_location_for_course, db_column='image', null=True)
+    image = models.ImageField(max_length=255, upload_to=upload_location_for_course, db_column='image', null=True, blank=True)
     publishdate = models.DateField(db_column='publishDate', default=dt.date.today)  # Field name made lowercase.
     description = models.TextField(max_length=10000, blank=True, null=True)
     #teacher = models.ForeignKey('Teacher', models.DO_NOTHING, db_column='teacher', unique=False)  # Field name made lowercase.

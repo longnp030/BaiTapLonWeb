@@ -21,6 +21,7 @@ urlpatterns = [
     path('courses/<int:course_id>/enroll/', views.course_enroll, name='enroll'),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('courses/<int:course_id>/', views.course_overview, name='course_overview'),
+    path('search/', views.search_result, name='search'),
     path('files/<str:file_path>', views.view_file, name='view_file'),
     path('<obj_id>/delete/', views.delete_obj, name='delete_obj'),
     path('<obj_id>/modify/', views.modify_obj, name='modify_obj'),

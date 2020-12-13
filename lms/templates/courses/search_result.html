@@ -1,0 +1,11 @@
+{% extends "../lms/index1.html" %}
+{% block content %}
+    {% if filtered_courses %}
+        {% for course in filtered_courses %}
+            <a href="{% url 'course_overview' course.id %}">{{ course.name }}</a>
+            <br>
+        {% endfor %}
+    {% else %}
+        <p>No result :(</p>
+    {% endif %}
+{% endblock %}
