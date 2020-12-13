@@ -14,9 +14,9 @@ from eLearning.settings import FILES_URL
 
 
 def upload_location_for_user(instance, filename):
-    return 'lms/images/users/%s.%s' % (instance.id, filename.split('.')[1])
+    return 'lms/images/u%s.%s' % (instance.id, filename.split('.')[1])
 def upload_location_for_course(instance, filename):
-    return 'lms/images/courses/%s.%s' % (instance.id, filename.split('.')[1])
+    return 'lms/images/c%s.%s' % (instance.id, filename.split('.')[1])
 def upload_location_for_file(instance, filename):
     return 'lms/files/%s/%s/%s.%s' % (instance.lecture.course, instance.lecture, instance.name, filename.split('.')[1])
 
@@ -90,7 +90,7 @@ class AuthUserUserPermissions(models.Model):
 class Course(models.Model):
     id = models.AutoField(primary_key=True, unique=True)
     name = models.CharField(max_length=255)
-    image = models.ImageField(max_length=255, upload_to=upload_location_for_course, db_column='image', null=True, blank=True)
+    image = models.ImageField(max_length=255, upload_to=upload_location_for_course, db_column='image', null=True)
     publishdate = models.DateField(db_column='publishDate', default=dt.date.today)  # Field name made lowercase.
     description = models.TextField(max_length=10000, blank=True, null=True)
     #teacher = models.ForeignKey('Teacher', models.DO_NOTHING, db_column='teacher', unique=False)  # Field name made lowercase.

@@ -154,6 +154,8 @@ class UserAdminChangeForm(forms.ModelForm):
 
 
 class CourseCreateForm(forms.ModelForm):
+    image = forms.ImageField(widget=forms.FileInput, required=False)
+    
     class Meta:
         model = Course
         fields = ['id', 'image', 'name', 'description', ]

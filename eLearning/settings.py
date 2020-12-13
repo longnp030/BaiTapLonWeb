@@ -15,8 +15,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = Path(str(BASE_DIR.joinpath('lms/templates')))
-USERS_IMAGE_DIR = Path(str(BASE_DIR.joinpath('lms/images/users')))
-COURSES_IMAGE_DIR = Path(str(BASE_DIR.joinpath('lms/images/courses')))
+IMAGE_DIR = Path(str(BASE_DIR.joinpath('lms/images')))
 
 
 # Quick-start development settings - unsuitable for production
@@ -60,7 +59,7 @@ ROOT_URLCONF = 'eLearning.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR, USERS_IMAGE_DIR, COURSES_IMAGE_DIR, ],
+        'DIRS': [TEMPLATE_DIR, IMAGE_DIR, ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -83,7 +82,7 @@ WSGI_APPLICATION = 'eLearning.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'moc',
+        'NAME': 'lms',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'USER': 'root',

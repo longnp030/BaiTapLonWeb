@@ -4,6 +4,13 @@
 {% block content %}
 <div class="course-over-view">
     <div class="course-view">
+
+        {% if course.image %}
+            <div class="course-view-left" id="courseimage">
+                <img src="{{ course.image.url }}">
+            </div>
+        {% endif %}
+
         <div class="course-view-left" id="coursename"> 
             <h1>{{ course.name }}</h1> 
         </div>

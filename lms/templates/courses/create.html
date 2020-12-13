@@ -3,9 +3,9 @@
 {% block title %}Create Course{% endblock %}
 
 {% block content %}
-     <form method="POST" class="course-over-view">
+     <form method="POST" class="course-over-view" enctype='Multipart/form-data'>
         {% csrf_token %}
-            {#<div class="course-view" id="boxcoursecreate">
+            <div class="course-view" id="boxcoursecreate">
                 <h2>create a new course</h2>
 
                 <div class="course-view-left" id="createcourseleft">
@@ -24,9 +24,7 @@
                 </div>
 
                 <button type="submit">Create</button>
-            </div>#}
-            {{course_form|crispy}}
-            
+            </div>
     </form>
     
 {% endblock %}

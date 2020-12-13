@@ -128,7 +128,7 @@ def is_teacher(user):
 def create_course(request):
     this_user = get_teacher(request)
     if request.method == 'POST':
-        course_form = CourseCreateForm(request.POST)
+        course_form = CourseCreateForm(request.POST, request.FILES)
         if course_form.is_valid():
             course = course_form.save(commit=False)
             course.publishDate = dt.datetime.now()

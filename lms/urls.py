@@ -26,5 +26,4 @@ urlpatterns = [
     path('<obj_id>/modify/', views.modify_obj, name='modify_obj'),
     path('users/<int:user_id>', views.user_profile, name='user_profile'),
     path('db/', views.db_import, name='db_import'),
-] + static('images/users', document_root=settings.USERS_IMAGE_DIR) \
-  + static('images/courses', document_root=settings.COURSES_IMAGE_DIR)
+] + static('images', document_root=settings.IMAGE_DIR)
