@@ -1,21 +1,21 @@
 ## Thư mục file hệ thống, cài đặt chung cho toàn server : [*eLearning/*](https://github.com/longnp030/BaiTapLonWeb/tree/master/eLearning)
 
-[***settings.py***](https://github.com/longnp030/BaiTapLonWeb/blob/master/eLearning/settings.py) : settings của toàn server
+[***settings.py***](https://github.com/longnp030/BaiTapLonWeb/blob/master/eLearning/settings.py) : settings của toàn server\
 
 ## Thư mục code chính : [***lms/***](https://github.com/longnp030/BaiTapLonWeb/tree/master/lms)
 
 [***/files/***](https://github.com/longnp030/BaiTapLonWeb/tree/master/lms/files) : thư mục chứa file bài giảng
 [***/images/users/***](https://github.com/longnp030/BaiTapLonWeb/tree/master/lms/images/users) : thư mục chứa ảnh đại diện của người dùng
 [***/migrations/*** ](https://github.com/longnp030/BaiTapLonWeb/tree/master/lms/migrations): thư mục chứa các log file thay đổi CSDL
-[***/static/lms/***](https://github.com/longnp030/BaiTapLonWeb/tree/master/lms/static/lms) : thư mục chứa CSS file
-[***/templates/***](https://github.com/longnp030/BaiTapLonWeb/tree/master/lms/templates) : thư mục chứa HTML files
+[***/static/lms/***](https://github.com/longnp030/BaiTapLonWeb/tree/master/lms/static/lms) : thư mục chứa CSS file\
+[***/templates/***](https://github.com/longnp030/BaiTapLonWeb/tree/master/lms/templates) : thư mục chứa HTML files\
 
-[***admin.py***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/admin.py) : cài đặt setting của quản trị viên
+[***admin.py***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/admin.py) : cài đặt setting của quản trị viên\
 [***forms.py***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/forms.py) : các class tạo forms ( ví dụ: form đăng ký, form đăng nhập, form bài giảng, ...)
 [***models.py***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/models.py) : các bảng của CSDL
 [***tests.py***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/models.py) : tạo test case để kiểm thử hệ thống
 [***urls.py***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/urls.py) : các đường dẫn đến các trang của website
-[***views.py***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/views.py) : trực quan hóa các trang của website
+[***views.py***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/views.py) : trực quan hóa các trang của website\
 
 ## Thư mục chứa các file HTMLs : [*lms/templates/*](https://github.com/longnp030/BaiTapLonWeb/tree/master/lms/templates)
 
@@ -28,12 +28,11 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[***enroll.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/courses/enroll.html) : người dùng đăng ký học khóa học
 &nbsp;&nbsp;&nbsp;&nbsp;[***modify_comps.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/courses/modify_comps.html) : chỉnh sửa thành phần của khóa học, bài giảng
 &nbsp;&nbsp;&nbsp;&nbsp;[***add_lecture.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/courses/add_lecture.html) :thêm chương học mới trong khóa học
-&nbsp;&nbsp;&nbsp;&nbsp;[***add_unit.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/courses/add_unit.html) : thêm bài học mới trong một chương\
-&nbsp;&nbsp;&nbsp;&nbsp;[***search_result.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/courses/search_result.html) : hiển thị kết quả tìm kiếm
+&nbsp;&nbsp;&nbsp;&nbsp;[***search_result.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/courses/search_result.html) : hiển thị kết quả tìm kiếm\
 
 [***/lms/***](https://github.com/longnp030/BaiTapLonWeb/tree/master/lms/templates/lms) : thư mục chứa HTML liên quan đến trang chủ, người dùng, ...
 &nbsp;&nbsp;&nbsp;&nbsp;[***index.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/lms/index1.html) : trang chủ
-&nbsp;&nbsp;&nbsp;&nbsp;[***user_profile.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/lms/user_profile.html) : trang cá nhân người dùng
+&nbsp;&nbsp;&nbsp;&nbsp;[***user_profile.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/lms/user_profile.html) : trang cá nhân người dùng\
 
 [***/registration/***](https://github.com/longnp030/BaiTapLonWeb/tree/master/lms/templates/registration) : thư mục chứa HTML liên quan đến đăng ký
 &nbsp;&nbsp;&nbsp;&nbsp;[***login.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/registration/login.html) : trang đăng nhập
@@ -45,6 +44,6 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[***password_reset_form.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/registration/password_reset_form.html): trang đặt lại mật khẩu
 &nbsp;&nbsp;&nbsp;&nbsp;[***password_reset_done.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/registration/password_reset_done.html): trang thông báo đã gửi email xác nhận đặt lại mật khẩu
 &nbsp;&nbsp;&nbsp;&nbsp;[***password_reset_confirm.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/registration/password_reset_confirm.html): trang điền mật khẩu mới
-&nbsp;&nbsp;&nbsp;&nbsp;[***password_reset_complete.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/registration/password_reset_complete.html): trang thông báo đặt lại mật khẩu thành công
+&nbsp;&nbsp;&nbsp;&nbsp;[***password_reset_complete.html***](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/templates/registration/password_reset_complete.html): trang thông báo đặt lại mật khẩu thành công\
 
 ## Thư mục chứa file CSS : [*lms/static/lms/style.css*](https://github.com/longnp030/BaiTapLonWeb/blob/master/lms/static/lms/style.css)

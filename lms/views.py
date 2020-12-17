@@ -289,7 +289,7 @@ def course_detail(course_id):
     for lecture in this_course_lectures:
         lectures.append({
             "lecture": lecture,
-            "units": Unit.objects.filter(lecture=lecture.id),
+            #"units": Unit.objects.filter(lecture=lecture.id),
         })
     teach = Teach.objects.filter(course=this_course.id)
     teacher = None
@@ -341,7 +341,8 @@ def add_lecture(request, course_id):
     }
     return render(request, 'courses/add_lecture.html', context=context)
 
-def add_unit(request, course_id, lecture_id):
+## Deprecated 17/12
+'''def add_unit(request, course_id, lecture_id):
     lecture = Lecture.objects.get(id=lecture_id)
     unit_create_form = None
     if request.method == 'POST':
@@ -355,40 +356,49 @@ def add_unit(request, course_id, lecture_id):
         'unit_create_form': unit_create_form,
         'lecture': lecture
     }
-    return render(request, 'courses/add_unit.html', context=context)
+    return render(request, 'courses/add_unit.html', context=context)'''
+##
 
 def modify_obj(request, obj_id):
-    obj = Unit.objects.get(id=obj_id)
+    obj = Lecture.objects.get(id=obj_id)
+    ## Deprecated 17/12
     if obj is None:
-        obj = Lecture.objects.get(id=obj_id)
+        #obj = Unit.objects.get(id=obj_id)
         if obj is None:
             obj = Assignment.objects.get(id=obj_id)
+    ##
     obj_change_form = None
     if request.method == 'POST':
-        if isinstance(obj, Unit):
-            obj_change_form = UnitCreateForm(request.POST, instance=obj)
-        elif isinstance(obj, Lecture):
+        if isinstance(obj, Lecture):
             obj_change_form = LectureCreateForm(request.POST, instance=obj)
+        ## Deprecated 17/12
+        #elif isinstance(obj, Unit):
+        #    obj_change_form = UnitCreateForm(request.POST, instance=obj)
         elif isinstance(obj, Assignment):
             obj_change_form = AssignmentCreateForm(request.POST, instance=obj)
+        ##
         if obj_change_form.is_valid():
             obj_change_form.save()
             return redirect('/lms/')
     else:
-        if isinstance(obj, Unit):
-            obj_change_form = UnitCreateForm(instance=obj)
-        elif isinstance(obj, Lecture):
+        if isinstance(obj, Lecture):
             obj_change_form = LectureCreateForm(instance=obj)
+        ## Deprecated 17/12
+        #elif isinstance(obj, Unit):
+        #    obj_change_form = UnitCreateForm(instance=obj)
         elif isinstance(obj, Assignment):
             obj_change_form = AssignmentCreateForm(instance=obj)
+        ##
     return render(request, 'courses/modify_comps.html', context={"obj_change_form": obj_change_form, })
 
 def delete_obj(request, obj_id):
-    obj = Unit.objects.get(id=obj_id)
+    obj = Lecture.objects.get(id=obj_id)
+    ## Deprecated 17/12
     if obj is None:
-        obj = Lecture.objects.get(id=obj_id)
+        # obj = Unit.objects.get(id=obj_id)
         if obj is None:
             obj = Assignment.objects.get(id=obj_id)
+    ##
     obj.delete()
     return HttpResponseRedirect('')
 

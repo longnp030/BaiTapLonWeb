@@ -111,6 +111,12 @@ class Lecture(models.Model):
     #id = models.AutoField(primary_key=True, unique=True, db_column='id')
     name = models.CharField(max_length=255, db_column='name')
     course = models.ForeignKey(Course, on_delete=models.DO_NOTHING, db_column='course')
+
+    ## Added on 17/12
+    notes = models.TextField(blank=True, null=True, db_column='notes')
+    slide = models.FileField(upload_to=FILES_URL, db_column='slide', blank=True)
+    video = models.URLField(max_length=255, db_column='video', null=True, blank=True)
+    reading = models.CharField(max_length=255, db_column='reading', null=True, blank=True)
     
     ### Delete after Unit being created
     #notes = models.TextField(blank=True, null=True, db_column='notes')
@@ -124,9 +130,15 @@ class Lecture(models.Model):
     def __str__(self):
         return self.name
 
+    ## Added on 17/12
+    @property
+    def get_slide_name(self):
+        return self.slide.name[10:]
+
 
 ### Add later
-class Unit(models.Model):
+### Deleted on 17/12, deprecated
+'''class Unit(models.Model):
     id = models.AutoField(primary_key=True, unique=True, db_column='id')
     name = models.CharField(max_length=255, db_column='name', null=False)
     notes = models.TextField(blank=True, null=True, db_column='notes')
@@ -145,7 +157,7 @@ class Unit(models.Model):
     
     @property
     def get_slide_name(self):
-        return self.slide.name[10:]
+        return self.slide.name[10:]'''
 ### Done
 
 
@@ -193,7 +205,7 @@ class Assignment(models.Model):
     #endtime = models.DateTimeField(db_column='endTime', null=False)
     grade = models.IntegerField(db_column='grade', null=True, blank=True)
     student = models.ForeignKey('Student', on_delete=models.DO_NOTHING, db_column='student')
-    unit = models.OneToOneField(Unit, on_delete=models.DO_NOTHING, db_column='unit')
+    #unit = models.OneToOneField(Unit, on_delete=models.DO_NOTHING, db_column='unit')
 
     class Meta:
         managed = False

@@ -5,51 +5,51 @@
         {% if detail %}
             {% if detail.lectures %}
                 {% for lecture in detail.lectures %}
-                    {% if lecture %}
-                        <h2>{{ lecture.lecture }}</h2>
-                        {% if lecture.units %}
-                            {% for unit in lecture.units %}
-                                <h2>{{ unit }}</h2>
-                                <div>
-                                    <h3>note</h3>
-                                    {{ unit.notes }}
-                                    <h3>silde</h3>
-                                    {% if unit.slide %}
-                                    <a href="{% url 'view_file' unit.slide.path %}">{{ unit.get_slide_name }}</a>
-                                    {% endif %}
-                                    <h3>video</h3>
-                                    {% if unit.video %}
-                                    <iframe src="{{ unit.video }}" type="video|mp4" width="640" height="480"></iframe>
-                                    {% endif %}
-                                </div>
+                    {% if lecture.lecture %}
+                    {% with lect=lecture.lecture %}
+                        <h2>{{ lect }}</h2>
+                        <h3>note</h3>
+                        {% if lect.notes %}
+                            {{ lect.notes }}
+                        {% endif %}
+                            
+                        <h3>silde</h3>
+                        {% if lect.slide %}
+                            <a href="{% url 'view_file' lect.slide.path %}">{{ lect.get_slide_name }}</a>
+                        {% endif %}
+                            
+                        <h3>video</h3>
+                        {% if lect.video %}
+                            <iframe src="{{ lect.video }}" type="video|mp4" width="640" height="480"></iframe>
+                        {% endif %}
 
-                                {% if can_modify_obj %}
-                                <div>
-                                    <form action="{% url 'delete_obj' unit.id %}" method="POST">
-                                        {% csrf_token %}
-                                        <button type="submit">Delete</button>
-                                    </form>
-                                </div>
-
-                                <div>
-                                    <form action="{% url 'modify_obj' unit.id %}" method="GET">
-                                        {% csrf_token %}
-                                        <button type="submit" name="save-changes">Modify</button>
-                                    </form>
-                                </div>
-                                {% endif %}
-                            {% endfor %}
+                        <h3>reading</h3>
+                        {% if lect.reading %}
+                            {{ lect.reading }}
                         {% endif %}
 
                         {% if can_modify_obj %}
-                        <a href="{% url 'add_unit' course_id=course.id lecture_id=lecture.lecture.id %}" name='unitoflecture'>Add unit</a>
+                        <div>
+                            <form action="{% url 'delete_obj' lect.id %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit">Delete</button>
+                            </form>
+                        </div>
+
+                        <div>
+                            <form action="{% url 'modify_obj' lect.id %}" method="GET">
+                                {% csrf_token %}
+                                <button type="submit" name="save-changes">Modify</button>
+                            </form>
+                        </div>
                         {% endif %}
+                    {% endwith %}
                     {% endif %}
                 {% endfor %}
-            {% endif %}
-            <br>
-            {% if can_modify_obj %}
-                <a href="{% url 'add_lecture' course_id=course.id %}" name='unitoflecture'>Add lecture</a>
+
+                {% if can_modify_obj %}
+                    <a href="{% url 'add_lecture' course_id=course.id %}" name='unitoflecture'>Add lecture</a>
+                {% endif %}
             {% endif %}
 
             {% if detail.teacher %}

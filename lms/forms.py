@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.admin import widgets
 from django.contrib.auth.forms import UserCreationForm, ReadOnlyPasswordHashField
 from django.contrib.auth.models import User
 from django.contrib.admin.widgets import RelatedFieldWidgetWrapper
@@ -167,23 +168,29 @@ class QuizCreateForm(forms.ModelForm):
         fields = ['question',]
 
 
-class UnitCreateForm(forms.ModelForm):
+### Deleted on 17/12, deprecated
+'''class UnitCreateForm(forms.ModelForm):
     #quiz = QuizCreateForm()
     class Meta:
         model = Unit
-        fields = ['lecture', 'name', 'notes', 'slide', 'video', 'reading', ]
+        fields = ['lecture', 'name', 'notes', 'slide', 'video', 'reading', ]'''
 
 
 class LectureCreateForm(forms.ModelForm):
+    notes = forms.TextInput()
+    slide = forms.FileField(widget=forms.FileInput, required=False)
+    video = forms.URLField(widget=forms.URLInput, required=False)
+    reading = forms.TextInput()
+
     class Meta:
         model = Lecture
-        fields = ['course', 'name',]
+        fields = ['course', 'name', 'notes', 'slide', 'video', 'reading', ]
 
 
 class AssignmentCreateForm(forms.ModelForm):
     class Meta:
         model = Assignment
-        fields = ['student', 'unit', 'finished', ]
+        fields = ['student', 'finished', ]
 
 
 class EnrollmentForm(forms.ModelForm):
