@@ -2,28 +2,24 @@
 {% block title %}Create Course{% endblock %}
 
 {% block content %}
-     <form method="POST" class="course-over-view" enctype='Multipart/form-data'>
-        {% csrf_token %}
-            <div class="course-view" id="boxcoursecreate">
-                <h2>create a new course</h2>
-
-                <div class="course-view-left" id="createcourseleft">
-                    <label for="">image course</label>
-                    <label for="">name course</label>
-                    <label for="">descriptions course</label>
-                </div>
-
-                <div class="course-view-right info-details-block" id="createcourseright">
-                    
-                    <input type="file" name="image" accept="image/*" >
-
-
-                    <input type="text" name="name" maxlength="255" class="textinput textInput form-control" required="" id="id_name">
-                    <textarea name="description" cols="40" rows="10" maxlength="10000" class="textarea form-control" id="id_description"></textarea>
-                </div>
-
-                <button type="submit">Create</button>
+<form method="POST" enctype='Multipart/form-data'>
+    {% csrf_token %}
+    <div class="box-bg-create-course">
+        <div class="box-create-course">
+            <h1>Create a new course</h1>
+            <div class="label-fields-profile" >
+                <label for="">image course</label>
+                <label for="">name course</label>
+                <label for="">descriptions course</label>
             </div>
-    </form>
-    
+
+            <div class="inp-fields-profile" >
+                <input type="file" name="image" accept="image/*" >
+                <input type="text" name="name" maxlength="255" required="" id="id_name">
+                <textarea name="description" cols="40" rows="10" maxlength="10000" id="id_description"></textarea>
+            </div>
+            <button type="submit">Create</button>       
+        </div>
+    </div>
+</form>
 {% endblock %}

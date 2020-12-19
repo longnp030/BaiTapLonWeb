@@ -1,32 +1,30 @@
 {% extends "../lms/index1.html" %}
 {% block content %}
-    <form method="POST" enctype='Multipart/form-data'>
+    <form method="POST">
         {% csrf_token %}
-        
-        <label for="id_course">Course:</label>
-        <select name="course" required id="id_course">
-            <option value="{{ course.id }}" selected>{{ course }}</option>
-        </select>
-
-        <label for="id_name">Name:</label>
-        <input type="text" name="name" value="{{ lecture.name }}" maxlength="255" required id="id_name">
-
-        <label for="id_notes">Notes:</label>
-        <textarea name="notes" cols="40" rows="10" id="id_notes">{{ lecture.notes }}</textarea>
-
-        <label for="id_slide">Slide:</label>
-        <input type="file" name="slide" id="id_slide" accept="application/*">
-        
-        <label for="id_video">Video:</label>
-        {% if lecture.video %}
-            <input type="url" name="video" value="{{ lecture.video }}" id="id_video" >
-        {% else %}
-            <input type="url" name="video" id="id_video" >
-        {% endif %}
-
-        <label for="id_reading">Reading:</label>
-        <input type="text" name="reading" value="{{ lecture.reading }}" maxlength="255" id="id_reading">
-
-        <button type="submit">Save changes</button>
+        <div class="box-bg-create-course">
+            <div class="box-create-course">
+                <h1>Modify lecture</h1>
+                <div class="label-fields-profile">
+                    <label for="id_course">Course</label>
+                    <label for="id_name">Name</label>
+                    <label for="id_slide">Slide</label>
+                    <label for="id_video">Video</label>
+                    <label for="id_notes">Notes</label>
+                </div>
+    
+                <div class="inp-fields-profile">
+                    <select name="course" required id="id_course">
+                        <option value="{{ course.id }}" selected>{{ course }}</option>
+                    </select>
+                    <input type="text" name="name" value="{{ lecture.name }}" maxlength="255" required id="id_name">
+                    <input type="file" name="slide" id="id_slide">
+                    <input type="url" name="video" id="id_video">                    
+                    <textarea name="notes" cols="40" rows="10" id="id_notes"></textarea>
+                </div>
+                <button type="submit" ><a href="#">Cancel</a></button>
+                <button type="submit">Save changes</button>                     
+            </div>
+        </div>
     </form>
 {% endblock %}

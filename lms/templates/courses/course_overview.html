@@ -2,64 +2,29 @@
 {% block title %}Course view{% endblock%}
 
 {% block content %}
-<div class="course-over-view">
-    <div class="course-view">
+    {% if not enrolled %}
+        <div class="course-over-view">
+            <div class="course-view">
+                <div class="course-view-left" id="coursename"> 
+                    <h1>{{ course.name }}</h1> 
+                </div>
 
-        {% if course.image %}
-            <div class="course-view-left" id="courseimage">
-                <img src="{{ course.image.url }}">
-            </div>
-        {% endif %}
+                <div class="course-view-descript" id="coursedescript"> 
+                    <i>{{ course.description }}</i> 
+                </div>
 
-        <div class="course-view-left" id="coursename"> 
-            <h1>{{ course.name }}</h1> 
-        </div>
-
-        <div class="course-view-descript" id="coursedescript"> 
-            <i>{{ course.description }}</i> 
-        </div>
-
-        <div class="course-btn-enroll">
-            {% if not enrolled %}
-                {% if user.is_authenticated %}  
-                    <a href="{% url 'enroll' course.id %}">Enroll</a>
-                {% endif %}
-            {% else %}
-                {% include 'courses/html.html' %}
-                <script>
-                    var div_overview = document.getElementById("if-enrolled");
-                    div_overview.style.display = "none";
-                </script>
-            {% endif %}
-        </div>
-    </div>
-
-    <!-- {% if detail.classmates %}
-        <div class="course-view" id="classmatecourse">
-            <div class="course-view-left" id="classmatecoursetitle"> 
-                <h2>Classmates</h2>
-            </div>
-            <div class="course-view-right" id="classmatecoursename"> 
-                {% for classmate in detail.classmates %}
-                    {% if classmate != this_user %}
-                        <a href="{% url 'user_profile' classmate.id %}"> <i>{{ classmate.name }},</i> </a>
+                <div class="course-btn-enroll">
+                    {% if user.is_authenticated %}    
+                        <a href="{% url 'enroll' course.id %}">Enroll</a>
                     {% endif %}
-                {% endfor %}
+                </div>
             </div>
-        </div> 
+        </div>
+    {% else %}
+        {% include 'courses/course_detail.html' %}
+        <script>
+            var div_overview = document.getElementById("if-enrolled");
+            div_overview.style.display = "none";
+        </script>
     {% endif %}
-
-
-    {% if detail.teacher %}
-    <div class="course-view" id="courseteacher">
-        <div class="course-view-left" id="courseteachertitle"> 
-            <h2>Teacher</h2>
-        </div>
-        <div class="course-view-right" id="courseteachername"> 
-            <a href="{% url 'user_profile' detail.teacher.id %}"> <i>{{ detail.teacher.name }}</i> </a>
-        </div>
-    </div>
-    {% endif %} -->
-
-</div>
 {% endblock %}

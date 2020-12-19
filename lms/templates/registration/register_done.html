@@ -1,15 +1,8 @@
 {% extends '../lms/index1.html' %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>{% block title %}Registered{% endblock %}</title>
-    </head>
-    <body>
-        {% block content %}
-            <div class="c-notification">
-                <p>Your account has been created. You may go ahead and <a href="{% url 'login' %}">Log in here</a> now.</p>
-            </div>
-        {% endblock %}
-    </body>
-</html>
+{% block title %}Registered{% endblock %}
+
+{% block content %}
+    <div class="c-notification">
+        <p>Your account has been created. You may go ahead and <a href="{% url 'login' %}">Log in here</a> now.</p>
+    </div>
+{% endblock %}

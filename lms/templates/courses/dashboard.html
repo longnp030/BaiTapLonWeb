@@ -1,14 +1,15 @@
 {% extends "../lms/index1.html" %}
 {% block content %}
-<h1>My courses</h1>
 <a href="{% url 'create_course' %}">Create a new course</a>
 
 {% if my_courses %}
     {% for course in my_courses %}
         <div class="c-box-course">
-            {% if course.image %}
-                <img src="{{ course.image.url }}">
-            {% endif %}
+            <div class="img-course">
+                {% if course.image %}
+                    <img src="{{ course.image.url }}">
+                {% endif %}
+            </div>
             
             <div class="name-course">
                 <i>{{ course.name }}</i>

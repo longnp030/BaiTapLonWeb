@@ -1,890 +1,898 @@
 /* RESET */
-* { 
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
 }
 
 /* GENERAL */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    overflow-x: hidden;
-    background-color: rgb(240, 240, 240);
-}
-
-.width-1200 {
-    max-width: 1600px;
-    width: 1600px;
-    margin: auto;
+  font-size: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  background-color: #f5f5f5;
 }
 
 /* HOME BASE */
-.section_img{
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 1);
+.section_img {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: black;
 }
 
-.section_img img{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.section_img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
-
 
 /* HEADER */
 .header {
-    background-color:rgba(0, 0, 0, 0.95);
-    border-top: 2px solid greenyellow;
-}
-.header-inner {
-    padding: 20px 0px;
-    text-align: right;
-}
-.navbar {
-    display: inline;
+  background-color: rgba(0, 0, 0, 0.95);
+  border-top: 2px solid greenyellow;
 }
 
-.navbar a{
-    margin: 0px 15px;
-    color: #d1d1d1;
-    font-size: 18px;
-    text-decoration: none;
+.header .width-1200 {
+  max-width: 95%;
+  width: 95%;
+  margin: auto;
 }
 
-.navbar a:hover{
-    color: white;
+.header .header-inner {
+  padding: 20px 0px;
+  text-align: right;
 }
 
-.join-bt {
-    display: inline;
+.header .header-inner .navbar {
+  display: inline;
 }
 
-.join-bt a{
-    margin: 0px 15px;
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    border-radius: 5px;
-    padding: 10px 20px;
-    background-color: rgb(84, 193, 97);
+.header .header-inner .navbar a {
+  margin: 0px 15px;
+  color: #d1d1d1;
+  font-size: 18px;
+  text-decoration: none;
 }
 
-.join-bt a:hover{
-    background-color: rgb(54, 159, 75);
+.header .header-inner .navbar a:hover {
+  color: white;
 }
 
 /* TEST */
-.join-btt{
-    display: inline;
-    margin-top: 100px;
+.join-btt {
+  display: inline;
+  margin-top: 100px;
 }
 
-.join-btt img{
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
+.join-btt img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.join-bt {
+  display: inline;
+}
+
+.join-bt a {
+  margin: 0px 15px;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 5px;
+  padding: 10px 20px;
+  background-color: #28a050;
+}
+
+.join-bt a:hover {
+  background-color: #32c864;
 }
 
 /* HOME */
 .home-b1 {
-    background-image: url("bg2.jpg");
-    height: 93vh;
-    background-position: center;
-    background-size: cover;
-}
-.home-b1-inner {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 50px 0px;
-    height: 100%;
-    position: relative;
-}
-.home-b1 .content {
-    max-width: 1000px;
-    width: 1000px;
-    margin: auto;
-    text-align: center;
-    color: white;
+  background-image: url("bg2.jpg");
+  height: 93vh;
+  background-position: center;
+  background-size: cover;
 }
 
-.home-b1 .content h1{
-    font-size: 60px;
-    margin-top: auto;
-    letter-spacing: 2.5px;
+.home-b1 .home-b1-inner {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 50px 0px;
+  height: 100%;
+  position: relative;
 }
 
-.home-b1 .content p{
-    margin-top: auto;
-    font-size: 20px;
-    letter-spacing: 1.5px;
+.home-b1 .home-b1-inner .content {
+  max-width: 1000px;
+  width: 1000px;
+  margin: auto;
+  text-align: center;
+  color: white;
+}
+
+.home-b1 .home-b1-inner .content h1 {
+  font-size: 60px;
+  margin-top: auto;
+  letter-spacing: 2.5px;
+}
+
+.home-b1 .home-b1-inner .content p {
+  margin-top: auto;
+  font-size: 20px;
+  letter-spacing: 1.5px;
 }
 
 .home-b1 .funfact {
-    position: absolute;
-    bottom: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 50px;
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 50px;
 }
 
 .home-b1 .funfact div {
-    color: white;
-    letter-spacing: 1.5px;
+  color: white;
+  letter-spacing: 1.5px;
 }
 
 /* FOOTER*/
-
-.foot-tag {
-    background-color: rgba(0, 0, 0, 0.2);
+.footer {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding-top: 50px;
 }
 
-.foot-content {
-    display: flex;
-    max-width: 1300px;
-    width: 1300px;
-    text-align: center;
-    margin: 0px auto;
-    gap: 40px;
-    border-bottom: 2px solid gray;
-    padding: 50px 0 50px 0;
+.footer .foot-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 1300px;
+  width: 1300px;
+  text-align: center;
+  margin: 0px auto;
+  gap: 40px;
+  border-bottom: 2px solid gray;
+  padding: 50px 0 50px 0;
 }
 
-.foot-content h1 {
-    text-align: center;
+.footer .foot-content h1 {
+  text-align: center;
 }
 
-
-.foot-content div{
-    letter-spacing: 1.5px;
+.footer .foot-content div {
+  letter-spacing: 1.5px;
 }
 
-.content-end-page{
-    padding-top: 50px;
-    padding-bottom: 70px;
+.footer .content-end-page {
+  padding-top: 50px;
+  padding-bottom: 70px;
 }
 
-.content-end-page p{
-    display: inline;
-    margin-left: 20px;
+.footer .content-end-page p {
+  display: inline;
+  margin-left: 20px;
 }
 
-.content-end-page .icon-end-page{
-    display: inline;
-    margin-left: 1300px;
+.footer .content-end-page .icon-end-page {
+  display: inline;
+  margin-left: 1300px;
 }
 
-.content-end-page .icon-end-page i {
-    font-size: 30px;
-    letter-spacing: 15px;
+.footer .content-end-page .icon-end-page i {
+  font-size: 30px;
+  letter-spacing: 15px;
 }
 
 /* REGISTER */
-
-.box{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 420px;
-    height: 500px;
-    text-align: center;
-    border-radius: 20px;
-    transform: translate(-50%,-50%);
-    background: rgba(22, 21, 21, 0.75);
+.box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 420px;
+  height: 500px;
+  text-align: center;
+  border-radius: 20px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: rgba(22, 21, 21, 0.75);
 }
 
-.box h1{
-    color: white;
-    text-transform: capitalize;
-    margin-bottom: 50px;
-    font-weight: 450;
+.box h1 {
+  color: white;
+  text-transform: capitalize;
+  margin-bottom: 50px;
+  font-weight: 450;
 }
 
-/* DETAILS */
-.box input[type = "text"],.box input[type = "password"]{
-    border: 0;
-    background: none;
-    display: block;
-    outline: none;
-    color: white;
-    transition: 0.25s;
+.box input[type="text"], .box input[type="password"] {
+  border: 0;
+  background: none;
+  display: block;
+  outline: none;
+  color: white;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
 }
-
 
 /* LOGIN */
 .box-login {
-    padding: 80px 60px 60px 60px;
+  padding: 80px 60px 60px 60px;
 }
 
-.box-login input[type = "text"],.box-login input[type = "password"]{
-    text-align: center;
-    width: 250px;
-    margin: 30px auto;
-    padding: 14px 10px;
-    border-radius: 24px;
-    border: 2px solid #3498db;
+.box-login input[type="text"], .box-login input[type="password"] {
+  text-align: center;
+  width: 250px;
+  margin: 30px auto;
+  padding: 14px 10px;
+  border-radius: 24px;
+  border: 2px solid #3498db;
 }
 
 .text-option {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
 .text-option a {
-    letter-spacing: 1.2px;
-    color: azure;
-    text-decoration: none;
+  letter-spacing: 1.2px;
+  color: azure;
+  text-decoration: none;
 }
-
 
 /* SIGNUP */
 .box-signup {
-    padding: 50px 60px 60px 60px;
+  padding: 50px 60px 60px 60px;
 }
 
-
-.box-signup input[type = "text"],.box-signup input[type = "password"]{
-    width: 300px;
-    margin: 30px auto;
-    padding: 10px;
-    border-bottom: 2px solid #3498db;
+.box-signup input[type="text"], .box-signup input[type="password"] {
+  width: 300px;
+  margin: 30px auto;
+  padding: 10px;
+  border-bottom: 2px solid #3498db;
 }
-  
 
 /* BTN SUBMIT */
-.box input[type = "submit"]{
-    border:0;
-    background: none;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid #3498db;
-    padding: 14px 40px;
-    outline: none;
-    color: white;
-    border-radius: 24px;
-    transition: 0.25s;
-    cursor: pointer;
+.box input[type="submit"] {
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #3498db;
+  padding: 14px 40px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+  cursor: pointer;
 }
 
+.box input[type="submit"]:hover {
+  background: #2ecc71;
+  border-color: #2ecc71;
+}
 
 /* EFFECT */
-.box input[type = "submit"]:hover{
-    background: #2ecc71;
-    border-color: #2ecc71;
-}
-  
-.box-login input[type = "text"]:focus,.box-login input[type = "password"]:focus {
-    width: 300px;
-    border-color: #2ecc71;
+.box-login input[type="text"]:focus, .box-login input[type="password"]:focus {
+  width: 300px;
+  border-color: #2ecc71;
 }
 
-.box-signup input[type = "text"]:focus,.box-signup input[type = "password"]:focus{
-      width : 310px ;
-      border-bottom: 2px solid #2ecc71; 
+.box-signup input[type="text"]:focus, .box-signup input[type="password"]:focus {
+  width: 310px;
+  border-bottom: 2px solid #2ecc71;
 }
-  
-::-webkit-input-placeholder {
-    color: white;
+
+::-webkit-input-placeholder, ::-moz-placeholder, ::-ms-input-placeholder {
+  color: white;
 }
-::-moz-placeholder {
-    color: white;
-}
-::-ms-input-placeholder {
-    color: white;
-}
-  
+
 .text-option a:hover {
-    color: rgb(0, 255, 136);
+  color: #00ff88;
 }
 
-@media screen and (max-width: 600px){
-    .register-forms{
-      flex-direction: column;
-    }
-  
-    .input-fields{
-      width: 100%;
-    }
+@media screen and (max-width: 600px) {
+  .register-forms {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .input-fields {
+    width: 100%;
+  }
 }
 
 /* RESET PASSWORD */
-#box-reqest-email  {
-    padding: 120px 60px 60px 60px;
+#box-reqest-email {
+  padding: 120px 60px 60px 60px;
 }
 
 #box-reset-password {
-    padding: 100px 60px 60px 60px;
+  padding: 100px 60px 60px 60px;
 }
 
 /* CHANGE PASSWORD */
 .c-change-password-bg {
-    width: 100%;
-    height: 850px;
-    border-top: 1px solid white;
-    background-color: rgba(0, 0, 0, 0.95);
+  width: 100%;
+  height: 850px;
+  border-top: 1px solid white;
+  background-color: rgba(0, 0, 0, 0.95);
 }
 
 .c-change-password-bg #box-change-password {
-    padding: 80px 60px 60px 60px;
+  padding: 80px 60px 60px 60px;
 }
 
 /* RESET PASSWORD DONE */
 .c-notification {
-    padding: 50px 0px 50px 25px;
-    border-top: 1px solid white;
-    background-color: rgba(0, 0, 0, 0.75);
+  padding: 50px 0px 50px 25px;
+  border-top: 1px solid white;
+  background-color: rgba(0, 0, 0, 0.75);
 }
 
 .c-notification p {
-    padding-bottom: 5px;
-    color: white;
+  padding-bottom: 5px;
+  color: white;
 }
 
 .c-notification p > a {
-    text-decoration: none;
-    color: rgb(0, 255, 136);
+  text-decoration: none;
+  color: #00ff88;
 }
 
 /* PROFILE */
-
-.profile{
-    text-align: center;
-    height: 100%;
-    border-top: 1px solid white;
-    background-color: rgb(245, 245, 245);
+.label-fields-profile {
+  width: 20%;
+  height: 90%;
+  float: left;
 }
 
-.info-details-block{
-    display: inline-block;
-    width: 60%;
-    height: 350px;
-    margin: 50px 0 0 0;
-    background-color: white;
+.label-fields-profile > label {
+  display: block;
+  font-weight: 600;
+  text-align: right;
+  text-transform: capitalize;
+  margin: 20px 0px 50px 0px;
 }
 
-.info-details-block h2 {
-    text-transform: uppercase;
-    text-align: center;
+.inp-fields-profile {
+  width: 80%;
+  height: 90%;
+  float: left;
 }
 
-.info-details-block label{
-    text-transform: capitalize;
-    color: #333333;
+.inp-fields-profile > input[type='file'] {
+  width: 90%;
+  padding: 10px;
+  margin: 15px 0;
+  outline: none;
 }
 
-.info-details-block input[type = 'text'], .info-details-block input[type = 'url']{
-    display: inline-block;
-    border-radius: 5px;
-    color: #333333;
-    border: 1px solid #333333;;
-    width: 90%;
-    padding: 10px;
-    margin: 20px 20px;
-    outline: none;
+.inp-fields-profile > input[type='text'], .inp-fields-profile > input[type='url'] {
+  width: 90%;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 15px 0px;
+  outline: none;
+  border: 1px solid #969696;
 }
 
-.label-fields{
-    display: inline;
-    float: left;
-    width: 20%;
-    height: 250px;
+.inp-fields-profile > input[type='text']:focus, .inp-fields-profile > input[type='url']:focus {
+  -webkit-box-shadow: 0px 0px 7px 2px #0099ff;
+          box-shadow: 0px 0px 7px 2px #0099ff;
 }
 
-.label-fields label{
-    text-align: center;
-    display: block;
-    padding-bottom: 35px;
-    margin-top: 25px;
+.inp-fields-profile > textarea {
+  width: 90%;
+  height: 100px;
+  border-radius: 5px;
+  border: 1px solid #969696;
+  margin: 10px 0px;
+  outline: none;
 }
 
-.ipt-fields{
-    text-align: left;
-    display: inline;
-    float: right;
-    width: 80%;
-    height: 250px;
+.inp-fields-profile > textarea:focus {
+  -webkit-box-shadow: 0px 0px 7px 2px #0099ff;
+          box-shadow: 0px 0px 7px 2px #0099ff;
 }
 
-/* PROFILE AVATAR */
-.info-details-block img{
-    margin-top: 20px;
-    height: 300px;
-    width: 300px;
-    border-radius: 50%;
+.inp-fields-profile > select {
+  width: 90%;
+  margin: 20px 0px 10px 0;
+  padding: 10px;
+  border-radius: 5px;
 }
 
-/* PROFILE INFORMATION */
-#infor{
-    padding: 40px 0 10px 0;
-    text-align: right;
+.box-bg-profile {
+  width: 100%;
+  height: 100%;
+  padding: 50px 100px;
+  background-color: #f5f5f5;
 }
 
-/* PROFILE CONTACT */
-#contact{
-    padding: 40px 0 10px 0;
-    text-align: right;
+.box-bg-profile .box-main-profile {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #bebebe;
+  background-color: white;
 }
 
-/* PROFILE EDITS */
-#edit{
-    height: 450px;
-    padding: 20px 0 5px 0;
-    text-align: right;
-    border-bottom: 1px solid black;
+.box-bg-profile .box-main-profile .bg-avatar {
+  width: 90%;
+  height: 300px;
+  display: inline-block;
+  text-align: center;
 }
 
-#filechoiseimage{
-    outline: none;
-    padding-left: 20px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+.box-bg-profile .box-main-profile .bg-avatar .avatar {
+  width: 250px;
+  height: 250px;
+  display: inline-block;
+  margin-top: 30px;
 }
 
-#editcomfirm{
-    text-align: center;
+.box-bg-profile .box-main-profile .bg-avatar .avatar > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 
-#editcomfirm button[type="submit"]{
-    padding: 11px;
-    font-size: 15px;
-    font-weight: 600;
-    width: 110px;
-    color: white;
-    background-color: rgb(53, 186, 69);
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    margin-top: 70px;
+.box-bg-profile .box-main-profile .box-info {
+  width: 90%;
+  height: 270px;
+  display: inline-block;
+  padding: 5px;
+  border-top: 1px solid #d2d2d2;
 }
 
-#editcomfirm a{
-    padding: 10px;
-    color: white;
-    border-radius: 5px;
-    outline: none;
-    background-color: rgb(53, 186, 69);
-    text-decoration: none;
+.box-bg-profile .box-main-profile .box-info > h1 {
+  text-align: left;
+  text-transform: capitalize;
+  font-weight: 1;
+  color: #3f3f3f;
 }
 
-#edit input[type = 'url']:focus{
-    box-shadow: 0px 0px 7px 2px #3498db;
+.box-bg-profile .box-main-profile .box-info > p {
+  text-align: left;
+  color: #3f3f3f;
 }
 
-#editcomfirm a:hover,#editcomfirm button[type="submit"]:hover{
-    background-color: rgb(51, 133, 61);
+.box-bg-profile .box-main-profile .box-update {
+  width: 90%;
+  height: 380px;
+  display: inline-block;
+  border-top: 1px solid #d2d2d2;
+  padding-bottom: 80px;
 }
+
+.box-bg-profile .box-main-profile .box-update > h1 {
+  text-align: left;
+  text-transform: capitalize;
+  font-weight: 1;
+  color: #3f3f3f;
+}
+
+.box-bg-profile .box-main-profile .box-update > p {
+  text-align: left;
+  color: #3f3f3f;
+}
+
+.box-bg-profile .box-main-profile .box-update .btn-comfirm > button {
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 5px;
+  color: white;
+  font-weight: 600;
+  background-color: #28a050;
+  outline: none;
+}
+
+.box-bg-profile .box-main-profile .box-update .btn-comfirm > button:hover {
+  background-color: #32c864;
+}
+
+.box-bg-profile .box-main-profile .box-update .btn-comfirm > a {
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  color: white;
+  background-color: #28a050;
+}
+
+.box-bg-profile .box-main-profile .box-update .btn-comfirm > a:hover {
+  background-color: #32c864;
+}
+
 /* COURSE SHOW */
-.c-box-course{
-    position: relative;
-    text-align: center;
-    display: inline-block;
-    height: 350px;
-    width: 250px;
-    left: 40px;
-    margin: 20px 10px 0 10px;
-    padding-top: 10px;
-    background-color: white;
+.c-box-course {
+  display: inline-block;
+  text-align: center;
+  height: 350px;
+  width: 250px;
+  margin: 20px 0px 20px 30px;
+  padding-top: 10px;
+  background-color: white;
 }
 
-.c-box-course > img{
-    text-align: center;
-    height: 250px;
-    width: 75%;
+.c-box-course > a > i {
+  color: black;
+  font-size: 200px;
+  margin-top: 100px;
 }
 
-.name-course{
-    position: absolute;
-    text-align: left;
-    bottom: 50px;
-    padding: 5px 10px;
-    height: 30px;
-    width: 100%;
-    border-bottom: 1px solid rgb(210, 210, 210);
+.c-box-course > a > i:hover {
+  color: burlywood;
 }
 
-.name-course > i{
-    font-size: 13px;
-    font-weight: 500;
-} 
-
-.bt-view{
-    position: absolute;
-    height: 50px;
-    width: 100%;
-    bottom: 0;
-    padding-top: 15px;
-    background-color: white;
+.c-box-course .img-course > img {
+  height: 250px;
+  width: 75%;
 }
 
-.bt-view > a{
-    text-decoration: none;
-    padding: 10px 40px;
-    color: black;
+.c-box-course .name-course {
+  text-align: left;
+  bottom: 50px;
+  padding: 5px 10px;
+  height: 30px;
+  width: 100%;
+  border-bottom: 1px solid #d2d2d2;
 }
 
-.c-box-course:hover .bt-view{
-    background-color: rgb(44, 209, 126);
+.c-box-course .name-course > i {
+  font-size: 13px;
+  font-weight: 500;
 }
 
-.c-box-course:hover{
-    box-shadow: 0px 0px 15px 5px rgb(159, 159, 159);
+.c-box-course .bt-view {
+  height: 55px;
+  width: 100%;
+  bottom: 0;
+  padding-top: 15px;
+  background-color: white;
 }
 
+.c-box-course .bt-view > a {
+  color: black;
+  text-decoration: none;
+  padding: 10px 40px;
+}
+
+.c-box-course .bt-view > a > i {
+  color: black;
+}
+
+.c-box-course:hover {
+  -webkit-box-shadow: 0px 0px 15px 5px #9f9f9f;
+          box-shadow: 0px 0px 15px 5px #9f9f9f;
+}
+
+.c-box-course:hover .bt-view {
+  background-color: #32c864;
+}
+
+.c-box-course:hover .bt-view > a {
+  color: white;
+}
+
+.c-box-course:hover .bt-view > a > i {
+  color: white;
+}
+
+#forteacher {
+  padding: 50px 0px;
+}
 
 /* COURSE */
-.course-over-view{
-    text-align: center;
-    height: 2900px;
-    background-color: rgb(240, 240, 240);
-    border-top: 1px solid white;
+.course-over-view {
+  text-align: center;
+  height: 100%;
+  background-color: #f0f0f0;
+  border-top: 1px solid white;
 }
 
-.course-view{
-    display: inline-block;
-    margin-top: 50px;
-    height: 250px;
-    width: 80%;
-    background-color: white;
+.course-over-view .course-view {
+  display: inline-block;
+  margin-top: 50px;
+  height: 250px;
+  width: 80%;
+  background-color: white;
 }
 
-.course-view-left{
-    padding: 20px;
-    float: left;
-    width: 50%;
-    height: 100px;
+.course-over-view .course-view .course-view-left {
+  padding: 20px;
+  float: left;
+  width: 50%;
+  height: 100px;
 }
 
-.course-view-right{
-    padding: 20px;
-    float: right;
-    width: 50%;
-    height: 100px;
+.course-over-view .course-view .course-view-right {
+  padding: 20px;
+  float: right;
+  width: 50%;
+  height: 100px;
 }
 
-.course-view-descript{
-    padding: 20px;
-    margin-top: 60px;
-    width: 100%;
-    height: 120px;
+.course-over-view .course-view .course-view-descript {
+  padding: 20px;
+  margin-top: 60px;
+  width: 100%;
+  height: 120px;
 }
 
-/* COURSE DETAILS */
-#coursename{
-    padding: 10px ;
-    height: 60px;
-    width: 100%;
+.course-over-view .course-view .course-btn-enroll {
+  margin: 25px 0;
+  text-align: center;
 }
 
-#coursename h1{
-    letter-spacing: 1.5px;
-    text-transform: capitalize;
+.course-over-view .course-view .course-btn-enroll > a {
+  text-decoration: none;
+  color: whitesmoke;
+  padding: 15px 30px;
+  border-radius: 10px;
+  background-color: #28a050;
 }
 
-#coursedescript{
-    border-bottom: 2px solid rgb(210, 210, 210);
-    border-top: 2px solid rgb(210, 210, 210);
-    text-align: left;
-    text-indent: 30px;
+.course-over-view .course-view .course-btn-enroll > a:hover {
+  background-color: #32c864;
 }
 
-.course-btn-enroll{
-    margin: 25px 0;
-    text-align: center;
+#coursename {
+  width: 100%;
+  padding: 10px;
 }
 
-.course-btn-enroll > a{
-    text-decoration: none;
-    color: whitesmoke;
-    padding: 15px 30px;
-    border-radius: 10px;
-    background-color: rgb(50, 180, 60);
-}
-
-.course-btn-enroll > a:hover{
-    background-color: rgb(40, 150, 30);
-}
-
-#courseteacher{
-    height: 50px;    
-}
-
-#courseteachertitle{
-    padding: 10px;
-    width: 20%;
-    height: 50px;
-}
-
-#courseteachername{
-    border-left:  2px solid rgb(210, 210, 210);
-    padding: 10px;
-    width: 80%;
-    height: 50px;
-}
-
-#courseteachername > a{
-    text-decoration: none;
-    color: black;
-    text-transform: capitalize;
-    font-size: 25px;
-    font-weight: 500;
-}
-
-#classmatecourse{
-    height: 100px;
-}
-
-#classmatecoursetitle{
-    height: 100px;
-    padding: 10px;
-    width: 20%;
-}
-
-#classmatecoursename{
-    border-left:  2px solid rgb(210, 210, 210);
-    padding: 10px;
-    width: 80%;
-    height: 100px;
-}
-
-#classmatecoursename > a{
-    text-decoration: none;
-    color: black;
-    text-transform: capitalize;
-    font-size: 20px;
-    font-weight: 500;
+#coursedescript {
+  text-indent: 10px;
+  border-bottom: 2px solid #d2d2d2;
+  border-top: 2px solid #d2d2d2;
 }
 
 /* CREATE COURSE */
-#boxcoursecreate{
-    margin-top: 100px;
-    width: 70%;
-    height: 400px;
+.box-bg-create-course {
+  width: 100%;
+  height: 100%;
+  padding: 150px 100px;
+  text-align: center;
 }
 
-#boxcoursecreate h2{
-    padding-top: 10px;
-    text-transform: capitalize;
+.box-bg-create-course .box-create-course {
+  width: 90%;
+  height: 100%;
+  background-color: white;
+  border: 1px solid #969696;
+  padding: 20px;
+  display: inline-block;
+  text-align: center;
 }
 
-#createcourseleft{
-    text-align: right;
-    width: 20%;
-    height: 300px;
+.box-bg-create-course .box-create-course > h1 {
+  text-align: center;
+  font-weight: 1;
+  color: #3f3f3f;
 }
 
-#createcourseleft label{
-    display: block;
-    text-transform: capitalize;
-    margin-bottom: 40px;
+.box-bg-create-course .box-create-course button[type='submit'] {
+  padding: 10px 25px;
+  outline: none;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1.0px;
+  border: 0;
+  border-radius: 5px;
+  background-color: #28a050;
 }
 
-#createcourseright{
-    width: 80%;
-    height: 300px;
-    margin-top: 0px;
+.box-bg-create-course .box-create-course button[type='submit'] > a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
 }
 
-#createcourseright input[type = 'file']{
-    display: inline-block;
-    outline: none;
-    width: 90%;
+.box-bg-create-course .box-create-course button[type='submit']:hover {
+  background-color: #32c864;
 }
 
-#createcourseright textarea{
-    width: 90%;
-    outline: none;
+/* Course details */
+.box-main-das {
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+  padding: 20px 50px;
 }
 
-#boxcoursecreate button[type = 'submit']{
-    color: whitesmoke;
-    border: none;
-    font-size: 15px;
-    padding: 15px 30px;
-    border-radius: 15px;
-    font-weight: 400;
-    letter-spacing: 1.0px;
-    background-color: rgb(50, 180, 60);
+.box-main-das .box-main-control {
+  width: 14%;
+  height: 100%;
+  float: left;
+  margin-right: 10px;
+  padding: 20px 10px;
+  background-color: white;
 }
 
-#boxcoursecreate button[type = 'submit']:hover{
-    background-color: rgb(60, 231, 75);
+.box-main-das .box-main-control > h1 {
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-#createcourseright input[type = 'text']:focus{
-    box-shadow: 0px 0px 7px 2px #3498db;
+.box-main-das .box-main-control > ul {
+  font-weight: 600;
+  list-style: none;
 }
 
-#createcourseright textarea:focus{
-    box-shadow: 0px 0px 7px 2px #3498db;
+.box-main-das .box-main-control > ul > li {
+  list-style: none;
+  background-color: #fff;
+  color: #3f3f3f;
+  padding: 10px 0px;
+  border-top: 1px solid #969696;
+  text-align: center;
 }
 
-/* ADD DETAILS COURSE */
-#boxdetailslecture{
-    margin-top: 50px;
-    padding-top: 20px;
-    width: 100%;
-    height: 200px;
+.box-main-das .box-main-control > ul > li:hover {
+  color: #28a050;
+  font-size: 20px;
 }
 
-#lessionname{
-    width: 20%;
-    height: 150px;
+.box-main-das .box-main-control > ul > li > a {
+  text-transform: capitalize;
+  text-decoration: none;
+  color: #3f3f3f;
+  font-weight: 600;
 }
 
-#lessionname > i{
-    letter-spacing: 1.5px;
-    font-size: 25px;
+.box-main-das .box-main-control > ul > li > a:hover {
+  text-decoration: underline;
 }
 
-#lessioncontent{
-    width: 80%;
-    height: 150px;
-    text-align: left;
-    border-left:  2px solid rgb(210, 210, 210);
+.box-main-das .box-main-control > ul > li > ul {
+  list-style: none;
 }
 
-
-/* ADD LECTURE */
-#boxaddlecture{
-    width: 100%;
-    height: 170px;
-    margin-bottom: 50px;
+.box-main-das .box-main-control > ul > li > ul > li {
+  border-top: 1px solid #969696;
+  margin-top: 10px;
+  padding: 10px 0px 0px 0px;
+  background-color: #fff;
 }
 
-#boxaddlecture > h3{
-    text-transform: capitalize;
-    padding: 5px 0;
+.box-main-das .box-main-control > ul > li > ul > li > a {
+  color: #3f3f3f;
+  text-decoration: none;
 }
 
-#boxtitleadd{
-    padding: 10px 20px 20px 20px;
-    width: 20%;
+.box-main-das .box-main-control > ul > li > ul > li > a:hover {
+  text-decoration: underline;
 }
 
-#boxtitleadd > label{
-    display: block;
-    text-transform: capitalize;
-    margin-bottom: 25px;
+.box-main-das .box-main-control .itemshow {
+  display: none;
 }
 
-#boxvalueadd {
-    width: 80%;
-    padding: 5px;
-    margin-top: 0px;
+.box-main-das .box-main-control .item:hover .itemshow {
+  display: block;
 }
 
-#boxvalueadd input{
-    margin: 0px 10px 5px 0px;
-    outline: none;
+.box-main-das .box-main-control #lilatest {
+  border-bottom: 1px solid #969696;
 }
 
-#boxaddlecture button[type = 'submit']{
-    color: whitesmoke;
-    border: none;
-    font-size: 15px;
-    padding: 5px 20px;
-    border-radius: 10px;
-    font-weight: 400;
-    letter-spacing: 1.0px;
-    background-color: rgb(50, 180, 60);
-    outline: none;
+.box-main-das .box-main-content {
+  width: 85%;
+  height: 100%;
+  float: left;
+  background-color: white;
+  padding: 65px 50px;
+  font-family: serif;
 }
 
-#boxaddlecture button[type = 'submit']:hover{
-    background-color: rgb(60, 231, 75);
+.box-main-das .box-main-content .box-das-content-details {
+  width: 100%;
+  height: 150px;
+  border-top: 1px solid #969696;
 }
 
-#boxaddlecture input[name = 'name']:focus{
-    box-shadow: 0px 0px 7px 2px #3498db;
+.box-main-das .box-main-content .box-das-content-details .das-content {
+  width: 80%;
+  height: 100%;
+  float: left;
 }
 
-/* ADD UNIT */
-#boxunitadd{
-    width: 100%;
-    height: 430px;
-    margin-top: 0;
+.box-main-das .box-main-content .box-das-content-details .das-content .das-content-title {
+  width: 100%;
+  height: 30%;
+  padding: 5px 50px 0 50px;
 }
 
-#boxunitadd h3{
-    text-transform: capitalize;
-    margin-top: 10px;
-
+.box-main-das .box-main-content .box-das-content-details .das-content .das-content-title > i {
+  font-size: 30px;
+  color: #28a050;
 }
 
-#unitaddtitle{
-    padding-right: 30px;
-    text-align: center;
-    width: 20%;
-    height: 350px;
+.box-main-das .box-main-content .box-das-content-details .das-content .das-content-title > h1 {
+  text-transform: capitalize;
+  font-weight: 1;
+  margin-left: 20px;
+  color: black;
+  display: inline;
 }
 
-#unitaddtitle label{
-    display: block;
-    text-transform: capitalize;
-    margin-bottom: 40px;
+.box-main-das .box-main-content .box-das-content-details .das-content .das-content-show {
+  width: 100%;
+  height: 70%;
+  padding: 20px 20px;
 }
 
-#unitaddvalue{
-    text-align: center;
-    width: 80%;
-    height: 350px;
-    margin: 0;
+.box-main-das .box-main-content .box-das-content-details .das-content .das-content-show > p {
+  color: #3f3f3f;
 }
 
-#unitaddvalue select{
-    padding: 10px;
-    width: 90%;
-    outline: none;
-    border-radius: 5px;
+.box-main-das .box-main-content .box-das-content-details .das-content .das-content-show > a {
+  display: block;
+  color: #3f3f3f;
+  font-weight: 700;
+  text-decoration: none;
 }
 
-#unitaddvalue input[type = 'file']{
-    display: inline-block;
-    outline: none;
-    width: 90%;
+.box-main-das .box-main-content .box-das-content-details .das-content .das-content-show > a:hover {
+  margin: 5px 0px;
+  text-decoration: underline;
 }
 
-#unitaddvalue input[type = 'text'], #unitaddvalue input[type = 'file'], #unitaddvalue input[type = 'url']{
-    margin: 5px 0;
-    outline: none;
+.box-main-das .box-main-content .box-das-content-details .btn-modifly {
+  width: 20%;
+  height: 100%;
+  float: left;
+  padding: 60px 10px;
+  text-align: center;
 }
 
-#unitaddvalue textarea{
-    width: 90%;
-    height: 100px;
-    outline: none;
+.box-main-das .box-main-content .box-das-content-details .btn-modifly > form {
+  display: inline-block;
 }
 
-#boxunitadd button[type = 'submit']{
-    color: whitesmoke;
-    border: none;
-    font-size: 15px;
-    padding: 5px 20px;
-    border-radius: 10px;
-    font-weight: 400;
-    letter-spacing: 1.0px;
-    background-color: rgb(50, 180, 60);
-    outline: none;
+.box-main-das .box-main-content .box-das-content-details .btn-modifly > form > button[type='submit'] {
+  outline: none;
+  font-weight: 600;
 }
 
-#boxunitadd button[type = 'submit']:hover{
-    background-color: rgb(60, 231, 75);
+.box-main-das .box-main-content .box-das-content-details .btn-modifly #btndelete {
+  padding: 5px 15px;
 }
 
-#boxunitadd input[type = 'text']:focus, #boxunitadd input[type = 'url']:focus, #boxunitadd textarea:focus{
-    box-shadow: 0px 0px 7px 2px #3498db;
+.box-main-das .box-main-content .box-das-content-details .btn-modifly #btnchange {
+  border: 0;
+  color: #fff;
+  padding: 7px 30px;
+  background-color: #28a050;
 }
 
-
-
+.box-main-das .box-main-content .box-das-content-details .btn-modifly #btnchange:hover {
+  background-color: #32c864;
+}
+/*# sourceMappingURL=style-6.css.map */

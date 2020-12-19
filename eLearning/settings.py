@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'eLearning.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'lms',
+        'NAME': 'moc',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'USER': 'root',
@@ -149,5 +149,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'akisukidesuyo@gmail.com'
-EMAIL_HOST_PASSWORD = 'philongg2000@gmail.com'
+EMAIL_HOST_USER = 'thepql37@gmail.com'
+EMAIL_HOST_PASSWORD = 'lilolpxzfgthepql37'

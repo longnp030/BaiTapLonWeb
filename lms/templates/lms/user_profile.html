@@ -1,90 +1,98 @@
 {% extends "../lms/index1.html" %}
+{% block title %} Profile {% endblock %}
 
 {% block content %}
-    <div class="profile">   
-        <div class="info-details-block" id='avatar'>
-            {% if this_student %}
-                {% if this_student.image %}
-                    <img src="{{ this_student.image.url }}">
-                {% endif %}
-            {% elif this_teacher %}
-                {% if this_teacher.image %}
-                    <img src="{{ this_teacher.image.url }}">
-                {% endif %}
-            {% endif %}
-        </div>
-
-        <div class="info-details-block" id="infor">
-            <h2>Information</h2>
-            <div class="label-fields">
-                <label for="">name</label>
-                <label for="">Email</label>
-                <label for="">Joindate</label>
+    <div class="box-bg-profile">
+        <div class="box-main-profile">
+            <div class="bg-avatar">
+                <div class="avatar">
+                    {% if this_student %}
+                        {% if this_student.image %}
+                            <img src="{{ this_student.image.url }}">
+                        {% endif %}
+                    {% elif this_teacher %}
+                        {% if this_teacher.image %}
+                            <img src="{{ this_teacher.image.url }}">
+                        {% endif %}
+                    {% endif %}
+                </div>
             </div>
-            <div class="ipt-fields">
-                {% if this_student %}
-                    <input type="text" value={{ this_student.name }} readonly> 
-                    <input type="text" value={{ this_student.email }} readonly>
-                    <input type="text" value="{{ this_student.joindate }}" readonly>
-                {% elif this_teacher %}
-                    <input type="text" value={{ this_teacher.name }} readonly> 
-                    <input type="text" value={{ this_teacher.email }} readonly>
-                    <input type="text" value="{{ this_teacher.joindate }}" readonly>   
-                {% endif %}
+
+            <div class="box-info">
+                <h1>Information </h1>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis rem et laborum ab dolore assumenda!</p>
+
+                <div class="label-fields-profile">
+                    <label for="">name</label>
+                    <label for="">Email</label>
+                    <label for="">Joindate</label>
+                </div>
+
+                <div class="inp-fields-profile">
+                    {% if this_student %}
+                        <input type="text" value="{{ this_student.name }}" readonly> 
+                        <input type="text" value={{ this_student.email }} readonly>
+                        <input type="text" value="{{ this_student.joindate }}" readonly>
+                    {% elif this_teacher %}
+                        <input type="text" value="{{ this_teacher.name }}" readonly> 
+                        <input type="text" value={{ this_teacher.email }} readonly>
+                        <input type="text" value="{{ this_teacher.joindate }}" readonly>   
+                    {% endif %}
+                </div>
             </div>
-        </div>
 
-
-        <div class="info-details-block" id="contact">
-            <h2>Contact</h2>  
-            <div class="label-fields">
-                <label for="">facebook</label>
-                <label for="">twitter</label>
-                <label for="">website</label>
+            <div class="box-info">
+                <h1>contact</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, officia doloribus saepe numquam officiis dolor.</p>
+                <div class="label-fields-profile">
+                    <label for="">facebook</label>
+                    <label for="">twitter</label>
+                    <label for="">website</label>
+                </div>
+                <div class="inp-fields-profile">
+                    {% if this_student %}
+                        <input type="url" value={{ this_student.facebook }} readonly>
+                        <input type="url" value={{ this_student.twitter }} readonly>
+                        <input type="url" value={{ this_student.website }} readonly>
+                    {% elif this_teacher %}          
+                        <input type="url" value={{ this_teacher.facebook }} readonly>
+                        <input type="url" value={{ this_teacher.twitter }} readonly>
+                        <input type="url" value={{ this_teacher.website }} readonly>
+                    {% endif %}
+                </div>
             </div>
-            <div class="ipt-fields">
-                {% if this_student %}
-                    <input type="url" value={{ this_student.facebook }} readonly>
-                    <input type="url" value={{ this_student.twitter }} readonly>
-                    <input type="url" value={{ this_student.website }} readonly>
-                {% elif this_teacher %}          
-                    <input type="url" value={{ this_teacher.facebook }} readonly>
-                    <input type="url" value={{ this_teacher.twitter }} readonly>
-                    <input type="url" value={{ this_teacher.website }} readonly>
-                {% endif %}
-            </div>
-        </div>
 
-
-        {% if this_user == this_student or this_user == this_teacher %}
-            <div class="info-details-block" id="edit">
-                <h2>edit</h2>
+            {% if this_user == this_student or this_user == this_teacher %}
+                <div class="box-update">
+                    <h1>Update</h1>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Exercitationem dolorem illo dolor rem nostrum consequuntur.</p>
                 {% if form %}
                     <form method="POST" enctype='Multipart/form-data'>
                         {% csrf_token %}
-                        <div class="label-fields">
+                        <div class="label-fields-profile">
                             <label for="">avatar</label>
                             <label for="">facebook</label>
                             <label for="">twitter</label>
                             <label for="">websites</label>
                         </div>
-                        <div class="ipt-fields">
+                        <div class="inp-fields-profile">
                             <input type="file" name="image" accept="image/*" id="filechoiseimage">
                             <input type="url" name="facebook" placeholder="facebook" id="id_facebook">
                             <input type="url" name="website" placeholder="website" id="id_website">
                             <input type="url" name="twitter" placeholder="twitter" id="id_twitter">
                         </div>
-                        <div class="edit-comfirm" id="editcomfirm">
+                        <div class="btn-comfirm">
                             <button type="submit"> <i>Save profile</i></button>
-                            <a href="{% url 'change_password' %}" target="blank"><i>Change password here</i></a>
+                            <a href="{% url 'change_password' %}" target="blank" > <i>Change password here</i> </a>
                         </div>
                     </form>
-                {% endif %}
+                </div>
+        </div>
+            {% endif %}  
                 <script>
                     var info_text = document.getElementById("student-info-header-txt");
                     info_text.textContent = "My profile";
-                </script>
-            </div>
-        {% endif %}
+                </script>  
+            {% endif %}      
     </div>
 {% endblock %}

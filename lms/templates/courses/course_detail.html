@@ -1,58 +1,92 @@
+
 {% block content %}
+<div class="box-main-das">
+    <div class="box-main-control">
+        <h1>Menu</h1>
+        <ul>
+            <li>
+                {% if can_modify_obj %}
+                    <a href="{% url 'add_lecture' course_id=course.id %}" target="_blank" name='unitoflecture'>Add lecture</a>
+                {% endif %}
+            </li>
+            <li class="item">Teacher
+                <ul class="itemshow" >
+                    <li><a href="{% url 'user_profile' detail.teacher.id %}" target="_blank">{{ detail.teacher.name }}</a></li>
+                </ul>
+            </li>
+            <li class="item">Classmate
+                <ul class="itemshow" >
+                    {% if detail.classmates %}
+                        {% for classmate in detail.classmates %}
+                            {% if classmate != this_user %}
+                                <li>
+                                    <a href="{% url 'user_profile' classmate.id %}" target="_blank">{{ classmate.name }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </li>
+            <li class="item" id="lilatest">My course
+                <ul class="itemshow">
+                    {% if my_courses %}
+                        {% for course in my_courses %}
+                            <li>
+                                <a href="../courses/{{ course.id }}/" target="_blank"><i>{{ course.name }}</i></a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </li>
+        </ul>
+    </div>
+    {% if detail %}
+        {% if detail.lectures %}
+            <div class="box-main-content">
+                {% for lecture in detail.lectures %}
+                    {% if lecture.lecture %}
+                        {% with lect=lecture.lecture %}
+                            <div class="box-das-content-details">
+                                <div class="das-content">
+                                    <div class="das-content-title">
+                                        <i class="fab fa-elementor"></i>
+                                        <h1>{{ lect }}</h1>
+                                    </div>
+                                    <div class="das-content-show">
+                                        {% if lect.notes %}
+                                            <p>{{ lect.notes }}</p>    
+                                        {% endif %}
 
-{% if detail %}
+                                        {% if lect.video %}
+                                            <a href="{{ lect.video }}" target="_blank"> <i> This is video </i></a> 
+                                        {% endif %}
 
-    {% if detail.lectures %}
-        {% for lecture in detail.lectures %}
-            {% if lecture %}
-                <div class="course-view" id="boxdetailslecture">
-                    <div class="course-view-left" id="lessionname">
-                        <i class="fas fa-list-ul"> &emsp; Lession </i> 
-                    </div>
+                                        {% if lect.slide %}
+                                            <a href="{% url 'view_file' lect.slide.path %}" target="_blank"> <i>  {{ lect.get_slide_name }} This is slide </i></a>
+                                        {% endif %}
+                                        <a href="#"><i> This is slide </i></a>
+                                    </div>
+                                </div>
 
-                    <div class="course-view-right" id="lessioncontent">
-                        <h3>{{ lecture.lecture }}</h3>
+                                <div class="btn-modifly">
+                                    {% if can_modify_obj %}
+                                        <form action="{% url 'delete_obj' lect.id %}" method="POST">
+                                            {% csrf_token %}
+                                            <button type="submit" id="btndelete">Delete</button>
+                                        </form>
 
-                        {% if lecture.units %}
-                            {% for unit in lecture.units %}
-                                <ul>{{ unit }}</ul>  
-                            {% endfor%}
-                        {% endif %}
-                    </div>
-                </div>
-            {% endif %}
-        {% endfor %}
+                                        <form action="{% url 'modify_obj' lect.id %}" method="GET">
+                                            {% csrf_token %}
+                                            <button type="submit" name="save-changes" id="btnchange">Modify</button>
+                                        </form>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endwith %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
     {% endif %}
-
-    {% if lecture_form %}
-        <form method="POST" class="course-view" id="boxaddlecture">
-            {% csrf_token %}
-            <h3> Add lecture </h3> 
-            {#{{lecture_form }}#}
-            
-            <div class="course-view-left" id="boxtitleadd">
-                <label for="">Choise course</label>
-                <label for="">lecture name</label>
-             </div>
- 
-             <div class="course-view-right info-details-block" id="boxvalueadd">
-                 <input type="text" name="course" value="{{ course.name }}" readonly>
-                     
-                 <input type="text" name="name" maxlength="255" required="" id="id_name">
-             </div>
-            <button type="submit" name="add_lect">Add</button>
-        </form>
-    {% endif %}
-
-    {% if unit_form %}
-        <h2>add unit</h2>
-        <form method="POST">
-            {% csrf_token %}
-            {{ unit_form }}
-            <button type="submit" name="add_unit">Add</button>
-        </form>
-    {% endif %}
-
-
-{% endif %}
+</div>
 {% endblock %}

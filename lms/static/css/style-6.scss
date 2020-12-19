@@ -1,0 +1,905 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+/* GENERAL */
+
+body {
+  font-size: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  background-color: #f5f5f5;
+}
+
+@mixin dimetion($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+$btn-color: rgb(40, 160, 80);
+$btn-color-hover: rgb(50, 200, 100);
+
+/* HOME BASE */
+
+.section_img {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 1);
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* HEADER */
+
+.header {
+  background-color: rgba(0, 0, 0, 0.95);
+  border-top: 2px solid greenyellow;
+
+  .width-1200 {
+    max-width: 95%;
+    width: 95%;
+    margin: auto;
+  }
+
+  .header-inner {
+    padding: 20px 0px;
+    text-align: right;
+
+    .navbar {
+      display: inline;
+    
+      a {
+        margin: 0px 15px;
+        color: #d1d1d1;
+        font-size: 18px;
+        text-decoration: none;
+    
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+/* TEST */
+
+.join-btt {
+  display: inline;
+  margin-top: 100px;
+
+  img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+  }
+}
+
+.join-bt {
+  display: inline;
+
+  a {
+    margin: 0px 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: $btn-color;
+
+    &:hover {
+      background-color: $btn-color-hover;
+    }
+  }
+}
+
+/* HOME */
+.home-b1{
+  background-image: url("bg2.jpg");
+  height: 93vh;
+  background-position: center;
+  background-size: cover;
+
+  .home-b1-inner{
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 50px 0px;
+    height: 100%;
+    position: relative;
+
+    .content{
+      max-width: 1000px;
+      width: 1000px;
+      margin: auto;
+      text-align: center;
+      color: white;
+
+      h1{
+        font-size: 60px;
+        margin-top: auto;
+        letter-spacing: 2.5px;
+      }
+
+      p{
+        margin-top: auto;
+        font-size: 20px;
+        letter-spacing: 1.5px;
+      }
+    }
+  }
+
+  .funfact {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+
+    div {
+      color: white;
+      letter-spacing: 1.5px;
+    }
+  }
+}
+
+/* FOOTER*/
+
+.footer {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding-top: 50px;
+
+  .foot-content {
+    display: flex;
+    max-width: 1300px;
+    width: 1300px;
+    text-align: center;
+    margin: 0px auto;
+    gap: 40px;
+    border-bottom: 2px solid gray;
+    padding: 50px 0 50px 0;
+  
+    h1 {
+      text-align: center;
+    }
+  
+    div {
+      letter-spacing: 1.5px;
+    }
+  }
+
+  .content-end-page {
+    padding-top: 50px;
+    padding-bottom: 70px;
+  
+    p {
+      display: inline;
+      margin-left: 20px;
+    }
+  
+    .icon-end-page {
+      display: inline;
+      margin-left: 1300px;
+  
+      i {
+        font-size: 30px;
+        letter-spacing: 15px;
+      }
+    }
+  }
+}
+
+/* REGISTER */
+
+.box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 420px;
+  height: 500px;
+  text-align: center;
+  border-radius: 20px;
+  transform: translate(-50%, -50%);
+  background: rgba(22, 21, 21, 0.75);
+
+  h1 {
+    color: white;
+    text-transform: capitalize;
+    margin-bottom: 50px;
+    font-weight: 450;
+  }
+
+  input {
+    &[type="text"], &[type="password"] {
+      border: 0;
+      background: none;
+      display: block;
+      outline: none;
+      color: white;
+      transition: 0.25s;
+    }
+  }
+}
+
+/* LOGIN */
+
+.box-login {
+  padding: 80px 60px 60px 60px;
+
+  input {
+    &[type="text"], &[type="password"] {
+      text-align: center;
+      width: 250px;
+      margin: 30px auto;
+      padding: 14px 10px;
+      border-radius: 24px;
+      border: 2px solid #3498db;
+    }
+  }
+}
+
+.text-option {
+  margin-top: 50px;
+
+  a {
+    letter-spacing: 1.2px;
+    color: azure;
+    text-decoration: none;
+  }
+}
+
+/* SIGNUP */
+
+.box-signup {
+  padding: 50px 60px 60px 60px;
+
+  input {
+    &[type="text"], &[type="password"] {
+      width: 300px;
+      margin: 30px auto;
+      padding: 10px;
+      border-bottom: 2px solid #3498db;
+    }
+  }
+}
+
+/* BTN SUBMIT */
+
+.box input[type="submit"] {
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #3498db;
+  padding: 14px 40px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+
+  &:hover {
+    background: #2ecc71;
+    border-color: #2ecc71;
+  }
+}
+
+/* EFFECT */
+
+.box-login input {
+  &[type="text"]:focus, &[type="password"]:focus {
+    width: 300px;
+    border-color: #2ecc71;
+  }
+}
+
+.box-signup input {
+  &[type="text"]:focus, &[type="password"]:focus {
+    width: 310px;
+    border-bottom: 2px solid #2ecc71;
+  }
+}
+
+::-webkit-input-placeholder, ::-moz-placeholder, ::-ms-input-placeholder {
+  color: white;
+}
+
+.text-option a:hover {
+  color: rgb(0, 255, 136);
+}
+
+@media screen and (max-width: 600px) {
+  .register-forms {
+    flex-direction: column;
+  }
+
+  .input-fields {
+    width: 100%;
+  }
+}
+
+/* RESET PASSWORD */
+
+#box-reqest-email {
+  padding: 120px 60px 60px 60px;
+}
+
+#box-reset-password {
+  padding: 100px 60px 60px 60px;
+}
+
+/* CHANGE PASSWORD */
+
+.c-change-password-bg {
+  width: 100%;
+  height: 850px;
+  border-top: 1px solid white;
+  background-color: rgba(0, 0, 0, 0.95);
+
+  #box-change-password {
+    padding: 80px 60px 60px 60px;
+  }
+}
+
+/* RESET PASSWORD DONE */
+
+.c-notification {
+  padding: 50px 0px 50px 25px;
+  border-top: 1px solid white;
+  background-color: rgba(0, 0, 0, 0.75);
+
+  p {
+    padding-bottom: 5px;
+    color: white;
+
+    > a {
+      text-decoration: none;
+      color: rgb(0, 255, 136);
+    }
+  }
+}
+
+/* PROFILE */
+.label-fields-profile {
+  @include dimetion(20%, 90%);
+  float: left;
+
+  > label {
+      display: block;
+      font-weight: 600;
+      text-align: right;
+      text-transform: capitalize;
+      margin: 20px 0px 50px 0px;
+  }
+
+}
+
+.inp-fields-profile {
+  @include dimetion(80%, 90%);
+  float: left;
+
+  > input[type = 'file']{
+      width: 90%;
+      padding: 10px;
+      margin: 15px 0;
+      outline: none;
+  }
+
+  > input[type = 'text'], > input[type = 'url'] {
+      width: 90%;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 15px 0px;
+      outline: none;
+      border: 1px solid rgb(150, 150, 150);
+
+      &:focus {
+          box-shadow: 0px 0px 7px 2px #0099ff;
+      }
+  }
+
+  > textarea {
+    @include dimetion(90%, 100px);
+    border-radius: 5px;
+    border: 1px solid rgb(150, 150, 150);
+    margin: 10px 0px;
+    outline: none;
+
+    &:focus {
+      box-shadow: 0px 0px 7px 2px #0099ff;
+    }
+  }
+
+  > select {
+    width: 90%;
+    margin: 20px 0px 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+}
+
+.box-bg-profile {
+  @include dimetion(100%, 100%);
+  padding: 50px 100px;
+  background-color: #f5f5f5;
+
+  .box-main-profile {
+      @include dimetion(100%, 100%);
+      padding: 10px;
+      text-align: center;
+      border: 1px solid rgb(190, 190, 190);
+      background-color: rgb(255, 255, 255);
+  
+      .bg-avatar {
+          @include dimetion(90%, 300px);
+          display: inline-block;
+          text-align: center;
+  
+          .avatar {
+              @include dimetion(250px, 250px);
+              display: inline-block;
+              margin-top: 30px;
+  
+              > img {
+                  @include dimetion(100%, 100%);
+                  border-radius: 50%
+              }
+          }
+      }
+  
+      .box-info {
+          @include dimetion(90%, 270px);
+          display: inline-block;
+          padding: 5px;
+          border-top: 1px solid rgb(210, 210, 210);
+
+          > h1 {
+              text-align: left;
+              text-transform: capitalize;
+              font-weight: 1;
+              color: #3f3f3f;
+          }
+
+          > p {
+              text-align: left;
+              color: #3f3f3f;
+          }
+      }
+  
+  
+      .box-update {
+          @include dimetion(90%, 380px);
+          display: inline-block;
+          border-top: 1px solid rgb(210, 210, 210);
+          padding-bottom: 80px;
+
+          > h1 {
+              text-align: left;
+              text-transform: capitalize;
+              font-weight: 1;
+              color: #3f3f3f;
+          }
+
+          > p {
+              text-align: left;
+              color: #3f3f3f;
+          }
+
+          .btn-comfirm {
+              
+              > button {
+                  padding: 12px 20px;
+                  border: 0;
+                  border-radius: 5px;
+                  color: white;
+                  font-weight: 600;
+                  background-color: $btn-color;
+                  outline: none;
+
+                  &:hover {
+                      background-color: $btn-color-hover;
+                  }
+              }
+
+              > a {
+                  padding: 10px 20px;
+                  text-decoration: none;
+                  border-radius: 5px;
+                  color: white;
+                  background-color: $btn-color;
+
+                  &:hover {
+                      background-color: $btn-color-hover;
+                  }
+              }
+          }
+      }
+  }
+}
+
+/* COURSE SHOW */
+
+.c-box-course {
+  display: inline-block;
+  text-align: center;
+  height: 350px;
+  width: 250px;
+  margin: 20px 0px 20px 30px;
+  padding-top: 10px;
+  background-color: white;
+
+  > a {
+    > i {
+      color: black;
+      font-size: 200px;
+      margin-top: 100px;
+
+      &:hover {
+        color: burlywood;
+      }
+    }
+  }
+
+  .img-course {
+
+    > img {
+      height: 250px;
+      width: 75%;
+    }
+  }
+
+  .name-course {
+    text-align: left;
+    bottom: 50px;
+    padding: 5px 10px;
+    height: 30px;
+    width: 100%;
+    border-bottom: 1px solid rgb(210, 210, 210);
+  
+    > i {
+      font-size: 13px;
+      font-weight: 500;
+    }
+  }
+
+  .bt-view {
+    height: 55px;
+    width: 100%;
+    bottom: 0;
+    padding-top: 15px;
+    background-color: white;
+  
+    > a {
+      color: black;
+      text-decoration: none;
+      padding: 10px 40px;
+      
+      > i {
+        color: black;
+      }
+    }
+  }
+
+  &:hover{
+    .bt-view{
+      background-color: $btn-color-hover;
+
+      > a {
+        color: white;
+        > i {
+          color: white;
+        }
+      }    
+    }
+    box-shadow: 0px 0px 15px 5px rgb(159, 159, 159);
+  }
+}
+
+#forteacher {
+  padding: 50px 0px;
+}
+
+
+/* COURSE */
+.course-over-view {
+  text-align: center;
+  height: 100%;
+  background-color: rgb(240, 240, 240);
+  border-top: 1px solid white;
+
+  .course-view {
+    display: inline-block;
+    margin-top: 50px;
+    height: 250px;
+    width: 80%;
+    background-color: white;
+
+    .course-view-left {
+      padding: 20px;
+      float: left;
+      width: 50%;
+      height: 100px;
+    }
+
+    .course-view-right {
+      padding: 20px;
+      float: right;
+      width: 50%;
+      height: 100px;
+    }
+
+    .course-view-descript {
+      padding: 20px;
+      margin-top: 60px;
+      width: 100%;
+      height: 120px;
+    }
+
+    .course-btn-enroll {
+      margin: 25px 0;
+      text-align: center;
+    
+      > a {
+        text-decoration: none;
+        color: whitesmoke;
+        padding: 15px 30px;
+        border-radius: 10px;
+        background-color: $btn-color;
+    
+        &:hover {
+          background-color: $btn-color-hover;
+        }
+      }
+    }
+  }
+}
+
+#coursename {
+  width: 100%;
+  padding: 10px;
+}
+
+#coursedescript {
+  text-indent: 10px;
+  border-bottom: 2px solid rgb(210, 210, 210);
+  border-top: 2px solid rgb(210, 210, 210);
+}
+
+/* CREATE COURSE */
+
+.box-bg-create-course {
+  @include dimetion(100%, 100%);
+  padding: 150px 100px;
+  text-align: center;
+
+  .box-create-course {
+    @include dimetion(90%, 100%);  
+    background-color: white;
+    border: 1px solid rgb(150, 150, 150);
+    padding: 20px;
+    display: inline-block;
+    text-align: center;
+
+    > h1 {
+      text-align: center;
+      font-weight: 1;
+      color: #3f3f3f;
+    }
+
+    button[type = 'submit'] {
+      padding: 10px 25px;
+      outline: none;
+      color: white;
+      font-weight: 600;
+      letter-spacing: 1.0px;
+      border: 0;
+      border-radius: 5px;
+      background-color: $btn-color;
+
+      > a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 15px;
+      }
+
+      &:hover {
+        background-color: $btn-color-hover;
+      }
+    }
+  }
+}
+
+/* Course details */
+
+.box-main-das {
+    @include dimetion(100%, 100%);
+    background-color: #f5f5f5;
+    padding: 20px 50px;
+
+    .box-main-control {
+        @include dimetion(14%, 100%);
+        float: left;
+        margin-right: 10px;
+        padding: 20px 10px;
+        background-color: white;
+
+        > h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        > ul {
+            font-weight: 600;
+            list-style: none;
+
+            > li {
+                list-style: none;
+                background-color: #fff;
+                color: #3f3f3f;
+                padding: 10px 0px;
+                border-top: 1px solid rgb(150, 150, 150);
+                text-align: center;
+
+                &:hover {
+                    color: $btn-color;
+                    font-size: 20px;
+                }
+
+                > a {
+                    text-transform: capitalize;
+                    text-decoration: none;
+                    color: #3f3f3f;
+                    font-weight: 600;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+                
+                > ul {
+                    list-style: none;
+
+                    > li {
+                        border-top: 1px solid rgb(150, 150, 150);
+                        margin-top: 10px;
+                        padding: 10px 0px 0px 0px;
+                        background-color: #fff;
+
+                        > a {
+                            color: #3f3f3f;
+                            text-decoration: none;
+
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        .itemshow {
+            display: none;
+        }
+
+        .item {
+
+            &:hover .itemshow {
+                display: block;
+            }
+        }
+
+        #lilatest {
+            border-bottom: 1px solid rgb(150, 150, 150);
+        }
+
+    }
+
+    .box-main-content {
+        @include dimetion(85%, 100%);
+        float: left;
+        background-color: white;
+        padding: 65px 50px;
+        font-family: serif;
+
+        .box-das-content-details {
+            @include dimetion(100%, 150px);
+            border-top: 1px solid rgb(150, 150, 150);
+
+            .das-content {
+                @include dimetion(80%, 100%);
+                float: left;
+
+                .das-content-title {
+                    @include dimetion(100%, 30%);
+                    padding: 5px 50px 0 50px;
+
+                    > i {
+                        font-size: 30px;
+                        color: $btn-color;
+                    }
+                    
+                    > h1 {
+                        text-transform: capitalize;
+                        font-weight: 1;
+                        margin-left: 20px;
+                        color: black;
+                        display: inline;
+                    }
+                }
+
+                .das-content-show {
+                    @include dimetion(100%, 70%);
+                    padding: 20px 20px;
+
+                    > p {
+                        color: #3f3f3f;
+                    }
+
+                    > a {
+                        display: block;
+                        color: #3f3f3f;
+                        font-weight: 700;
+                        text-decoration: none;
+
+                        &:hover {
+                            margin: 5px 0px;
+                            text-decoration: underline;
+                        }
+                    }
+                  }
+            }
+
+            .btn-modifly {
+                @include dimetion(20%, 100%);
+                float: left;
+                padding: 60px 10px;
+                text-align: center;
+
+                > form {
+                  display: inline-block;
+
+                  > button[type = 'submit'] {
+                    outline: none;
+                    font-weight: 600;
+                  }
+                }
+
+                #btndelete {
+                    padding: 5px 15px;
+                }
+
+                #btnchange {
+                    border: 0;
+                    color: #fff;
+                    padding: 7px 30px;
+                    background-color: $btn-color;
+
+                    &:hover {
+                        background-color: $btn-color-hover;
+                    }
+                }
+            }
+        }
+    }
+}
