@@ -113,10 +113,10 @@ class Lecture(models.Model):
     course = models.ForeignKey(Course, on_delete=models.DO_NOTHING, db_column='course')
 
     ## Added on 17/12
-    notes = models.TextField(blank=True, null=True, db_column='notes')
+    notes = models.TextField(blank=True, db_column='notes')
     slide = models.FileField(upload_to=FILES_URL, db_column='slide', blank=True)
-    video = models.URLField(max_length=255, db_column='video', null=True, blank=True)
-    reading = models.CharField(max_length=255, db_column='reading', null=True, blank=True)
+    video = models.URLField(max_length=255, db_column='video', blank=True)
+    reading = models.CharField(max_length=255, db_column='reading', blank=True)
     
     ### Delete after Unit being created
     #notes = models.TextField(blank=True, null=True, db_column='notes')

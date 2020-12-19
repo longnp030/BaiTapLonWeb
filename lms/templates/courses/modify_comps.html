@@ -1,6 +1,6 @@
 {% extends "../lms/index1.html" %}
 {% block content %}
-    <form method="POST">
+    <form method="POST" enctype='Multipart/form-data'>
         {% csrf_token %}
         
         <label for="id_course">Course:</label>
@@ -12,16 +12,20 @@
         <input type="text" name="name" value="{{ lecture.name }}" maxlength="255" required id="id_name">
 
         <label for="id_notes">Notes:</label>
-        <textarea name="notes" cols="40" rows="10" id="id_notes"></textarea>
+        <textarea name="notes" cols="40" rows="10" id="id_notes">{{ lecture.notes }}</textarea>
 
         <label for="id_slide">Slide:</label>
-        <input type="file" name="slide" id="id_slide">
+        <input type="file" name="slide" id="id_slide" accept="application/*">
         
         <label for="id_video">Video:</label>
-        <input type="url" name="video" id="id_video">
-        
+        {% if lecture.video %}
+            <input type="url" name="video" value="{{ lecture.video }}" id="id_video" >
+        {% else %}
+            <input type="url" name="video" id="id_video" >
+        {% endif %}
+
         <label for="id_reading">Reading:</label>
-        <input type="text" name="reading" maxlength="255" id="id_reading">
+        <input type="text" name="reading" value="{{ lecture.reading }}" maxlength="255" id="id_reading">
 
         <button type="submit">Save changes</button>
     </form>

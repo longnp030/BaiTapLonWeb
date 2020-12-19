@@ -339,7 +339,7 @@ def add_lecture(request, course_id):
     course = Course.objects.get(id=course_id)
     lecture_create_form = None
     if request.method == 'POST':
-        lecture_create_form = LectureCreateForm(request.POST)
+        lecture_create_form = LectureCreateForm(request.POST, request.FILES)
         if lecture_create_form.is_valid():
             lecture_create_form.save()
             return redirect(reverse('course_overview', kwargs={'course_id': course.id}))
@@ -391,16 +391,16 @@ def modify_obj(request, obj_id):
     obj_change_form = None
     if request.method == 'POST':
         if isinstance(obj, Lecture):
-            obj_change_form = LectureCreateForm(request.POST, instance=obj)
+            obj_change_form = LectureCreateForm(request.POST, request.FILES, instance=obj)
         ## Deprecated 17/12
         #elif isinstance(obj, Unit):
         #    obj_change_form = UnitCreateForm(request.POST, instance=obj)
         elif isinstance(obj, Assignment):
-            obj_change_form = AssignmentCreateForm(request.POST, instance=obj)
+            obj_change_form = AssignmentCreateForm(request.POST, srequest.FILES, instance=obj)
         ##
         if obj_change_form.is_valid():
             obj_change_form.save()
-            return redirect('/lms/')
+            return redirect(reverse('course_overview', kwargs={'course_id': Course.objects.all().filter(lecture__id=obj.id)[0].id}))
     else:
         if isinstance(obj, Lecture):
             obj_change_form = LectureCreateForm(instance=obj)
@@ -426,8 +426,9 @@ def delete_obj(request, obj_id):
         if obj is None:
             obj = Assignment.objects.get(id=obj_id)
     ##
+    course_id = Course.objects.all().filter(lecture__id=obj.id)[0].id
     obj.delete()
-    return HttpResponseRedirect('')
+    return redirect(reverse('course_overview', kwargs={'course_id': course_id}))
 
 
 '''@login_required
