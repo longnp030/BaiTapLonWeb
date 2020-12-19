@@ -326,6 +326,16 @@ def search_result(request):
     return render(request, 'courses/search_result.html', context=context)
 
 def add_lecture(request, course_id):
+    this_student = get_student(request)
+    this_teacher = get_teacher(request)
+    this_user = None
+    if this_teacher is None and this_student is None:
+        return redirect('/lms/')
+    elif this_student is not None and this_teacher is None:
+        this_user = this_student
+    elif this_student is None and this_teacher is not None:
+        this_user = this_teacher
+
     course = Course.objects.get(id=course_id)
     lecture_create_form = None
     if request.method == 'POST':
@@ -336,6 +346,7 @@ def add_lecture(request, course_id):
     else:
         lecture_create_form = LectureCreateForm()
     context = {
+        "this_user": this_user,
         'course': course,
         'lecture_create_form': lecture_create_form,
     }
@@ -360,6 +371,16 @@ def add_lecture(request, course_id):
 ##
 
 def modify_obj(request, obj_id):
+    this_student = get_student(request)
+    this_teacher = get_teacher(request)
+    this_user = None
+    if this_teacher is None and this_student is None:
+        return redirect('/lms/')
+    elif this_student is not None and this_teacher is None:
+        this_user = this_student
+    elif this_student is None and this_teacher is not None:
+        this_user = this_teacher
+
     obj = Lecture.objects.get(id=obj_id)
     ## Deprecated 17/12
     if obj is None:
@@ -390,6 +411,7 @@ def modify_obj(request, obj_id):
             obj_change_form = AssignmentCreateForm(instance=obj)
         ##
     context = {
+        "this_user": this_user,
         "obj_change_form": obj_change_form,
         "lecture": obj,
         "course": Course.objects.all().filter(lecture__id=obj.id)[0],
