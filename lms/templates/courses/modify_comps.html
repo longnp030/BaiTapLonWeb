@@ -1,8 +1,27 @@
-{% load crispy_forms_tags %}
 {% block content %}
     <form method="POST">
         {% csrf_token %}
-        {{ obj_change_form|crispy }}
+        
+        <label for="id_course">Course:</label>
+        <select name="course" required id="id_course">
+            <option value="{{ course.id }}" selected>{{ course }}</option>
+        </select>
+
+        <label for="id_name">Name:</label>
+        <input type="text" name="name" value="{{ lecture.name }}" maxlength="255" required id="id_name">
+
+        <label for="id_notes">Notes:</label>
+        <textarea name="notes" cols="40" rows="10" id="id_notes"></textarea>
+
+        <label for="id_slide">Slide:</label>
+        <input type="file" name="slide" id="id_slide">
+        
+        <label for="id_video">Video:</label>
+        <input type="url" name="video" id="id_video">
+        
+        <label for="id_reading">Reading:</label>
+        <input type="text" name="reading" maxlength="255" id="id_reading">
+
         <button type="submit">Save changes</button>
     </form>
 {% endblock %}

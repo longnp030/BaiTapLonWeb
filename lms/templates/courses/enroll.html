@@ -1,7 +1,6 @@
 
 {% extends '../lms/index1.html' %}
 {% block title %}Tạo khóa học{% endblock %}
-{% load crispy_forms_tags %}
 
 {% block content %}
     {% if already_enrolled %}
@@ -12,7 +11,7 @@
     {% else %}
         <form method="POST">
             {% csrf_token %}
-            {{ enrollment_form|crispy }}
+            {{ enrollment_form }}
             <button type="submit" id="enroll">Thêm</button>
         </form>
                 

@@ -46,10 +46,10 @@
                     {% endwith %}
                     {% endif %}
                 {% endfor %}
-
-                {% if can_modify_obj %}
+            {% endif %}
+            
+            {% if can_modify_obj %}
                     <a href="{% url 'add_lecture' course_id=course.id %}" name='unitoflecture'>Add lecture</a>
-                {% endif %}
             {% endif %}
 
             {% if detail.teacher %}

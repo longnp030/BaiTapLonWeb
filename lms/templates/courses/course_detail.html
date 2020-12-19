@@ -1,5 +1,4 @@
 {% block content %}
-{% load crispy_forms_tags %}
 
 {% if detail %}
 
@@ -29,7 +28,7 @@
         <form method="POST" class="course-view" id="boxaddlecture">
             {% csrf_token %}
             <h3> Add lecture </h3> 
-            {#{{lecture_form|crispy}}#}
+            {#{{lecture_form }}#}
             
             <div class="course-view-left" id="boxtitleadd">
                 <label for="">Choise course</label>
@@ -49,7 +48,7 @@
         <h2>add unit</h2>
         <form method="POST">
             {% csrf_token %}
-            {{ unit_form|crispy }}
+            {{ unit_form }}
             <button type="submit" name="add_unit">Add</button>
         </form>
     {% endif %}

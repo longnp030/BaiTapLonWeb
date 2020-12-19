@@ -389,7 +389,12 @@ def modify_obj(request, obj_id):
         elif isinstance(obj, Assignment):
             obj_change_form = AssignmentCreateForm(instance=obj)
         ##
-    return render(request, 'courses/modify_comps.html', context={"obj_change_form": obj_change_form, })
+    context = {
+        "obj_change_form": obj_change_form,
+        "lecture": obj,
+        "course": Course.objects.all().filter(lecture__id=obj.id)[0],
+    }
+    return render(request, 'courses/modify_comps.html', context=context)
 
 def delete_obj(request, obj_id):
     obj = Lecture.objects.get(id=obj_id)
