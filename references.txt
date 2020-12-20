@@ -52,6 +52,8 @@ https://stackoverflow.com/questions/17041891/not-able-to-send-email-django
 https://ultimatedjango.com/learn-django/lessons/create-the-login-template/
 https://stackoverflow.com/questions/3139973/django-return-httpresponseredirect-to-an-url-with-a-parameter
 https://stackoverflow.com/questions/3430432/django-update-table
+https://stackoverflow.com/questions/9334636/how-to-create-a-dialog-with-yes-and-no-options
+
 
 
 GIT REFERENCES:

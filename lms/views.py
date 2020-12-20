@@ -192,6 +192,7 @@ def dashboard(request):
     context = {
         "my_courses": course_list,
         "this_user": this_user,
+        "this_teacher": this_teacher if this_teacher is not None else None,
     }
     return render(request, 'courses/dashboard.html', context=context)
 
@@ -396,7 +397,7 @@ def modify_obj(request, obj_id):
         #elif isinstance(obj, Unit):
         #    obj_change_form = UnitCreateForm(request.POST, instance=obj)
         elif isinstance(obj, Assignment):
-            obj_change_form = AssignmentCreateForm(request.POST, srequest.FILES, instance=obj)
+            obj_change_form = AssignmentCreateForm(request.POST, request.FILES, instance=obj)
         ##
         if obj_change_form.is_valid():
             obj_change_form.save()

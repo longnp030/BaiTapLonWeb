@@ -5,21 +5,25 @@
         <ul>
             {% if can_modify_obj %}
                 <li>
-                    <a href="{% url 'add_lecture' course_id=course.id %}" target="_blank" name='unitoflecture'>Add lecture</a>
+                    <a href="{% url 'add_lecture' course_id=course.id %}" name='unitoflecture'>Add lecture</a>
                 </li>
             {% endif %}
+
             <li class="item">Teacher
                 <ul class="itemshow" >
-                    <li><a href="{% url 'user_profile' detail.teacher.id %}" target="_blank">{{ detail.teacher.name }}</a></li>
+                    {% if detail.teacher %}
+                        <li><a href="{% url 'user_profile' detail.teacher.id %}" >{{ detail.teacher.name }}</a></li>
+                    {% endif %}
                 </ul>
             </li>
+
             <li class="item">Classmate
                 <ul class="itemshow" >
                     {% if detail.classmates %}
                         {% for classmate in detail.classmates %}
                             {% if classmate != this_user %}
                                 <li>
-                                    <a href="{% url 'user_profile' classmate.id %}" target="_blank">{{ classmate.name }}</a>
+                                    <a href="{% url 'user_profile' classmate.id %}" >{{ classmate.name }}</a>
                                 </li>
                             {% endif %}
                         {% endfor %}
@@ -31,7 +35,7 @@
                     {% if my_courses %}
                         {% for course in my_courses %}
                             <li>
-                                <a href="../courses/{{ course.id }}/" target="_blank"><i>{{ course.name }}</i></a>
+                                <a href="../courses/{{ course.id }}/"><i>{{ course.name }}</i></a>
                             </li>
                         {% endfor %}
                     {% endif %}
@@ -57,13 +61,12 @@
                                         {% endif %}
 
                                         {% if lect.video %}
-                                            <a href="{{ lect.video }}" target="_blank"> <i> This is video </i></a> 
+                                            <a href="{{ lect.video }}"> <i> This is video </i></a> 
                                         {% endif %}
 
                                         {% if lect.slide %}
-                                            <a href="{% url 'view_file' lect.slide.path %}" target="_blank"> <i>  {{ lect.get_slide_name }} This is slide </i></a>
+                                            <a href="{% url 'view_file' lect.slide.path %}"> <i>  {{ lect.get_slide_name }} This is slide </i></a>
                                         {% endif %}
-                                        <a href="#"><i> This is slide </i></a>
                                     </div>
                                 </div>
 
@@ -71,7 +74,7 @@
                                     {% if can_modify_obj %}
                                         <form action="{% url 'delete_obj' lect.id %}" method="POST">
                                             {% csrf_token %}
-                                            <button type="submit" id="btndelete">Delete</button>
+                                            <input type="submit" id="btndelete" onclick="return confirm('Are you sure to delete?')" value="Delete">
                                         </form>
 
                                         <form action="{% url 'modify_obj' lect.id %}" method="GET">

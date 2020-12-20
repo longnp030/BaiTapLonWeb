@@ -18,7 +18,14 @@
             <i><a href="{% url 'password_reset' %}"> Forgot password? </a></i>
         </div>
 
-        <!-- {{ form.errors }}   / -->
+            
+        <script>
+            if (location.reload) {
+                alert("You did not enter correct information! Please try again.");
+            }
+        </script>
+
+        <!-- {{ form.errors }} / -->
         <!-- chưa thiết lập được alert cho chỗ này cần dùng một ít  js cơ bản -->
     </form>
 {% endblock%}

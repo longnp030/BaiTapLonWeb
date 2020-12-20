@@ -1,6 +1,6 @@
 {% extends "../lms/index1.html" %}
 {% block content %}
-    <form method="POST">
+    <form method="POST" enctype='Multipart/form-data'>
         {% csrf_token %}
         <div class="box-bg-create-course">
             <div class="box-create-course">
@@ -19,10 +19,16 @@
                     </select>
                     <input type="text" name="name" value="{{ lecture.name }}" maxlength="255" required id="id_name">
                     <input type="file" name="slide" id="id_slide">
-                    <input type="url" value="{{ lecture.video }}" name="video" id="id_video">                    
+
+                    {% if lecture.video %}
+                        <input type="url" name="video" value="{{ lecture.video }}" id="id_video" >
+                    {% else %}
+                        <input type="url" name="video" id="id_video" >
+                    {% endif %}   
+
                     <textarea name="notes" cols="40" rows="10" id="id_notes"> {{ lecture.notes }} </textarea>
                 </div>
-                <button type="submit" ><a href="#">Cancel</a></button>
+                <button type="submit" ><a href="{% url 'course_overview' course.id %}">Cancel</a></button>
                 <button type="submit">Save changes</button>                     
             </div>
         </div>
