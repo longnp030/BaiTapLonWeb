@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Home page{% endblock %}</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/style-6.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style-2.css' %}">
         <script src="https://kit.fontawesome.com/fe59a62916.js"></script>
     </head>
 
@@ -14,10 +14,10 @@
                 <div class="header-inner width-1200">
                     <div class="navbar">
 
-                        <form method="GET" action="{% url 'search' %}">
+                        <!-- <form method="GET" action="{% url 'search' %}">
                             <input type="search" name="q" id="search" placeholder="Search for courses">
                             <button type="submit">Search</button>
-                        </form>
+                        </form> -->
 
                         <a href="{% url 'index' %}">Home</a>
 
@@ -26,14 +26,14 @@
                         <a href="{% url 'user_profile' this_user.id %}">Profile</a>
                     </div>
 
-                    {% if this_user %}
+                    <!-- {% if this_user %}
                         {% if this_user.image %}
                             <div class="join-btt">
                                 <img src="{{ this_user.image.url }}"> 
                             </div> 
                         {% endif %}
-                    {% endif %}
-
+                    {% endif %} -->
+                    
                     <div class="join-bt">
                         <a href="{% url 'logout' %}">logout</a>
                     </div>
@@ -78,6 +78,39 @@
                                 <a href="courses/{{ course.id }}/">View course</a>
                             </div>
                         </div>
+
+                        <div class="c-box-course">
+                            <div class="img-course">
+                                {% if course.image %}
+                                    <img src="{{ course.image.url }}">
+                                {% endif %}
+                            </div>
+                            
+                            <div class="name-course">
+                                <i>{{ course.name }}</i>
+                            </div>
+                            
+                            <div class="bt-view">
+                                <a href="courses/{{ course.id }}/">View course</a>
+                            </div>
+                        </div>
+
+                        <div class="c-box-course">
+                            <div class="img-course">
+                                {% if course.image %}
+                                    <img src="{{ course.image.url }}">
+                                {% endif %}
+                            </div>
+                            
+                            <div class="name-course">
+                                <i>{{ course.name }}</i>
+                            </div>
+                            
+                            <div class="bt-view">
+                                <a href="courses/{{ course.id }}/">View course</a>
+                            </div>
+                        </div>
+                        
                     {% endfor %}
                 {% endif %}
 
@@ -99,25 +132,67 @@
                      </div>
                 </div>
 
-                <div class="footer">
-                    <div class="foot-content">
-                        <div><h1>Thep</h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur quod asperiores ea et quibusdam vel excepturi dicta cupiditate aperiam error, rerum modi. Minima iste odio illum et assumenda, dolore neque architecto tempore dicta quod deserunt suscipit incidunt molestias doloribus cum rem quisquam nesciunt molestiae quaerat! Maiores labore distinctio odit reiciendis voluptas dicta doloribus, reprehenderit, accusantium aut, officiis blanditiis nihil. Quo dolore sequi ullam repellendus sunt praesentium temporibus harum architecto dolor quos suscipit aliquam ratione sint reiciendis officia at nostrum optio ad quas, asperiores tempore rem doloribus odit fugit? Magnam vitae adipisci dolorum eligendi iusto id earum inventore odio maxime quaerat.</div>
-                        <div><h1>Tan</h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam incidunt ullam minus animi magnam numquam iusto illo reprehenderit, et expedita a. Doloremque, commodi totam fugit modi qui corrupti. Est a accusamus adipisci quaerat voluptate animi cum magnam dignissimos praesentium! Eveniet harum voluptate rerum quos a laborum totam beatae accusamus hic reiciendis. Officiis, veniam ipsa? Iusto suscipit culpa rem voluptatum recusandae architecto aperiam fuga obcaecati voluptatibus. Atque fuga tenetur earum nam ab id temporibus libero voluptatem accusantium ipsam exercitationem debitis, molestias officiis omnis voluptatibus sapiente error cum ipsa dolorem! Eos ipsa corporis velit praesentium aperiam omnis aliquam illum laborum laudantium alias!</div>
-                        <div><h1>Long</h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae placeat optio voluptatibus ipsam fugit sequi veniam libero recusandae. Minima, minus dolore veritatis harum cumque aut quae dignissimos ut omnis illo repudiandae commodi deserunt, quibusdam debitis distinctio sed architecto ipsam voluptates ad totam adipisci unde vero beatae! Deserunt velit odit voluptatum minima, rerum, vitae fugit animi accusantium illo aliquam ipsum ratione? Amet ut fugit voluptates tenetur architecto assumenda eligendi enim ex voluptate. Impedit fugiat assumenda facere deserunt dicta eum, voluptas mollitia consequuntur vel, ducimus quisquam sequi nam asperiores laboriosam error nesciunt tempora voluptatum saepe delectus? Excepturi beatae aperiam architecto magni? Optio.</div>
-                        <div><h1>Duong</h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis vero itaque blanditiis, provident aliquam et, rem earum corrupti sunt, quo error. Cumque neque, eveniet facere suscipit placeat eligendi animi ad natus in aliquid dicta vel maiores, nisi officiis quisquam consectetur repudiandae dolores odio atque accusantium deleniti. Corrupti at, id, optio ex dolor accusantium eius veritatis provident pariatur odio error doloribus incidunt deserunt ad similique alias deleniti natus sit? Sequi aperiam nisi facilis sed veniam similique vitae eum obcaecati optio! Obcaecati totam atque nam eum, est quis suscipit hic sint molestias praesentium tenetur quisquam rerum voluptatem sunt facilis. Nihil, voluptas temporibus?</div>
-                        <div><h1>Phuong</h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero dignissimos numquam iure eum enim nihil, at iste rerum provident quibusdam, adipisci quis reprehenderit? Reprehenderit fugit adipisci sequi iste modi eveniet quidem cum recusandae asperiores, saepe doloremque blanditiis ad placeat nostrum, non a debitis fugiat quod suscipit? Earum, ullam accusamus qui totam nesciunt, illum nam delectus ratione consectetur iure incidunt doloribus aperiam. Laboriosam sunt corrupti reprehenderit quam architecto veritatis, provident cum, laborum cumque velit dicta neque iste harum repellendus officia placeat numquam alias nihil. Eum eveniet labore, odio magni harum omnis veniam at earum reprehenderit doloremque quasi, dolor laudantium velit nesciunt!</div>
-                    </div>
-                
-                    <div class="content-end-page">
-                        <p>@ 10/11/2020 Ha Noi</p>
-                        <div class="icon-end-page">
-                            <i class="fab fa-facebook-square"></i>
-                            <i class="fab fa-twitter-square"></i>
-                            <i class="fab fa-github-square"></i>
-                        </div>
-                    </div>
-                </div>
             {% endif %}
         {% endblock %}
+
+        <div class="c-bg-footer">
+            <div class="c-box-footer">
+                <div class="c-box-content-footer">
+                    <div class="footer-content-head">
+                        <h1>MOC</h1>
+                        <h3>About US</h3>
+                        <p>Our team consists of 5 members Thep, Long, Tan, Phuong, Duong. They are very handsome and beautiful.</p>
+        
+                    </div>
+        
+                    <div class="footer-content">
+                        <h2>Lorem, ipsum dolor.</h2>
+                        <a href="#">Lorem, ipsum.</a>
+                        <a href="#">Lorem, ipsum.</a>
+                        <a href="#">Lorem, ipsum.</a>
+                        <a href="#">Lorem, ipsum.</a>
+                        <a href="#">Lorem, ipsum.</a>
+                        <a href="#">Lorem, ipsum.</a>
+        
+                    </div>
+        
+                    <div class="footer-content">
+                        <h2>Lorem, ipsum dolor.</h2>
+                        <a href="#">Lorem, ipsum.</a>
+                        <a href="#">Lorem, ipsum.</a>
+                        <a href="#">Lorem, ipsum.</a>
+                        <a href="#">Lorem, ipsum.</a>
+                        <a href="#">Lorem, ipsum.</a>
+                        <a href="#">Lorem, ipsum.</a>
+                        <a href="#">Lorem, ipsum.</a>
+                        <a href="#">Lorem, ipsum.</a>
+                        
+                    </div>
+        
+                    <div class="footer-content">
+                        <h2>Lorem, ipsum dolor.</h2>
+                        <a href="#">Lorem, ipsum.</a>
+                        <a href="#">Lorem, ipsum.</a>
+                        <a href="#">Lorem, ipsum.</a>
+                        <a href="#">Lorem, ipsum.</a>
+                        <a href="#">Lorem, ipsum.</a>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-content-latest">
+                <div class="footer-text-content">
+                    <p>@UET webteam 2020 theplongphuongduongtan</p>
+                </div>
+                <div class="footer-icon-content">
+                    <i class="fab fa-facebook-square"></i>
+                    <i class="fab fa-instagram-square"></i>
+                    <i class="fab fa-twitter-square"></i>
+                    <i class="fab fa-github-square"></i>
+                    <i class="fab fa-youtube-square"></i>                
+                </div>
+            </div>
+        </div>
     </body>
 </html>

@@ -8,7 +8,6 @@
 }
 
 /* GENERAL */
-
 body {
   font-size: 100%;
   font-family: Arial, Helvetica, sans-serif;
@@ -25,26 +24,18 @@ $btn-color: rgb(40, 160, 80);
 $btn-color-hover: rgb(50, 200, 100);
 
 /* HOME BASE */
-
-.section_img {
-  position: relative;
-  width: 100%;
+.c-main-bg {
+  background-image: url("harvard.jpg");
   height: 100vh;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 1);
+  background-position: center;
+  background-size: cover;
 
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+  .content-main {
     height: 100%;
-    object-fit: cover;
+    background-color: rgba(0, 0, 0, 0.5);
   }
 }
+
 
 /* HEADER */
 
@@ -161,48 +152,100 @@ $btn-color-hover: rgb(50, 200, 100);
 }
 
 /* FOOTER*/
+.c-bg-footer {
+  @include dimetion(100%, 600px);
+  background-color: #f5f5f5;
+  margin: 100px 0px 0px 0px;
 
-.footer {
-  background-color: rgba(0, 0, 0, 0.2);
-  padding-top: 50px;
+  .c-box-footer {
+      @include dimetion(100%, 75%);
+      padding: 0px 100px 0px 100px;
 
-  .foot-content {
-    display: flex;
-    max-width: 1300px;
-    width: 1300px;
-    text-align: center;
-    margin: 0px auto;
-    gap: 40px;
-    border-bottom: 2px solid gray;
-    padding: 50px 0 50px 0;
-  
-    h1 {
-      text-align: center;
-    }
-  
-    div {
-      letter-spacing: 1.5px;
-    }
+      .c-box-content-footer {
+          @include dimetion(100%, 100%);
+          background-color: #f5f5f5;
+          border-top: 1px solid #3f3f3f;
+          border-bottom: 1px solid #3f3f3f;
+          padding: 50px 20px;
+
+          .footer-content-head {
+              @include dimetion(20%, 85%);
+              float: left;
+              padding: 20px 10px;
+              margin: 0px 20px 0px 120px ;
+
+              > h1 {
+                  color: 	#3f3f3f;
+                  text-align: center;
+                  margin-bottom: 10px
+              }
+
+              > h3 {
+                  color: 	#3f3f3f;
+                  margin-bottom: 10px;
+                  text-transform: uppercase;
+              }
+
+              > p {
+                  color: 	#5d5e61;
+                  letter-spacing: 1px;
+              }
+          }
+          .footer-content {
+              @include dimetion(20%, 85%);
+              float: left;
+              padding: 20px 40px 20px 20px;
+              margin: 0px 10px;
+
+              > h2 {
+                  color: 	#3f3f3f;
+                  text-align: left;
+                  margin: 0px 0px 10px 0px;
+                  text-transform: capitalize;
+              }
+
+              > a {
+                  display: block;
+                  color: 	#3f3f3f;
+                  margin-bottom: 15px;
+                  text-decoration: none;
+
+                  &:hover {
+                      text-decoration: underline;
+                  }
+              }
+          }
+          
+      }
   }
 
-  .content-end-page {
-    padding-top: 50px;
-    padding-bottom: 70px;
-  
-    p {
-      display: inline;
-      margin-left: 20px;
-    }
-  
-    .icon-end-page {
-      display: inline;
-      margin-left: 1300px;
-  
-      i {
-        font-size: 30px;
-        letter-spacing: 15px;
+  .footer-content-latest {
+      @include dimetion(100%, 25%);
+      padding: 50px 10px 10px 10px;
+      background-color: 	#f5f5f5;
+
+      .footer-text-content {
+          @include dimetion(50%, 100%);
+          float: left;
+          padding: 50px 50px 10px 50px;
+
+          > p {
+              color: black;
+          }
       }
-    }
+
+      .footer-icon-content {
+          @include dimetion(50%, 100%);
+          float: left;
+          text-align: right;
+          padding: 50px 50px 10px 50px;
+
+          > i {
+              color: black;
+              padding-left: 15px;
+              font-size: 20px;
+          }
+      }
   }
 }
 
@@ -217,7 +260,7 @@ $btn-color-hover: rgb(50, 200, 100);
   text-align: center;
   border-radius: 20px;
   transform: translate(-50%, -50%);
-  background: rgba(22, 21, 21, 0.75);
+  background: rgba(21, 21, 21, 0.85);
 
   h1 {
     color: white;
@@ -268,7 +311,7 @@ $btn-color-hover: rgb(50, 200, 100);
 /* SIGNUP */
 
 .box-signup {
-  padding: 50px 60px 60px 60px;
+  padding: 40px 60px 60px 60px;
 
   input {
     &[type="text"], &[type="password"] {
@@ -281,7 +324,6 @@ $btn-color-hover: rgb(50, 200, 100);
 }
 
 /* BTN SUBMIT */
-
 .box input[type="submit"] {
   border: 0;
   background: none;
@@ -302,12 +344,15 @@ $btn-color-hover: rgb(50, 200, 100);
   }
 }
 
-/* EFFECT */
-
 .box-login input {
   &[type="text"]:focus, &[type="password"]:focus {
     width: 300px;
     border-color: #2ecc71;
+  }
+
+  &::placeholder {
+    color: white;
+    opacity: 0.9; 
   }
 }
 
@@ -316,10 +361,11 @@ $btn-color-hover: rgb(50, 200, 100);
     width: 310px;
     border-bottom: 2px solid #2ecc71;
   }
-}
 
-::-webkit-input-placeholder, ::-moz-placeholder, ::-ms-input-placeholder {
-  color: white;
+  &::placeholder {
+    color: white;
+    opacity: 0.9; 
+  }
 }
 
 .text-option a:hover {
@@ -395,6 +441,11 @@ $btn-color-hover: rgb(50, 200, 100);
 .inp-fields-profile {
   @include dimetion(80%, 90%);
   float: left;
+
+  ::placeholder {
+    color: #000000;
+    opacity: 0.9; 
+  }
 
   > input[type = 'file']{
       width: 90%;
@@ -561,9 +612,14 @@ $btn-color-hover: rgb(50, 200, 100);
 
   .img-course {
 
+    > a {
+      > img {
+        @include dimetion(100%, 312px);
+      }
+    }
+
     > img {
-      height: 250px;
-      width: 75%;
+      @include dimetion(75%, 250px);
     }
   }
 
@@ -582,16 +638,16 @@ $btn-color-hover: rgb(50, 200, 100);
   }
 
   .bt-view {
-    height: 55px;
+    height: 56px;
     width: 100%;
     bottom: 0;
     padding-top: 15px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
   
     > a {
       color: black;
       text-decoration: none;
-      padding: 10px 40px;
+      padding: 20px 80px;
       
       > i {
         color: black;
@@ -618,70 +674,95 @@ $btn-color-hover: rgb(50, 200, 100);
   padding: 50px 0px;
 }
 
-
 /* COURSE */
-.course-over-view {
-  text-align: center;
-  height: 100%;
-  background-color: rgb(240, 240, 240);
-  border-top: 1px solid white;
+.bg-view {
+  @include dimetion(100%, 100%);
+  background-color: #ffffff;
+  padding: 50px 0px 0px 0px;
+  .view-course {
+      @include dimetion(100%, 400px);
+      padding: 50px 200px 0 200px;
+      background-image: linear-gradient(to left, #0ba360 0%, #3cba92 100%);
 
-  .course-view {
-    display: inline-block;
-    margin-top: 50px;
-    height: 250px;
-    width: 80%;
-    background-color: white;
-
-    .course-view-left {
-      padding: 20px;
-      float: left;
-      width: 50%;
-      height: 100px;
-    }
-
-    .course-view-right {
-      padding: 20px;
-      float: right;
-      width: 50%;
-      height: 100px;
-    }
-
-    .course-view-descript {
-      padding: 20px;
-      margin-top: 60px;
-      width: 100%;
-      height: 120px;
-    }
-
-    .course-btn-enroll {
-      margin: 25px 0;
-      text-align: center;
-    
-      > a {
-        text-decoration: none;
-        color: whitesmoke;
-        padding: 15px 30px;
-        border-radius: 10px;
-        background-color: $btn-color;
-    
-        &:hover {
-          background-color: $btn-color-hover;
-        }
+      .show-name-course {
+          @include dimetion(100%, 50px);
+          color: white;
       }
-    }
+
+      .show-teacher-course {
+          @include dimetion(100%, 50px);
+          margin: 50px 0px;
+
+          .img-teacher-course {
+              @include dimetion(5%, 100%);
+              float: left;
+
+              > img {
+                  @include dimetion(50px, 50px);
+                  border-radius: 50%;
+              }
+          }
+
+          .name-teacher-course {
+              @include dimetion(80%, 100%);
+              float: left;
+              padding: 15px 0px;
+
+              > a {
+                  text-decoration: none;
+                  color: #ffffff;
+
+                  &:hover {
+                      text-decoration: underline;
+                  }
+              }
+          }
+      }
+
+      .btn-enroll {
+          @include dimetion(100%, 100px);
+          padding: 30px 40% 30px 0px;
+
+          > a {
+              text-decoration: none;
+              color: #000000;
+              padding: 20px 50px;
+              background-color: #ffffff;
+              border-radius: 5px;
+              font-weight: 600;
+              font-size: 20px;
+
+              &:hover {
+                  background-color: #f5f5f5;
+              }
+          }
+
+          > p {
+              font-weight: 600;
+              color: #ffffff;
+              letter-spacing: 1px;
+              display: inline;
+              margin-left: 5%;
+          }
+      }
   }
-}
 
-#coursename {
-  width: 100%;
-  padding: 10px;
-}
+  .course-descript {
+      @include dimetion(100%, 300px);
+      border-top: 1px solid #3f3f3f;
+      margin-top: 50px;
+      padding: 30px 20px 20px 40px;
 
-#coursedescript {
-  text-indent: 10px;
-  border-bottom: 2px solid rgb(210, 210, 210);
-  border-top: 2px solid rgb(210, 210, 210);
+      > h1 {
+          margin-bottom: 20px;
+          font-weight: 200;
+          color: 	#373a3c;
+      }
+
+      > i {
+          color: #4f5153;
+      }
+  }
 }
 
 /* CREATE COURSE */
@@ -729,7 +810,6 @@ $btn-color-hover: rgb(50, 200, 100);
 }
 
 /* Course details */
-
 .box-main-das {
     @include dimetion(100%, 100%);
     background-color: #f5f5f5;
@@ -808,11 +888,6 @@ $btn-color-hover: rgb(50, 200, 100);
                 display: block;
             }
         }
-
-        #lilatest {
-            border-bottom: 1px solid rgb(150, 150, 150);
-        }
-
     }
 
     .box-main-content {

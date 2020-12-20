@@ -2,27 +2,15 @@
 <!DOCTYPE html>
 <head>
     <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/style-6.css'%}">
-    <script type="text/javascript" src="{% static 'js/mousemove.js'%}"></script>
+    <link rel="stylesheet" href="{% static 'css/style-2.css'%}">
+    <script type="text/javascript" src="{% static 'js/mousemove-0.js'%}"></script>
     {% block js %}{% endblock %}
         
 </head>
 <body>
-    <section class="section_img">
-        <img src="{% static 'images/1.png' %}" data-speed="-5" class="layer">
-        <img src="{% static 'images/2.png' %}" data-speed="5" class="layer">
-        <img src="{% static 'images/3.png' %}" data-speed="2" class="layer">
-        <img src="{% static 'images/4.png' %}" data-speed="6" class="layer">
-        <img src="{% static 'images/5.png' %}" data-speed="8" class="layer">
-        <img src="{% static 'images/6.png' %}" data-speed="-2" class="layer">
-        <img src="{% static 'images/7.png' %}" data-speed="4" class="layer">
-        <img src="{% static 'images/8.png' %}" data-speed="-9" class="layer">
-        <img src="{% static 'images/9.png' %}" data-speed="6" class="layer">
-        <img src="{% static 'images/10.png' %}" data-speed="-7" class="layer">
-        <img src="{% static 'images/11.png' %}" data-speed="-5" class="layer">
-        <img src="{% static 'images/12.png' %}" data-speed="5" class="layer">
-    </section>
-
+    <div class="c-main-bg">
+        <div class="content-main"></div>
+    </div>
     {% block content %}{% endblock%}
 </body>
 </html>

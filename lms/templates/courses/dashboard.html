@@ -1,6 +1,15 @@
 {% extends "../lms/index1.html" %}
+{% load static %}
 {% block content %}
-<a href="{% url 'create_course' %}">Create a new course</a>
+
+<!-- chi co giao vien ms hien doan nay len -->
+{% if this_user %}  
+    <div class="c-box-course">
+        <div class="img-course">
+            <a href="{% url 'create_course' %}"><img src="{% static 'images/plus.png' %}" alt="Anh dau cong"></a>
+        </div>
+    </div>
+{% endif %}
 
 {% if my_courses %}
     {% for course in my_courses %}

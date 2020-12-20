@@ -3,23 +3,33 @@
 
 {% block content %}
     {% if not enrolled %}
-        <div class="course-over-view">
-            <div class="course-view">
-                <div class="course-view-left" id="coursename"> 
-                    <h1>{{ course.name }}</h1> 
+    <div class="bg-view">
+        <div class="view-course">
+            <div class="show-name-course">
+                <h1> {{ course.name }} </h1>
+            </div>
+            <div class="show-teacher-course">
+                <div class="img-teacher-course">
+                    <img src="{{ teach.teacher.image.url }}" alt="image teacher">
                 </div>
-
-                <div class="course-view-descript" id="coursedescript"> 
-                    <i>{{ course.description }}</i> 
-                </div>
-
-                <div class="course-btn-enroll">
-                    {% if user.is_authenticated %}    
-                        <a href="{% url 'enroll' course.id %}">Enroll</a>
+                <div class="name-teacher-course">
+                    {% if teach %}
+                        <a href="{% url 'user_profile' teach.teacher.id %}"> {{ teach.teacher.name }} </a>
                     {% endif %}
                 </div>
             </div>
+            <div class="btn-enroll">
+                {% if user.is_authenticated %}    
+                        <a href="{% url 'enroll' course.id %}">Enroll</a>
+                {% endif %}
+                <p>Enroll to become one of 50 another member in this course</p>
+            </div>
         </div>
+        <div class="course-descript">
+            <h1>About this course</h1>
+            <i> {{ course.description }} </i>
+        </div>
+    </div>              
     {% else %}
         {% include 'courses/course_detail.html' %}
         <script>
