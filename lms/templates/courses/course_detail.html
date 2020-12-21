@@ -1,4 +1,3 @@
-
 <div class="box-main-das">
     <div class="box-main-control">
         <h1>Menu</h1>
@@ -57,15 +56,21 @@
                                     </div>
                                     <div class="das-content-show">
                                         {% if lect.notes %}
-                                            <p>{{ lect.notes }}</p>    
+                                            <p>{{ lect.notes }}</p>
+                                        {% else %}
+                                            <p>Teacher has not added any notes.</p>  
                                         {% endif %}
 
                                         {% if lect.video %}
-                                            <a href="{{ lect.video }}"> <i> This is video </i></a> 
+                                            <a href="{{ lect.video }}" target="_"><i> Video for {{ lect.name }} </i></a>
+                                        {% else %}
+                                            <p>Teacher has not added video.</p>
                                         {% endif %}
 
                                         {% if lect.slide %}
-                                            <a href="{% url 'view_file' lect.slide.path %}"> <i>  {{ lect.get_slide_name }} This is slide </i></a>
+                                            <a href="{% url 'view_file' lect.slide.path %}" target="_"><i>{{ lect.get_slide_name }}</i></a>
+                                        {% else %}
+                                            <p>Teacher has not added slide.</p>
                                         {% endif %}
                                     </div>
                                 </div>

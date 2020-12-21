@@ -1,10 +1,10 @@
 {% extends '../lms/base.html' %}
-{% block title%} Signup {% endblock%}
+{% block title %} Sign up {% endblock %}
 
-{% block content%} 
+{% block content %} 
     <form class="box box-signup" id="signup" action="." method="POST">
         {% csrf_token %}
-        <h1> Signup </h1>
+        <h1> Register </h1>
             
         <div class="register-forms">
             <input type="text" name="name" placeholder="Username" maxlength="45" id="id_name">  
@@ -12,9 +12,11 @@
             <input type="password" name="password" placeholder="Password" id="id_password">       
             <input type="password" name="password2" placeholder="Password comfirm" id="id_password2">
                 
-            <!-- {{form.error}} -->
+            {% if form.errors %}
+                <script> alert("Please enter a correct email address.") </script>
+            {% endif %}
 
-            <input type="submit" name="create user" value="Signup">
+            <input type="submit" name="create user" value="Register">
         </div>
     </form>
-{% endblock%}
+{% endblock %}

@@ -1,5 +1,5 @@
 {% extends "../lms/index1.html" %}
-{% block title %}Course view{% endblock%}
+{% block title %} {{ course.id }} {{ course.name }} {% endblock%}
 
 {% block content %}
     {% if not enrolled %}

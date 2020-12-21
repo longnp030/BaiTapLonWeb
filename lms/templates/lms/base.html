@@ -1,8 +1,8 @@
-{% load static%}
+{% load static %}
 <!DOCTYPE html>
 <head>
     <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/style-2.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style-2.css' %}">
     <script type="text/javascript" src="{% static 'js/mousemove-0.js'%}"></script>
     {% block js %}{% endblock %}
         
@@ -11,6 +11,6 @@
     <div class="c-main-bg">
         <div class="content-main"></div>
     </div>
-    {% block content %}{% endblock%}
+    {% block content %}{% endblock %}
 </body>
 </html>

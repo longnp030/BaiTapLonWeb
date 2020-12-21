@@ -1,31 +1,28 @@
 {% extends '../lms/base.html' %}
-{% block title%} Login {% endblock%}
+{% block title %} Login {% endblock %}
 
-{% block content%} 
+{% block content %} 
     <form class="box box-login" id="login" action="." method="POST">
         {% csrf_token %}
         
         <h1>Login</h1>
         
         <div class="resgiter-forms">
-            <input name="username" type="text" placeholder="E-mail">
-            <input name="password" type="password" placeholder="Password">
+            <input name="username" type="text" placeholder="E-mail" id="email">
+            <input name="password" type="password" placeholder="Password" id="pass">
             <input type="Submit" value="Login">
         </div>
 
+        
+        {% if form.errors %}
+            <script>
+                alert("Please enter a correct email address and password.");
+            </script>
+        {% endif %}
+
         <div class="text-option">
-            <i><a href="{% url 'register' %}"> Create a new? </a></i> <br>
-            <i><a href="{% url 'password_reset' %}"> Forgot password? </a></i>
+            <i><a href="{% url 'register' %}"> Create a new account </a></i><br>
+            <i><a href="{% url 'password_reset' %}"> Forgot password ? </a></i>
         </div>
-
-            
-        <script>
-            if (location.reload) {
-                alert("You did not enter correct information! Please try again.");
-            }
-        </script>
-
-        <!-- {{ form.errors }} / -->
-        <!-- chưa thiết lập được alert cho chỗ này cần dùng một ít  js cơ bản -->
     </form>
-{% endblock%}
+{% endblock %}

@@ -13,17 +13,18 @@
             <div class="header">
                 <div class="header-inner width-1200">
                     <div class="navbar">
-
-                        <!-- <form method="GET" action="{% url 'search' %}">
-                            <input type="search" name="q" id="search" placeholder="Search for courses">
-                            <button type="submit">Search</button>
-                        </form> -->
-
                         <a href="{% url 'index' %}">Home</a>
 
                         <a href="https://www.facebook.com/thepql" target="_blank">Contact</a>
                         <a href="{% url 'dashboard' %}">My Courses</a>
                         <a href="{% url 'user_profile' this_user.id %}">Profile</a>
+                    </div>
+
+                    <div class="searchbar">
+                        <form method="GET" action="{% url 'search' %}">
+                            <input type="search" name="q" id="search" placeholder="Search for courses">
+                            <input type="submit" src="{% static 'images/search.png' %}">
+                        </form>
                     </div>
 
                     <!-- {% if this_user %}
@@ -35,7 +36,7 @@
                     {% endif %} -->
                     
                     <div class="join-bt">
-                        <a href="{% url 'logout' %}">logout</a>
+                        <a href="{% url 'logout' %}">Logout</a>
                     </div>
                 </div>
             </div>

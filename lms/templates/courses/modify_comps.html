@@ -1,4 +1,5 @@
 {% extends "../lms/index1.html" %}
+{% block title %} Modify lecture {% endblock %}
 {% block content %}
     <form method="POST" enctype='Multipart/form-data'>
         {% csrf_token %}
@@ -18,7 +19,12 @@
                         <option value="{{ course.id }}" selected>{{ course }}</option>
                     </select>
                     <input type="text" name="name" value="{{ lecture.name }}" maxlength="255" required id="id_name">
-                    <input type="file" name="slide" id="id_slide">
+
+                    {% if lecture.slide %}
+                        <input type="file" name="slide" id="id_slide" value="{{ lecture.slide }}">
+                    {% else %}
+                        <input type="file" name="slide" id="id_slide">
+                    {% endif %}
 
                     {% if lecture.video %}
                         <input type="url" name="video" value="{{ lecture.video }}" id="id_video" >
