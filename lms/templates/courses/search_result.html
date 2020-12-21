@@ -3,8 +3,21 @@
 {% block content %}
     {% if filtered_courses %}
         {% for course in filtered_courses %}
-            <a href="{% url 'course_overview' course.id %}">{{ course.name }}</a>
-            <br>
+            <div class="c-box-course">
+                <div class="img-course">
+                    {% if course.image %}
+                        <img src="{{ course.image.url }}">
+                    {% endif %}
+                </div>
+                
+                <div class="name-course">
+                    <i>{{ course.name }}</i>
+                </div>
+                
+                <div class="bt-view">
+                    <a href="../courses/{{ course.id }}/"><i>Details</i></a>
+                </div>
+            </div>
         {% endfor %}
     {% else %}
         <a>No result found:(</a>

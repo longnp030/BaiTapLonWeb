@@ -1,47 +1,50 @@
 <div class="box-main-das">
     <div class="box-main-control">
-        <h1>Menu</h1>
-        <ul>
-            {% if can_modify_obj %}
-                <li>
-                    <a href="{% url 'add_lecture' course_id=course.id %}" name='unitoflecture'>Add lecture</a>
+        <div class="box-iteam-control">
+            <h1>Menu</h1>
+            <ul>
+                {% if can_modify_obj %}
+                    <li>
+                        <a href="{% url 'add_lecture' course_id=course.id %}" name='unitoflecture'>Add lecture</a>
+                    </li>
+                {% endif %}
+
+                <li class="item">Teacher
+                    <ul class="itemshow" >
+                        {% if detail.teacher %}
+                            <li><a href="{% url 'user_profile' detail.teacher.id %}" >{{ detail.teacher.name }}</a></li>
+                        {% endif %}
+                    </ul>
                 </li>
-            {% endif %}
 
-            <li class="item">Teacher
-                <ul class="itemshow" >
-                    {% if detail.teacher %}
-                        <li><a href="{% url 'user_profile' detail.teacher.id %}" >{{ detail.teacher.name }}</a></li>
-                    {% endif %}
-                </ul>
-            </li>
-
-            <li class="item">Classmate
-                <ul class="itemshow" >
-                    {% if detail.classmates %}
-                        {% for classmate in detail.classmates %}
-                            {% if classmate != this_user %}
+                <li class="item">Classmate
+                    <ul class="itemshow" >
+                        {% if detail.classmates %}
+                            {% for classmate in detail.classmates %}
+                                {% if classmate != this_user %}
+                                    <li>
+                                        <a href="{% url 'user_profile' classmate.id %}" >{{ classmate.name }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                </li>
+                <li class="item">My course
+                    <ul class="itemshow">
+                        {% if my_courses %}
+                            {% for course in my_courses %}
                                 <li>
-                                    <a href="{% url 'user_profile' classmate.id %}" >{{ classmate.name }}</a>
+                                    <a href="../courses/{{ course.id }}/"><i>{{ course.name }}</i></a>
                                 </li>
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
-                </ul>
-            </li>
-            <li class="item">My course
-                <ul class="itemshow">
-                    {% if my_courses %}
-                        {% for course in my_courses %}
-                            <li>
-                                <a href="../courses/{{ course.id }}/"><i>{{ course.name }}</i></a>
-                            </li>
-                        {% endfor %}
-                    {% endif %}
-                </ul>
-            </li>
-        </ul>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
+
     {% if detail %}
         {% if detail.lectures %}
             <div class="box-main-content">
@@ -56,21 +59,15 @@
                                     </div>
                                     <div class="das-content-show">
                                         {% if lect.notes %}
-                                            <p>{{ lect.notes }}</p>
-                                        {% else %}
-                                            <p>Teacher has not added any notes.</p>  
+                                            <p>{{ lect.notes }}</p>    
                                         {% endif %}
 
                                         {% if lect.video %}
-                                            <a href="{{ lect.video }}" target="_"><i> Video for {{ lect.name }} </i></a>
-                                        {% else %}
-                                            <p>Teacher has not added video.</p>
+                                            <a href="{{ lect.video }}"> <i> This is video </i></a> 
                                         {% endif %}
 
                                         {% if lect.slide %}
-                                            <a href="{% url 'view_file' lect.slide.path %}" target="_"><i>{{ lect.get_slide_name }}</i></a>
-                                        {% else %}
-                                            <p>Teacher has not added slide.</p>
+                                            <a href="{% url 'view_file' lect.slide.path %}"> <i>  {{ lect.get_slide_name }} </i></a>
                                         {% endif %}
                                     </div>
                                 </div>
