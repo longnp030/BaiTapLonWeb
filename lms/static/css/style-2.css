@@ -45,17 +45,6 @@ body {
   text-align: right;
 }
 
-.header .header-inner .searchbar {
-  float: left;
-  display: inline;
-  height: 40px;
-}
-
-.header .header-inner .searchbar input[type=search] {
-  color: #000000;
-  font-size: 18px;
-}
-
 .header .header-inner .navbar {
   display: inline;
 }
