@@ -41,7 +41,6 @@ admin.site.register(Teacher)
 admin.site.register(Teach)
 admin.site.register(Enroll)
 admin.site.register(Lecture)
-#admin.site.register(Unit)  # 17/12
 admin.site.register(Quiz)
 admin.site.register(Assignment)
 admin.site.register(User, UserAdmin)

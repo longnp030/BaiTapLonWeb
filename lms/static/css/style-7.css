@@ -1010,6 +1010,26 @@ body {
   text-align: center;
 }
 
+.box-main-das .box-main-control .box-iteam-control > ul > #modify-course {
+  background-color: #28a050;
+  border-radius: 5px;
+}
+
+.box-main-das .box-main-control .box-iteam-control > ul > #modify-course:hover {
+  background-color: #32c864;
+  border-radius: 5px;
+}
+
+.box-main-das .box-main-control .box-iteam-control > ul > #delete-course {
+  background-color: rgba(245, 18, 18, 0.781);
+  border-radius: 5px;
+}
+
+.box-main-das .box-main-control .box-iteam-control > ul > #delete-course:hover {
+  background-color: darkred;
+  border-radius: 5px;
+}
+
 .box-main-das .box-main-control .box-iteam-control > ul > li:hover {
   color: #28a050;
   font-size: 20px;
@@ -1138,7 +1158,10 @@ body {
 }
 
 .box-main-das .box-main-content .box-das-content-details .btn-modifly #btndelete {
-  padding: 5px 15px;
+  padding: 7px 29.5px;
+  background-color: rgba(245, 18, 18, 0.781);
+  color: #fff;
+  border: 0;
 }
 
 .box-main-das .box-main-content .box-das-content-details .btn-modifly #btnchange {
@@ -1148,7 +1171,13 @@ body {
   background-color: #28a050;
 }
 
+.box-main-das .box-main-content .box-das-content-details .btn-modifly #btndelete:hover {
+  background-color: darkred;
+  cursor: pointer;
+}
+
 .box-main-das .box-main-content .box-das-content-details .btn-modifly #btnchange:hover {
   background-color: #32c864;
+  cursor: pointer;
 }
 /*# sourceMappingURL=style-7.css.map */

@@ -162,20 +162,6 @@ class CourseCreateForm(forms.ModelForm):
         fields = ['id', 'image', 'name', 'description', ]
 
 
-class QuizCreateForm(forms.ModelForm):
-    class Meta:
-        model = Quiz
-        fields = ['question',]
-
-
-### Deleted on 17/12, deprecated
-'''class UnitCreateForm(forms.ModelForm):
-    #quiz = QuizCreateForm()
-    class Meta:
-        model = Unit
-        fields = ['lecture', 'name', 'notes', 'slide', 'video', 'reading', ]'''
-
-
 class LectureCreateForm(forms.ModelForm):
     notes = forms.TextInput()
     slide = forms.FileField(widget=forms.FileInput, required=False)

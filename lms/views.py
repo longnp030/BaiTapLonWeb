@@ -143,6 +143,39 @@ def create_course(request):
         course_form = CourseCreateForm()
     return render(request, 'courses/create.html', {"course_form": course_form, "this_user": this_user})
 
+def modify_course(request, course_id):
+    this_student = get_student(request)
+    this_teacher = get_teacher(request)
+    this_user = None
+    if this_teacher is None and this_student is None:
+        return redirect('/lms/')
+    elif this_student is not None and this_teacher is None:
+        this_user = this_student
+    elif this_student is None and this_teacher is not None:
+        this_user = this_teacher
+
+    course = Course.objects.get(id=course_id)
+    course_change_form = None
+    if request.method == 'POST':
+        course_change_form = CourseCreateForm(request.POST, request.FILES, instance=course)
+        
+        if course_change_form.is_valid():
+            course_change_form.save()
+            return redirect(reverse('course_overview', kwargs={'course_id': course.id}))
+    else:
+        course_change_form = CourseCreateForm(instance=course)
+        
+    context = {
+        "this_user": this_user,
+        "course_change_form": course_change_form,
+        "course": course,
+    }
+    return render(request, 'courses/modify_course.html', context=context)
+
+def delete_course(request, course_id):
+    course = Course.objects.get(id=course_id)
+    course.delete()
+    return redirect('dashboard')
 
 @login_required(login_url='/lms/accounts/login/')
 def course_enroll(request, course_id):
@@ -166,7 +199,13 @@ def course_enroll(request, course_id):
             return redirect(ENROLLED_REDIRECT_URL)
     else:
         enrollment_form = EnrollmentForm(initial={'student': current_student, 'course': current_course})
-    return render(request, 'courses/enroll.html', {"enrollment_form": enrollment_form, "course_id": current_course.id, "this_user": current_user})
+    context = {
+        "enrollment_form": enrollment_form,
+        "course_id": current_course.id,
+        "this_user": current_user,
+        "current_student": current_student,
+    }
+    return render(request, 'courses/enroll.html', context=context)
 
 
 @login_required(login_url='/lms/accounts/login/')
@@ -187,7 +226,6 @@ def dashboard(request):
         for enrollment in this_student_enrollments:
             course_list.append(Course.objects.get(id=enrollment.course.id))
     elif isinstance(this_user, Teacher):
-        # course_list = Course.objects.filter(teacher=this_user.id)
         course_list = [ti.course for ti in Teach.objects.filter(teacher=this_teacher)] # changed 12/11 bcof adding new table
     context = {
         "my_courses": course_list,
@@ -219,68 +257,28 @@ def course_overview(request, course_id):
             enrolled = False
         else:
             enrolled = teach[0].teacher.id == this_user.id
-    
-    '''unit_form = None
-    lecture_form = None
-    lecture_form_initial = {'course': course,}
-    unit_form_initial = {'lecture': Lecture.objects.filter(course=course)[0] if len(Lecture.objects.filter(course=course)) > 0 else None,}'''
-    
-    if this_teacher:
-        '''if request.method == 'POST':
-            if 'add_unit' in request.POST:
-                unit_form = UnitCreateForm(request.POST)
-                unit_form.fields['lecture'].queryset = Lecture.objects.filter(course=course)
-                if unit_form.is_valid():
-                    unit_form.save()
-                    unit_form = UnitCreateForm(initial=unit_form_initial)
-                    return redirect(reverse('course_overview', kwargs={'course_id': course.id}))
             
-            if 'add_lect' in request.POST:
-                lecture_form = LectureCreateForm(request.POST)
-                lecture_form.fields['course'].queryset = Course.objects.filter(id=course.id)
-                if lecture_form.is_valid():
-                    lecture_form.save()
-                    lecture_form = LectureCreateForm(initial=lecture_form_initial)
-                    return redirect(reverse('course_overview', kwargs={'course_id': course.id}))
-        else:
-            unit_form = UnitCreateForm(initial=unit_form_initial, )
-            unit_form.fields['lecture'].queryset = Lecture.objects.filter(course=course)
-            lecture_form = LectureCreateForm(initial=lecture_form_initial)
-            lecture_form.fields['course'].queryset = Course.objects.filter(id=course.id)'''
-        
+    if this_teacher:
         can_modify_obj = True
+
+    course_list = []
+    if isinstance(this_user, Student):
+        this_student_enrollments = Enroll.objects.filter(student=this_user.id)
+        for enrollment in this_student_enrollments:
+            course_list.append(Course.objects.get(id=enrollment.course.id))
+    elif isinstance(this_user, Teacher):
+        course_list = [ti.course for ti in Teach.objects.filter(teacher=this_teacher)]
 
     context = {
         "course": course,
         "enrolled": enrolled,
         "this_user": this_user,
         "detail": course_detail(course_id) if enrolled else None,
-        #"lecture_form": lecture_form,
-        #"unit_form": unit_form,
+        "my_courses": course_list,
         "can_modify_obj": can_modify_obj,
         "teach": Teach.objects.filter(course=course.id)[0] if len(Teach.objects.filter(course=course.id)) > 0 else None,
     }
     return render(request, 'courses/course_overview.html', context=context)
-
-
-'''def add_lect(request):
-    if request.method == 'POST':
-        lecture_form = LectureCreateForm(request.POST)
-        if lecture_form.is_valid():
-            lecture_form.save()
-            return redirect('/lms/')
-    else:
-        lecture_form = LectureCreateForm()
-    return render(request, 'courses/create_lect.html', context=lecture_form)
-def add_unit(request):
-    if request.method == 'POST':
-        unit_form = UnitCreateForm(request.POST)
-        if unit_form.is_valid():
-            unit_form.save()
-            return redirect('/lms/')
-    else:
-        unit_form = UnitCreateForm()
-    return render(request, 'courses/create_unit.html', context=unit_form)'''
 
 
 def course_detail(course_id):
@@ -301,7 +299,12 @@ def course_detail(course_id):
         teacher = teach.teacher
     this_course_enrollments = Enroll.objects.filter(course=this_course.id)
     classmates = [this_course_enrollment.student for this_course_enrollment in this_course_enrollments]
-    detail = {"course": this_course, "lectures": lectures, "teacher": teacher, "classmates": classmates, }
+    detail = {
+        "course": this_course, 
+        "lectures": lectures, 
+        "teacher": teacher, 
+        "classmates": classmates, 
+    }
     return detail
 
 
@@ -353,25 +356,7 @@ def add_lecture(request, course_id):
     }
     return render(request, 'courses/add_lecture.html', context=context)
 
-## Deprecated 17/12
-'''def add_unit(request, course_id, lecture_id):
-    lecture = Lecture.objects.get(id=lecture_id)
-    unit_create_form = None
-    if request.method == 'POST':
-        unit_create_form = UnitCreateForm(request.POST, request.FILES)
-        if unit_create_form.is_valid():
-            unit_create_form.save()
-            return redirect(reverse('course_overview', kwargs={'course_id': Course.objects.distinct().filter(lecture__id=lecture_id)[0].id}))
-    else:
-        unit_create_form = UnitCreateForm()
-    context = {
-        'unit_create_form': unit_create_form,
-        'lecture': lecture
-    }
-    return render(request, 'courses/add_unit.html', context=context)'''
-##
-
-def modify_obj(request, obj_id):
+def modify_lect(request, course_id, lect_id):
     this_student = get_student(request)
     this_teacher = get_teacher(request)
     this_user = None
@@ -382,80 +367,31 @@ def modify_obj(request, obj_id):
     elif this_student is None and this_teacher is not None:
         this_user = this_teacher
 
-    obj = Lecture.objects.get(id=obj_id)
-    ## Deprecated 17/12
-    if obj is None:
-        #obj = Unit.objects.get(id=obj_id)
-        if obj is None:
-            obj = Assignment.objects.get(id=obj_id)
-    ##
-    obj_change_form = None
+    lect = Lecture.objects.get(id=lect_id)
+    
+    lect_change_form = None
     if request.method == 'POST':
-        if isinstance(obj, Lecture):
-            obj_change_form = LectureCreateForm(request.POST, request.FILES, instance=obj)
-        ## Deprecated 17/12
-        #elif isinstance(obj, Unit):
-        #    obj_change_form = UnitCreateForm(request.POST, instance=obj)
-        elif isinstance(obj, Assignment):
-            obj_change_form = AssignmentCreateForm(request.POST, request.FILES, instance=obj)
-        ##
-        if obj_change_form.is_valid():
-            obj_change_form.save()
-            return redirect(reverse('course_overview', kwargs={'course_id': Course.objects.all().filter(lecture__id=obj.id)[0].id}))
+        lect_change_form = LectureCreateForm(request.POST, request.FILES, instance=lect)
+        
+        if lect_change_form.is_valid():
+            lect_change_form.save()
+            return redirect(reverse('course_overview', kwargs={'course_id': Course.objects.all().filter(lecture__id=lect.id)[0].id}))
     else:
-        if isinstance(obj, Lecture):
-            obj_change_form = LectureCreateForm(instance=obj)
-        ## Deprecated 17/12
-        #elif isinstance(obj, Unit):
-        #    obj_change_form = UnitCreateForm(instance=obj)
-        elif isinstance(obj, Assignment):
-            obj_change_form = AssignmentCreateForm(instance=obj)
-        ##
+        lect_change_form = LectureCreateForm(instance=lect)
+        
     context = {
         "this_user": this_user,
-        "obj_change_form": obj_change_form,
-        "lecture": obj,
-        "course": Course.objects.all().filter(lecture__id=obj.id)[0],
+        "lect_change_form": lect_change_form,
+        "lecture": lect,
+        "course": Course.objects.all().filter(lecture__id=lect.id)[0],
     }
-    return render(request, 'courses/modify_comps.html', context=context)
+    return render(request, 'courses/modify_lect.html', context=context)
 
-def delete_obj(request, obj_id):
-    obj = Lecture.objects.get(id=obj_id)
-    ## Deprecated 17/12
-    if obj is None:
-        # obj = Unit.objects.get(id=obj_id)
-        if obj is None:
-            obj = Assignment.objects.get(id=obj_id)
-    ##
-    course_id = Course.objects.all().filter(lecture__id=obj.id)[0].id
-    obj.delete()
+def delete_lect(request, lect_id):
+    lect = Lecture.objects.get(id=lect_id)
+    course_id = Course.objects.all().filter(lecture__id=lect.id)[0].id
+    lect.delete()
     return redirect(reverse('course_overview', kwargs={'course_id': course_id}))
-
-
-'''@login_required
-def course_detail(request, course_id):
-    this_course = Course.objects.get(id=course_id)
-    this_student = get_student(request)
-    this_teacher = get_teacher(request)
-    this_user = None
-    if this_student is not None and this_teacher is None:
-        this_user = this_student
-    elif this_student is None and this_teacher is not None:
-        this_user = this_teacher
-
-    context = {}
-    this_course_lectures = Lecture.objects.filter(course=this_course.id)
-    lectures = []
-    for lecture in this_course_lectures:
-        lectures.append({
-            "lecture": lecture,
-            "units": Unit.objects.filter(lecture=lecture.id),
-        })
-    context = {
-        "lectures": lectures,
-        "this_user": this_user,
-    }
-    return render(request, 'courses/course_detail.html', context=context)'''
 
 
 def view_file(request, file_path):
