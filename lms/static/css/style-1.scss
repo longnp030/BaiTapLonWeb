@@ -52,7 +52,7 @@ $btn-color-hover: rgb(50, 200, 100);
       color: white;
     }
 
-    @media only screen and (max-width: 700px) {
+    @media only screen and (max-width: 900px) {
       display: none;
     }
   }
@@ -100,7 +100,7 @@ $btn-color-hover: rgb(50, 200, 100);
       }
     }
 
-    @media only screen and (max-width: 900px) {
+    @media only screen and (max-width: 1000px) {
       display: none;
     }
 
@@ -284,23 +284,17 @@ $btn-color-hover: rgb(50, 200, 100);
                   color: 	#3f3f3f;
                   margin-bottom: 10px;
                   text-transform: uppercase;
-
-                  @media only screen and (max-width: 800px) {
-                    display: none;
                 }
               }
 
               > p {
                   color: 	#5d5e61;
                   letter-spacing: 1px;
-
-                  @media only screen and (max-width: 800px) {
-                    display: none;
                 }
               }
 
-              @media only screen and (max-width: 800px) {
-                @include dimetion(20%, 5%);
+              @media only screen and (max-width: 1000px) {
+                display: none;
             }
           }
 
@@ -328,20 +322,15 @@ $btn-color-hover: rgb(50, 200, 100);
                   }
               }
 
-              @media only screen and (max-width: 700px) {
+              @media only screen and (max-width: 1000px) {
                 display: none;
             }
           }
 
-          @media only screen and (max-width: 700px) {
-            display: none;
-        }
-      }
-
-      @media only screen and (max-width: 700px) {
+      @media only screen and (max-width: 1000px) {
         @include dimetion(100%, 15%);
       }
-  }
+
 
   .footer-content-latest {
       @include dimetion(100%, 25%);
@@ -816,7 +805,7 @@ $btn-color-hover: rgb(50, 200, 100);
     box-shadow: 0px 0px 15px 5px rgb(159, 159, 159);
   }
 
-  @media only screen and (max-width: 800px) {
+  @media only screen and (max-width: 1600px) {
     @include dimetion(250px, 350px);
   }
 

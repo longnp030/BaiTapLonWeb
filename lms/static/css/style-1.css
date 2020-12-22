@@ -48,7 +48,7 @@ body {
   color: white;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 900px) {
   .header .header-logo {
     display: none;
   }
@@ -109,7 +109,7 @@ body {
   color: #28a050;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1000px) {
   .header .header-search {
     display: none;
   }
@@ -323,31 +323,18 @@ body {
   text-transform: uppercase;
 }
 
-@media only screen and (max-width: 800px) {
-  .c-bg-footer .c-box-footer .c-box-content-footer .footer-content-head > h3 {
-    display: none;
-  }
-}
-
-.c-bg-footer .c-box-footer .c-box-content-footer .footer-content-head > p {
+.c-bg-footer .c-box-footer .c-box-content-footer > p {
   color: #5d5e61;
   letter-spacing: 1px;
 }
 
-@media only screen and (max-width: 800px) {
-  .c-bg-footer .c-box-footer .c-box-content-footer .footer-content-head > p {
+@media only screen and (max-width: 1000px) {
+  .c-bg-footer .c-box-footer {
     display: none;
   }
 }
 
-@media only screen and (max-width: 800px) {
-  .c-bg-footer .c-box-footer .c-box-content-footer .footer-content-head {
-    width: 20%;
-    height: 5%;
-  }
-}
-
-.c-bg-footer .c-box-footer .c-box-content-footer .footer-content {
+.c-bg-footer .footer-content {
   width: 20%;
   height: 85%;
   float: left;
@@ -355,38 +342,32 @@ body {
   margin: 0px 10px;
 }
 
-.c-bg-footer .c-box-footer .c-box-content-footer .footer-content > h2 {
+.c-bg-footer .footer-content > h2 {
   color: #3f3f3f;
   text-align: left;
   margin: 0px 0px 10px 0px;
   text-transform: capitalize;
 }
 
-.c-bg-footer .c-box-footer .c-box-content-footer .footer-content > a {
+.c-bg-footer .footer-content > a {
   display: block;
   color: #3f3f3f;
   margin-bottom: 15px;
   text-decoration: none;
 }
 
-.c-bg-footer .c-box-footer .c-box-content-footer .footer-content > a:hover {
+.c-bg-footer .footer-content > a:hover {
   text-decoration: underline;
 }
 
-@media only screen and (max-width: 700px) {
-  .c-bg-footer .c-box-footer .c-box-content-footer .footer-content {
+@media only screen and (max-width: 1000px) {
+  .c-bg-footer .footer-content {
     display: none;
   }
 }
 
-@media only screen and (max-width: 700px) {
-  .c-bg-footer .c-box-footer .c-box-content-footer {
-    display: none;
-  }
-}
-
-@media only screen and (max-width: 700px) {
-  .c-bg-footer .c-box-footer {
+@media only screen and (max-width: 1000px) {
+  .c-bg-footer {
     width: 100%;
     height: 15%;
   }
@@ -918,7 +899,7 @@ body {
   color: white;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1600px) {
   .c-box-course {
     width: 250px;
     height: 350px;
