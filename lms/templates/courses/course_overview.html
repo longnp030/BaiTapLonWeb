@@ -19,7 +19,7 @@
                 </div>
             </div>
 
-            {% if current_student %}
+            {% if not can_modify_obj %}
                 <div class="btn-enroll">
                     <a href="{% url 'enroll' course.id %}">Enroll</a>
                     <p>Enroll to become one of another member in this course</p>
