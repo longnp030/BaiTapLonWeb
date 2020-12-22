@@ -108,7 +108,7 @@ $btn-color-hover: rgb(50, 200, 100);
 
   .navbar {
     @include dimetion(50%, 100%);
-    padding: 25px 60px 5px 20px;
+    padding: 25px 20px 5px 20px;
     text-align: right;
     float: left;
 
@@ -872,6 +872,10 @@ $btn-color-hover: rgb(50, 200, 100);
                       text-decoration: underline;
                   }
               }
+          }
+
+          @media only screen and (max-width: 1500px) {
+            display: none;
           }
       }
 

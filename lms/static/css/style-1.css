@@ -118,7 +118,7 @@ body {
 .header .navbar {
   width: 50%;
   height: 100%;
-  padding: 25px 60px 5px 20px;
+  padding: 25px 20px 5px 20px;
   text-align: right;
   float: left;
 }
@@ -990,6 +990,12 @@ body {
 
 .bg-view .view-course .show-teacher-course .name-teacher-course > a:hover {
   text-decoration: underline;
+}
+
+@media only screen and (max-width: 1500px) {
+  .bg-view .view-course .show-teacher-course {
+    display: none;
+  }
 }
 
 .bg-view .view-course .btn-enroll {
