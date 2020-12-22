@@ -39,152 +39,151 @@ $btn-color-hover: rgb(50, 200, 100);
 /* HEADER */
 .header {
   @include dimetion(100%, 70px);
-  border-top: 2px solid rgb(41, 238, 163);
-  padding: 0px 25px;
+  border-top: 2px solid rgb(25, 168, 120);
   background-color: #141517;
 
-  .logo-search {
-    @include dimetion(45%, 100%);
-    padding: 20px 100px;
+  .header-logo {
+    @include dimetion(10%, 100%);
+    padding: 15px 20px 20px 20px;
+    text-align: center;
+    float: left;
+
+    > h1 {
+      color: white;
+    }
+
+    @media only screen and (max-width: 1400px) {
+      display: none;
+    }
+  }
+
+  .header-search {
+    @include dimetion(25%, 100%);
+    padding: 18px 20px 10px 20px;
     float: left;
 
     ::placeholder {
       color: white;
     }
-
+    
     > form {
-      display: inline-block;
-
       > input {
-        width: 300px;
-        color: white;
-        border: none;
-        outline: none;
-        padding: 5px 0px;
         background-color: transparent;
-        border-bottom: 2px solid #d1d1dd;
+        width: 80%;
+        padding: 5px;
+        border: 2px solid #d1d1d1;
+        outline: none;
+        color: #d1d1d1;
 
         &:focus {
-          border-bottom: 2px solid white;
+          border: 2px solid white;
         }
       }
 
       > button {
-        text-align: right;
         background-color: transparent;
-        color: white;
-        font-weight: 600;
-        outline: none;
-        padding: 5px 15px;
+        padding: 5px 20px;
         border: 2px solid #d1d1d1;
+        outline: none;
+
+        > i {
+          color: white;
+        }
 
         &:hover {
           border: 2px solid white;
+
+          > i {
+            color: $btn-color;
+          }
         }
       }
     }
+
+    @media only screen and (max-width: 1500px) {
+      display: none;
+    }
+
   }
 
   .navbar {
-    @include dimetion(55%, 100%);
-    padding: 15px 25px;
+    @include dimetion(50%, 100%);
+    padding: 25px 60px 5px 20px;
     text-align: right;
     float: left;
 
-    .iteam-choise {
-      @include dimetion(85%, 100%);
-      float: left;
-      padding: 10px 20px 20px 15px;
+    > a {
+      margin: 0px 0px 0px 20px;
+      text-decoration: none;
+      color: #d1d1d1;
 
-      > a {
-        text-decoration: none;
+      &:hover {
         color: white;
-        margin-right: 25px;
-        text-transform: capitalize;
-
-        &:hover {
-          color: #d1d1dd;
-        }
       }
     }
 
-    .join-bt {
-      @include dimetion(13%, 100%);
-      float: right;
-      background-color: $btn-color;
-      border-radius: 5px;
+    @media only screen and (max-width: 1100px) {
+      display: none;
+    }
 
-      .user-avatar {
-        @include dimetion(25%, 100%);
-        padding: 2px 0px 0px 5px;
-        text-align: center;
-        float: left;
+  }
 
-        > img {
-          @include dimetion(35px, 35px);
-          display: inline;
-          border-radius: 50%;
-        }
+  .bt-join-out {
+    @include dimetion(15%, 100%);
+    float: left;
+
+    .user-image {
+      @include dimetion(20%, 100%);
+      padding: 15px 0px 0px 5px;
+      float: left;
+
+      > img {
+        @include dimetion(40px, 40px);
+        border-radius: 50%;
       }
+    }
 
-      .user-name {
-        @include dimetion(75%, 100%);
-        float: left;
-        padding: 10px 0px;
+    .user-name {
+      @include dimetion(80%, 100%);
+      padding: 15px 40px 15px 20px;
+      float: left;
+
+      .show-name {
+        padding: 10px 10px;
+        border-radius: 5px;
         text-align: center;
-        
-        > h4 {
-          color: white;
-          text-transform: capitalize;
+        background-color: $btn-color;
+
+        > p {
+          color: whitesmoke;
+          text-align: center;
         }
 
         > a {
+          display: none;
           text-decoration: none;
-          color: white;
-          font-weight: 600;
+          color: whitesmoke;
         }
 
-      }
-
-      #logout {
-        display: none;
-      }
-
-      &:hover {
-        background-color: $btn-color-hover;
-      }
-
-      &:hover #logout{
-        display: inline;
-      }
-
-      &:hover #content {
-        display: none;
-      }
-    }
-
-    .join-for-free {
-      @include dimetion(15%, 100%);
-      padding: 10px 0px;
-      text-align: right;
-      float: left;
-
-      > a {
-        text-decoration: none;
-        color: white;
-        padding: 10px 20px;
-        border-radius: 5px;
-        background-color: $btn-color;
-
         &:hover {
+          #nameshow {
+            display: none;
+          }
+
+          #logout {
+            display: inline;
+          }
+
           background-color: $btn-color-hover;
         }
       }
     }
-  }
+
+    @media only screen and (max-width: 1400px) {
+      @include dimetion(40%, 100%);
+    }
+  }   
 }
-
-
 
 /* HOME */
 .home-b1{
@@ -210,12 +209,24 @@ $btn-color-hover: rgb(50, 200, 100);
         font-size: 60px;
         margin-top: auto;
         letter-spacing: 2.5px;
+
+        @media only screen and (max-width: 1300px) {
+          font-size: 40px;
+        }
+
+        @media only screen and (max-width: 600px) {
+          display: none;
+        }
       }
 
       p{
         margin-top: auto;
         font-size: 20px;
         letter-spacing: 1.5px;
+
+        @media only screen and (max-width: 1300px) {
+          display: none;
+        }
       }
     }
   }
@@ -232,6 +243,10 @@ $btn-color-hover: rgb(50, 200, 100);
     div {
       color: white;
       letter-spacing: 1.5px;
+    }
+
+    @media only screen and (max-width: 1400px) {
+      display: none;
     }
   }
 }
@@ -262,20 +277,33 @@ $btn-color-hover: rgb(50, 200, 100);
               > h1 {
                   color: 	#3f3f3f;
                   text-align: center;
-                  margin-bottom: 10px
+                  margin-bottom: 10px;
               }
 
               > h3 {
                   color: 	#3f3f3f;
                   margin-bottom: 10px;
                   text-transform: uppercase;
+
+                  @media only screen and (max-width: 1300px) {
+                    display: none;
+                }
               }
 
               > p {
                   color: 	#5d5e61;
                   letter-spacing: 1px;
+
+                  @media only screen and (max-width: 1300px) {
+                    display: none;
+                }
               }
+
+              @media only screen and (max-width: 1300px) {
+                @include dimetion(20%, 5%);
+            }
           }
+
           .footer-content {
               @include dimetion(20%, 85%);
               float: left;
@@ -299,8 +327,19 @@ $btn-color-hover: rgb(50, 200, 100);
                       text-decoration: underline;
                   }
               }
+
+              @media only screen and (max-width: 1400px) {
+                display: none;
+            }
           }
-          
+
+          @media only screen and (max-width: 1400px) {
+            display: none;
+        }
+      }
+
+      @media only screen and (max-width: 1400px) {
+        @include dimetion(100%, 15%);
       }
   }
 
@@ -317,6 +356,10 @@ $btn-color-hover: rgb(50, 200, 100);
           > p {
               color: black;
           }
+
+          @media only screen and (max-width: 960px) {
+            @include dimetion(90%, 100%);
+          }
       }
 
       .footer-icon-content {
@@ -330,7 +373,15 @@ $btn-color-hover: rgb(50, 200, 100);
               padding-left: 15px;
               font-size: 20px;
           }
+
+          @media only screen and (max-width: 960px) {
+            display: none;
+          }
       }
+  }
+
+  @media only screen and (max-width: 1400px) {
+    @include dimetion(100%, 150px);
   }
 }
 
@@ -622,6 +673,10 @@ $btn-color-hover: rgb(50, 200, 100);
           > p {
               text-align: left;
               color: #3f3f3f;
+
+              @media only screen and (max-width: 800px) {
+                display: none;
+              }
           }
       }
   
@@ -642,6 +697,10 @@ $btn-color-hover: rgb(50, 200, 100);
           > p {
               text-align: left;
               color: #3f3f3f;
+
+              @media only screen and (max-width: 800px) {
+                display: none;
+              }
           }
 
           .btn-comfirm {
@@ -681,9 +740,9 @@ $btn-color-hover: rgb(50, 200, 100);
 .c-box-course {
   display: inline-block;
   text-align: center;
+  width: 15%;
   height: 350px;
-  width: 250px;
-  margin: 20px 0px 20px 30px;
+  margin: 30px 0px 0px 1%;
   padding-top: 10px;
   background-color: white;
 
@@ -700,7 +759,6 @@ $btn-color-hover: rgb(50, 200, 100);
   }
 
   .img-course {
-
     > a {
       > img {
         @include dimetion(100%, 312px);
@@ -756,6 +814,14 @@ $btn-color-hover: rgb(50, 200, 100);
       }    
     }
     box-shadow: 0px 0px 15px 5px rgb(159, 159, 159);
+  }
+
+  @media only screen and (max-width: 1680px) {
+    @include dimetion(250px, 350px);
+  }
+
+  @media only screen and (max-width: 600px) {
+    @include dimetion(200px, 350px);
   }
 }
 
@@ -981,6 +1047,10 @@ $btn-color-hover: rgb(50, 200, 100);
               }
           }
         }
+
+        @media only screen and (max-width: 700px) {
+          display: none;
+        }
     }
 
     .box-main-content {
@@ -1013,6 +1083,10 @@ $btn-color-hover: rgb(50, 200, 100);
                         margin-left: 20px;
                         color: black;
                         display: inline;
+
+                        @media only screen and (max-width: 900px) {
+                          font-size: 15px;
+                        }
                     }
                 }
 
@@ -1022,6 +1096,10 @@ $btn-color-hover: rgb(50, 200, 100);
 
                     > p {
                         color: #3f3f3f;
+
+                        @media only screen and (max-width: 900px) {
+                          display: none;
+                        }
                     }
 
                     > a {
@@ -1041,8 +1119,7 @@ $btn-color-hover: rgb(50, 200, 100);
             .btn-modifly {
                 @include dimetion(20%, 100%);
                 float: left;
-                padding: 60px 10px;
-                text-align: center;
+                padding: 60px 5px;
 
                 > form {
                   display: inline-block;
@@ -1064,7 +1141,7 @@ $btn-color-hover: rgb(50, 200, 100);
                 #btnchange {
                     border: 0;
                     color: #fff;
-                    padding: 7px 30px;
+                    padding: 7px 80%;
                     background-color: $btn-color;
 
                     &:hover {

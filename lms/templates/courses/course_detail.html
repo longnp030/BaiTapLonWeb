@@ -7,9 +7,6 @@
                     <li id="modify-course">
                         <a href="{% url 'modify_course' course.id %}" name='unitoflecture'>Modify course</a>
                     </li>
-                    <li id="delete-course">
-                        <a href="{% url 'delete_course' course.id %}" onclick="return confirm('Are you sure to delete?')">Delete course</a>
-                    </li>
                     <li>
                         <a href="{% url 'add_lecture' course_id=course.id %}" name='unitoflecture'>Add lecture</a>
                     </li>
@@ -41,7 +38,7 @@
                         {% if my_courses %}
                             {% for course in my_courses %}
                                 <li>
-                                    <a href="{% url 'course_overview' course.id %}>"><i>{{ course.name }}</i></a>
+                                    <a href="{% url 'course_overview' course.id %}"><i>{{ course.name }}</i></a>
                                 </li>
                             {% endfor %}
                         {% endif %}
@@ -80,15 +77,17 @@
 
                                 <div class="btn-modifly">
                                     {% if can_modify_obj %}
+
+                                        <form action="{% url 'delete_lect' lect.id %}" method="POST">
+                                            {% csrf_token %}
+                                            <input type="submit" id="btndelete" onclick="return confirm('Are you sure to delete?')" value="Delete">
+                                        </form>
+
                                         <form action="{% url 'modify_lect' course.id lect.id %}" method="GET">
                                             {% csrf_token %}
                                             <button type="submit" name="save-changes" id="btnchange">Modify</button>
                                         </form>
 
-                                        <form action="{% url 'delete_lect' lect.id %}" method="POST">
-                                            {% csrf_token %}
-                                            <input type="submit" id="btndelete" onclick="return confirm('Are you sure to delete?')" value="Delete">
-                                        </form> 
                                     {% endif %}
                                 </div>
                             </div>
