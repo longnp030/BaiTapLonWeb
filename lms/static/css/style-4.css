@@ -279,7 +279,7 @@ body {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  gap: 50px;
+  gap: 30px;
 }
 
 .home-b1 .funfact div {
@@ -1170,8 +1170,13 @@ body {
   height: 100%;
   float: left;
   background-color: white;
-  padding: 65px 50px;
+  padding: 10px 50px 65px 50px;
   font-family: serif;
+}
+
+.box-main-das .box-main-content > h1 {
+  text-align: center;
+  margin: 0px 0px 20px 0px;
 }
 
 .box-main-das .box-main-content .box-das-content-details {
@@ -1273,4 +1278,4 @@ body {
 .box-main-das .box-main-content .box-das-content-details .btn-modifly #btnchange:hover {
   background-color: #32c864;
 }
-/*# sourceMappingURL=style-3.css.map */
+/*# sourceMappingURL=style-4.css.map */
