@@ -276,7 +276,7 @@ class Enroll(models.Model):
 
 
 class Teacher(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True, db_column='id')
     name = models.CharField(max_length=45)
     email = models.CharField(unique=True, max_length=45)
     image = models.ImageField(max_length=255, upload_to=upload_location_for_user, db_column='image', null=True)

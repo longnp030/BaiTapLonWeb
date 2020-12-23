@@ -8,21 +8,25 @@
             <div class="show-name-course">
                 <h1> {{ course.name }} </h1>
             </div>
-            <div class="show-teacher-course">
-                <div class="img-teacher-course">
-                    <img src="{{ teach.teacher.image.url }}" alt="image teacher">
-                </div>
-                <div class="name-teacher-course">
-                    {% if teach %}
-                        <a href="{% url 'user_profile' teach.teacher.id %}"> {{ teach.teacher.name }} </a>
-                    {% endif %}
-                </div>
-            </div>
+            
+                {% if teaches %}
+                    {% for teach in teaches %}
+                    <div class="show-teacher-course">
+                        <div class="img-teacher-course">
+                            <img src="{{ teach.teacher.image.url }}" alt="image teacher">
+                        </div>
+                        <div class="name-teacher-course">
+                            <a href="{% url 'user_profile' teach.teacher.id %}"> {{ teach.teacher.name }} </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            
 
             {% if not can_modify_obj %}
                 <div class="btn-enroll">
                     <a href="{% url 'enroll' course.id %}">Enroll</a>
-                    <p>Enroll to become one of another member in this course</p>
+                    <p>Enroll to become one of the members in this course</p>
                 </div>
             {% endif %}
             

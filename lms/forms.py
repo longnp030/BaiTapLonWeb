@@ -25,6 +25,23 @@ class StudentInfoForm(forms.ModelForm):
         fields = ['image', 'facebook', 'twitter', 'website', ]
 
 
+class AddTeacherForm(forms.ModelForm):
+    teacher = forms.ModelChoiceField(queryset=Teacher.objects.all())
+    course = forms.ModelChoiceField(queryset=Course.objects.all())
+    class Meta:
+        model = Teach
+        fields = ['teacher', 'course',]
+
+
+'''class TeachForm(forms.ModelForm):
+    teacher = forms.ModelChoiceField(queryset=Teacher.objects.all())
+    course = forms.ModelChoiceField(queryset=Course.objects.all())
+
+    class Meta:
+        model = Teach
+        fields = ['teacher', 'course',]'''
+
+
 class TeacherInfoForm(forms.ModelForm):
     image = forms.ImageField(widget=forms.FileInput, required=False, localize=True)
     facebook = forms.URLField(widget=forms.URLInput, required=False)

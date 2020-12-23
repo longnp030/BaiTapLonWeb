@@ -27,6 +27,7 @@ urlpatterns = [
     path('courses/<int:course_id>/add_lecture/', views.add_lecture, name='add_lecture'),
     path('courses/<int:course_id>/modify/', views.modify_course, name='modify_course'),
     path('courses/<int:course_id>/delete/', views.delete_course, name='delete_course'),
+    path('courses/<int:course_id>/add_teacher/', views.add_teacher, name='add_teacher'),
     path('users/<int:user_id>', views.user_profile, name='user_profile'),
     path('db/', views.db_import, name='db_import'),
 ] + static('images', document_root=settings.IMAGE_DIR)

@@ -252,11 +252,14 @@ def course_overview(request, course_id):
         this_course_enrollments = Enroll.objects.filter(course=course.id)
         enrolled = len(this_course_enrollments.filter(student=this_user.id)) > 0
     elif isinstance(this_user, Teacher):
-        teach = Teach.objects.filter(course=course_id)
-        if len(teach) == 0:
+        teaches = Teach.objects.filter(course=course_id)
+        if len(teaches) == 0:
             enrolled = False
         else:
-            enrolled = teach[0].teacher.id == this_user.id
+            for teach in teaches:
+                if teach.teacher.id == this_user.id:
+                    enrolled = True
+                    break
             
     if this_teacher:
         can_modify_obj = True
@@ -276,7 +279,7 @@ def course_overview(request, course_id):
         "detail": course_detail(course_id) if enrolled else None,
         "my_courses": course_list,
         "can_modify_obj": can_modify_obj,
-        "teach": Teach.objects.filter(course=course.id)[0] if len(Teach.objects.filter(course=course.id)) > 0 else None,
+        "teaches": Teach.objects.filter(course=course.id) if len(Teach.objects.filter(course=course.id)) > 0 else None,
     }
     return render(request, 'courses/course_overview.html', context=context)
 
@@ -290,19 +293,18 @@ def course_detail(course_id):
             "lecture": lecture,
             #"units": Unit.objects.filter(lecture=lecture.id),
         })
-    teach = Teach.objects.filter(course=this_course.id)
-    teacher = None
-    if len(teach) <= 0 :
-        teach = None
+    teaches = Teach.objects.filter(course=this_course.id)
+    teachers = None
+    if len(teaches) <= 0 :
+        teaches = None
     else:
-        teach = teach[0]
-        teacher = teach.teacher
+        teachers = [teach.teacher for teach in teaches]
     this_course_enrollments = Enroll.objects.filter(course=this_course.id)
     classmates = [this_course_enrollment.student for this_course_enrollment in this_course_enrollments]
     detail = {
         "course": this_course, 
         "lectures": lectures, 
-        "teacher": teacher, 
+        "teachers": teachers, 
         "classmates": classmates, 
     }
     return detail
@@ -328,6 +330,36 @@ def search_result(request):
     }
 
     return render(request, 'courses/search_result.html', context=context)
+
+
+def add_teacher(request, course_id):
+    this_student = get_student(request)
+    this_teacher = get_teacher(request)
+    this_user = None
+    if this_teacher is None and this_student is None:
+        return redirect('/lms/')
+    elif this_student is not None and this_teacher is None:
+        this_user = this_student
+    elif this_student is None and this_teacher is not None:
+        this_user = this_teacher
+    course = Course.objects.get(id=course_id)
+    form = None
+    if request.method == 'POST':
+        form = AddTeacherForm(request.POST)
+        if form.is_valid():
+            form = form.save()
+            return redirect(reverse('course_overview', kwargs={'course_id': course.id}))
+    else:
+        form = AddTeacherForm()
+    current_teachers = [teach.teacher for teach in Teach.objects.filter(course=course.id)]
+    context = {
+        "this_user": this_user,
+        "course": course,
+        "form": form,
+        "other_teachers": [teacher for teacher in Teacher.objects.all() if teacher not in current_teachers]
+    }
+    return render(request, 'courses/add_teacher.html', context)
+
 
 def add_lecture(request, course_id):
     this_student = get_student(request)

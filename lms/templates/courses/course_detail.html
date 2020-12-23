@@ -14,9 +14,12 @@
 
                 <li class="item">Teacher
                     <ul class="itemshow" >
-                        {% if detail.teacher %}
-                            <li><a href="{% url 'user_profile' detail.teacher.id %}" >{{ detail.teacher.name }}</a></li>
+                        {% if detail.teachers %}
+                            {% for teacher in detail.teachers %}
+                                <li><a href="{% url 'user_profile' teacher.id %}" >{{ teacher.name }}</a></li>
+                            {% endfor %}
                         {% endif %}
+                        <li><a href="{% url 'add_teacher' course.id %}">Add Teacher</a></li>
                     </ul>
                 </li>
 
