@@ -480,6 +480,10 @@ body {
   text-decoration: none;
 }
 
+.text-option > p {
+  color: white;
+}
+
 /* SIGNUP */
 .box-signup {
   padding: 40px 60px 60px 60px;
@@ -1269,4 +1273,4 @@ body {
 .box-main-das .box-main-content .box-das-content-details .btn-modifly #btnchange:hover {
   background-color: #32c864;
 }
-/*# sourceMappingURL=style-2.css.map */
+/*# sourceMappingURL=style-3.css.map */
