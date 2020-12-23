@@ -19,7 +19,9 @@
                                 <li><a href="{% url 'user_profile' teacher.id %}" >{{ teacher.name }}</a></li>
                             {% endfor %}
                         {% endif %}
-                        <li><a href="{% url 'add_teacher' course.id %}">Add Teacher</a></li>
+                        {% if can_modify_obj %}
+                            <li><a href="{% url 'add_teacher' course.id %}">Add Teacher</a></li>
+                        {% endif %}
                     </ul>
                 </li>
 
