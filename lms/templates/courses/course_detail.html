@@ -54,6 +54,7 @@
     {% if detail %}
         {% if detail.lectures %}
             <div class="box-main-content">
+                <h1> {{ course.name }} </h1>
                 {% for lecture in detail.lectures %}
                     {% if lecture.lecture %}
                         {% with lect=lecture.lecture %}

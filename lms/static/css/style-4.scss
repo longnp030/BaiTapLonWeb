@@ -246,13 +246,12 @@ $btn-color-hover: rgb(50, 200, 100);
     transform: translateX(-50%);
     display: flex;
     flex-wrap: wrap;
-    gap: 50px;
+    gap: 30px;
 
     div {
       color: white;
       letter-spacing: 1.5px;
     }
-
     @media only screen and (max-width: 900px) {
       display: none;
     }
@@ -1055,8 +1054,13 @@ $btn-color-hover: rgb(50, 200, 100);
         @include dimetion(85%, 100%);
         float: left;
         background-color: white;
-        padding: 65px 50px;
+        padding: 10px 50px 65px 50px;
         font-family: serif;
+
+        > h1 {
+          text-align: center;
+          margin: 0px 0px 20px 0px;
+        }
 
         .box-das-content-details {
             @include dimetion(100%, 175px);
