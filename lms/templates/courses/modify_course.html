@@ -14,7 +14,7 @@
     
                 <div class="inp-fields-profile">
                     {% if course.image %}
-                        <input type="file" name="image" accept="image/*" id="id_image" value="{{ course.image.url }}">
+                        <input type="file" name="image" accept="image/*" id="id_image" value="{{ course.image }}">
                     {% else %}
                         <input type="file" name="image" accept="image/*" id="id_image">
                     {% endif %}

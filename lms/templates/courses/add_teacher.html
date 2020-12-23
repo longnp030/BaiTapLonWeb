@@ -1,0 +1,32 @@
+
+{% extends "../lms/index1.html" %}
+{% block title %}Add Teacher{% endblock %}
+
+{% block content %}
+{% if form %}
+<form method="POST">
+    {% csrf_token %}
+    <div class="box-bg-create-course">
+        <div class="box-create-course">
+            <h1>Add teacher to this course</h1>
+            <div class="label-fields-profile">
+                <label for="id_course">Teacher</label>
+                <label for="id_name">Course</label>
+            </div>
+
+            <div class="inp-fields-profile" >
+                <select name="teacher" required id="id_teacher">
+                    {% for teacher in other_teachers %}
+                        <option value="{{ teacher.id }}" selected>{{ teacher }}</option>
+                    {% endfor %}
+                </select>
+                <select name="course" required id="id_course">
+                    <option value="{{ course.id }}" selected>{{ course }}</option>
+                </select>
+            </div>
+            <button type="submit">Save changes</button>
+        </div>
+    </div>
+</form>
+{% endif %}
+{% endblock %}
