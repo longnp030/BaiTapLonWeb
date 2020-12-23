@@ -52,13 +52,13 @@ $btn-color-hover: rgb(50, 200, 100);
       color: white;
     }
 
-    @media only screen and (max-width: 900px) {
+    @media only screen and (max-width: 1000px) {
       display: none;
     }
   }
 
   .header-search {
-    @include dimetion(25%, 100%);
+    @include dimetion(30%, 100%);
     padding: 18px 20px 10px 20px;
     float: left;
 
@@ -69,7 +69,7 @@ $btn-color-hover: rgb(50, 200, 100);
     > form {
       > input {
         background-color: transparent;
-        width: 80%;
+        width: 70%;
         padding: 5px;
         border: 2px solid #d1d1d1;
         outline: none;
@@ -82,7 +82,7 @@ $btn-color-hover: rgb(50, 200, 100);
 
       > button {
         background-color: transparent;
-        padding: 5px 20px;
+        padding: 5px 3%;
         border: 2px solid #d1d1d1;
         outline: none;
 
@@ -100,14 +100,13 @@ $btn-color-hover: rgb(50, 200, 100);
       }
     }
 
-    @media only screen and (max-width: 1000px) {
+    @media only screen and (max-width: 900px) {
       display: none;
     }
-
   }
 
   .navbar {
-    @include dimetion(50%, 100%);
+    @include dimetion(45%, 100%);
     padding: 25px 20px 5px 20px;
     text-align: right;
     float: left;
@@ -120,6 +119,10 @@ $btn-color-hover: rgb(50, 200, 100);
       &:hover {
         color: white;
       }
+    }
+
+    @media only screen and (max-width: 1000px) {
+      width: 45%;
     }
 
     @media only screen and (max-width: 800px) {
@@ -179,10 +182,15 @@ $btn-color-hover: rgb(50, 200, 100);
       }
     }
 
-    @media only screen and (max-width: 900px) {
+    @media only screen and (max-width: 1000px) {
+      @include dimetion(25%, 100%);
+    }
+
+    @media only screen and (max-width: 800px) {
       @include dimetion(40%, 100%);
     }
-  }   
+
+  }
 }
 
 /* HOME */
@@ -285,18 +293,13 @@ $btn-color-hover: rgb(50, 200, 100);
                   margin-bottom: 10px;
                   text-transform: uppercase;
                 }
-              }
 
               > p {
                   color: 	#5d5e61;
                   letter-spacing: 1px;
                 }
-              }
+            }  
 
-              @media only screen and (max-width: 1000px) {
-                display: none;
-            }
-          }
 
           .footer-content {
               @include dimetion(20%, 85%);
@@ -321,16 +324,14 @@ $btn-color-hover: rgb(50, 200, 100);
                       text-decoration: underline;
                   }
               }
-
-              @media only screen and (max-width: 1000px) {
-                display: none;
-            }
           }
-
-      @media only screen and (max-width: 1000px) {
-        @include dimetion(100%, 15%);
       }
 
+      @media only screen and (max-width: 1000px) {
+        display: none;
+    }
+
+  }
 
   .footer-content-latest {
       @include dimetion(100%, 25%);
@@ -369,7 +370,7 @@ $btn-color-hover: rgb(50, 200, 100);
       }
   }
 
-  @media only screen and (max-width: 700px) {
+  @media only screen and (max-width: 1000px) {
     @include dimetion(100%, 150px);
   }
 }
